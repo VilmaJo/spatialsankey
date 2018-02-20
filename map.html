@@ -79,11 +79,16 @@ nodes.forEach(function(node) {
 
 //flows data
 var flowsData = {};
+var flowsValues = [];
 flows.forEach(function(flow) {
-		flowsData[flow.id] = {'source':flow.source, 'target':flow.target, 'value':flow.value, 'type':flow.type};
+		flowsData[flow.id] = {'source':flow.source,'target':flow.target,'value':flow.value,'type':flow.type};
+        flowsValues.push(parseInt(flow.value));
 	});
 
-		
+var minValue = Math.min(flowsValues);
+    console.log(flowsValues)
+    console.log(minValue)
+
 /*
 Daten definieren: 
 source_x, source_y, source_coord,
@@ -113,7 +118,6 @@ console.log(key)
 	array.length()
 	if (array.length = 7) {return bend 0:0.7;}
 	*/
-	
 
 //color	
 	color = flowsData[key].type
@@ -121,8 +125,9 @@ console.log(key)
 //width
 	value = flowsData[key].value
 	//console.log(value)
+
 	
-	drawPath(sourceX, sourceY, targetX, targetY, 0.6, color, value)
+	drawPath(sourceX, sourceY, targetX, targetY, 0.9, color, value)
 
 		// addpoint for each node	
 		nodes.forEach(function(node) {

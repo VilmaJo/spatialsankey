@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--SOURCE: view-source:http://techslides.com/demos/d3/worldmap-template-d3v4.html-->
+<!--SOURCE: https://stackoverflow.com/questions/47917730/d3-line-and-points-on-map-from-csv-data-->
+<meta charset="utf-8">
+<title>VILMA | SimpleMap</title>
+<style>
+.country:hover{
+  stroke: #7d7d7d;
+  stroke-width: 0.5px;
+}
+#container {
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background: #fff;
+}
+
+.gpoint:hover{
+	fill:#b20000;
+	stroke:#b20000;
+	stroke-width: 2px;
+}
+
+.gpoint{
+	fill: #b20000;
+}
+
+.route{
+	  fill: none;	
+}
+.route:hover{
+	stroke-width: 4px;
+}
+
+</style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script src="js/d3.min.js"></script>
+<script src="js/topojson.v1.min.js"></script>
+<script src="js/d3-queue.min"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+
+<script>
+
+var container = document.getElementById('container');
+var width = container.offsetWidth;
+var height = width/1.5;
+  
+var projection = d3.geoMercator()
+				.center([25, 43])
+				 .translate([(width/2), (height/2)])
+				 .scale(950);
+
+var path = d3.geoPath()
+		   .projection(projection);
+
+var svg = d3.select("#container")
+		  .append("svg")
+		  .attr("width", width)
+		  .attr("height", height)
+		  .append("g");
+
+var g = svg.append("g");
+
+//Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
+function loaded(error,world,nodes,flows) {
+
+//world data
+var countries = topojson.feature(world, world.objects.countries).features;
+draw(countries);
+
+//nodes data
+var nodesData = {};
+nodes.forEach(function(node) {
+	nodesData[node.city]={'lon':node.lon,'lat':node.lat};
+});
+
+//flows data
+var flowsData = {};
+flows.forEach(function(flow) {
+		flowsData[flow.id]={'source':flow.source,'target':flow.target,'value':flow.value,'type':flow.type};
+	});
+
+		
+/*
+Daten definieren: 
+source_x, source_y, source_coord,
+target_x,target_y,target_coord 
+*/
+
+for(key in flowsData){
+console.log(key)
+//source
+	source = flowsData[key].source					//die source wird aus den flowsData je key gezogen
+	source_x = nodesData[source]['lon']				//die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
+	source_y = nodesData[source]['lat']
+	source_coords = [source_x,source_y]
+//target	
+	target = flowsData[key].target
+	target_x = nodesData[target]['lon']
+	target_y = nodesData[target]['lat']
+	target_coords = [target_x,target_y]
+//flow für Krümmung
+	flow = [source,target]
+	console.log(flow)
+	/* Pseudocode, um die Anzahl gleicher flows zu kriegen
+	for each source, target same
+	- count + 1, wenn source & target in flowsData gleich sind 
+	- if (count = 7) {return bend 0:0.7;}
+		else if (count = 6) {return bend 0:0.6;}
+	array.length()
+	if (array.length = 7) {return bend 0:0.7;}
+	*/
+	
+	var LodHam= _.where(flowsData, {source: 'LOD', target: 'HAM'});
+	//var LH_length = LodHam.length();
+	console.log(LodHam)
+	
+
+//color	
+	color = flowsData[key].type
+	//organic = color['organic']
+	//plastic = color['plastic']
+	//colors = [organic, plastic]
+	//console.log(color)
+//width
+	value = flowsData[key].value
+	//console.log(value)
+	
+	drawPath(source_x,source_y,target_x,target_y,0.6,color,value)
+
+		// addpoint for each node	
+		nodes.forEach(function(node) {
+			addpoint(node.lon, node.lat);
+		});
+
+}; //Ende for key in flowsData
+	
+} //Ende loaded für queue
+
+queue().defer(d3.json, "data/countries.topo.json")
+		.defer(d3.csv, "nodes.csv")
+		.defer(d3.csv, "flows.csv")
+		.await(loaded);		
+
+/*
+	FUNKTIONEN
+	draw
+	addpoint
+	makearc
+	specifyColor
+	FUNKTIONEN
+*/
+function draw(topo) {
+  var country = g.selectAll(".country").data(topo);
+
+  country.enter().insert("path")
+      .attr("class", "country")
+      .attr("d", path)
+      .attr("id", function(d,i) { return d.id; })
+      .style("fill", "lightgrey");
+};
+
+//function to add points to the map
+function addpoint(lon, lat) {
+	  var x = projection([lon, lat])[0];
+	  var y = projection([lon, lat])[1];
+
+	  var point = g.append("g")
+					.attr("class", "gpoint")
+					.append("circle")
+					.attr("cx", x)
+					.attr("cy", y)
+					.attr("r", 8);  
+};	
+
+//funktion makeArc, die in drawPath eingesetzt wird
+function makeArc(sx,sy,tx,ty,bend) {							
+					//sx,sy,tx,ty mit projection versehen
+						var sxp = projection([sx,sy])[0],
+							syp = projection([sx,sy])[1],
+							txp = projection([tx,ty])[0],
+							typ = projection([tx,ty])[1];
+						
+						var dx = txp - sxp,
+							dy = typ - syp,
+							dr = Math.sqrt(dx * dx + dy * dy) * bend;
+							
+						return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0,1 " + txp + "," + typ;
+					  };
+
+function specifyColor (color) {
+	if (color === 'organic') {return 'darkgreen';}
+	if (color === 'plastic') {return 'steelblue';}
+	if (color === 'construction') {return 'orange';}
+	if (color === 'food') {return 'black';}	
+	if (color === 'msw') {return 'turquoise';}
+	if (color === 'hazardous') {return 'red';}
+	return 'white';
+};				  
+				  
+function drawPath(sx,sy,tx,ty,bend,color,width) {
+	
+	var route = g.insert("path")
+                   .attr("class", "route")
+                   .attr("d", makeArc(sx,sy,tx,ty,bend))
+				   .style("stroke", specifyColor (color))
+				   /*
+				   .style("stroke-width", function() {
+					if (width === '300') {return 5;}
+						else if (width == '150') {return 3;}
+							else {return 1;}
+				   });
+				   */
+				   .style("stroke-width", 3);
+					
+};
+/*
+AUFGABEN
+
+*** - Farbe nach type 
+- width: Breite nach value
+		 Vorgehen: aus dem value min und max raussuchen
+					daraus Klassen bilden
+					für jede Klasse eine Breite festlegen
+- Form des paths so anpassen, dass es am Punkt zusammenfließt
+- Richtung anzeigen
+- bend anpassen nach Anzahl von flows: bzw bend nach typ, da an gleicher stelle sein soll?
+
+*/
+
+			
+</script>
+</body>
+</html>

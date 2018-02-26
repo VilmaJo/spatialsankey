@@ -16,13 +16,13 @@
 }
 
 .gpoint:hover{
-	fill:#b20000;
-	stroke:#b20000;
+	fill:#c95f64;
+	stroke:#c95f64;
 	stroke-width: 2px;
 }
 
 .gpoint{
-	fill: #b20000;
+	fill: #c95f64;
 }
 
 .route{
@@ -77,17 +77,17 @@ nodes.forEach(function(node) {
 	nodesData[node.city] = {'lon':node.lon, 'lat':node.lat};
 });
 
+
 //flows data
 var flowsData = {};
+//get all flow-values from flowsData to use for path stroke-width
 var flowsValues = [];
 flows.forEach(function(flow) {
 		flowsData[flow.id] = {'source':flow.source,'target':flow.target,'value':flow.value,'type':flow.type};
         flowsValues.push(parseInt(flow.value));
 	});
 
-var minValue = Math.min(flowsValues);
-    console.log(flowsValues)
-    console.log(minValue)
+
 
 /*
 Daten definieren: 
@@ -122,12 +122,15 @@ console.log(key)
 //color	
 	color = flowsData[key].type
 
-//width
-	value = flowsData[key].value
-	//console.log(value)
+//define strokeWidth
+    maxValue = Math.max.apply(null, flowsValues);
+	maxWidth = 12;
+	width= flowsData[key].value
 
-	
-	drawPath(sourceX, sourceY, targetX, targetY, 0.9, color, value)
+    strokeWidth = width / maxValue * maxWidth
+
+
+	drawPath(sourceX, sourceY, targetX, targetY, 0.0, color, strokeWidth)
 
 		// addpoint for each node	
 		nodes.forEach(function(node) {
@@ -190,30 +193,24 @@ function makeArc(sx, sy, tx, ty, bend) {
 					  };
 
 function specifyColor (color) {
-	if (color === 'organic') {return 'darkgreen';}
-	if (color === 'plastic') {return 'steelblue';}
-	if (color === 'construction') {return 'orange';}
-	if (color === 'food') {return 'black';}	
-	if (color === 'msw') {return 'turquoise';}
-	if (color === 'hazardous') {return 'red';}
+	if (color === 'organic') {return '#2e7b50';}
+	if (color === 'plastic') {return '#4682b4';}
+	if (color === 'construction') {return '#cc8400';}
+	if (color === 'food') {return '#ebda09';}
+	if (color === 'msw') {return '#348984';}
+	if (color === 'hazardous') {return '#893464';}
 	return 'white';
 };				  
-				  
-function drawPath(sx,sy,tx,ty,bend,color,width) {
-	
+
+
+function drawPath(sx,sy,tx,ty,bend,color) {
 	var route = g.insert("path")
                    .attr("class", "route")
                    .attr("d", makeArc(sx,sy,tx,ty,bend))
 				   .style("stroke", specifyColor (color))
-				   /*
-				   .style("stroke-width", function() {
-					if (width === '300') {return 5;}
-						else if (width == '150') {return 3;}
-							else {return 1;}
-				   });
-				   */
-				   .style("stroke-width", 3);
-					
+				   .style("stroke-width", strokeWidth);
+
+				  // .style("stroke-width", 3);
 };
 /*
 AUFGABEN
@@ -223,6 +220,8 @@ AUFGABEN
 		 Vorgehen: aus dem value min und max raussuchen
 					daraus Klassen bilden
 					für jede Klasse eine Breite festlegen
+
+					range (1:10),for max value: width= ?, for min value: width=?
 - Richtung anzeigen
 - bend anpassen nach Anzahl von flows: bzw bend nach typ, da an gleicher stelle sein soll?
 - Größe der Punkte abhängig nach in & outflows & farbe abhängig, ob mehr in- oder outflows

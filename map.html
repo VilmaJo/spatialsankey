@@ -212,19 +212,18 @@ function drawPath(sx,sy,tx,ty,bend,color) {
 
 				  // .style("stroke-width", 3);
 };
+
 /*
 AUFGABEN
 
 *** - Farbe nach type 
-- width: Breite nach value
-		 Vorgehen: aus dem value min und max raussuchen
-					daraus Klassen bilden
-					für jede Klasse eine Breite festlegen
-
-					range (1:10),for max value: width= ?, for min value: width=?
-- Richtung anzeigen
-- bend anpassen nach Anzahl von flows: bzw bend nach typ, da an gleicher stelle sein soll?
+*** - StrokeWidth: Breite nach value
+		 Vorgehen: value / maxValue * maxStrokeWidth
 - Größe der Punkte abhängig nach in & outflows & farbe abhängig, ob mehr in- oder outflows
+- Richtung anzeigen
+- Beziers statt arcs??
+    - Bedingung einfügen: wenn type gleiches target xy und source xy hat, dann hintereinander verlaufen
+- bend anpassen nach Anzahl von flows: bzw bend nach typ, da an gleicher stelle sein soll?
 */
 
 			

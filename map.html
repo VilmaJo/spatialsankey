@@ -200,15 +200,35 @@ function specifyColor (color) {
 	if (color === 'msw') {return '#348984';}
 	if (color === 'hazardous') {return '#893464';}
 	return 'white';
-};				  
+};
+
 
 
 function drawPath(sx,sy,tx,ty,bend,color) {
+    // draw arrow
+// source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
+    var arrow = svg.append("marker")
+        .attr("id", "arrow")
+        .attr("refX", -9)
+        .attr("refY", 6)
+        .attr("markerWidth", 10)
+        .attr("markerHeight", 10)
+        .attr("orient", "auto")
+        .append("path")
+        .attr("d", "M 3 5.5 3.5 5.5" + //left
+            " 4 6 " +   //up
+            " 3.5 6.5  3 6.5 " +  //right
+            "3.5 6")     //down               Form des Dreiecks: .attr("d", "M [0 0]links [12 6]mitte oben [0 12]rechts [3 6]mitte unten")
+        .style("fill", "black");
+
+
 	var route = g.insert("path")
                    .attr("class", "route")
                    .attr("d", makeArc(sx,sy,tx,ty,bend))
 				   .style("stroke", specifyColor (color))
-				   .style("stroke-width", strokeWidth);
+				   .style("stroke-width", strokeWidth)
+                   //.style("stroke-dasharray", "9, 2")
+                    .attr("marker-start", "url(#arrow)");
 
 				  // .style("stroke-width", 3);
 };
@@ -220,7 +240,7 @@ AUFGABEN
 *** - StrokeWidth: Breite nach value
 		 Vorgehen: value / maxValue * maxStrokeWidth
 - Größe der Punkte abhängig nach in & outflows & farbe abhängig, ob mehr in- oder outflows
-- Richtung anzeigen
+- Richtung anzeigen: 1 arrow mit marker-start oder marker-end, aber: bei bend funktioniert es nicht (bend einfügen) und anzeige in bestimmtem abstand
 - Beziers statt arcs??
     - Bedingung einfügen: wenn type gleiches target xy und source xy hat, dann hintereinander verlaufen
 - bend anpassen nach Anzahl von flows: bzw bend nach typ, da an gleicher stelle sein soll?

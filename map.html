@@ -130,7 +130,7 @@ console.log(key)
     strokeWidth = width / maxValue * maxWidth
 
 
-	drawPath(sourceX, sourceY, targetX, targetY, 0.0, color, strokeWidth)
+	drawPath(sourceX, sourceY, targetX, targetY, 0.8, color, strokeWidth)
 
 		// addpoint for each node	
 		nodes.forEach(function(node) {
@@ -209,28 +209,27 @@ function drawPath(sx,sy,tx,ty,bend,color) {
 // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
     var arrow = svg.append("marker")
         .attr("id", "arrow")
-        .attr("refX", -9)
+        .attr("refX", 6)
         .attr("refY", 6)
         .attr("markerWidth", 10)
         .attr("markerHeight", 10)
         .attr("orient", "auto")
         .append("path")
-        .attr("d", "M 3 5.5 3.5 5.5" + //left
-            " 4 6 " +   //up
-            " 3.5 6.5  3 6.5 " +  //right
-            "3.5 6")     //down               Form des Dreiecks: .attr("d", "M [0 0]links [12 6]mitte oben [0 12]rechts [3 6]mitte unten")
+        .attr("d", "M 3 5.5 3.5 5.5" +      //left
+            " 4 6 " +                       //up
+            " 3.5 6.5  3 6.5 " +            //right
+            "3.5 6")                        //down
         .style("fill", "black");
 
 
 	var route = g.insert("path")
                    .attr("class", "route")
+                    .attr("id","route")
                    .attr("d", makeArc(sx,sy,tx,ty,bend))
 				   .style("stroke", specifyColor (color))
 				   .style("stroke-width", strokeWidth)
                    //.style("stroke-dasharray", "9, 2")
-                    .attr("marker-start", "url(#arrow)");
-
-				  // .style("stroke-width", 3);
+                    .attr("marker-end", "url(#arrow)");
 };
 
 /*
@@ -241,6 +240,9 @@ AUFGABEN
 		 Vorgehen: value / maxValue * maxStrokeWidth
 - Größe der Punkte abhängig nach in & outflows & farbe abhängig, ob mehr in- oder outflows
 - Richtung anzeigen: 1 arrow mit marker-start oder marker-end, aber: bei bend funktioniert es nicht (bend einfügen) und anzeige in bestimmtem abstand
+    - arcTween: mit animation?
+    -transition https://github.com/d3/d3-transition#transition_attrTween
+    - chained transition (dashedarray?)https://bl.ocks.org/mbostock/70d5541b547cc222aa02
 - Beziers statt arcs??
     - Bedingung einfügen: wenn type gleiches target xy und source xy hat, dann hintereinander verlaufen
 - bend anpassen nach Anzahl von flows: bzw bend nach typ, da an gleicher stelle sein soll?

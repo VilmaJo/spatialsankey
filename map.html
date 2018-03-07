@@ -74,43 +74,50 @@ draw(countries);
 //nodes data
 var nodesData = {};
 nodes.forEach(function(node) {
-	nodesData[node.city] = {'lon':node.lon, 'lat':node.lat};
+	nodesData[node.city] = {'city':node.city,'lon':node.lon,'lat':node.lat};
 });
-
 
 //flows data
 var flowsData = {};
 //get all flow-values from flowsData to use for path stroke-width
 var flowsValues = [];
 flows.forEach(function(flow) {
-		flowsData[flow.id] = {'source':flow.source,'target':flow.target,'value':flow.value,'type':flow.type};
+		flowsData[flow.id] = {'id':flow.id,'source':flow.source,'target':flow.target,'value':flow.value,'type':flow.type};
         flowsValues.push(parseInt(flow.value));
 	});
 
 
+/*
+for(key in nodesData) {
+    console.log(key)
+    city = nodesData[key].city
+    Wert = flowsData[city]['value']
+    console.log(city)
+    console.log(Wert)
+};
+*/
 
 /*
 Daten definieren: 
 source_x, source_y, source_coord,
 target_x,target_y,target_coord 
 */
-
-for(key in flowsData){
-console.log(key)
+for(key in flowsData) {
+    console.log(key)
 //source
-	source = flowsData[key].source					//die source wird aus den flowsData je key gezogen
-	sourceX = nodesData[source]['lon']				//die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
-	sourceY = nodesData[source]['lat']
-	sourceCoords = [sourceX,sourceY]
+    source = flowsData[key].source					//die source wird aus den flowsData je key gezogen
+    sourceX = nodesData[source]['lon']				//die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
+    sourceY = nodesData[source]['lat']
+    sourceCoords = [sourceX, sourceY]
 //target	
-	target = flowsData[key].target
-	targetX = nodesData[target]['lon']
-	targetY = nodesData[target]['lat']
-	targetCoords = [targetX,targetY]
+    target = flowsData[key].target
+    targetX = nodesData[target]['lon']
+    targetY = nodesData[target]['lat']
+    targetCoords = [targetX, targetY]
 //flow für Krümmung
-	flow = [source,target]
-	console.log(flow)
-	/* Pseudocode, um die Anzahl gleicher flows zu kriegen
+    flow = [source, target]
+    console.log(flow)
+    /* Pseudocode, um die Anzahl gleicher flows zu kriegen
 	for each source, target same
 	- count + 1, wenn source & target in flowsData gleich sind 
 	- if (count = 7) {return bend 0:0.7;}
@@ -120,7 +127,63 @@ console.log(key)
 	*/
 
 //color	
-	color = flowsData[key].type
+    color = flowsData[key].type
+
+
+//**********************************************************************************************************************
+// define point size
+var cities = []
+nodes.forEach(function(node) {
+    cities.push(node.city);
+});
+/*
+value2 = flowsData[city]['value']
+console.log(value2)
+*/
+for (city of cities){
+    //console.log(city)
+}
+
+    // for each node, sum values
+    // for each target = same, sum up value
+    // for all unique values in source, sum up value.value
+
+    // define sum
+    var sum = flowsValues.reduce(add, 0);
+        function add(a, b) {
+            return a + b;
+        }
+    //console.log(sum)
+
+//get unique source values
+// source: https://coderwall.com/p/nilaba/simple-pure-javascript-array-unique-method-with-5-lines-of-code
+    sourceAll = []
+    flows.forEach(function(flow){
+        sourceAll.push(flow.source);
+    })
+    //function
+    Array.prototype.unique = function() {
+        return this.filter(function (value, index, self) {
+            return self.indexOf(value) === index;
+        });
+    }
+
+    var unique = sourceAll.unique();
+
+    console.log(sourceAll)
+    console.log(unique)
+
+    unique.forEach(function(unique){
+        flowsData.value +=1;
+    })
+    //pseudocode: for each unique source: sum up value
+    /*
+    nodes.forEach(function(node) {
+	nodesData[node.city] = {'city':node.city,'lon':node.lon,'lat':node.lat};
+    });
+     */
+
+//**********************************************************************************************************************
 
 //define strokeWidth
     maxValue = Math.max.apply(null, flowsValues);
@@ -129,17 +192,17 @@ console.log(key)
 
     strokeWidth = width / maxValue * maxWidth
 
-
+// drawPath
 	drawPath(sourceX, sourceY, targetX, targetY, 0.8, color, strokeWidth)
 
-		// addpoint for each node	
-		nodes.forEach(function(node) {
-			addpoint(node.lon, node.lat);
-		});
+// addpoint for each node
+    nodes.forEach(function(node) {
+        addpoint(node.lon, node.lat);
+    });
 
-}; //Ende for key in flowsData
+}; //End for key in flowsData
 	
-} //Ende loaded für queue
+} //End loaded für queue
 
 d3.queue().defer(d3.json, "data/countries.topo.json")
 		.defer(d3.csv, "nodes.csv")
@@ -147,12 +210,12 @@ d3.queue().defer(d3.json, "data/countries.topo.json")
 		.await(loaded);		
 
 /*
-	FUNKTIONEN
-	draw
-	addpoint
-	makearc
-	specifyColor
-	FUNKTIONEN
+	FUNCTIONS
+            draw
+            addpoint
+            makearc
+            specifyColor
+	FUNCTIONS
 */
 function draw(topo) {
   var country = g.selectAll(".country").data(topo);
@@ -174,10 +237,13 @@ function addpoint(lon, lat) {
 					.append("circle")
 					.attr("cx", x)
 					.attr("cy", y)
-					.attr("r", 8);  
+					.attr("r", 8);
+	  //
+	  // Größe der Punkte abhängig nach in & outflows
+      //& farbe abhängig, ob mehr in- oder outflows
 };	
 
-//funktion makeArc, die in drawPath eingesetzt wird
+//function makeArc, that is used for drawPath
 function makeArc(sx, sy, tx, ty, bend) {
 					//sx,sy,tx,ty mit projection versehen
 						var sxp = projection([sx,sy])[0],
@@ -233,19 +299,25 @@ function drawPath(sx,sy,tx,ty,bend,color) {
 };
 
 /*
-AUFGABEN
 
-*** - Farbe nach type 
-*** - StrokeWidth: Breite nach value
-		 Vorgehen: value / maxValue * maxStrokeWidth
-- Größe der Punkte abhängig nach in & outflows & farbe abhängig, ob mehr in- oder outflows
+Aktuelle AUFGABEN
+
+        *** - Farbe nach type
+        *** - StrokeWidth: Breite nach value
+		        Vorgehen: value / maxValue * maxStrokeWidth
+- Punkte
+    - Größe der Punkte abhängig nach in & outflows
+    - Farbe abhängig, ob mehr in- oder outflows
+
 - Richtung anzeigen: 1 arrow mit marker-start oder marker-end, aber: bei bend funktioniert es nicht (bend einfügen) und anzeige in bestimmtem abstand
     - arcTween: mit animation?
     -transition https://github.com/d3/d3-transition#transition_attrTween
     - chained transition (dashedarray?)https://bl.ocks.org/mbostock/70d5541b547cc222aa02
+
+- bend anpassen nach Anzahl von flows: bzw bend nach typ, da an gleicher stelle sein soll?
+
 - Beziers statt arcs??
     - Bedingung einfügen: wenn type gleiches target xy und source xy hat, dann hintereinander verlaufen
-- bend anpassen nach Anzahl von flows: bzw bend nach typ, da an gleicher stelle sein soll?
 */
 
 			

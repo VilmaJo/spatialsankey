@@ -88,22 +88,12 @@ flows.forEach(function(flow) {
 
 
 /*
-for(key in nodesData) {
-    console.log(key)
-    city = nodesData[key].city
-    Wert = flowsData[city]['value']
-    console.log(city)
-    console.log(Wert)
-};
-*/
-
-/*
 Daten definieren: 
 source_x, source_y, source_coord,
 target_x,target_y,target_coord 
 */
 for(key in flowsData) {
-    console.log(key)
+   // console.log(key)
 //source
     source = flowsData[key].source					//die source wird aus den flowsData je key gezogen
     sourceX = nodesData[source]['lon']				//die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
@@ -116,7 +106,7 @@ for(key in flowsData) {
     targetCoords = [targetX, targetY]
 //flow für Krümmung
     flow = [source, target]
-    console.log(flow)
+   // console.log(flow)
     /* Pseudocode, um die Anzahl gleicher flows zu kriegen
 	for each source, target same
 	- count + 1, wenn source & target in flowsData gleich sind 
@@ -129,78 +119,61 @@ for(key in flowsData) {
 //color	
     color = flowsData[key].type
 
-
-//**********************************************************************************************************************
-// define point size
-var cities = []
-nodes.forEach(function(node) {
-    cities.push(node.city);
-});
-/*
-value2 = flowsData[city]['value']
-console.log(value2)
-*/
-for (city of cities){
-    //console.log(city)
-}
-
-    // for each node, sum values
-    // for each target = same, sum up value
-    // for all unique values in source, sum up value.value
-
-    // define sum
-    var sum = flowsValues.reduce(add, 0);
-        function add(a, b) {
-            return a + b;
-        }
-    //console.log(sum)
-
-//get unique source values
-// source: https://coderwall.com/p/nilaba/simple-pure-javascript-array-unique-method-with-5-lines-of-code
-    sourceAll = []
-    flows.forEach(function(flow){
-        sourceAll.push(flow.source);
-    })
-    //function
-    Array.prototype.unique = function() {
-        return this.filter(function (value, index, self) {
-            return self.indexOf(value) === index;
-        });
-    }
-
-    var unique = sourceAll.unique();
-
-    console.log(sourceAll)
-    console.log(unique)
-
-    unique.forEach(function(unique){
-        flowsData.value +=1;
-    })
-    //pseudocode: for each unique source: sum up value
-    /*
-    nodes.forEach(function(node) {
-	nodesData[node.city] = {'city':node.city,'lon':node.lon,'lat':node.lat};
-    });
-     */
-
-//**********************************************************************************************************************
-
 //define strokeWidth
     maxValue = Math.max.apply(null, flowsValues);
 	maxWidth = 12;
-	width= flowsData[key].value
+	width= flowsData[key].value;
 
-    strokeWidth = width / maxValue * maxWidth
+    strokeWidth = width / maxValue * maxWidth;
 
 // drawPath
 	drawPath(sourceX, sourceY, targetX, targetY, 0.8, color, strokeWidth)
 
-// addpoint for each node
-    nodes.forEach(function(node) {
-        addpoint(node.lon, node.lat);
-    });
 
 }; //End for key in flowsData
+
+
+//**********************************************************************************************************************
+// adjust point size
+// get values per source
+// get the value for each individual source (that you find in node.city)
+    var valuePerSource = {};
+    pointValue = [];
+
+    nodes.forEach(function(node){                           //run through nodes
+        // get value per source element
+        var value = 0;
+        flows.forEach(function(flow){                       //  for each flow, if source == node.city add the flow.value to the defined value
+            if (flow.source == node.city){
+                //console.log(flow.value)
+                value = value + parseInt(flow.value);
+            }
+        });
+        valuePerSource[node.city] = value;
+        pointValue.push(valuePerSource[node.city]);     //pointValue to get the values for calculating the max value
+
+    });
+
+    // get point size
+    maxPointValue = Math.max.apply(null,pointValue);
+    maxPointSize = 12;
+
+    // run through valuePerSource
+   for (var key in valuePerSource){
+       pointSize=4+(valuePerSource[key] /maxPointValue * maxPointSize);             // (4+ so that the size is at least 4)calculate for each key the pointSize (value/maxValue * maxPointSize)
+       valuePerSource[key] = pointSize                                          // like push: put the pointSize-Values into the object valuePerSource for each key
+       console.log(pointSize)
+   };
+
+
+// addpoint for each node
+    nodes.forEach(function(node) {
+        pointSize=valuePerSource[node.city]                 //under the valuePerSource object are pointSite - values per city which are calculated above; here we take the values
+        if (pointSize == 0){pointSize=4}
+        addPoint(node.lon, node.lat,pointSize);
+    });
+//**********************************************************************************************************************
+
 	
 } //End loaded für queue
 
@@ -212,8 +185,8 @@ d3.queue().defer(d3.json, "data/countries.topo.json")
 /*
 	FUNCTIONS
             draw
-            addpoint
-            makearc
+            addPoint
+            makeArc
             specifyColor
 	FUNCTIONS
 */
@@ -228,7 +201,7 @@ function draw(topo) {
 };
 
 //function to add points to the map
-function addpoint(lon, lat) {
+function addPoint(lon, lat, pointSize) {
 	  var x = projection([lon, lat])[0];
 	  var y = projection([lon, lat])[1];
 
@@ -237,8 +210,7 @@ function addpoint(lon, lat) {
 					.append("circle")
 					.attr("cx", x)
 					.attr("cy", y)
-					.attr("r", 8);
-	  //
+					.attr("r", pointSize);
 	  // Größe der Punkte abhängig nach in & outflows
       //& farbe abhängig, ob mehr in- oder outflows
 };	

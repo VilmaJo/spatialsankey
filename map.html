@@ -16,14 +16,10 @@
 }
 
 .gpoint:hover{
-	fill:#c95f64;
-	stroke:#c95f64;
+	stroke:white;
 	stroke-width: 2px;
 }
 
-.gpoint{
-	fill: #c95f64;
-}
 
 .route{
 	  fill: none;	
@@ -31,6 +27,11 @@
 .route:hover{
 	stroke-width: 4px;
 }
+
+.arc path {
+    stroke: #fff;
+}
+
 
 </style>
 </head>
@@ -43,7 +44,7 @@
 <script src="js/d3-queue.min.js"></script>
 
 <script>
-
+/****************************************************************************************************************************/
 var container = document.getElementById('container');
 var width = container.offsetWidth;
 var height = width/1.5;
@@ -64,6 +65,11 @@ var svg = d3.select("#container")
 
 var g = svg.append("g");
 
+
+
+
+
+/****************************************************************************************************************************/
 //Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
 function loaded(error, world, nodes, flows) {
 
@@ -85,12 +91,10 @@ flows.forEach(function(flow) {
 		flowsData[flow.id] = {'id':flow.id,'source':flow.source,'target':flow.target,'value':flow.value,'type':flow.type};
         flowsValues.push(parseInt(flow.value));
 	});
-
+/****************************************************************************************************************************/
 
 /*
-Daten definieren: 
-source_x, source_y, source_coord,
-target_x,target_y,target_coord 
+Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord
 */
 for(key in flowsData) {
    // console.log(key)
@@ -132,50 +136,76 @@ for(key in flowsData) {
 
 }; //End for key in flowsData
 
-
 //**********************************************************************************************************************
-// adjust point size
+// Adjust point size
 // get values per source
 // get the value for each individual source (that you find in node.city)
     var valuePerSource = {};
-    pointValue = [];
+    var valuePerTarget = {};
+    var valuePerPie = {};
+    pointValueSource = [];
+    pointValueTarget = [];
 
-    nodes.forEach(function(node){                           //run through nodes
+    //run through nodes and get the flow.values per flow.source and flow.target which are put into objects and arrays defined above
+    nodes.forEach(function(node){
         // get value per source element
-        var value = 0;
+        var valueSource = 0;
+        var valueTarget = 0;
         flows.forEach(function(flow){                       //  for each flow, if source == node.city add the flow.value to the defined value
             if (flow.source == node.city){
                 //console.log(flow.value)
-                value = value + parseInt(flow.value);
+                valueSource = valueSource + parseInt(flow.value);
+            }
+            if (flow.target == node.city){
+                valueTarget = valueTarget + parseInt(flow.value);
             }
         });
-        valuePerSource[node.city] = value;
-        pointValue.push(valuePerSource[node.city]);     //pointValue to get the values for calculating the max value
-
+        valuePerSource[node.city] = valueSource;
+        valuePerTarget[node.city] = valueTarget;
+        valuePerPie[node.city] = [valueSource,valueTarget];
+        pointValueSource.push(valuePerSource[node.city]);     //pointValue to get the values for calculating the max value
+        pointValueTarget.push(valuePerTarget[node.city]);
     });
 
+
     // get point size
-    maxPointValue = Math.max.apply(null,pointValue);
+    maxSourceValue = Math.max.apply(null,pointValueSource);
+    maxTargetValue = Math.max.apply(null,pointValueTarget);
     maxPointSize = 12;
 
     // run through valuePerSource
+
    for (var key in valuePerSource){
-       pointSize=4+(valuePerSource[key] /maxPointValue * maxPointSize);             // (4+ so that the size is at least 4)calculate for each key the pointSize (value/maxValue * maxPointSize)
-       valuePerSource[key] = pointSize                                          // like push: put the pointSize-Values into the object valuePerSource for each key
-       console.log(pointSize)
+       pointSizeSource=(valuePerSource[key] / maxSourceValue * maxPointSize);             // calculate for each key the pointSize (value/maxValue * maxPointSize)
+       valuePerSource[key] = pointSizeSource;                                          // like push: put the pointSize-Values into the object valuePerSource for each key
    };
+
+   for (var key in valuePerTarget){
+        pointSizeTarget=(valuePerTarget[key] / maxTargetValue * maxPointSize);
+        valuePerTarget[key] = pointSizeTarget;
+   }
 
 
 // addpoint for each node
     nodes.forEach(function(node) {
-        pointSize=valuePerSource[node.city]                 //under the valuePerSource object are pointSite - values per city which are calculated above; here we take the values
-        if (pointSize == 0){pointSize=4}
-        addPoint(node.lon, node.lat,pointSize);
+        pointSizeSource=valuePerSource[node.city]                //under the valuePerSource object are pointSize - values per city which are calculated above; here we take the values
+        pointSizeTarget=valuePerTarget[node.city]
+        pieSize=valuePerPie[node.city]
+        console.log("Pie: " + [node.city]+pieSize)
+
+        //pointSizeSum for the pie chart radius
+        pointSizeSum = pointSizeSource + pointSizeTarget;
+
+
+        addPoint(node.lon, node.lat,pointSizeSum,pieSize);
+        //pieChart(pointSizeSum);
     });
+
+
 //**********************************************************************************************************************
 
 	
-} //End loaded für queue
+} //End loaded for queue
 
 d3.queue().defer(d3.json, "data/countries.topo.json")
 		.defer(d3.csv, "nodes.csv")
@@ -201,18 +231,59 @@ function draw(topo) {
 };
 
 //function to add points to the map
-function addPoint(lon, lat, pointSize) {
+function addPoint(lon, lat, pointSizeSum,pointValueSource,pointValueTarget) {
 	  var x = projection([lon, lat])[0];
 	  var y = projection([lon, lat])[1];
-
+	  var radius = pointSizeSum;
+	  /*
 	  var point = g.append("g")
 					.attr("class", "gpoint")
 					.append("circle")
 					.attr("cx", x)
 					.attr("cy", y)
-					.attr("r", pointSize);
-	  // Größe der Punkte abhängig nach in & outflows
-      //& farbe abhängig, ob mehr in- oder outflows
+                    .style("fill","#c95f64")
+                    .style("fill-opacity", 1.0)
+					.attr("r", pointSizeSum);
+        */
+
+    // Pie chart variables:
+// source: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
+    var g2 = svg.append("g");
+    var arc = d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius);
+
+    var pie = d3.pie()
+        .sort(null)
+        .value(function(d) { return d; });
+
+    var pieColor = d3.schemeCategory10;
+// Draw pie charts
+// source: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
+        var points = g2.selectAll("g")
+            .enter()
+            .append("g")
+            .attr("cx", x)
+            .attr("cy", y)
+            .attr("class","pies")
+            .attr("r", pointSizeSum);
+            //.append("text")
+            //.attr("y", -radius - 5)
+            //.text("text",'hallo')
+            //.style('text-anchor','middle');
+
+        var pies = points.selectAll(".pies")
+        // split([","])
+            .data(function(d) { return pie(d.data.split(['-'])); })
+            .enter()
+            .append('g')
+            .attr('class','arc')
+            .append("path")
+            .attr('d',arc)
+            .attr("fill",function(d,i){
+                return color[i+1];
+            });
+
 };	
 
 //function makeArc, that is used for drawPath
@@ -265,6 +336,7 @@ function drawPath(sx,sy,tx,ty,bend,color) {
                     .attr("id","route")
                    .attr("d", makeArc(sx,sy,tx,ty,bend))
 				   .style("stroke", specifyColor (color))
+                    .style("stroke-opacity", 0.75)
 				   .style("stroke-width", strokeWidth)
                    //.style("stroke-dasharray", "9, 2")
                     .attr("marker-end", "url(#arrow)");

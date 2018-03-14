@@ -65,10 +65,6 @@ var svg = d3.select("#container")
 
 var g = svg.append("g");
 
-
-
-
-
 /****************************************************************************************************************************/
 //Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
 function loaded(error, world, nodes, flows) {
@@ -110,8 +106,13 @@ for(key in flowsData) {
     targetCoords = [targetX, targetY]
 //flow für Krümmung
     flow = [source, target]
-   // console.log(flow)
+   console.log(flow)
+
+
     /* Pseudocode, um die Anzahl gleicher flows zu kriegen
+
+    var flowQuantity = 0;
+
 	for each source, target same
 	- count + 1, wenn source & target in flowsData gleich sind 
 	- if (count = 7) {return bend 0:0.7;}
@@ -191,7 +192,6 @@ for(key in flowsData) {
         pointSizeSource=valuePerSource[node.city]                //under the valuePerSource object are pointSize - values per city which are calculated above; here we take the values
         pointSizeTarget=valuePerTarget[node.city]
         pieSize=valuePerPie[node.city]
-        console.log("Pie: " + [node.city]+pieSize)
 
         //pointSizeSum for the pie chart radius
         pointSizeSum = pointSizeSource + pointSizeTarget;
@@ -231,11 +231,10 @@ function draw(topo) {
 };
 
 //function to add points to the map
-function addPoint(lon, lat, pointSizeSum,pointValueSource,pointValueTarget) {
+function addPoint(lon, lat, pointSizeSum,pieSize) {
 	  var x = projection([lon, lat])[0];
 	  var y = projection([lon, lat])[1];
-	  var radius = pointSizeSum;
-	  /*
+
 	  var point = g.append("g")
 					.attr("class", "gpoint")
 					.append("circle")
@@ -244,46 +243,6 @@ function addPoint(lon, lat, pointSizeSum,pointValueSource,pointValueTarget) {
                     .style("fill","#c95f64")
                     .style("fill-opacity", 1.0)
 					.attr("r", pointSizeSum);
-        */
-
-    // Pie chart variables:
-// source: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
-    var g2 = svg.append("g");
-    var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-
-    var pie = d3.pie()
-        .sort(null)
-        .value(function(d) { return d; });
-
-    var pieColor = d3.schemeCategory10;
-// Draw pie charts
-// source: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
-        var points = g2.selectAll("g")
-            .enter()
-            .append("g")
-            .attr("cx", x)
-            .attr("cy", y)
-            .attr("class","pies")
-            .attr("r", pointSizeSum);
-            //.append("text")
-            //.attr("y", -radius - 5)
-            //.text("text",'hallo')
-            //.style('text-anchor','middle');
-
-        var pies = points.selectAll(".pies")
-        // split([","])
-            .data(function(d) { return pie(d.data.split(['-'])); })
-            .enter()
-            .append('g')
-            .attr('class','arc')
-            .append("path")
-            .attr('d',arc)
-            .attr("fill",function(d,i){
-                return color[i+1];
-            });
-
 };	
 
 //function makeArc, that is used for drawPath
@@ -350,8 +309,8 @@ Aktuelle AUFGABEN
         *** - StrokeWidth: Breite nach value
 		        Vorgehen: value / maxValue * maxStrokeWidth
 - Punkte
-    - Größe der Punkte abhängig nach in & outflows
-    - Farbe abhängig, ob mehr in- oder outflows
+    *** Größe der Punkte abhängig nach in & outflows
+    - PieChart mit Anteilen für in und outflows: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
 
 - Richtung anzeigen: 1 arrow mit marker-start oder marker-end, aber: bei bend funktioniert es nicht (bend einfügen) und anzeige in bestimmtem abstand
     - arcTween: mit animation?

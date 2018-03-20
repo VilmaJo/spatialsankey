@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<title>VILMA | FlowMap</title>
+<head>
+    <link rel="stylesheet" type="text/css" href="flowmap.css">
+    <script src="lib/require.js"></script>
+</head>
+<body>
+
+<div id="container" style="width:100%; height:100%; overflow:hidden; background: #fff;"></div>
+
+<script>
+    require.config({
+        baseUrl: '.',
+        paths: {
+            'd3': 'node_modules/d3/d3',
+            'topojson': 'node_modules/topojson/dist/topojson',
+            'd3-queue': 'node_modules/d3-queue/build/d3-queue',
+            'underscore': 'node_modules/underscore/underscore'
+        }
+    });
+        
+    require(['flowmap'], function(FlowMap){
+        var flowMap = new FlowMap("container", { width: 1000 });
+        flowMap.renderCsv("data/countries.topo.json", "data/nodes.csv", "data/flows.csv");
+    })
+    
+</script>
+
+</body>
+</html>

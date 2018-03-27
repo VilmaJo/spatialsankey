@@ -1,0 +1,21 @@
+.country:hover{
+    stroke: #7d7d7d;
+    stroke-width: 0.5px;
+}
+
+.gpoint:hover{
+    stroke:white;
+    stroke-width: 2px;
+}
+
+.route{
+    fill: none;	
+}
+
+.route:hover{
+    stroke-width: 4px;
+}
+
+.arc path {
+    stroke: #fff;
+}

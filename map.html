@@ -14,25 +14,19 @@
   overflow:hidden;
   background: #fff;
 }
-
 .gpoint:hover{
 	stroke:white;
 	stroke-width: 2px;
 }
-
-
 .route{
 	  fill: none;	
 }
 .route:hover{
 	stroke-width: 4px;
 }
-
 .arc path {
     stroke: #fff;
 }
-
-
 </style>
 </head>
 <body>
@@ -42,6 +36,7 @@
 <script src="js/d3.min.js"></script>
 <script src="js/topojson.v1.min.js"></script>
 <script src="js/d3-queue.min.js"></script>
+<script src="node_modules/underscore/underscore-min.js"></script>
 
 <script>
 /****************************************************************************************************************************/
@@ -64,7 +59,10 @@ var svg = d3.select("#container")
 		  .append("g");
 
 var g = svg.append("g");
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 /****************************************************************************************************************************/
 //Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
 function loaded(error, world, nodes, flows) {
@@ -81,12 +79,18 @@ nodes.forEach(function(node) {
 
 //flows data
 var flowsData = {};
-//get all flow-values from flowsData to use for path stroke-width
-var flowsValues = [];
+var flowsValues = [];   //get all flow-values from flowsData to use for path stroke-width
+var links = [];         //for multiple links with different bents
 flows.forEach(function(flow) {
 		flowsData[flow.id] = {'id':flow.id,'source':flow.source,'target':flow.target,'value':flow.value,'type':flow.type};
         flowsValues.push(parseInt(flow.value));
+        data = {source: flow.source, target: flow.target};
+        links.push(data);
 	});
+    console.log("flowsData " + flowsData)
+    console.log("flowsValues " + flowsValues)
+    console.log("links " + links)
+
 /****************************************************************************************************************************/
 
 /*
@@ -95,16 +99,17 @@ Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,t
 for(key in flowsData) {
    // console.log(key)
 //source
-    source = flowsData[key].source					//die source wird aus den flowsData je key gezogen
-    sourceX = nodesData[source]['lon']				//die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
-    sourceY = nodesData[source]['lat']
-    sourceCoords = [sourceX, sourceY]
+    source = flowsData[key].source;					//die source wird aus den flowsData je key gezogen
+    sourceX = nodesData[source]['lon'];				//die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
+    sourceY = nodesData[source]['lat'];
+    sourceCoords = [sourceX, sourceY];
 //target	
-    target = flowsData[key].target
-    targetX = nodesData[target]['lon']
-    targetY = nodesData[target]['lat']
-    targetCoords = [targetX, targetY]
+    target = flowsData[key].target;
+    targetX = nodesData[target]['lon'];
+    targetY = nodesData[target]['lat'];
+    targetCoords = [targetX, targetY];
 //flow für Krümmung
+<<<<<<< Updated upstream
     flow = [source, target]
    console.log(flow)
 
@@ -123,6 +128,12 @@ for(key in flowsData) {
 
 //color	
     color = flowsData[key].type
+=======
+    flow = [source, target];
+
+//color
+    color = flowsData[key].type;
+>>>>>>> Stashed changes
 
 //define strokeWidth
     maxValue = Math.max.apply(null, flowsValues);
@@ -131,12 +142,69 @@ for(key in flowsData) {
 
     strokeWidth = width / maxValue * maxWidth;
 
-// drawPath
-	drawPath(sourceX, sourceY, targetX, targetY, 0.8, color, strokeWidth)
 
+    /***********************************************************************************************************************/
+// Anzahl der flows mit gleicher source und gleichem target
+// source: http://bl.ocks.org/thomasdobber/9b78824119136778052f64a967c070e0
+    console.log(links)
 
+    _.each(links, function(link){
+        var same = _.where(links, {
+            'source':link.source,
+            'target':link.target
+        });
+        var sameAlt = _.where(links, {
+            'source':link.target,
+            'target':link.source
+        });
+        var sameAll = same.concat(sameAlt);
+
+        _.each(sameAll, function (s,i) {
+            s.sameIndex = (i + 1);
+            s.sameTotal = (sameAll.length);
+            s.sameTotalHalf = (s.sameTotal/2);
+            s.sameUneven = ((s.sameTotal % 2) !== 0);
+            s.sameMiddleLink = ((s.sameUneven == true) && (Math.ceil(s.sameTotalHalf) === s.sameIndex));
+            s.sameLowerHalf = (s.sameIndex <= s.sameTotalHalf);
+            s.sameArcDirection = s.sameLowerHalf ? 0 : 1;                           // Krümmung wird nach links und rechts aufgeteilt
+            s.sameIndexCorrected = s.sameLowerHalf ? s.sameIndex : (s.sameIndex - Math.ceil(s.sameTotalHalf)); // sameIndex corrected gibt die untere und oebere hälfte an
+        });
+
+    });
+
+    var maxSame = _.chain(links)
+        .sortBy(function(x) {
+            return x.sameTotal;
+        })
+        .last()
+        .value().sameTotal;
+
+    _.each(links, function(link) {
+        link.maxSameHalf = Math.floor(maxSame / 3);
+    });
+
+    // drawPath
+    drawPath(sourceX, sourceY, targetX, targetY, links)
+
+    /***********************************************************************************************************************/
 }; //End for key in flowsData
 
+
+/* Pseudocode, um die Anzahl gleicher flows zu kriegen
+
+for each source, target same
+- count + 1, wenn source & target in flowsData gleich sind
+- if (count = 7) {return bend 0:0.7;}
+    else if (count = 6) {return bend 0:0.6;}
+array.length()
+if (array.length = 7) {return bend 0:0.7;}
+
+
+Objekt mit denen, die gleich sind, anlegen
+
+mit "where" (flows.foreach) arbeiten in schleife flow
+
+*/
 //**********************************************************************************************************************
 // Adjust point size
 // get values per source
@@ -161,6 +229,7 @@ for(key in flowsData) {
                 valueTarget = valueTarget + parseInt(flow.value);
             }
         });
+
         valuePerSource[node.city] = valueSource;
         valuePerTarget[node.city] = valueTarget;
         valuePerPie[node.city] = [valueSource,valueTarget];
@@ -208,8 +277,8 @@ for(key in flowsData) {
 } //End loaded for queue
 
 d3.queue().defer(d3.json, "data/countries.topo.json")
-		.defer(d3.csv, "nodes.csv")
-		.defer(d3.csv, "flows.csv")
+		.defer(d3.csv, "data/nodes.csv")
+		.defer(d3.csv, "data/flows.csv")
 		.await(loaded);		
 
 /*
@@ -231,9 +300,16 @@ function draw(topo) {
 };
 
 //function to add points to the map
+<<<<<<< Updated upstream
 function addPoint(lon, lat, pointSizeSum,pieSize) {
 	  var x = projection([lon, lat])[0];
 	  var y = projection([lon, lat])[1];
+=======
+function addPoint(lon, lat, pointSizeSum,pointValueSource,pointValueTarget) {
+	  var x = projection([lon, lat])[0],
+          y = projection([lon, lat])[1];
+
+>>>>>>> Stashed changes
 
 	  var point = g.append("g")
 					.attr("class", "gpoint")
@@ -243,10 +319,55 @@ function addPoint(lon, lat, pointSizeSum,pieSize) {
                     .style("fill","#c95f64")
                     .style("fill-opacity", 1.0)
 					.attr("r", pointSizeSum);
+<<<<<<< Updated upstream
 };	
+=======
+
+/*
+                   // Pie chart variables:
+               // source: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
+
+                   var g2 = svg.append("g");
+                   var arc = d3.arc()
+                       .innerRadius(0)
+                       .outerRadius(radius);
+
+                   var pie = d3.pie()
+                       .sort(null)
+                       .value(function(d) { return d; });
+
+                   var pieColor = d3.schemeCategory10;
+               // Draw pie charts
+               // source: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
+                       var points = g2.selectAll("g")
+                           .enter()
+                           .append("g")
+                           .attr("cx", x)
+                           .attr("cy", y)
+                           .attr("class","pies")
+                           .attr("r", pointSizeSum);
+                           //.append("text")
+                           //.attr("y", -radius - 5)
+                           //.text("text",'hallo')
+                           //.style('text-anchor','middle');
+
+                       var pies = points.selectAll(".pies")
+                       // split([","])
+                           .data(function(d) { return pie(d.data.split(['-'])); })
+                           .enter()
+                           .append('g')
+                           .attr('class','arc')
+                           .append("path")
+                           .attr('d',arc)
+                           .attr("fill",function(d,i){
+                               return color[i+1];
+                           });
+   */
+};
+>>>>>>> Stashed changes
 
 //function makeArc, that is used for drawPath
-function makeArc(sx, sy, tx, ty, bend) {
+function makeArc(sx, sy, tx, ty, links) {
 					//sx,sy,tx,ty mit projection versehen
 						var sxp = projection([sx,sy])[0],
 							syp = projection([sx,sy])[1],
@@ -255,9 +376,20 @@ function makeArc(sx, sy, tx, ty, bend) {
 						
 						var dx = txp - sxp,
 							dy = typ - syp,
-							dr = Math.sqrt(dx * dx + dy * dy) * bend;
-							
+							dr = Math.sqrt(dx * dx + dy * dy),
+
+                            unevenCorrection = (links.sameUneven ? 0 : 0.5),
+                            arc = ((dr * links.maxSameHalf) / (links.sameIndexCorrected - unevenCorrection));
+
+                            if (links.sameMiddleLink) {
+                                arc = 0;
+
+                            }
+    console.log("unevenCorrection " + unevenCorrection)
+    console.log("arc " + arc)
+    console.log(links.maxSameHalf)
 						return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0,1 " + txp + "," + typ;
+                        //return "M" + sxp + "," + syp + "A" + arc + "," + arc + " 0 0," + links.sameArcDirection + " " + txp + "," + txp;
 					  };
 
 function specifyColor (color) {
@@ -272,7 +404,7 @@ function specifyColor (color) {
 
 
 
-function drawPath(sx,sy,tx,ty,bend,color) {
+function drawPath(sx,sy,tx,ty,links) {
     // draw arrow
 // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
     var arrow = svg.append("marker")
@@ -293,7 +425,7 @@ function drawPath(sx,sy,tx,ty,bend,color) {
 	var route = g.insert("path")
                    .attr("class", "route")
                     .attr("id","route")
-                   .attr("d", makeArc(sx,sy,tx,ty,bend))
+                   .attr("d", makeArc(sx,sy,tx,ty,links))
 				   .style("stroke", specifyColor (color))
                     .style("stroke-opacity", 0.75)
 				   .style("stroke-width", strokeWidth)

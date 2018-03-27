@@ -1,0 +1,46 @@
+function pieChart(pointSizeSum,pointValueSource,pointValueTarget) {
+    radius=pointSizeSum;
+
+    var pie = d3.pie()
+        .sort(null)
+        .value(function(value){return value});
+
+    var path = d3.arc()
+        .outerRadius(radius - 10)
+        .innerRadius(0);
+    /*
+    var label = d3.arc()
+        .outerRadius(radius - 40)
+        .innerRadius(radius - 40);
+    */
+
+    var arc = g.selectAll(".arc")
+        .data(value)
+        .enter().append("g")
+        .attr("class", "arc");
+
+    arc.append("path")
+        .attr("d", path)
+        .attr("fill", function (d) {
+            return color(d.data.age);
+        });
+
+    /*
+    arc.append("text")
+        .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+        .attr("dy", "0.35em")
+        .text(function(d) { return d.data.age; });
+     */
+};
+
+
+
+
+        /*
+        pointSize = 0;
+        if (pointSizeSource > pointSizeTarget) {pointSize = pointSizeSource;}
+        else if (pointSizeSource < pointSizeTarget) {pointSize = pointSizeTarget;}
+            else if (pointSizeSource == pointSizeTarget) {pointSize=pointSizeSource;}
+            else {pointSize = 4;}
+            console.log(pointSize)
+        */

@@ -1,0 +1,23 @@
+{
+  "name": "flowmap",
+  "version": "0.1.0",
+  "description": "render flows on a map",
+  "main": "flowmap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flows",
+    "map"
+  ],
+  "author": "Vilma Jochim",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "d3": "3",
+    "d3-queue": "^3.0.7",
+    "npm": "^5.7.1",
+    "openlayers": "^4.6.5",
+    "topojson": "^3.0.2",
+    "underscore": "^1.8.3"
+  }
+}

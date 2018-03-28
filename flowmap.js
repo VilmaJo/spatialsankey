@@ -13,7 +13,7 @@ class FlowMap {
         
         this.width = options.width || this.container.offsetWidth;
         this.height = options.height || this.width / 1.5;
-        console.log(d3)
+        console.log(d3);
         
         this.projection = d3.geo.mercator()
                             .center([25, 43])
@@ -53,6 +53,59 @@ class FlowMap {
             var data = {source: flow.source, target: flow.target};
             links.push(data);
         });
+        console.log(flowsData);
+        console.log(links)
+        console.log(flows)
+        // multiple links  ****************************************************************************************************************************
+
+
+        _.each(links, function(link){
+            var same = _.where(links, {'source':link.source, 'target':link.target});
+            var sameAlt = _.where(links, {'source':link.target, 'target':link.source});
+
+            var sameAll = same.concat(sameAlt);
+
+            //links data is expanded by the following variables
+            _.each(sameAll, function (s,i) {
+                s.sameIndex = (i + 1);
+                //console.log(s.sameIndex)
+                s.sameTotal = (sameAll.length);                                                                         // amount of same links between two nodes
+                //console.log(s.sameTotal);
+                s.sameTotalHalf = (s.sameTotal/2);
+                s.sameUneven = ((s.sameTotal % 2) !== 0);
+                s.sameMiddleLink = ((s.sameUneven == true) && (Math.ceil(s.sameTotalHalf) === s.sameIndex));
+                s.sameLowerHalf = (s.sameIndex <= s.sameTotalHalf);
+                s.sameArcDirection = s.sameLowerHalf ? 0 : 1;                                                           // Krümmung wird nach links und rechts aufgeteilt
+                s.sameIndexCorrected = s.sameLowerHalf ? s.sameIndex : (s.sameIndex - Math.ceil(s.sameTotalHalf));      // sameIndex corrected gibt die untere und oebere hälfte an
+                //console.log(s.sameIndexCorrected)
+            });
+        });
+        //console.log(links)
+        var maxSame = _.chain(links)                                    // the maximum amount of same links
+            .sortBy(function(x) {
+                return x.sameTotal;
+            })
+            .last()
+            .value().sameTotal;
+
+        _.each(links, function(link) {
+            link.maxSameHalf = Math.floor(maxSame / 3);
+        });
+
+// ************** ?????????????????????? ***************************** ?????????????????????????? *************************************
+        // linksData consists of only one object, even if it loops through all links --> why?
+        var linksData = {};
+        console.log(links);
+        links.forEach(function(link) {
+            linksData = {'sameIndex':link.sameIndex, 'sameTotal':link.sameTotal,
+                'sameTotalHalf':link.sameTotalHalf, 'sameUneven':link.sameUneven,
+                'sameMiddleLink':link.sameMiddleLink, 'sameLowerHalf':link.sameLowerHalf,
+                'sameArcDirection':link.sameArcDirection, 'sameIndexCorrected':link.sameIndexCorrected,
+                'source':link.source, 'target':link.target, 'maxSameHalf':link.maxSameHalf}
+        });
+        console.log(linksData);
+// ************** ?????????????????????? ***************************** ?????????????????????????? *************************************
+// multiple links END  *******************************************************END*********************************************************************
 
         /*
         Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord
@@ -71,7 +124,6 @@ class FlowMap {
                 targetCoords = [targetX, targetY],
                 //flow für Krümmung
                  flow = [source, target];
-                console.log(flow)
 
 
             /* Pseudocode, um die Anzahl gleicher flows zu kriegen
@@ -97,13 +149,13 @@ class FlowMap {
             /***********************************************************************************************************************/
     // quantity of flows with same source and target
     // source: http://bl.ocks.org/thomasdobber/9b78824119136778052f64a967c070e0
-            console.log(links)
+
 
 
         // drawPath
-            this.drawPath(sourceX, sourceY, targetX, targetY, links, color)
-        
-        
+            this.drawPath(sourceX, sourceY, targetX, targetY, linksData, color)
+
+
         } //End for key in flowsData
 
 
@@ -124,7 +176,6 @@ class FlowMap {
                 valueTarget = 0;
             flows.forEach(function(flow){                       //  for each flow, if source == node.city add the flow.value to the defined value
                 if (flow.source == node.city){
-                    //console.log(flow.value)
                     valueSource = valueSource + parseInt(flow.value);
                 }
                 if (flow.target == node.city){
@@ -145,7 +196,7 @@ class FlowMap {
         for (var key in valuePerSource){
             var pointSizeSource=(valuePerSource[key] / maxSourceValue * maxPointSize);             // calculate for each key the pointSize (value/maxValue * maxPointSize)
             valuePerSource[key] = pointSizeSource;                                          // like push: put the pointSize-Values into the object valuePerSource for each key
-        };
+        }
         for (var key in valuePerTarget){
             var pointSizeTarget=(valuePerTarget[key] / maxTargetValue * maxPointSize);
             valuePerTarget[key] = pointSizeTarget;
@@ -252,54 +303,26 @@ class FlowMap {
 
     //function makeArc, that is used for drawPath
     makeArc(sx, sy, tx, ty, links) {
+        // define object out of links array
+
         //sx,sy,tx,ty mit projection versehen
         var sxp = this.projection([sx,sy])[0],
             syp = this.projection([sx,sy])[1],
             txp = this.projection([tx,ty])[0],
             typ = this.projection([tx,ty])[1];
 
-        _.each(links, function(link){
-            var same = _.where(links, {
-                'source':link.source,
-                'target':link.target
-            });
-            var sameAlt = _.where(links, {
-                'source':link.target,
-                'target':link.source
-            });
-            var sameAll = same.concat(sameAlt);
-
-
-            _.each(sameAll, function (s,i) {
-                s.sameIndex = (i + 1);
-                s.sameTotal = (sameAll.length);
-                s.sameTotalHalf = (s.sameTotal/2);
-                s.sameUneven = ((s.sameTotal % 2) !== 0);
-                s.sameMiddleLink = ((s.sameUneven == true) && (Math.ceil(s.sameTotalHalf) === s.sameIndex));
-                s.sameLowerHalf = (s.sameIndex <= s.sameTotalHalf);
-                s.sameArcDirection = s.sameLowerHalf ? 0 : 1;                           // Krümmung wird nach links und rechts aufgeteilt
-                s.sameIndexCorrected = s.sameLowerHalf ? s.sameIndex : (s.sameIndex - Math.ceil(s.sameTotalHalf)); // sameIndex corrected gibt die untere und oebere hälfte an
-            });
-        });
-        var maxSame = _.chain(links)
-            .sortBy(function(x) {
-                return x.sameTotal;
-            })
-            .last()
-            .value().sameTotal;
-        _.each(links, function(link) {
-            link.maxSameHalf = Math.floor(maxSame / 3);
-        });
-
         var dx = txp - sxp,
             dy = typ - syp,
             dr = Math.sqrt(dx * dx + dy * dy),
-            unevenCorrection = (links.sameUneven ? 0 : 0.5),
+            unevenCorrection = (links.sameUneven ? 0 : 0.5), // doesn't switch between 0 and 0.5
             arc = ((dr * links.maxSameHalf) / (links.sameIndexCorrected - unevenCorrection));
+            // = (dr * 2) / (1 - 0)
         if (links.sameMiddleLink) {
             arc = 0;
         }
-
+        console.log(links.sameUneven)                              // Problem: hier ein array, im beispiel aber ein object an dieser Stelle
+        //console.log(linksData)
+        console.log(unevenCorrection)
         return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0,1 " + txp + "," + typ;
         //return "M" + sxp + "," + syp + "A" + arc + "," + arc + " 0 0," + links.sameArcDirection + " " + txp + "," + txp;
     };

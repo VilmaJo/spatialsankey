@@ -10,3 +10,4 @@ id,source,target,value,type
 9,HAM,LOD,500,msw
 10,NEA,LOD,100,plastic
 11,LOD,HAM,50,hazardous
+12,PEC,BRU,250,hazardous

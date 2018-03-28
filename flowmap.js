@@ -50,17 +50,32 @@ class FlowMap {
         flows.forEach(function(flow) {
             flowsData[flow.id] = {'id':flow.id,'source':flow.source,'target':flow.target,'value':flow.value,'type':flow.type};
             flowsValues.push(parseInt(flow.value));
-            var data = {source: flow.source, target: flow.target};
+            var data = {id: flow.id, source: flow.source, target: flow.target};
             links.push(data);
         });
-        console.log(flowsData);
-        console.log(links)
-        console.log(flows)
-        // multiple links  ****************************************************************************************************************************
 
+// multiple links  ****************************************************************************************************************************
+// quantity of flows with same source and target
+// source: http://bl.ocks.org/thomasdobber/9b78824119136778052f64a967c070e0
+/*
+maybe to complicated for our aim? try to use s.sameTotal und define bend für each amount-class.
+think about if we need to divide into left and right?
 
+pseudocode: var maxLinks = math.max(s.sameTotal)
+            how to define bend-->  0:0.8? OR for s.sameTotal + 1, bend + 0.1 OR divide into array from max and min
+            if s.sameTotal = 7, bend 0:0.7
+
+            bend war bei "dr = Math.sqrt(dx * dx + dy * dy) * bend", aber wir müssen definieren, wenn mehrere Linien, dann bends verteilen
+
+            nur "same" nutzen, denn sameAlt ist ja in die andere Richtung? einfacher mit der Richtungsangabe?
+
+            we have  "same" --> all links which have same source and target (somehow they repeat?)
+            we need to define bend in a value field (from:to)
+
+*/
         _.each(links, function(link){
             var same = _.where(links, {'source':link.source, 'target':link.target});
+            console.log(same)
             var sameAlt = _.where(links, {'source':link.target, 'target':link.source});
 
             var sameAll = same.concat(sameAlt);
@@ -70,12 +85,12 @@ class FlowMap {
                 s.sameIndex = (i + 1);
                 //console.log(s.sameIndex)
                 s.sameTotal = (sameAll.length);                                                                         // amount of same links between two nodes
-                //console.log(s.sameTotal);
+                console.log(s.sameTotal);
                 s.sameTotalHalf = (s.sameTotal/2);
                 s.sameUneven = ((s.sameTotal % 2) !== 0);
                 s.sameMiddleLink = ((s.sameUneven == true) && (Math.ceil(s.sameTotalHalf) === s.sameIndex));
                 s.sameLowerHalf = (s.sameIndex <= s.sameTotalHalf);
-                s.sameArcDirection = s.sameLowerHalf ? 0 : 1;                                                           // Krümmung wird nach links und rechts aufgeteilt
+                s.sameArcDirection = s.sameLowerHalf ? 0 : 1;                                                           // Bends are divided to the left and right side
                 s.sameIndexCorrected = s.sameLowerHalf ? s.sameIndex : (s.sameIndex - Math.ceil(s.sameTotalHalf));      // sameIndex corrected gibt die untere und oebere hälfte an
                 //console.log(s.sameIndexCorrected)
             });
@@ -92,26 +107,23 @@ class FlowMap {
             link.maxSameHalf = Math.floor(maxSame / 3);
         });
 
-// ************** ?????????????????????? ***************************** ?????????????????????????? *************************************
-        // linksData consists of only one object, even if it loops through all links --> why?
         var linksData = {};
-        console.log(links);
         links.forEach(function(link) {
-            linksData = {'sameIndex':link.sameIndex, 'sameTotal':link.sameTotal,
+            //console.log(link);
+            linksData[link.id] = {'sameIndex':link.sameIndex, 'sameTotal':link.sameTotal,
                 'sameTotalHalf':link.sameTotalHalf, 'sameUneven':link.sameUneven,
                 'sameMiddleLink':link.sameMiddleLink, 'sameLowerHalf':link.sameLowerHalf,
                 'sameArcDirection':link.sameArcDirection, 'sameIndexCorrected':link.sameIndexCorrected,
                 'source':link.source, 'target':link.target, 'maxSameHalf':link.maxSameHalf}
         });
         console.log(linksData);
-// ************** ?????????????????????? ***************************** ?????????????????????????? *************************************
 // multiple links END  *******************************************************END*********************************************************************
 
-        /*
-        Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord
-        */
-        for(key in flowsData) {
-            // console.log(key)
+
+
+//*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
+        // change this into flows.forEach and then use this also for the links, because we need to loop through and write function in here or write a function to get the data? insert into function?
+        for(key in flowsData, linksData) {
         //source
             var source = flowsData[key].source,             //die source wird aus den flowsData je key gezogen
                 sourceX = nodesData[source]['lon'],         //die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
@@ -124,7 +136,6 @@ class FlowMap {
                 targetCoords = [targetX, targetY],
                 //flow für Krümmung
                  flow = [source, target];
-
 
             /* Pseudocode, um die Anzahl gleicher flows zu kriegen
                 var flowQuantity = 0;
@@ -144,22 +155,17 @@ class FlowMap {
                 var maxValue = Math.max.apply(null, flowsValues),
                 maxWidth = 12,
                 width= flowsData[key].value;
-        
             this.strokeWidth = width / maxValue * maxWidth;
-            /***********************************************************************************************************************/
-    // quantity of flows with same source and target
-    // source: http://bl.ocks.org/thomasdobber/9b78824119136778052f64a967c070e0
 
+        var link = linksData[key]
+            console.log(link)
+       // drawPath
 
+        this.drawPath(sourceX, sourceY, targetX, targetY, link, color)
 
-        // drawPath
-            this.drawPath(sourceX, sourceY, targetX, targetY, linksData, color)
+        }
+////End for key in flowsData**********************************************************************************************************************
 
-
-        } //End for key in flowsData
-
-
-        //**********************************************************************************************************************
 // Adjust point size
 // get values per source
 // get the value for each individual source (that you find in node.city)
@@ -191,8 +197,8 @@ class FlowMap {
         // get point size
         var maxSourceValue = Math.max.apply(null,pointValueSource),
         maxTargetValue = Math.max.apply(null,pointValueTarget),
-        maxPointSize = 12;
-        // run through valuePerSource
+        maxPointSize = 6;
+        // run through valuePerSource               //IDEA: var pointSize = (((valuePerSource[key] / maxSourceValue)) + ( valuePerTarget[key] / maxTargetValue)) /2) * maxPointSize
         for (var key in valuePerSource){
             var pointSizeSource=(valuePerSource[key] / maxSourceValue * maxPointSize);             // calculate for each key the pointSize (value/maxValue * maxPointSize)
             valuePerSource[key] = pointSizeSource;                                          // like push: put the pointSize-Values into the object valuePerSource for each key
@@ -204,16 +210,27 @@ class FlowMap {
 // addpoint for each node
         nodes.forEach(function(node) {
             var pointSizeSource=valuePerSource[node.city],                //under the valuePerSource object are pointSize - values per city which are calculated above; here we take the values
-            pointSizeTarget=valuePerTarget[node.city],
-            pieSize=valuePerPie[node.city],
-            //pointSizeSum for the pie chart radius
-            pointSizeSum = pointSizeSource + pointSizeTarget;
-            _this.addPoint(node.lon, node.lat,pointSizeSum,pieSize);
-            //pieChart(pointSizeSum);
+                pointSizeTarget=valuePerTarget[node.city],
+                pieSize=valuePerPie[node.city],
+                //pointSizeSum for the pie chart radius
+                pointSizeSum = pointSizeSource + pointSizeTarget;
+                 _this.addPoint(node.lon, node.lat,pointSizeSum,pieSize);
+                //pieChart(pointSizeSum);
         });
 
     //**********************************************************************************************************************
 
+    /*
+        links.forEach(function(link) {
+            var unevenCorrection = (link.sameUneven ? 0 : 0.5), // doesn't switch between 0 and 0.5
+                arc = ((dr * link.maxSameHalf) / (link.sameIndexCorrected - unevenCorrection));
+            // = (dr * 2) / (1 - 0)
+            if (link.sameMiddleLink) {
+                arc = 0;
+            }
+            console.log(unevenCorrection);
+        });
+    */
     } 
 
     
@@ -243,7 +260,6 @@ class FlowMap {
                        .defer(d3.csv, nodesCsv)
                        .defer(d3.csv, flowsCsv)
                        .await(loaded);
-    
     }
 
 
@@ -260,12 +276,10 @@ class FlowMap {
                           .style("fill","#c95f64")
                           .style("fill-opacity", 1.0)
                           .attr("r", pointSizeSum);
-        // Größe der Punkte abhängig nach in & outflows
-        //& farbe abhängig, ob mehr in- oder outflows
     }
 
     /*
-                   // Pie chart variables:
+                // Pie chart variables:
                // source: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
                    var g2 = svg.append("g");
                    var arc = d3.arc()
@@ -301,10 +315,11 @@ class FlowMap {
                            });
    */
 
-    //function makeArc, that is used for drawPath
-    makeArc(sx, sy, tx, ty, links) {
-        // define object out of links array
 
+
+    //function makeArc, that is used for drawPath
+    makeArc(sx, sy, tx, ty, link) {
+        // define object out of links array
         //sx,sy,tx,ty mit projection versehen
         var sxp = this.projection([sx,sy])[0],
             syp = this.projection([sx,sy])[1],
@@ -314,17 +329,17 @@ class FlowMap {
         var dx = txp - sxp,
             dy = typ - syp,
             dr = Math.sqrt(dx * dx + dy * dy),
-            unevenCorrection = (links.sameUneven ? 0 : 0.5), // doesn't switch between 0 and 0.5
-            arc = ((dr * links.maxSameHalf) / (links.sameIndexCorrected - unevenCorrection));
-            // = (dr * 2) / (1 - 0)
-        if (links.sameMiddleLink) {
-            arc = 0;
-        }
-        console.log(links.sameUneven)                              // Problem: hier ein array, im beispiel aber ein object an dieser Stelle
-        //console.log(linksData)
-        console.log(unevenCorrection)
-        return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0,1 " + txp + "," + typ;
-        //return "M" + sxp + "," + syp + "A" + arc + "," + arc + " 0 0," + links.sameArcDirection + " " + txp + "," + txp;
+            unevenCorrection = (link.sameUneven ? 0 : 0.5),
+            arc = ((dr * link.maxSameHalf) / (link.sameIndexCorrected - unevenCorrection));
+            if (link.sameMiddleLink) {
+                arc = 0;
+            }
+
+        console.log(link.sameUneven);                              // Problem: hier ein array, im beispiel aber ein object an dieser Stelle
+        console.log(unevenCorrection);
+        console.log(link.sameArcDirection);
+        //return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0,1 " + txp + "," + typ;
+        return "M" + sxp + "," + syp + "A" + arc + "," + arc + " 0 0," + link.sameArcDirection + " " + txp + "," + txp;
     };
 
     specifyColor(color) {
@@ -337,7 +352,7 @@ class FlowMap {
         return 'white';
     }
 
-    drawPath(sx,sy,tx,ty,links,color) {
+    drawPath(sx,sy,tx,ty,link,color) {
         // draw arrow
         // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
         var arrow = this.svg.append("marker")
@@ -358,7 +373,7 @@ class FlowMap {
         var route = this.g.insert("path")
                         .attr("class", "route")
                         .attr("id","route")
-                        .attr("d", this.makeArc(sx,sy,tx,ty,links))
+                        .attr("d", this.makeArc(sx,sy,tx,ty,link))
                         .style("stroke", this.specifyColor (color))
                         .style("stroke-width", this.strokeWidth)
                         //.style("stroke-dasharray", "9, 2")

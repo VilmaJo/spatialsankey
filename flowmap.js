@@ -120,7 +120,7 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
 
 //*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
         // change this into flows.forEach and then use this also for the links, because we need to loop through and write function in here or write a function to get the data? insert into function?
-        for(key in flowsData, linksData) {
+        for(var key in flowsData, linksData) {
         //source
             var source = flowsData[key].source,             //die source wird aus den flowsData je key gezogen
                 sourceX = nodesData[source]['lon'],         //die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
@@ -160,65 +160,14 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
 
         this.drawPath(sourceX, sourceY, targetX, targetY, link, type)
 
-        }
-////End for key in flowsData**********************************************************************************************************************
+        }   ////End for key in flowsData**********************************************************************************************************************
 
-// Adjust point size
-// get values per source
-// get the value for each individual source (that you find in node.city)
-        var valuePerSource = {},
-            valuePerTarget = {},
-            valuePerPie = {},
-            pointValueSource = [],
-            pointValueTarget = [];
-
-        //run through nodes and get the flow.values per flow.source and flow.target which are put into objects and arrays defined above
-        nodes.forEach(function(node){
-            // get value per source element
-            var valueSource = 0,
-                valueTarget = 0;
-            flows.forEach(function(flow){                       //  for each flow, if source == node.city add the flow.value to the defined value
-                if (flow.source == node.city){
-                    valueSource = valueSource + parseInt(flow.value);
-                }
-                if (flow.target == node.city){
-                    valueTarget = valueTarget + parseInt(flow.value);
-                }
-            });
-            valuePerSource[node.city] = valueSource;
-            valuePerTarget[node.city] = valueTarget;
-            valuePerPie[node.city] = [valueSource,valueTarget];
-            pointValueSource.push(valuePerSource[node.city]);     //pointValue to get the values for calculating the max value
-            pointValueTarget.push(valuePerTarget[node.city]);
-        });
-        // get point size
-        var maxSourceValue = Math.max.apply(null,pointValueSource),
-        maxTargetValue = Math.max.apply(null,pointValueTarget),
-        maxPointSize = 6;
-        // run through valuePerSource               //IDEA: var pointSize = (((valuePerSource[key] / maxSourceValue)) + ( valuePerTarget[key] / maxTargetValue)) /2) * maxPointSize
-        for (var key in valuePerSource){
-            var pointSizeSource=(valuePerSource[key] / maxSourceValue * maxPointSize);             // calculate for each key the pointSize (value/maxValue * maxPointSize)
-            valuePerSource[key] = pointSizeSource;                                          // like push: put the pointSize-Values into the object valuePerSource for each key
-        }
-        for (var key in valuePerTarget){
-            var pointSizeTarget=(valuePerTarget[key] / maxTargetValue * maxPointSize);
-            valuePerTarget[key] = pointSizeTarget;
-        }
 // addpoint for each node
         nodes.forEach(function(node) {
-            var pointSizeSource=valuePerSource[node.city],                //under the valuePerSource object are pointSize - values per city which are calculated above; here we take the values
-                pointSizeTarget=valuePerTarget[node.city],
-                pieSize=valuePerPie[node.city],
-                //pointSizeSum for the pie chart radius
-                pointSizeSum = pointSizeSource + pointSizeTarget;
-                 _this.addPoint(node.lon, node.lat,pointSizeSum,pieSize);
-                //pieChart(pointSizeSum);
+                 _this.addPoint(node.lon, node.lat);
         });
 
-//**********************************************************************************************************************
-
-    } 
-
+    }   //End render (nodes, flows)**********************************************************************************************************************
     
     renderCsv(topoJson, nodesCsv, flowsCsv){
         var _this = this;
@@ -250,7 +199,7 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
 
 
     //function to add points to the map
-    addPoint(lon, lat, pointSizeSum, pieSize) {
+    addPoint(lon, lat) {
         var x = this.projection([lon, lat])[0];
         var y = this.projection([lon, lat])[1];
     
@@ -261,9 +210,9 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
                           .attr("cy", y)
                           .style("fill","#c95f64")
                           .style("fill-opacity", 1.0)
-                          .attr("r", pointSizeSum);
+                          .attr("r", 8);
     }
-
+    //pieChart
     /*
                 // Pie chart variables:
                // source: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
@@ -312,37 +261,21 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
             txp = this.projection([tx,ty])[0],
             typ = this.projection([tx,ty])[1];
 
-
+        //define bend for arc path (links between points)
         var bend = 0;
-        if (type === 'organic') {bend = 0.9;}
-        else if (type === 'plastic') {bend = 0.66;}
-        else if (type === 'construction') {bend = 0.57;}
-        else if (type === 'food') {bend = 0.53;}
-        else if (type === 'msw') {bend = 0.505;}
-        else if (type === 'hazardous') {bend = 0.5;}
-
+            if (type === 'organic') {bend = 0.9;}
+            else if (type === 'plastic') {bend = 0.66;}
+            else if (type === 'construction') {bend = 0.57;}
+            else if (type === 'food') {bend = 0.53;}
+            else if (type === 'msw') {bend = 0.505;}
+            else if (type === 'hazardous') {bend = 0.5;}
 
         var dx = txp - sxp,
             dy = typ - syp,
             dr = Math.sqrt(dx * dx + dy * dy) * bend;
-            /*
-            unevenCorrection = (link.sameUneven ? 0 : 0.5),
-            arc = ((dr * link.maxSameHalf) / (link.sameIndexCorrected - unevenCorrection));
-            if (link.sameMiddleLink) {
-                arc = 0;
-            }
-
-        console.log(dr);                              // Problem: hier ein array, im beispiel aber ein object an dieser Stelle
-        console.log(arc);
-        console.log(link.maxSameHalf)                       // 2
-        console.log(link.sameIndexCorrected)                // 0 - 3
-        console.log(unevenCorrection)                       // 0 oder 0,5
-        //console.log(link.sameArcDirection);
-        */
 
         return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0,1 " + txp + "," + typ;
-        //return "M" + sxp + "," + syp + "A" + arc + "," + arc + " 0 0" + link.sameArcDirection + " " + txp + "," + txp;
-        //return "M" + sxp + "," + syp + "A" + arc + "," + arc + " 0 0,1" + txp + "," + txp;
+
     };
 
     specifyColor(type) {
@@ -353,7 +286,7 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
         if (type === 'msw') {return '#348984';}
         if (type === 'hazardous') {return '#893464';}
         return 'white';
-    }
+    };
 
     drawPath(sx,sy,tx,ty,link,type) {
         // draw arrow

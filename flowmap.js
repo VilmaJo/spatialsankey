@@ -28,8 +28,6 @@ class FlowMap {
                      .append("g");
         this.g = this.svg.append("g");
         
-        
-        
     }
     
     render(nodes, flows){
@@ -75,7 +73,7 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
 */
         _.each(links, function(link){
             var same = _.where(links, {'source':link.source, 'target':link.target});
-            console.log(same)
+            //console.log(same)
             var sameAlt = _.where(links, {'source':link.target, 'target':link.source});
 
             var sameAll = same.concat(sameAlt);
@@ -85,7 +83,7 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
                 s.sameIndex = (i + 1);
                 //console.log(s.sameIndex)
                 s.sameTotal = (sameAll.length);                                                                         // amount of same links between two nodes
-                console.log(s.sameTotal);
+                //console.log(s.sameTotal);
                 s.sameTotalHalf = (s.sameTotal/2);
                 s.sameUneven = ((s.sameTotal % 2) !== 0);
                 s.sameMiddleLink = ((s.sameUneven == true) && (Math.ceil(s.sameTotalHalf) === s.sameIndex));
@@ -116,7 +114,6 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
                 'sameArcDirection':link.sameArcDirection, 'sameIndexCorrected':link.sameIndexCorrected,
                 'source':link.source, 'target':link.target, 'maxSameHalf':link.maxSameHalf}
         });
-        console.log(linksData);
 // multiple links END  *******************************************************END*********************************************************************
 
 
@@ -149,19 +146,19 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
                 */
         
         //color	
-               var color = flowsData[key].type;
-        
+               var type = flowsData[key].type
+
         //define strokeWidth
                 var maxValue = Math.max.apply(null, flowsValues),
-                maxWidth = 12,
+                maxWidth = 8,
                 width= flowsData[key].value;
             this.strokeWidth = width / maxValue * maxWidth;
 
         var link = linksData[key]
-            console.log(link)
+            //console.log(link)
        // drawPath
 
-        this.drawPath(sourceX, sourceY, targetX, targetY, link, color)
+        this.drawPath(sourceX, sourceY, targetX, targetY, link, type)
 
         }
 ////End for key in flowsData**********************************************************************************************************************
@@ -218,19 +215,8 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
                 //pieChart(pointSizeSum);
         });
 
-    //**********************************************************************************************************************
+//**********************************************************************************************************************
 
-    /*
-        links.forEach(function(link) {
-            var unevenCorrection = (link.sameUneven ? 0 : 0.5), // doesn't switch between 0 and 0.5
-                arc = ((dr * link.maxSameHalf) / (link.sameIndexCorrected - unevenCorrection));
-            // = (dr * 2) / (1 - 0)
-            if (link.sameMiddleLink) {
-                arc = 0;
-            }
-            console.log(unevenCorrection);
-        });
-    */
     } 
 
     
@@ -318,7 +304,7 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
 
 
     //function makeArc, that is used for drawPath
-    makeArc(sx, sy, tx, ty, link) {
+    makeArc(sx, sy, tx, ty, link, type) {
         // define object out of links array
         //sx,sy,tx,ty mit projection versehen
         var sxp = this.projection([sx,sy])[0],
@@ -326,33 +312,50 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
             txp = this.projection([tx,ty])[0],
             typ = this.projection([tx,ty])[1];
 
+
+        var bend = 0;
+        if (type === 'organic') {bend = 0.9;}
+        else if (type === 'plastic') {bend = 0.66;}
+        else if (type === 'construction') {bend = 0.57;}
+        else if (type === 'food') {bend = 0.53;}
+        else if (type === 'msw') {bend = 0.505;}
+        else if (type === 'hazardous') {bend = 0.5;}
+
+
         var dx = txp - sxp,
             dy = typ - syp,
-            dr = Math.sqrt(dx * dx + dy * dy),
+            dr = Math.sqrt(dx * dx + dy * dy) * bend;
+            /*
             unevenCorrection = (link.sameUneven ? 0 : 0.5),
             arc = ((dr * link.maxSameHalf) / (link.sameIndexCorrected - unevenCorrection));
             if (link.sameMiddleLink) {
                 arc = 0;
             }
 
-        console.log(link.sameUneven);                              // Problem: hier ein array, im beispiel aber ein object an dieser Stelle
-        console.log(unevenCorrection);
-        console.log(link.sameArcDirection);
-        //return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0,1 " + txp + "," + typ;
-        return "M" + sxp + "," + syp + "A" + arc + "," + arc + " 0 0," + link.sameArcDirection + " " + txp + "," + txp;
+        console.log(dr);                              // Problem: hier ein array, im beispiel aber ein object an dieser Stelle
+        console.log(arc);
+        console.log(link.maxSameHalf)                       // 2
+        console.log(link.sameIndexCorrected)                // 0 - 3
+        console.log(unevenCorrection)                       // 0 oder 0,5
+        //console.log(link.sameArcDirection);
+        */
+
+        return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0,1 " + txp + "," + typ;
+        //return "M" + sxp + "," + syp + "A" + arc + "," + arc + " 0 0" + link.sameArcDirection + " " + txp + "," + txp;
+        //return "M" + sxp + "," + syp + "A" + arc + "," + arc + " 0 0,1" + txp + "," + txp;
     };
 
-    specifyColor(color) {
-        if (color === 'organic') {return '#2e7b50';}
-        if (color === 'plastic') {return '#4682b4';}
-        if (color === 'construction') {return '#cc8400';}
-        if (color === 'food') {return '#ebda09';}
-        if (color === 'msw') {return '#348984';}
-        if (color === 'hazardous') {return '#893464';}
+    specifyColor(type) {
+        if (type === 'organic') {return '#2e7b50';}
+        if (type === 'plastic') {return '#4682b4';}
+        if (type === 'construction') {return '#cc8400';}
+        if (type === 'food') {return '#ebda09';}
+        if (type === 'msw') {return '#348984';}
+        if (type === 'hazardous') {return '#893464';}
         return 'white';
     }
 
-    drawPath(sx,sy,tx,ty,link,color) {
+    drawPath(sx,sy,tx,ty,link,type) {
         // draw arrow
         // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
         var arrow = this.svg.append("marker")
@@ -373,8 +376,8 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
         var route = this.g.insert("path")
                         .attr("class", "route")
                         .attr("id","route")
-                        .attr("d", this.makeArc(sx,sy,tx,ty,link))
-                        .style("stroke", this.specifyColor (color))
+                        .attr("d", this.makeArc(sx,sy,tx,ty,link,type))
+                        .style("stroke", this.specifyColor (type))
                         .style("stroke-width", this.strokeWidth)
                         //.style("stroke-dasharray", "9, 2")
                         .attr("marker-end", "url(#arrow)");
@@ -393,12 +396,21 @@ Aktuelle AUFGABEN
     *** Größe der Punkte abhängig nach in & outflows
     - PieChart mit Anteilen für in und outflows: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
 
+    - Bei Klick auf den Punkt erscheint ein Tortendiagramm mit Anteilen der jeweiligen Materials (type)
+
 -Linien
     - Richtung anzeigen: 1 arrow mit marker-start oder marker-end, aber: bei bend funktioniert es nicht (bend einfügen) und anzeige in bestimmtem abstand
         - arcTween: mit animation?
-        -transition https://github.com/d3/d3-transition#transition_attrTween
+        - transition https://github.com/d3/d3-transition#transition_attrTween
         - chained transition (dashedarray?)https://bl.ocks.org/mbostock/70d5541b547cc222aa02
+        - marker end: line.length - line.lengt/10 --> hierfür wird aber x und y koordinaten benötigt:
+                        vorgehen: line-length, dann davon einen anteil zurück, hier die x und y coordinaten bestimmen und an dieser stelle ist marker end
 - bend anpassen nach Anzahl von flows: bzw bend nach typ, da an gleicher stelle sein soll?
+    Bend: Aabhängigkeit des bends von strokewidth --> zu komplziert? erst muss verstanden werden wie sich die anteile nach außen hin verkleinern
+    *** - reihenfolge der linien festlegen
+    *** - bend je bestimmtem typ wie bei farben festlegen
+
+
 - Beziers statt arcs??
     - Bedingung einfügen: wenn type gleiches target xy und source xy hat, dann hintereinander verlaufen
 */

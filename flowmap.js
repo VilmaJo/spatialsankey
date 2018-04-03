@@ -263,18 +263,22 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
 
         //define bend for arc path (links between points)
         var bend = 0;
-            if (type === 'organic') {bend = 0.9;}
-            else if (type === 'plastic') {bend = 0.66;}
-            else if (type === 'construction') {bend = 0.57;}
-            else if (type === 'food') {bend = 0.53;}
-            else if (type === 'msw') {bend = 0.505;}
-            else if (type === 'hazardous') {bend = 0.5;}
+            if (type === 'organic') {bend = 0.9;}                   // 0.2, 0.1, 0.055, 0.028, 0.0035 but difference for different length between two point
+            else if (type === 'plastic') {bend = 0.7;}
+            else if (type === 'construction') {bend = 0.6;}
+            else if (type === 'food') {bend = 0.545;}
+            else if (type === 'msw') {bend = 0.517;}
+            else if (type === 'hazardous') {bend = 0.5035;}
 
         var dx = txp - sxp,
             dy = typ - syp,
             dr = Math.sqrt(dx * dx + dy * dy) * bend;
-
-        return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0,1 " + txp + "," + typ;
+        console.log(sxp,syp)
+        console.log(dx,dy)
+        console.log(dr)
+        
+        //idea: find the middle point on the arc, aber ist eine verschiebung möglich???
+        return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0 1 " + txp + "," + typ; //M (move to) A (arc directive)
 
     };
 
@@ -312,6 +316,7 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
                         .attr("d", this.makeArc(sx,sy,tx,ty,link,type))
                         .style("stroke", this.specifyColor (type))
                         .style("stroke-width", this.strokeWidth)
+                        //.style("stroke-opacity", 0.7)
                         //.style("stroke-dasharray", "9, 2")
                         .attr("marker-end", "url(#arrow)");
     }
@@ -342,6 +347,8 @@ Aktuelle AUFGABEN
     Bend: Aabhängigkeit des bends von strokewidth --> zu komplziert? erst muss verstanden werden wie sich die anteile nach außen hin verkleinern
     *** - reihenfolge der linien festlegen
     *** - bend je bestimmtem typ wie bei farben festlegen
+    *
+    * mittelpunkt zwischen zwei punkten finden auf dem arc, zum nächsten mittelpunkt bestimmter abstand?
 
 
 - Beziers statt arcs??

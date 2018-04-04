@@ -146,13 +146,20 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
                 */
         
         //color	
-               var type = flowsData[key].type
+               var type = flowsData[key].type;
+
+
 
         //define strokeWidth
+
                 var maxValue = Math.max.apply(null, flowsValues),
                 maxWidth = 8,
                 width= flowsData[key].value;
-            this.strokeWidth = width / maxValue * maxWidth;
+             this.strokeWidth = width / maxValue * maxWidth;
+            // add condition: if (strokeWidth<0.2) {return 1} else return strokeWidth;
+
+            var typeValue = [type, width];
+            console.log(typeValue)
 
         var link = linksData[key]
             //console.log(link)
@@ -200,9 +207,10 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
 
     //function to add points to the map
     addPoint(lon, lat) {
-        var x = this.projection([lon, lat])[0];
-        var y = this.projection([lon, lat])[1];
-    
+        var x = this.projection([lon, lat])[0],
+            y = this.projection([lon, lat])[1];
+
+
         var point = this.g.append("g")
                           .attr("class", "gpoint")
                           .append("circle")
@@ -272,13 +280,66 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
 
         var dx = txp - sxp,
             dy = typ - syp,
-            dr = Math.sqrt(dx * dx + dy * dy) * bend;
-        console.log(sxp,syp)
-        console.log(dx,dy)
-        console.log(dr)
-        
+            dr = Math.sqrt(dx * dx + dy * dy) * bend,
+
+            mx = (txp + sxp)/2,             // x and y for the center point between the nodes
+            my = (typ + syp)/2;
+
+        // offset wird angepasst mit strokewidth
+        var offset = 8                                              // vorgehen: ich packe in meinen koffer
+            if (type === 'organic') {offset = 4;}                   // organic.value, organic.value + plastic.value + construction.value
+            else if (type === 'plastic') {offset = 8;}              // organic.value + plastic.value,
+            else if (type === 'construction') {offset = 12;}        // organic.value + plastic.value + construction.value
+            else if (type === 'food') {offset = 16;}                // ...
+            else if (type === 'msw') {offset = 20;}
+            else if (type === 'hazardous') {offset = 0;};
+
+        var norm = Math.sqrt((dx*dx)+(dy*dy)),
+            sxpo = sxp + offset*(dy/norm),
+            sypo = syp - offset*(dx/norm),
+            txpo = txp + offset*(dy/norm),
+            typo = typ - offset*(dx/norm);
+        /*
+        var sourceOffset = this.g.append("g")
+            .attr("class", "sourceOffset")
+            .append("circle")
+            .attr("cx", sxpo)
+            .attr("cy", sypo)
+            .style("fill","green")
+            .style("fill-opacity", 1.0)
+            .attr("r", 8);
+
+        var targetOffset = this.g.append("g")
+            .attr("class", "sourceOffset")
+            .append("circle")
+            .attr("cx", txpo)
+            .attr("cy", typo)
+            .style("fill","orange")
+            .style("fill-opacity", 1.0)
+            .attr("r", 8);
+        */
+
+        //add symbol: arrow or triangle?
+        var middlePoint = this.g.append("g")
+            .attr("class", "mpoint")
+            .append("circle")
+            .attr("cx", mx)
+            .attr("cy", my)
+            .style("fill","#b2b2b2")
+            .style("fill-opacity", 1.0)
+            .attr("r", 2);
+
+
+        //return "M" + sxp + "," + syp + "," + txp + "," + typ;     // simple line
+        return "M" + sxpo + "," + sypo + "," + txpo + "," + typo;      // simple line + offset which depends on strokeWidth
+        //return "M" + sxp + "," + syp + "L" + sxpo + "," sypo + "L" + txpo + "," + typo "L" + txp + "," + typ; //sxp offset, syp offset
         //idea: find the middle point on the arc, aber ist eine verschiebung möglich???
-        return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0 1 " + txp + "," + typ; //M (move to) A (arc directive)
+        //return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0 1 " + txp + "," + typ; //M start-x, start-y A radius-x, radius-y, x-axis-rotation, large-arc-flag, sweep-flag, end-x, end-y
+
+        // return "M" + sxp + "," + syp +  Qq.control[0] + "," + q.control[1] + txp + "," typ;      //Bezier curve quadratic with 3 points (one of it is the control point)
+        // https://bl.ocks.org/pbeshai/72c446033a98f99ce1e1371c6eee9644                 https://javascript.info/bezier-curve
+        // https://www.dashingd3js.com/svg-paths-and-d3js
+
 
     };
 

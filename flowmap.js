@@ -44,83 +44,15 @@ class FlowMap {
         //flows data
         var flowsData = {};
         var flowsValues = [];           //get all flow-values from flowsData to use for path stroke-width
-        var links = [];                 //for multiple links with different bents
         flows.forEach(function(flow) {
             flowsData[flow.id] = {'id':flow.id,'source':flow.source,'target':flow.target,'value':flow.value,'type':flow.type};
             flowsValues.push(parseInt(flow.value));
             var data = {id: flow.id, source: flow.source, target: flow.target};
-            links.push(data);
         });
-
-// multiple links  ****************************************************************************************************************************
-// quantity of flows with same source and target
-// source: http://bl.ocks.org/thomasdobber/9b78824119136778052f64a967c070e0
-/*
-maybe to complicated for our aim? try to use s.sameTotal und define bend für each amount-class.
-think about if we need to divide into left and right?
-
-pseudocode: var maxLinks = math.max(s.sameTotal)
-            how to define bend-->  0:0.8? OR for s.sameTotal + 1, bend + 0.1 OR divide into array from max and min
-            if s.sameTotal = 7, bend 0:0.7
-
-            bend war bei "dr = Math.sqrt(dx * dx + dy * dy) * bend", aber wir müssen definieren, wenn mehrere Linien, dann bends verteilen
-
-            nur "same" nutzen, denn sameAlt ist ja in die andere Richtung? einfacher mit der Richtungsangabe?
-
-            we have  "same" --> all links which have same source and target (somehow they repeat?)
-            we need to define bend in a value field (from:to)
-
-*/
-        _.each(links, function(link){
-            var same = _.where(links, {'source':link.source, 'target':link.target});
-            //console.log(same)
-            var sameAlt = _.where(links, {'source':link.target, 'target':link.source});
-
-            var sameAll = same.concat(sameAlt);
-
-            //links data is expanded by the following variables
-            _.each(sameAll, function (s,i) {
-                s.sameIndex = (i + 1);
-                //console.log(s.sameIndex)
-                s.sameTotal = (sameAll.length);                                                                         // amount of same links between two nodes
-                //console.log(s.sameTotal);
-                s.sameTotalHalf = (s.sameTotal/2);
-                s.sameUneven = ((s.sameTotal % 2) !== 0);
-                s.sameMiddleLink = ((s.sameUneven == true) && (Math.ceil(s.sameTotalHalf) === s.sameIndex));
-                s.sameLowerHalf = (s.sameIndex <= s.sameTotalHalf);
-                s.sameArcDirection = s.sameLowerHalf ? 0 : 1;                                                           // Bends are divided to the left and right side
-                s.sameIndexCorrected = s.sameLowerHalf ? s.sameIndex : (s.sameIndex - Math.ceil(s.sameTotalHalf));      // sameIndex corrected gibt die untere und oebere hälfte an
-                //console.log(s.sameIndexCorrected)
-            });
-        });
-        //console.log(links)
-        var maxSame = _.chain(links)                                    // the maximum amount of same links
-            .sortBy(function(x) {
-                return x.sameTotal;
-            })
-            .last()
-            .value().sameTotal;
-
-        _.each(links, function(link) {
-            link.maxSameHalf = Math.floor(maxSame / 3);
-        });
-
-        var linksData = {};
-        links.forEach(function(link) {
-            //console.log(link);
-            linksData[link.id] = {'sameIndex':link.sameIndex, 'sameTotal':link.sameTotal,
-                'sameTotalHalf':link.sameTotalHalf, 'sameUneven':link.sameUneven,
-                'sameMiddleLink':link.sameMiddleLink, 'sameLowerHalf':link.sameLowerHalf,
-                'sameArcDirection':link.sameArcDirection, 'sameIndexCorrected':link.sameIndexCorrected,
-                'source':link.source, 'target':link.target, 'maxSameHalf':link.maxSameHalf}
-        });
-// multiple links END  *******************************************************END*********************************************************************
-
 
 
 //*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
-        // change this into flows.forEach and then use this also for the links, because we need to loop through and write function in here or write a function to get the data? insert into function?
-        for(var key in flowsData, linksData) {
+        for(var key in flowsData) {
         //source
             var source = flowsData[key].source,             //die source wird aus den flowsData je key gezogen
                 sourceX = nodesData[source]['lon'],         //die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
@@ -161,11 +93,9 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
             var typeValue = [type, width];
             console.log(typeValue)
 
-        var link = linksData[key]
-            //console.log(link)
        // drawPath
 
-        this.drawPath(sourceX, sourceY, targetX, targetY, link, type)
+        this.drawPath(sourceX, sourceY, targetX, targetY, type)
 
         }   ////End for key in flowsData**********************************************************************************************************************
 
@@ -261,26 +191,16 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
 
 
     //function makeArc, that is used for drawPath
-    makeArc(sx, sy, tx, ty, link, type) {
-        // define object out of links array
-        //sx,sy,tx,ty mit projection versehen
+    makeArc(sx, sy, tx, ty, type) {
+        //add projection to sx,sy,tx,ty
         var sxp = this.projection([sx,sy])[0],
             syp = this.projection([sx,sy])[1],
             txp = this.projection([tx,ty])[0],
             typ = this.projection([tx,ty])[1];
 
-        //define bend for arc path (links between points)
-        var bend = 0;
-            if (type === 'organic') {bend = 0.9;}                   // 0.2, 0.1, 0.055, 0.028, 0.0035 but difference for different length between two point
-            else if (type === 'plastic') {bend = 0.7;}
-            else if (type === 'construction') {bend = 0.6;}
-            else if (type === 'food') {bend = 0.545;}
-            else if (type === 'msw') {bend = 0.517;}
-            else if (type === 'hazardous') {bend = 0.5035;}
-
         var dx = txp - sxp,
             dy = typ - syp,
-            dr = Math.sqrt(dx * dx + dy * dy) * bend,
+            dr = Math.sqrt(dx * dx + dy * dy),
 
             mx = (txp + sxp)/2,             // x and y for the center point between the nodes
             my = (typ + syp)/2;
@@ -353,7 +273,7 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
         return 'white';
     };
 
-    drawPath(sx,sy,tx,ty,link,type) {
+    drawPath(sx,sy,tx,ty,type) {
         // draw arrow
         // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
         var arrow = this.svg.append("marker")
@@ -374,7 +294,7 @@ pseudocode: var maxLinks = math.max(s.sameTotal)
         var route = this.g.insert("path")
                         .attr("class", "route")
                         .attr("id","route")
-                        .attr("d", this.makeArc(sx,sy,tx,ty,link,type))
+                        .attr("d", this.makeArc(sx,sy,tx,ty,type))
                         .style("stroke", this.specifyColor (type))
                         .style("stroke-width", this.strokeWidth)
                         //.style("stroke-opacity", 0.7)

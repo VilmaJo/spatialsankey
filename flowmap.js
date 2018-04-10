@@ -33,27 +33,32 @@ class FlowMap {
     render(nodes, flows){
         
         // remember scope of 'this' as context for functions with different scope
+        var TV;
         var _this = this;
-        
+
         //nodes data
         var nodesData = {};
-        nodes.forEach(function(node) {
-            nodesData[node.city] = {'city':node.city,'lon':node.lon,'lat':node.lat};
+        nodes.forEach(function (node) {
+            nodesData[node.city] = {'city': node.city, 'lon': node.lon, 'lat': node.lat};
         });
-        
+
         //flows data
         var flowsData = {};
         var flowsValues = [];           //get all flow-values from flowsData to use for path stroke-width
-        flows.forEach(function(flow) {
-            flowsData[flow.id] = {'id':flow.id,'source':flow.source,'target':flow.target,'value':flow.value,'type':flow.type};
+        var typeValue = {};
+        //var typeValue = {};
+        flows.forEach(function (flow) {
+            flowsData[flow.id] = {'id': flow.id, 'source': flow.source, 'target': flow.target, 'value': flow.value, 'type': flow.type};
             flowsValues.push(parseInt(flow.value));
-            var data = {id: flow.id, source: flow.source, target: flow.target};
+            typeValue[flow.type] = {'value': flow.value, 'type': flow.type};
         });
-
+        console.log(flowsData)
+        console.log(typeValue)
 
 //*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
-        for(var key in flowsData) {
-        //source
+        //var typeValue = {};
+        for (var key in flowsData) {
+            //source
             var source = flowsData[key].source,             //die source wird aus den flowsData je key gezogen
                 sourceX = nodesData[source]['lon'],         //die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
                 sourceY = nodesData[source]['lat'],
@@ -64,7 +69,7 @@ class FlowMap {
                 targetY = nodesData[target]['lat'],
                 targetCoords = [targetX, targetY],
                 //flow für Krümmung
-                 flow = [source, target];
+                flow = [source, target];
 
             /* Pseudocode, um die Anzahl gleicher flows zu kriegen
                 var flowQuantity = 0;
@@ -76,26 +81,45 @@ class FlowMap {
                 array.length()
                 if (array.length = 7) {return bend 0:0.7;}
                 */
-        
-        //color	
-               var type = flowsData[key].type;
 
-
+            //color
+            var type = flowsData[key].type;
+            var tgk = [flowsData[key].type, flowsData[key].value];
 
         //define strokeWidth
-
                 var maxValue = Math.max.apply(null, flowsValues),
                 maxWidth = 8,
                 width= flowsData[key].value;
              this.strokeWidth = width / maxValue * maxWidth;
             // add condition: if (strokeWidth<0.2) {return 1} else return strokeWidth;
 
-            var typeValue = [type, width];
-            console.log(typeValue)
+         //type + value
+           typeValue[type]={'type':type, 'stroke': this.strokeWidth};
+            var offset = typeValue[type];
+            console.log(offset)
+            var organic;
+            var plastic;
+            var construction;
+            var food;
+            var msw;
+            var hazardous;
+            //if (offset.type === 'organic') {organic = offset.stroke;}
+            if (type === 'organic') {organic = offset.stroke;}
+            else if (type === 'plastic') {plastic = offset.stroke;}
+            else if (type === 'construction') {construction = offset.stroke;}
+            else if (type === 'food') {food = offset.stroke;}
+            else if (type === 'msw') {msw = offset.stroke;}
+            else if (type === 'hazardous') {hazardous = offset.stroke;}
+            else {return 'hello'};
+
+            // wenn der type stimmt, dann wird stroke des types übernommen
+            // aber wenn ein anderer type, dann wird der stroke des zuletzt durchlaufene gleichen types auch für andere types übernommen
+            // define bundle of flows with same source and target?
+           console.log(plastic)
+
 
        // drawPath
-
-        this.drawPath(sourceX, sourceY, targetX, targetY, type)
+        this.drawPath(sourceX, sourceY, targetX, targetY, type, typeValue, offset)
 
         }   ////End for key in flowsData**********************************************************************************************************************
 
@@ -191,7 +215,9 @@ class FlowMap {
 
 
     //function makeArc, that is used for drawPath
-    makeArc(sx, sy, tx, ty, type) {
+    makeArc(sx, sy, tx, ty, type, typeValue, offset) {
+
+
         //add projection to sx,sy,tx,ty
         var sxp = this.projection([sx,sy])[0],
             syp = this.projection([sx,sy])[1],
@@ -206,13 +232,26 @@ class FlowMap {
             my = (typ + syp)/2;
 
         // offset wird angepasst mit strokewidth
-        var offset = 8                                              // vorgehen: ich packe in meinen koffer
-            if (type === 'organic') {offset = 4;}                   // organic.value, organic.value + plastic.value + construction.value
-            else if (type === 'plastic') {offset = 8;}              // organic.value + plastic.value,
-            else if (type === 'construction') {offset = 12;}        // organic.value + plastic.value + construction.value
-            else if (type === 'food') {offset = 16;}                // ...
-            else if (type === 'msw') {offset = 20;}
-            else if (type === 'hazardous') {offset = 0;};
+
+        var organic = typeValue.organic = this.strokeWidth,
+            plastic = typeValue.plastic = this.strokeWidth,
+            construction = typeValue.construction = this.strokeWidth,
+            food = typeValue.food = this.strokeWidth,
+            msw = typeValue.msw = this.strokeWidth,
+            hazardous = typeValue.hazardous = this.strokeWidth;
+
+        console.log(organic)
+
+        //for each typeValue.type return value
+
+        var offset = 0                                              // vorgehen: ich packe in meinen koffer
+            if (type === 'organic') {offset = offset.stroke;}                   // organic.value, organic.value + plastic.value + construction.value
+            else if (type === 'plastic') {offset = organic;}              // organic.value + plastic.value,
+            else if (type === 'construction') {offset = organic + plastic;}        // organic.value + plastic.value + construction.value
+            else if (type === 'food') {offset = organic + plastic + construction;}                // ...
+            else if (type === 'msw') {offset = organic + plastic + construction + food;}
+            else if (type === 'hazardous') {offset = organic + plastic + construction + food + msw;};
+
 
         var norm = Math.sqrt((dx*dx)+(dy*dy)),
             sxpo = sxp + offset*(dy/norm),
@@ -249,19 +288,11 @@ class FlowMap {
             .style("fill-opacity", 1.0)
             .attr("r", 2);
 
-
         //return "M" + sxp + "," + syp + "," + txp + "," + typ;     // simple line
         return "M" + sxpo + "," + sypo + "," + txpo + "," + typo;      // simple line + offset which depends on strokeWidth
-        //return "M" + sxp + "," + syp + "L" + sxpo + "," sypo + "L" + txpo + "," + typo "L" + txp + "," + typ; //sxp offset, syp offset
-        //idea: find the middle point on the arc, aber ist eine verschiebung möglich???
-        //return "M" + sxp + "," + syp + "A" + dr + "," + dr +" 0 0 1 " + txp + "," + typ; //M start-x, start-y A radius-x, radius-y, x-axis-rotation, large-arc-flag, sweep-flag, end-x, end-y
-
-        // return "M" + sxp + "," + syp +  Qq.control[0] + "," + q.control[1] + txp + "," typ;      //Bezier curve quadratic with 3 points (one of it is the control point)
-        // https://bl.ocks.org/pbeshai/72c446033a98f99ce1e1371c6eee9644                 https://javascript.info/bezier-curve
-        // https://www.dashingd3js.com/svg-paths-and-d3js
-
 
     };
+
 
     specifyColor(type) {
         if (type === 'organic') {return '#2e7b50';}
@@ -273,12 +304,22 @@ class FlowMap {
         return 'white';
     };
 
-    drawPath(sx,sy,tx,ty,type) {
+    specifyColorArrow(type) {
+        if (type === 'organic') {return "url(#arrow1)";}
+        if (type === 'plastic') {return "url(#arrow2)";}
+        if (type === 'construction') {return "url(#arrow3)";}
+        if (type === 'food') {return "url(#arrow4)";}
+        if (type === 'msw') {return "url(#arrow5)";}
+        if (type === 'hazardous') {return "url(#arrow6)";}
+        return "url(#arrow1)";
+    };
+
+    drawPath(sx, sy, tx, ty, type, typeValue, offset) {
         // draw arrow
         // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
-        var arrow = this.svg.append("marker")
-                            .attr("id", "arrow")
-                            .attr("refX", 6)
+        var arrow1 = this.svg.append("marker")
+                            .attr("id", "arrow1")
+                            .attr("refX", 3.5)      //defines position on the line
                             .attr("refY", 6)
                             .attr("markerWidth", 10)
                             .attr("markerHeight", 10)
@@ -288,18 +329,89 @@ class FlowMap {
                                 " 4 6 " +                       //up
                                 " 3.5 6.5  3 6.5 " +            //right
                                 "3.5 6")                        //down
-                            .style("fill", "black");
-    
-    
+                            .style("fill", "#2e7b50"); //somehow has to be dependent on the route
+
+        var arrow2 = this.svg.append("marker")
+            .attr("id", "arrow2")
+            .attr("refX", 3.5)      //defines position on the line
+            .attr("refY", 6)
+            .attr("markerWidth", 10)
+            .attr("markerHeight", 10)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M 3 5.5 3.5 5.5" +      //left
+                " 4 6 " +                       //up
+                " 3.5 6.5  3 6.5 " +            //right
+                "3.5 6")                        //down
+            .style("fill", "#4682b4"); //somehow has to be dependent on the route
+
+        var arrow3 = this.svg.append("marker")
+            .attr("id", "arrow3")
+            .attr("refX", 3.5)      //defines position on the line
+            .attr("refY", 6)
+            .attr("markerWidth", 10)
+            .attr("markerHeight", 10)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M 3 5.5 3.5 5.5" +      //left
+                " 4 6 " +                       //up
+                " 3.5 6.5  3 6.5 " +            //right
+                "3.5 6")                        //down
+            .style("fill", "#cc8400"); //somehow has to be dependent on the route
+
+        var arrow4 = this.svg.append("marker")
+            .attr("id", "arrow4")
+            .attr("refX", 3.5)      //defines position on the line
+            .attr("refY", 6)
+            .attr("markerWidth", 10)
+            .attr("markerHeight", 10)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M 3 5.5 3.5 5.5" +      //left
+                " 4 6 " +                       //up
+                " 3.5 6.5  3 6.5 " +            //right
+                "3.5 6")                        //down
+            .style("fill", "#ebda09"); //somehow has to be dependent on the route
+
+        var arrow5 = this.svg.append("marker")
+            .attr("id", "arrow5")
+            .attr("refX", 3.5)      //defines position on the line
+            .attr("refY", 6)
+            .attr("markerWidth", 10)
+            .attr("markerHeight", 10)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M 3 5.5 3.5 5.5" +      //left
+                " 4 6 " +                       //up
+                " 3.5 6.5  3 6.5 " +            //right
+                "3.5 6")                        //down
+            .style("fill", "#348984"); //somehow has to be dependent on the route
+
+        var arrow6 = this.svg.append("marker")
+            .attr("id", "arrow6")
+            .attr("refX", 3.5)      //defines position on the line
+            .attr("refY", 6)
+            .attr("markerWidth", 10)
+            .attr("markerHeight", 10)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M 3 5.5 3.5 5.5" +      //left
+                " 4 6 " +                       //up
+                " 3.5 6.5  3 6.5 " +            //right
+                "3.5 6")                        //down
+            .style("fill", "#893464"); //somehow has to be dependent on the route
+
         var route = this.g.insert("path")
                         .attr("class", "route")
                         .attr("id","route")
-                        .attr("d", this.makeArc(sx,sy,tx,ty,type))
+                        .attr("d", this.makeArc(sx, sy, tx, ty, type, offset))
                         .style("stroke", this.specifyColor (type))
                         .style("stroke-width", this.strokeWidth)
                         //.style("stroke-opacity", 0.7)
                         //.style("stroke-dasharray", "9, 2")
-                        .attr("marker-end", "url(#arrow)");
+                        //.attr("marker-end", "url(#arrow1)")
+                        .attr("marker-end", this.specifyColorArrow (type))
+                        //.attr("marker-mid","url(#middlePoint)");
     }
 }
 

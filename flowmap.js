@@ -120,6 +120,9 @@ class FlowMap {
 
        // drawPath
         this.drawPath(sourceX, sourceY, targetX, targetY, type, typeValue, offset)
+=======
+        this.drawPath(sourceX, sourceY, targetX, targetY, link, type, typeValue)
+>>>>>>> Stashed changes
 
         }   ////End for key in flowsData**********************************************************************************************************************
 

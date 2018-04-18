@@ -2,10 +2,18 @@
     stroke: #7d7d7d;
     stroke-width: 0.5px;
 }
-
-.gpoint:hover{
-    stroke:white;
-    stroke-width: 2px;
+div.tooltip {
+    position: absolute;
+    text-align: left;
+    width: 90px;
+    height: 20px;
+    padding: 4px;
+    font: 8px sans-serif;
+    color: #fff;
+    background: #aad400;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
 }
 
 .mpoint:hover{

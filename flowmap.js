@@ -365,6 +365,22 @@ define([
 
             //for each typeValue.type return value
             var offset = 0                                              // vorgehen: ich packe in meinen koffer
+        /*
+        */
+
+        // offset wird angepasst mit strokewidth
+
+        var organic = typeValue.organic = this.strokeWidth,
+            plastic = typeValue.plastic = this.strokeWidth,
+            construction = typeValue.construction = this.strokeWidth,
+            food = typeValue.food = this.strokeWidth,
+            msw = typeValue.msw = this.strokeWidth,
+            hazardous = typeValue.hazardous = this.strokeWidth;
+
+        //for each typeValue.type return value
+
+        var offset = 0                                              // vorgehen: ich packe in meinen koffer
+>>>>>>> Stashed changes
             if (type === 'organic') {offset = offset;}                   // organic.value, organic.value + plastic.value + construction.value
             else if (type === 'plastic') {offset = organic;}              // organic.value + plastic.value,
             else if (type === 'construction') {offset = organic + plastic;}        // organic.value + plastic.value + construction.value
@@ -462,5 +478,10 @@ Aktuelle AUFGABEN
     * mittelpunkt zwischen zwei punkten finden auf dem arc, zum nächsten mittelpunkt bestimmter abstand?
 - Beziers statt arcs??
     - Bedingung einfügen: wenn type gleiches target xy und source xy hat, dann hintereinander verlaufen
+
+
+    Punkte nach Typen in unterschiedlichen Farben (evtl Schraffuren und Umrandungen mit dasharray oder ähnlichem?
+    damit die Auswahl da ist(keine Piecharts)
+
 */
 

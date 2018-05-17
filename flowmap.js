@@ -112,7 +112,7 @@ define([
                 else {return 'hello'};
 
                 // wenn der type stimmt, dann wird stroke des types übernommen
-                // aber wenn ein anderer type, dann wird der stroke des zuletzt durchlaufene gleichen types auch für andere types übernommen
+                // aber wenn ein anderer type, dann wird der stroke des zuletzt durchlaufenen gleichen types auch für andere types übernommen
                 // define bundle of flows with same source and target?
 
 
@@ -224,50 +224,12 @@ define([
                 .style("font-size","6px")
                 .attr("text-anchor","middle");
         }
-        //pieChart
-        /*
-                    // Pie chart variables:
-                   // source: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
-                       var g2 = svg.append("g");
-                       var arc = d3.arc()
-                           .innerRadius(0)
-                           .outerRadius(radius);
-                       var pie = d3.pie()
-                           .sort(null)
-                           .value(function(d) { return d; });
-                       var pieColor = d3.schemeCategory10;
-                   // Draw pie charts
-                   // source: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
-                           var points = g2.selectAll("g")
-                               .enter()
-                               .append("g")
-                               .attr("cx", x)
-                               .attr("cy", y)
-                               .attr("class","pies")
-                               .attr("r", pointSizeSum);
-                               //.append("text")
-                               //.attr("y", -radius - 5)
-                               //.text("text",'hallo')
-                               //.style('text-anchor','middle');
-                           var pies = points.selectAll(".pies")
-                           // split([","])
-                               .data(function(d) { return pie(d.data.split(['-'])); })
-                               .enter()
-                               .append('g')
-                               .attr('class','arc')
-                               .append("path")
-                               .attr('d',arc)
-                               .attr("fill",function(d,i){
-                                   return color[i+1];
-                               });
-       */
+
 
         drawPath(sx, sy, tx, ty, type, typeValue, offset) {
        // toopltip source: http://bl.ocks.org/d3noob/a22c42db65eb00d4e369
             var iFunc = d3.interpolateObject([sx,sy], [tx,ty]);
-            console.log(iFunc)
             var lineData = d3.range(0, 1, 1/15).map( iFunc );
-            console.log(lineData)
 
             // draw arrow
             // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
@@ -355,7 +317,7 @@ define([
                     "3.5 6")                        //down
                 .style("fill", "#893464"); //somehow has to be dependent on the route
 
-            // offset wird angepasst mit strokewidth
+            // offset wird angepasst mit strokeWidth
             var organic = typeValue.organic = this.strokeWidth,
                 plastic = typeValue.plastic = this.strokeWidth,
                 construction = typeValue.construction = this.strokeWidth,
@@ -363,24 +325,9 @@ define([
                 msw = typeValue.msw = this.strokeWidth,
                 hazardous = typeValue.hazardous = this.strokeWidth;
 
-            //for each typeValue.type return value
-            var offset = 0                                              // vorgehen: ich packe in meinen koffer
-        /*
-        */
-
-        // offset wird angepasst mit strokewidth
-
-        var organic = typeValue.organic = this.strokeWidth,
-            plastic = typeValue.plastic = this.strokeWidth,
-            construction = typeValue.construction = this.strokeWidth,
-            food = typeValue.food = this.strokeWidth,
-            msw = typeValue.msw = this.strokeWidth,
-            hazardous = typeValue.hazardous = this.strokeWidth;
-
         //for each typeValue.type return value
 
         var offset = 0                                              // vorgehen: ich packe in meinen koffer
->>>>>>> Stashed changes
             if (type === 'organic') {offset = offset;}                   // organic.value, organic.value + plastic.value + construction.value
             else if (type === 'plastic') {offset = organic;}              // organic.value + plastic.value,
             else if (type === 'construction') {offset = organic + plastic;}        // organic.value + plastic.value + construction.value
@@ -394,33 +341,52 @@ define([
                 txp = this.projection([tx,ty])[0],
                 typ = this.projection([tx,ty])[1];
 
-            var sxps = sxp,
-                sypy = syp,
-                txps = txp,
-                typs = typ;
-
             var dx = txp - sxp,
-                dy = typ - syp,
-                dr = Math.sqrt(dx * dx + dy * dy);
+                dy = typ - syp;
 
-            var norm = Math.sqrt((dx*dx)+(dy*dy)),
+            // define the normal, let the line walk along the normal with an offset
+            var norm = Math.sqrt(dx * dx + dy * dy),
                 sxpo = sxp + offset*(dy/norm),
                 sypo = syp - offset*(dx/norm),
                 txpo = txp + offset*(dy/norm),
-                typo = typ - offset*(dx/norm),
+                typo = typ - offset*(dx/norm);
 
-                mx = (txpo + sxpo)/2,             // x and y for the center point between the nodes
+            var mx = (txpo + sxpo)/2,             // x and y for the center point between the nodes
                 my = (typo + sypo)/2;
 
             var div = d3.select("body").append("div")
                 .attr("class", "tooltip")
                 .style("opacity", 0);
 
+            //source: http://jsfiddle.net/3SY8v/
+            //distance-x-projected-offset
+            var dxpo = sxpo - txpo,
+                dypo = sypo - typo;
+            var flowLength = Math.sqrt(dxpo * dxpo + dypo * dypo);
+
+            var sourceReduction = -15,
+                targetReduction = 15;
+
+            // ratio between full line length and shortened line
+            var sourceRatio = sourceReduction / flowLength,
+                targetRatio = targetReduction / flowLength;
+
+            // value by which line gets shorter
+            var sxReductionValue = dxpo * sourceRatio,
+                syReductionValue= dypo * sourceRatio,
+                txReductionValue = dxpo * targetRatio,
+                tyReductionValue = dypo * targetRatio;
+
+            var sxpoa = sxpo + sxReductionValue,
+                sypoa = sypo + syReductionValue,
+                txpoa = txpo + txReductionValue,
+                typoa = typo + tyReductionValue;
+
             var flows = this.g.append("line")
-                              .attr("x1", sxpo)
-                              .attr("y1", sypo)
-                              .attr("x2", txpo)
-                              .attr("y2", typo)
+                              .attr("x1", sxpoa)
+                              .attr("y1", sypoa)
+                              .attr("x2", txpoa)
+                              .attr("y2", typoa)
                               .attr("stroke-width", this.strokeWidth)
                               .attr("stroke", this.specifyLineColor (type))
                 .attr("marker-end", this.specifyArrowColor (type))
@@ -440,6 +406,7 @@ define([
 
 
             //add symbol: arrow or triangle?
+            /*
             var middlePoint = this.g.append("g")
                 .attr("class", "mpoint")
                 .append("circle")
@@ -448,6 +415,7 @@ define([
                 .style("fill","#b2b2b2")
                 .style("fill-opacity", 1.0)
                 .attr("r", 2);
+                */
         }
     }
 

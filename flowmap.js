@@ -1,5 +1,6 @@
 define([
     'd3', 'topojson', 'd3-queue', 'underscore'
+    //, 'zoom'
 ], function(d3, topojson, d3queue){
 
     class FlowMap {
@@ -25,7 +26,12 @@ define([
                 .append("svg")
                 .attr("width", this.width)
                 .attr("height", this.height)
+                /*.call(d3.zoom().on("zoom", function () {
+                    this.svg.attr("transform", d3.event.transform)
+                }))
+                */
                 .append("g");
+
             this.g = this.svg.append("g");
 
         }
@@ -47,16 +53,26 @@ define([
             var flowsValues = [];           //get all flow-values from flowsData to use for path stroke-width
             var typeValue = {};
             //var typeValue = {};
+            var strokeWidthPerFlow = [];
             flows.forEach(function (flow) {
                 flowsData[flow.id] = {'id': flow.id, 'source': flow.source, 'target': flow.target, 'value': flow.value, 'type': flow.type};
                 flowsValues.push(parseInt(flow.value));
                 typeValue[flow.type] = {'value': flow.value, 'type': flow.type};
             });
+            console.log(flowsValues)
             console.log(flowsData)
             console.log(typeValue)
 
+            flowsValues.sort(function(a, b) {
+                return a - b
+            });
+            console.log(flowsValues)
+
 //*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
             //var typeValue = {};
+            var strokeWidth=[];
+
+
             for (var key in flowsData) {
                 //source
                 var source = flowsData[key].source,             //die source wird aus den flowsData je key gezogen
@@ -71,49 +87,19 @@ define([
                     //flow für Krümmung
                     flow = [source, target];
 
-                /* Pseudocode, um die Anzahl gleicher flows zu kriegen
-                    var flowQuantity = 0;
-                    for each source, target same
-                    - count + 1, wenn source & target in flowsData gleich sind
-                    - if (count = 7) {return bend 0:0.7;}
-                        else if (count = 6) {return bend 0:0.6;}
-                    array.length()
-                    if (array.length = 7) {return bend 0:0.7;}
-                    */
-
                 //color
                 var type = flowsData[key].type;
-                var tgk = [flowsData[key].type, flowsData[key].value];
 
                 //define strokeWidth
                 var maxValue = Math.max.apply(null, flowsValues),
-                    maxWidth = 8,
+                    maxWidth = 4,
                     width= flowsData[key].value;
                 this.strokeWidth = width / maxValue * maxWidth;
                 // add condition: if (strokeWidth<0.2) {return 1} else return strokeWidth;
 
-                //type + value
-                typeValue[type]={'type':type, 'stroke': this.strokeWidth};
-                var offset = typeValue[type];
+                strokeWidth.push(this.strokeWidth);
 
-                var organic;
-                var plastic;
-                var construction;
-                var food;
-                var msw;
-                var hazardous;
-                //if (offset.type === 'organic') {organic = offset.stroke;}
-                if (type === 'organic') {organic = offset.stroke;}
-                else if (type === 'plastic') {plastic = offset.stroke;}
-                else if (type === 'construction') {construction = offset.stroke;}
-                else if (type === 'food') {food = offset.stroke;}
-                else if (type === 'msw') {msw = offset.stroke;}
-                else if (type === 'hazardous') {hazardous = offset.stroke;}
-                else {return 'hello'};
-
-                // wenn der type stimmt, dann wird stroke des types übernommen
-                // aber wenn ein anderer type, dann wird der stroke des zuletzt durchlaufenen gleichen types auch für andere types übernommen
-                // define bundle of flows with same source and target?
+                var offset;
 
 
                 // drawPath
@@ -121,6 +107,14 @@ define([
 
 
             }   ////End for key in flowsData**********************************************************************************************************************
+
+
+            strokeWidth.sort(function(a, b){
+                return a - b
+            });
+
+            console.log(strokeWidth)
+
 
 // addpoint for each node
             nodes.forEach(function(node) {
@@ -166,9 +160,6 @@ define([
             return '#c95f64';
         };
 
-        specifyNodeDash(type) {
-
-        };
 
         specifyLineColor(type) {
             if (type === 'organic') {return '#2e7b50';}
@@ -317,6 +308,10 @@ define([
                     "3.5 6")                        //down
                 .style("fill", "#893464"); //somehow has to be dependent on the route
 
+
+            console.log(this.strokeWidth)
+
+
             // offset wird angepasst mit strokeWidth
             var organic = typeValue.organic = this.strokeWidth,
                 plastic = typeValue.plastic = this.strokeWidth,
@@ -350,9 +345,6 @@ define([
                 sypo = syp - offset*(dx/norm),
                 txpo = txp + offset*(dy/norm),
                 typo = typ - offset*(dx/norm);
-
-            var mx = (txpo + sxpo)/2,             // x and y for the center point between the nodes
-                my = (typo + sypo)/2;
 
             var div = d3.select("body").append("div")
                 .attr("class", "tooltip")
@@ -405,17 +397,6 @@ define([
                 );
 
 
-            //add symbol: arrow or triangle?
-            /*
-            var middlePoint = this.g.append("g")
-                .attr("class", "mpoint")
-                .append("circle")
-                .attr("cx", mx)
-                .attr("cy", my)
-                .style("fill","#b2b2b2")
-                .style("fill-opacity", 1.0)
-                .attr("r", 2);
-                */
         }
     }
 

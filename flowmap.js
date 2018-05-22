@@ -111,9 +111,9 @@ define([
 
                     var strokeWidths = {};                                                           // get the strokeWidths for each flow that belongs to individual connections
                     for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
-                        if (flowsData[key].source+flowsData[key].target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
+                        if (flowsData[key].source + flowsData[key].target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
                             var maxValue = Math.max.apply(null, flowsValues),
-                                maxWidth = 7,
+                                maxWidth = 3,
                                 width= flowsData[key].value;
                             var strokeWidth = width / maxValue * maxWidth;
 
@@ -121,6 +121,18 @@ define([
                         }
                     }
                     console.log(strokeWidths)
+                    /*
+
+                    var totalStrokeWidths = {};
+                    totalStrokeWidths[key] = strokeWidths.reduce((a,b) => a+b, 0);
+                    console.log(totalStrokeWidths)
+
+                    var arr = [1,2,3,4];
+                    var total=0;
+                    for(var i in arr) { total += arr[i]; }
+
+
+                    */
 
                     var strokeWidthsArray = Object.keys(strokeWidths).map(function(key) {
                         return [key, strokeWidths[key]];
@@ -134,7 +146,7 @@ define([
                     //console.log(strokeWidthsArray)
                     //[[flow_id, strokewidth],[flow_id, strokewidth],[flow_id, strokewidth]] nach grösse
                     for (var i=0;i<strokeWidthsArray.length;i++){
-                        var key_ = strokeWidthsArray[i][0];
+                        var key = strokeWidthsArray[i][0];
                         var strokeWidth = strokeWidthsArray[i][1];
                         if (i===0){
                             var offset = strokeWidth/2;
@@ -145,7 +157,7 @@ define([
                                 offset = (offset + strokeWidthsArray[j][1])
                             }
                         }
-                        strokeWidthPerFlow[key_] = [strokeWidth, offset];
+                        strokeWidthPerFlow[key] = [strokeWidth, offset];
                     }
                 }
             }
@@ -166,13 +178,15 @@ define([
 
                 //color
                 var type = flowsData[key].type,
-                    value = flowsData[key].value;
+                    value = flowsData[key].value,
+                    sourceLevel = nodesData[source]['level'],
+                    targetLevel = nodesData[target]['level'];
 
                 strokeWidth = strokeWidthPerFlow[key][0]
                 offset = strokeWidthPerFlow[key][1]
 
                 // drawPath
-                this.drawPath(sourceX, sourceY, targetX, targetY, type, value, offset, strokeWidth)
+                this.drawPath(sourceX, sourceY, targetX, targetY, type, value, offset, strokeWidth, sourceLevel, targetLevel)
             }   ////End for key in flowsData**********************************************************************************************************************
 
 
@@ -183,6 +197,7 @@ define([
 /*****************************************************************************************/
 // addpoint for each node
             nodes.forEach(function(node) {
+                console.log(node.level)
                 _this.addPoint(node.lon, node.lat, node.city, node.level, node.activityGroup);
             });
 
@@ -248,8 +263,21 @@ define([
         };
 
         specifyNodeSize(level){
-            if (level === 1) {return 8;}
-            if (level === 2) {return 7;}
+            // adjust node-size by different area and not radius to have a proportional size effect
+
+            if (level === '1') {return ((35^(5/7))/Math.sqrt(2*Math.PI));}
+            if (level === '2') {return ((31^(5/7))/Math.sqrt(2*Math.PI));}
+            if (level === '3') {return ((27^(5/7))/Math.sqrt(2*Math.PI));}
+            if (level === '4') {return ((23^(5/7))/Math.sqrt(2*Math.PI));}
+            if (level === '5') {return ((19^(5/7))/Math.sqrt(2*Math.PI));}
+            /*
+            if (level === '1') {return 15;}
+            if (level === '2') {return 13;}
+            if (level === '3') {return 11;}
+            if (level === '4') {return 9;}
+            if (level === '5') {return 7;}
+            */
+            return 10;
         }
 
         //function to add points to the map
@@ -263,7 +291,7 @@ define([
                 .append("circle")
                 .attr("cx", x)
                 .attr("cy", y)
-                .attr("r", 8)
+                .attr("r", this.specifyNodeSize(level))
                 .style("fill",this.specifyNodeColor(activityGroup))
                 .style("fill-opacity", 0.8)
                 .on("mouseover", function(d){
@@ -281,7 +309,7 @@ define([
         }
 
 
-        drawPath(sx, sy, tx, ty, type, value, offset, strokeWidth) {
+        drawPath(sx, sy, tx, ty, type, value, offset, strokeWidth, sourceLevel, targetLevel) {
 
             // draw arrow
             // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
@@ -381,10 +409,16 @@ define([
 
             // define the normal, let the line walk along the normal with an offset
             var norm = Math.sqrt(dx * dx + dy * dy),
-                sxpo = sxp + offset*(dy/norm),
-                sypo = syp - offset*(dx/norm),
-                txpo = txp + offset*(dy/norm),
-                typo = typ - offset*(dx/norm);
+                sxpo = sxp + offset *(dy/norm),
+                sypo = syp - offset *(dx/norm),
+                txpo = txp + offset *(dy/norm),
+                typo = typ - offset *(dx/norm);
+                /* totalStrokeWidth of all strokes added up between two points
+                sxpo = sxp + (offset - totalStrokeWidth/2)*(dy/norm),
+                sypo = syp - (offset - totalStrokeWidth/2)*(dx/norm),
+                txpo = txp + (offset - totalStrokeWidth/2)*(dy/norm),
+                typo = typ - (offset - totalStrokeWidth/2)*(dx/norm);
+                */
 
             var div = d3.select("body").append("div")
                 .attr("class", "tooltip")
@@ -396,8 +430,9 @@ define([
                 dypo = sypo - typo;
             var flowLength = Math.sqrt(dxpo * dxpo + dypo * dypo);
 
-            var sourceReduction = -15,
-                targetReduction = 15;
+            var sourceReduction = - this.specifyNodeSize(sourceLevel) ,
+                targetReduction = 5 + this.specifyNodeSize(targetLevel);
+
 
             // ratio between full line length and shortened line
             var sourceRatio = sourceReduction / flowLength,
@@ -405,7 +440,7 @@ define([
 
             // value by which line gets shorter
             var sxReductionValue = dxpo * sourceRatio,
-                syReductionValue= dypo * sourceRatio,
+                syReductionValue = dypo * sourceRatio,
                 txReductionValue = dxpo * targetRatio,
                 tyReductionValue = dypo * targetRatio;
 
@@ -421,6 +456,7 @@ define([
                               .attr("y2", typoa)
                               .attr("stroke-width", strokeWidth)
                               .attr("stroke", this.specifyLineColor (type))
+                .attr("stroke-opacity", 0.85)
                 .attr("marker-end", this.specifyArrowColor (type))
                 .on("mouseover", function(d){
                      d3.select(this).style("cursor", "pointer"),
@@ -442,3 +478,5 @@ define([
 
     return FlowMap;
 });
+
+// group elements: https://www.dashingd3js.com/svg-group-element-and-d3js

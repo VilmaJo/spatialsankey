@@ -16,14 +16,13 @@
             'd3': 'node_modules/d3/d3',
             'topojson': 'node_modules/topojson/dist/topojson',
             'd3-queue': 'node_modules/d3-queue/build/d3-queue',
-            'underscore': 'node_modules/underscore/underscore'
-            //'zoom': 'node_modules/d3-zoom-master/d3-zoom-master/index'
+            'leaflet': 'node_modules/leaflet/leaflet'
         }
     });
         
     require(['flowmap'], function(FlowMap){
         var flowMap = new FlowMap("container", { width: 1000 });
-        flowMap.renderCsv("data/countries.topo.json", "data/nodes.csv", "data/flows.csv");
+        flowMap.renderCsv("data/countries.topo.json", "data/nodes.csv", "data/flows.csv", "data/material.json");
     })
     
 </script>

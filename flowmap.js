@@ -1,6 +1,5 @@
 define([
-    'd3', 'topojson', 'd3-queue', 'underscore'
-    //, 'zoom'
+    'd3', 'topojson', 'd3-queue', 'leaflet'
 ], function(d3, topojson, d3queue){
 
     class FlowMap {
@@ -15,6 +14,7 @@ define([
             this.width = options.width || this.container.offsetWidth;
             this.height = options.height || this.width / 1.5;
             console.log(d3);
+            console.log(topojson);
 
             this.projection = d3.geo.mercator()
                 .center([25, 43])
@@ -22,56 +22,114 @@ define([
                 .scale(950);
 
             this.path = d3.geo.path().projection(this.projection);
+
             this.svg = d3.select(this.container)
                 .append("svg")
                 .attr("width", this.width)
                 .attr("height", this.height)
-                /*.call(d3.zoom().on("zoom", function () {
-                    this.svg.attr("transform", d3.event.transform)
-                }))
-                */
                 .append("g");
 
             this.g = this.svg.append("g");
 
         }
 
-        render(nodes, flows){
+        render(nodes, flows, material){
 
             // remember scope of 'this' as context for functions with different scope
-            var TV;
             var _this = this;
 
-            //nodes data
+    //nodes data
             var nodesData = {};
             nodes.forEach(function (node) {
                 nodesData[node.city] = {'city': node.city, 'lon': node.lon, 'lat': node.lat};
             });
 
-            //flows data
+    //flows data
             var flowsData = {};
             var flowsValues = [];           //get all flow-values from flowsData to use for path stroke-width
             var typeValue = {};
             //var typeValue = {};
-            var strokeWidthPerFlow = [];
             flows.forEach(function (flow) {
                 flowsData[flow.id] = {'id': flow.id, 'source': flow.source, 'target': flow.target, 'value': flow.value, 'type': flow.type};
                 flowsValues.push(parseInt(flow.value));
                 typeValue[flow.type] = {'value': flow.value, 'type': flow.type};
             });
-            console.log(flowsValues)
-            console.log(flowsData)
-            console.log(typeValue)
 
-            flowsValues.sort(function(a, b) {
-                return a - b
+    //material data
+            var materialData = {};
+            material.forEach(function(d) {
+                materialData[d.id]={'id':d.id.toString(), 'parent':d.parent.toString(), 'name':d.name, 'level':d.level};
             });
-            console.log(flowsValues)
+            console.log(materialData)
+
+            var parents= [];
+            for (var key in materialData) {
+                var name = materialData[key].name,
+                    id = materialData[key].id,
+                    parent = materialData[key].parent;
+
+                parentName = [];
+                if (id === parent) {
+                    parentName.push(materialData[key].id = name);
+                }
+            }
+            console.log(parentName)
 
 //*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
             //var typeValue = {};
-            var strokeWidth=[];
 
+            var strokeWidthPerFlow = {};
+            var connections = [];
+            for (var key in flowsData) {
+                var source = flowsData[key].source,
+                    target = flowsData[key].target;
+
+                var connection = source+target;
+
+                if (connections.includes(connection) === false){                           //wenn die connection noch nicht im array connections ist, dann push sie da rein
+                    connections.push(connection)                                        // wir betrachten jede connection nur einmal
+
+                    var strokeWidths = {};                                                           // get the strokeWidths for each flow that belongs to individual connections
+                    for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
+                        if (flowsData[key].source+flowsData[key].target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
+                            var maxValue = Math.max.apply(null, flowsValues),
+                                maxWidth = 7,
+                                width= flowsData[key].value;
+                            var strokeWidth = width / maxValue * maxWidth;
+
+                            strokeWidths[key] = strokeWidth;
+                        }
+                    }
+
+                    var strokeWidthsArray = Object.keys(strokeWidths).map(function(key) {
+                        return [key, strokeWidths[key]];
+                    });
+                    ///https://stackoverflow.com/questions/25500316/sort-a-dictionary-by-value-in-javascript
+
+                    strokeWidthsArray.sort(function(first, second) {
+                        return second[1] - first[1];
+                    });
+
+                    //console.log(strokeWidthsArray)
+                    //[[flow_id, strokewidth],[flow_id, strokewidth],[flow_id, strokewidth]] nach grösse
+                    for (var i=0;i<strokeWidthsArray.length;i++){
+                        var key_ = strokeWidthsArray[i][0];
+                        var strokeWidth = strokeWidthsArray[i][1];
+                        if (i===0){
+                            var offset = strokeWidth/2;
+                        }
+                        else{
+                            var offset = strokeWidth/2;
+                            for (var j=0;j<i;j++){
+                                offset = (offset + strokeWidthsArray[j][1])
+                            }
+                        }
+
+                        strokeWidthPerFlow[key_] = [strokeWidth, offset];
+                    }
+                }
+
+            }
 
             for (var key in flowsData) {
                 //source
@@ -90,32 +148,20 @@ define([
                 //color
                 var type = flowsData[key].type;
 
-                //define strokeWidth
-                var maxValue = Math.max.apply(null, flowsValues),
-                    maxWidth = 4,
-                    width= flowsData[key].value;
-                this.strokeWidth = width / maxValue * maxWidth;
-                // add condition: if (strokeWidth<0.2) {return 1} else return strokeWidth;
-
-                strokeWidth.push(this.strokeWidth);
-
-                var offset;
-
+                strokeWidth = strokeWidthPerFlow[key][0]
+                offset = strokeWidthPerFlow[key][1]
 
                 // drawPath
-                this.drawPath(sourceX, sourceY, targetX, targetY, type, typeValue, offset)
-
-
+                this.drawPath(sourceX, sourceY, targetX, targetY, type, typeValue, offset, strokeWidth)
             }   ////End for key in flowsData**********************************************************************************************************************
 
 
-            strokeWidth.sort(function(a, b){
-                return a - b
-            });
-
-            console.log(strokeWidth)
+            console.log(connections)
+            console.log(strokeWidths)
+            console.log(strokeWidthPerFlow)
 
 
+/*****************************************************************************************/
 // addpoint for each node
             nodes.forEach(function(node) {
                 _this.addPoint(node.lon, node.lat, node.city, node.type);
@@ -123,7 +169,7 @@ define([
 
         }   //End render (nodes, flows)**********************************************************************************************************************
 
-        renderCsv(topoJson, nodesCsv, flowsCsv){
+        renderCsv(topoJson, nodesCsv, flowsCsv, materialJson){
             var _this = this;
 
             function drawTopo(topojson) {
@@ -139,15 +185,16 @@ define([
             }
 
             // Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
-            function loaded(error, world, nodes, flows) {
+            function loaded(error, world, nodes, flows, material) {
                 //world data
                 var countries = topojson.feature(world, world.objects.countries).features;
                 drawTopo(countries);
-                _this.render(nodes, flows);
+                _this.render(nodes, flows, material);
             }
             d3queue.queue().defer(d3.json, topoJson)
                 .defer(d3.csv, nodesCsv)
                 .defer(d3.csv, flowsCsv)
+                .defer(d3.json,materialJson)
                 .await(loaded);
         }
 
@@ -217,7 +264,7 @@ define([
         }
 
 
-        drawPath(sx, sy, tx, ty, type, typeValue, offset) {
+        drawPath(sx, sy, tx, ty, type, typeValue, offset, strokeWidth) {
        // toopltip source: http://bl.ocks.org/d3noob/a22c42db65eb00d4e369
             var iFunc = d3.interpolateObject([sx,sy], [tx,ty]);
             var lineData = d3.range(0, 1, 1/15).map( iFunc );
@@ -233,7 +280,7 @@ define([
                 .attr("orient", "auto")
                 .append("path")
                 .attr("d", "M 3 5.5 3.5 5.5" +      //left
-                    " 4 6 " +                       //up
+                    " 4.5 6 " +                       //up
                     " 3.5 6.5  3 6.5 " +            //right
                     "3.5 6")                        //down
                 .style("fill", "#2e7b50"); //somehow has to be dependent on the route
@@ -247,7 +294,7 @@ define([
                 .attr("orient", "auto")
                 .append("path")
                 .attr("d", "M 3 5.5 3.5 5.5" +      //left
-                    " 4 6 " +                       //up
+                    " 4.5 6 " +                       //up
                     " 3.5 6.5  3 6.5 " +            //right
                     "3.5 6")                        //down
                 .style("fill", "#4682b4"); //somehow has to be dependent on the route
@@ -261,7 +308,7 @@ define([
                 .attr("orient", "auto")
                 .append("path")
                 .attr("d", "M 3 5.5 3.5 5.5" +      //left
-                    " 4 6 " +                       //up
+                    " 4.5 6 " +                       //up
                     " 3.5 6.5  3 6.5 " +            //right
                     "3.5 6")                        //down
                 .style("fill", "#cc8400"); //somehow has to be dependent on the route
@@ -275,7 +322,7 @@ define([
                 .attr("orient", "auto")
                 .append("path")
                 .attr("d", "M 3 5.5 3.5 5.5" +      //left
-                    " 4 6 " +                       //up
+                    " 4.5 6 " +                       //up
                     " 3.5 6.5  3 6.5 " +            //right
                     "3.5 6")                        //down
                 .style("fill", "#ebda09"); //somehow has to be dependent on the route
@@ -289,7 +336,7 @@ define([
                 .attr("orient", "auto")
                 .append("path")
                 .attr("d", "M 3 5.5 3.5 5.5" +      //left
-                    " 4 6 " +                       //up
+                    " 4.5 6 " +                       //up
                     " 3.5 6.5  3 6.5 " +            //right
                     "3.5 6")                        //down
                 .style("fill", "#348984"); //somehow has to be dependent on the route
@@ -303,32 +350,32 @@ define([
                 .attr("orient", "auto")
                 .append("path")
                 .attr("d", "M 3 5.5 3.5 5.5" +      //left
-                    " 4 6 " +                       //up
+                    " 4.5 6 " +                       //up
                     " 3.5 6.5  3 6.5 " +            //right
                     "3.5 6")                        //down
                 .style("fill", "#893464"); //somehow has to be dependent on the route
 
-
-            console.log(this.strokeWidth)
-
-
+/***************************** OFFSET **********************************************************************************/
+/*
             // offset wird angepasst mit strokeWidth
-            var organic = typeValue.organic = this.strokeWidth,
-                plastic = typeValue.plastic = this.strokeWidth,
-                construction = typeValue.construction = this.strokeWidth,
-                food = typeValue.food = this.strokeWidth,
-                msw = typeValue.msw = this.strokeWidth,
-                hazardous = typeValue.hazardous = this.strokeWidth;
+            var organic = typeValue.organic = strokeWidth,
+                plastic = typeValue.plastic = strokeWidth,
+                construction = typeValue.construction = strokeWidth,
+                food = typeValue.food = strokeWidth,
+                msw = typeValue.msw = strokeWidth,
+                hazardous = typeValue.hazardous = strokeWidth;
 
-        //for each typeValue.type return value
+            //for each typeValue.type return value
 
-        var offset = 0                                              // vorgehen: ich packe in meinen koffer
+            var offset = 0                                              // vorgehen: ich packe in meinen koffer
             if (type === 'organic') {offset = offset;}                   // organic.value, organic.value + plastic.value + construction.value
             else if (type === 'plastic') {offset = organic;}              // organic.value + plastic.value,
             else if (type === 'construction') {offset = organic + plastic;}        // organic.value + plastic.value + construction.value
             else if (type === 'food') {offset = organic + plastic + construction;}                // ...
             else if (type === 'msw') {offset = organic + plastic + construction + food;}
-            else if (type === 'hazardous') {offset = organic + plastic + construction + food + msw;};
+            else if (type === 'hazardous') {offset = organic + plastic + construction + food + msw;};*/
+/***************************** OFFSET **********************************************************************************/
+
 
             //add projection to sx,sy,tx,ty
             var sxp = this.projection([sx,sy])[0],
@@ -379,7 +426,7 @@ define([
                               .attr("y1", sypoa)
                               .attr("x2", txpoa)
                               .attr("y2", typoa)
-                              .attr("stroke-width", this.strokeWidth)
+                              .attr("stroke-width", strokeWidth)
                               .attr("stroke", this.specifyLineColor (type))
                 .attr("marker-end", this.specifyArrowColor (type))
                 .on("mouseover", function(d){

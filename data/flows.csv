@@ -19,7 +19,7 @@ id,source,target,value,type
 18,HAM,AMS,270,hazardous
 19,HAM,AMS,90,construction
 20,PEC,BRU,300,organic
-21,PEC,BRU,300,msw
-22,PEC,BRU,300,plastic
-23,PEC,BRU,300,food
-24,PEC,BRU,300,construction
+21,PEC,BRU,200,msw
+22,PEC,BRU,170,plastic
+23,PEC,BRU,230,food
+24,PEC,BRU,150,construction

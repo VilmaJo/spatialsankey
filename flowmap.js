@@ -41,42 +41,62 @@ define([
     //nodes data
             var nodesData = {};
             nodes.forEach(function (node) {
-                nodesData[node.city] = {'city': node.city, 'lon': node.lon, 'lat': node.lat};
+                nodesData[node.city] = {'city': node.city, 'lon': node.lon, 'lat': node.lat, 'level': node.level,
+                                        'level_name': node.level_name, 'activity-group': node.activityGroup};
             });
+
 
     //flows data
             var flowsData = {};
             var flowsValues = [];           //get all flow-values from flowsData to use for path stroke-width
-            var typeValue = {};
-            //var typeValue = {};
             flows.forEach(function (flow) {
                 flowsData[flow.id] = {'id': flow.id, 'source': flow.source, 'target': flow.target, 'value': flow.value, 'type': flow.type};
                 flowsValues.push(parseInt(flow.value));
-                typeValue[flow.type] = {'value': flow.value, 'type': flow.type};
             });
 
     //material data
             var materialData = {};
+
             material.forEach(function(d) {
                 materialData[d.id]={'id':d.id.toString(), 'parent':d.parent.toString(), 'name':d.name, 'level':d.level};
             });
             console.log(materialData)
 
-            var parents= [];
-            for (var key in materialData) {
-                var name = materialData[key].name,
-                    id = materialData[key].id,
-                    parent = materialData[key].parent;
 
-                parentName = [];
-                if (id === parent) {
-                    parentName.push(materialData[key].id = name);
+
+            function count(){
+                var parents = [];
+                for (var key in materialData) {
+                    var name = materialData[key].name,
+                        id = materialData[key].id,
+                        parent = materialData[key].parent;
+
+                    parents.push(parent)
                 }
-            }
-            console.log(parentName)
+                console.log(parents)
+                parents.sort();
+
+                var current = null;
+                var cnt = 0;
+
+                for (var i = 0; i < parents.length(); i++){
+                    if (parents[i] != current){
+                        if (cnt > 0){
+                            console.log(current + ' comes' + cnt + 'times');
+                        }
+                        current = parents[i];
+                        cnt = 1;
+                    }
+                    else {cnt ++;}
+                }
+                if (count > 0){
+                    console.log(current + ' comes' + cnt + ' times');
+                }
+
+            };
+
 
 //*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
-            //var typeValue = {};
 
             var strokeWidthPerFlow = {};
             var connections = [];
@@ -100,6 +120,7 @@ define([
                             strokeWidths[key] = strokeWidth;
                         }
                     }
+                    console.log(strokeWidths)
 
                     var strokeWidthsArray = Object.keys(strokeWidths).map(function(key) {
                         return [key, strokeWidths[key]];
@@ -124,11 +145,9 @@ define([
                                 offset = (offset + strokeWidthsArray[j][1])
                             }
                         }
-
                         strokeWidthPerFlow[key_] = [strokeWidth, offset];
                     }
                 }
-
             }
 
             for (var key in flowsData) {
@@ -146,13 +165,14 @@ define([
                     flow = [source, target];
 
                 //color
-                var type = flowsData[key].type;
+                var type = flowsData[key].type,
+                    value = flowsData[key].value;
 
                 strokeWidth = strokeWidthPerFlow[key][0]
                 offset = strokeWidthPerFlow[key][1]
 
                 // drawPath
-                this.drawPath(sourceX, sourceY, targetX, targetY, type, typeValue, offset, strokeWidth)
+                this.drawPath(sourceX, sourceY, targetX, targetY, type, value, offset, strokeWidth)
             }   ////End for key in flowsData**********************************************************************************************************************
 
 
@@ -160,11 +180,10 @@ define([
             console.log(strokeWidths)
             console.log(strokeWidthPerFlow)
 
-
 /*****************************************************************************************/
 // addpoint for each node
             nodes.forEach(function(node) {
-                _this.addPoint(node.lon, node.lat, node.city, node.type);
+                _this.addPoint(node.lon, node.lat, node.city, node.level, node.activityGroup);
             });
 
         }   //End render (nodes, flows)**********************************************************************************************************************
@@ -199,11 +218,11 @@ define([
         }
 
 
-        specifyNodeColor(type) {
-            if (type === 'P1' || type === 'P2' || type === 'P3') {return '#2e7b50';}
-            if (type === 'D' ) {return '#348984';}
-            if (type === 'S' ) {return '#4682b4';}
-            if (type === 'C' ) {return '#cc8400';}
+        specifyNodeColor(activityGroup) {
+            if (activityGroup === '1' || activityGroup === '2' || activityGroup === '3') {return '#2e7b50';}
+            if (activityGroup === '4' ) {return '#348984';}
+            if (activityGroup === '5' ) {return '#4682b4';}
+            if (activityGroup === '6' ) {return '#cc8400';}
             return '#c95f64';
         };
 
@@ -228,8 +247,13 @@ define([
             return "url(#arrow1)";
         };
 
+        specifyNodeSize(level){
+            if (level === 1) {return 8;}
+            if (level === 2) {return 7;}
+        }
+
         //function to add points to the map
-        addPoint(lon, lat, city, type) {
+        addPoint(lon, lat, city, level, activityGroup) {
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
 
@@ -240,19 +264,12 @@ define([
                 .attr("cx", x)
                 .attr("cy", y)
                 .attr("r", 8)
-                .style("fill",this.specifyNodeColor(type))
+                .style("fill",this.specifyNodeColor(activityGroup))
                 .style("fill-opacity", 0.8)
-                .style("stroke-opacity",0.8)
-                .style("stroke", this.specifyNodeColor(type))
-                .style("stroke-width", "3px")
-                .style("stroke-dasharray","1, 1")
                 .on("mouseover", function(d){
-                    return label.text(function(d){return city;}),
-                        point.style("stroke-dasharray","0.5 0.5"), d3.select(this).style("cursor", "pointer")})
+                    return label.text(function(d){return city;}), d3.select(this).style("cursor", "pointer")})
                 .on("mouseout", function(d) {
-                    return label.text(function(d){return " ";}),
-                        point.style("stroke-dasharray","1, 1")});
-
+                    return label.text(function(d){return " ";})});
 
             var label = this.g.append("g")
                 .append("text")
@@ -264,10 +281,7 @@ define([
         }
 
 
-        drawPath(sx, sy, tx, ty, type, typeValue, offset, strokeWidth) {
-       // toopltip source: http://bl.ocks.org/d3noob/a22c42db65eb00d4e369
-            var iFunc = d3.interpolateObject([sx,sy], [tx,ty]);
-            var lineData = d3.range(0, 1, 1/15).map( iFunc );
+        drawPath(sx, sy, tx, ty, type, value, offset, strokeWidth) {
 
             // draw arrow
             // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
@@ -355,27 +369,6 @@ define([
                     "3.5 6")                        //down
                 .style("fill", "#893464"); //somehow has to be dependent on the route
 
-/***************************** OFFSET **********************************************************************************/
-/*
-            // offset wird angepasst mit strokeWidth
-            var organic = typeValue.organic = strokeWidth,
-                plastic = typeValue.plastic = strokeWidth,
-                construction = typeValue.construction = strokeWidth,
-                food = typeValue.food = strokeWidth,
-                msw = typeValue.msw = strokeWidth,
-                hazardous = typeValue.hazardous = strokeWidth;
-
-            //for each typeValue.type return value
-
-            var offset = 0                                              // vorgehen: ich packe in meinen koffer
-            if (type === 'organic') {offset = offset;}                   // organic.value, organic.value + plastic.value + construction.value
-            else if (type === 'plastic') {offset = organic;}              // organic.value + plastic.value,
-            else if (type === 'construction') {offset = organic + plastic;}        // organic.value + plastic.value + construction.value
-            else if (type === 'food') {offset = organic + plastic + construction;}                // ...
-            else if (type === 'msw') {offset = organic + plastic + construction + food;}
-            else if (type === 'hazardous') {offset = organic + plastic + construction + food + msw;};*/
-/***************************** OFFSET **********************************************************************************/
-
 
             //add projection to sx,sy,tx,ty
             var sxp = this.projection([sx,sy])[0],
@@ -434,7 +427,7 @@ define([
                          div.transition()
                              .duration(200)
                              .style("opacity", .9);
-                         div.html("Material: " + type + "<br/>" + "Fraction: " + typeValue)
+                         div.html("Material: " + type + "<br/>" + "Fraction: " + value)
                              .style("left", (d3.event.pageX) + "px")
                              .style("top", (d3.event.pageY - 28) + "px")})
                 .on("mouseout", function(d) {
@@ -449,35 +442,3 @@ define([
 
     return FlowMap;
 });
-
-/*
-Aktuelle AUFGABEN
-        *** - Farbe nach type
-        *** - StrokeWidth: Breite nach value
-		        Vorgehen: value / maxValue * maxStrokeWidth
-- Punkte
-    *** Größe der Punkte abhängig nach in & outflows
-    - PieChart mit Anteilen für in und outflows: https://bl.ocks.org/Andrew-Reid/838aa0957c6492eaf4590c5bc5830a84
-    - Bei Klick auf den Punkt erscheint ein Tortendiagramm mit Anteilen der jeweiligen Materials (type)
--Linien
-    - Richtung anzeigen: 1 arrow mit marker-start oder marker-end, aber: bei bend funktioniert es nicht (bend einfügen) und anzeige in bestimmtem abstand
-        - arcTween: mit animation?
-        - transition https://github.com/d3/d3-transition#transition_attrTween
-        - chained transition (dashedarray?)https://bl.ocks.org/mbostock/70d5541b547cc222aa02
-        - marker end: line.length - line.lengt/10 --> hierfür wird aber x und y koordinaten benötigt:
-                        vorgehen: line-length, dann davon einen anteil zurück, hier die x und y coordinaten bestimmen und an dieser stelle ist marker end
-- bend anpassen nach Anzahl von flows: bzw bend nach typ, da an gleicher stelle sein soll?
-    Bend: Aabhängigkeit des bends von strokewidth --> zu komplziert? erst muss verstanden werden wie sich die anteile nach außen hin verkleinern
-    *** - reihenfolge der linien festlegen
-    *** - bend je bestimmtem typ wie bei farben festlegen
-    *
-    * mittelpunkt zwischen zwei punkten finden auf dem arc, zum nächsten mittelpunkt bestimmter abstand?
-- Beziers statt arcs??
-    - Bedingung einfügen: wenn type gleiches target xy und source xy hat, dann hintereinander verlaufen
-
-
-    Punkte nach Typen in unterschiedlichen Farben (evtl Schraffuren und Umrandungen mit dasharray oder ähnlichem?
-    damit die Auswahl da ist(keine Piecharts)
-
-*/
-

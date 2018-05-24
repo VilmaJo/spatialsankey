@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="24eeb011-dfd9-4ee3-90ec-62d8d73665c9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/flows.csv" afterPath="$PROJECT_DIR$/data/flows.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flowmap.js" afterPath="$PROJECT_DIR$/flowmap.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -18,13 +17,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="flowmap.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="flowmap.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flowmap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="119" column="60" lean-forward="false" selection-start-line="119" selection-start-column="60" selection-end-line="119" selection-end-column="60" />
+            <state relative-caret-position="598">
+              <caret line="23" column="66" lean-forward="true" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
               <folding>
-                <element signature="e#2394#2620#0" expanded="false" />
+                <element signature="e#2243#3587#0" expanded="false" />
+                <element signature="e#12383#12618#0" expanded="false" />
+                <element signature="e#22315#23781#0" expanded="false" />
+                <marker date="1527179143113" expanded="false" signature="2938:3338" ph="{...}" />
+                <marker date="1527179143113" expanded="false" signature="3367:3501" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -33,8 +36,8 @@
       <file leaf-file-name="actors.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Daten Repair/actors.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="237261" column="20" lean-forward="true" selection-start-line="237261" selection-start-column="20" selection-end-line="237261" selection-end-column="20" />
+            <state relative-caret-position="336">
+              <caret line="1789" column="23" lean-forward="true" selection-start-line="1789" selection-start-column="23" selection-end-line="1789" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -43,8 +46,8 @@
       <file leaf-file-name="actors-filtered.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Daten Repair/actors-filtered.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="123" column="16" lean-forward="false" selection-start-line="123" selection-start-column="16" selection-end-line="123" selection-end-column="16" />
+            <state relative-caret-position="231">
+              <caret line="76" column="19" lean-forward="true" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -53,8 +56,8 @@
       <file leaf-file-name="actors-filtered-locations.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Daten Repair/actors-filtered-locations.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+            <state relative-caret-position="378">
+              <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -63,8 +66,28 @@
       <file leaf-file-name="material.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/material.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="4094" column="36" lean-forward="false" selection-start-line="4094" selection-start-column="36" selection-end-line="4094" selection-end-column="36" />
+            <state relative-caret-position="175">
+              <caret line="238" column="6" lean-forward="false" selection-start-line="257" selection-start-column="18" selection-end-line="257" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="actor2actor-products-of-agriculture-aggregated.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Daten Repair/actor2actor-products-of-agriculture-aggregated.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="actor2actor-all-materials-aggregated.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../Daten Repair/actor2actor-all-materials-aggregated.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-66423">
+              <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -111,20 +134,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>radius</find>
-      <find>pointValue</find>
-      <find>makeArc</find>
-      <find>color</find>
-      <find>drawP</find>
-      <find>nodes</find>
-      <find>consol</find>
-      <find>make</find>
       <find>strokeW</find>
       <find>poin</find>
       <find>link</find>
       <find>specify</find>
       <find>specifyColor</find>
-      <find>add</find>
       <find>das</find>
       <find>specifyC</find>
       <find>inter</find>
@@ -141,6 +155,15 @@
       <find>typeV</find>
       <find>specifyArrowColor</find>
       <find>draw</find>
+      <find>activity</find>
+      <find>909</find>
+      <find>911</find>
+      <find>9</find>
+      <find>add</find>
+      <find>point</find>
+      <find>tot</find>
+      <find>910</find>
+      <find>cons</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,6 +240,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -238,7 +262,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -318,16 +341,16 @@
       <workItem from="1523944899672" duration="2785000" />
       <workItem from="1526487393095" duration="794000" />
       <workItem from="1526627565108" duration="30450000" />
-      <workItem from="1526730062121" duration="36563000" />
+      <workItem from="1526730062121" duration="36658000" />
+      <workItem from="1527148958852" duration="21209000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="315915000" />
+    <option name="totallyTimeSpent" value="337219000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13072917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -385,21 +408,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/flows.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Zwischenablage">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/map.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -446,7 +454,11 @@
         <state relative-caret-position="6384">
           <caret line="304" column="0" lean-forward="true" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
           <folding>
-            <element signature="e#2394#2620#0" expanded="false" />
+            <element signature="e#2243#3587#0" expanded="false" />
+            <element signature="e#12383#12618#0" expanded="false" />
+            <element signature="e#22315#23781#0" expanded="false" />
+            <marker date="1527179143113" expanded="false" signature="2938:3338" ph="{...}" />
+            <marker date="1527179143113" expanded="false" signature="3367:3501" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -606,14 +618,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/material_table.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="19" column="43" lean-forward="false" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/material_table.html" />
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -622,14 +627,6 @@
             <marker date="1527005938794" expanded="true" signature="0:495" ph="{&quot;name&quot;: &quot;flowmap&quot;...}" />
             <marker date="1527005938794" expanded="true" signature="308:493" ph="{&quot;d3&quot;: &quot;3&quot;...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/material.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="4094" column="36" lean-forward="false" selection-start-line="4094" selection-start-column="36" selection-end-line="4094" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -645,25 +642,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="4" column="51" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="51" />
-          <folding>
-            <element signature="e#532#184675#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Daten Repair/actors-filtered.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="123" column="16" lean-forward="false" selection-start-line="123" selection-start-column="16" selection-end-line="123" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Daten Repair/actors-filtered-locations.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -671,14 +649,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nodes.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="32" lean-forward="false" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -691,21 +661,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/nodes.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="32" lean-forward="false" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../Daten Repair/actors.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="237261" column="20" lean-forward="true" selection-start-line="237261" selection-start-column="20" selection-end-line="237261" selection-end-column="20" />
+        <state relative-caret-position="336">
+          <caret line="1789" column="23" lean-forward="true" selection-start-line="1789" selection-start-column="23" selection-end-line="1789" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Daten Repair/actors-filtered.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="76" column="19" lean-forward="true" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Daten Repair/actors-filtered-locations.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/material.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="238" column="6" lean-forward="false" selection-start-line="257" selection-start-column="18" selection-end-line="257" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flowmap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="119" column="60" lean-forward="false" selection-start-line="119" selection-start-column="60" selection-end-line="119" selection-end-column="60" />
+        <state relative-caret-position="598">
+          <caret line="23" column="66" lean-forward="true" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
           <folding>
-            <element signature="e#2394#2620#0" expanded="false" />
+            <element signature="e#2243#3587#0" expanded="false" />
+            <element signature="e#12383#12618#0" expanded="false" />
+            <element signature="e#22315#23781#0" expanded="false" />
+            <marker date="1527179143113" expanded="false" signature="2938:3338" ph="{...}" />
+            <marker date="1527179143113" expanded="false" signature="3367:3501" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Daten Repair/actor2actor-products-of-agriculture-aggregated.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Daten Repair/actor2actor-all-materials-aggregated.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-66423">
+          <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>

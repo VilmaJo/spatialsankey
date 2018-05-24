@@ -45,7 +45,6 @@ define([
                                         'level_name': node.level_name, 'activity-group': node.activityGroup};
             });
 
-
     //flows data
             var flowsData = {};
             var flowsValues = [];           //get all flow-values from flowsData to use for path stroke-width
@@ -60,11 +59,10 @@ define([
             material.forEach(function(d) {
                 materialData[d.id]={'id':d.id.toString(), 'parent':d.parent.toString(), 'name':d.name, 'level':d.level};
             });
-            console.log(materialData)
 
-
-
-            function count(){
+/*
+        //count sum of each individual parent to geht highest
+            // to find out highest amount of flows with same source & target per  --> result: 9
                 var parents = [];
                 for (var key in materialData) {
                     var name = materialData[key].name,
@@ -78,28 +76,33 @@ define([
 
                 var current = null;
                 var cnt = 0;
+                var countsComplete = [];
 
-                for (var i = 0; i < parents.length(); i++){
+                for (var i=0;i<parents.length;i++){
                     if (parents[i] != current){
                         if (cnt > 0){
-                            console.log(current + ' comes' + cnt + 'times');
+                            console.log(current + ' comes ' + cnt + ' times');
+                            countsComplete.push(cnt);
                         }
                         current = parents[i];
                         cnt = 1;
                     }
                     else {cnt ++;}
                 }
-                if (count > 0){
+                if (cnt > 0){
                     console.log(current + ' comes' + cnt + ' times');
+                    countsComplete.push(cnt)
                 }
-
-            };
+                countsComplete.sort();
+                console.log(countsComplete)
+*/
 
 
 //*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
-
             var strokeWidthPerFlow = {};
             var connections = [];
+            var strokeWidthArrayPerConnection = {};
+            var connectionSourceTarget = {};
             for (var key in flowsData) {
                 var source = flowsData[key].source,
                     target = flowsData[key].target;
@@ -108,8 +111,9 @@ define([
 
                 if (connections.includes(connection) === false){                           //wenn die connection noch nicht im array connections ist, dann push sie da rein
                     connections.push(connection)                                        // wir betrachten jede connection nur einmal
-
+                    connectionSourceTarget [key] = {'connection':connection, 'source':source, 'target':target};
                     var strokeWidths = {};                                                           // get the strokeWidths for each flow that belongs to individual connections
+                    var strokeArray = [];
                     for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
                         if (flowsData[key].source + flowsData[key].target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
                             var maxValue = Math.max.apply(null, flowsValues),
@@ -118,32 +122,19 @@ define([
                             var strokeWidth = width / maxValue * maxWidth;
 
                             strokeWidths[key] = strokeWidth;
+                            strokeArray.push(strokeWidth)
                         }
                     }
-                    console.log(strokeWidths)
-                    /*
-
-                    var totalStrokeWidths = {};
-                    totalStrokeWidths[key] = strokeWidths.reduce((a,b) => a+b, 0);
-                    console.log(totalStrokeWidths)
-
-                    var arr = [1,2,3,4];
-                    var total=0;
-                    for(var i in arr) { total += arr[i]; }
-
-
-                    */
-
+                    strokeWidthArrayPerConnection[connection]=strokeArray;
+                    //make items array to sort the values
                     var strokeWidthsArray = Object.keys(strokeWidths).map(function(key) {
                         return [key, strokeWidths[key]];
                     });
                     ///https://stackoverflow.com/questions/25500316/sort-a-dictionary-by-value-in-javascript
-
                     strokeWidthsArray.sort(function(first, second) {
                         return second[1] - first[1];
                     });
 
-                    //console.log(strokeWidthsArray)
                     //[[flow_id, strokewidth],[flow_id, strokewidth],[flow_id, strokewidth]] nach grösse
                     for (var i=0;i<strokeWidthsArray.length;i++){
                         var key = strokeWidthsArray[i][0];
@@ -162,6 +153,18 @@ define([
                 }
             }
 
+            //get the sum of all individual strokeWidths per same source & target
+            var totalStrokeWidths ={};
+            for ( var key in strokeWidthArrayPerConnection) {
+                var eachArray = strokeWidthArrayPerConnection[key],
+                    totalStrokeWidthPerArray = 0;
+                    for (var i in eachArray){
+                        totalStrokeWidthPerArray += eachArray[i];
+                    }
+                    totalStrokeWidths[key] = totalStrokeWidthPerArray;
+            }
+
+
             for (var key in flowsData) {
                 //source
                 var source = flowsData[key].source,             //die source wird aus den flowsData je key gezogen
@@ -174,7 +177,8 @@ define([
                     targetY = nodesData[target]['lat'],
                     targetCoords = [targetX, targetY],
                     //flow für Krümmung
-                    flow = [source, target];
+                    flow = [source, target],
+                    flowCoords = [sourceCoords, targetCoords];
 
                 //color
                 var type = flowsData[key].type,
@@ -187,17 +191,11 @@ define([
 
                 // drawPath
                 this.drawPath(sourceX, sourceY, targetX, targetY, type, value, offset, strokeWidth, sourceLevel, targetLevel)
-            }   ////End for key in flowsData**********************************************************************************************************************
-
-
-            console.log(connections)
-            console.log(strokeWidths)
-            console.log(strokeWidthPerFlow)
+            } ////End for key in flowsData**********************************************************************************************************************
 
 /*****************************************************************************************/
 // addpoint for each node
             nodes.forEach(function(node) {
-                console.log(node.level)
                 _this.addPoint(node.lon, node.lat, node.city, node.level, node.activityGroup);
             });
 
@@ -264,7 +262,6 @@ define([
 
         specifyNodeSize(level){
             // adjust node-size by different area and not radius to have a proportional size effect
-
             if (level === '1') {return ((35^(5/7))/Math.sqrt(2*Math.PI));}
             if (level === '2') {return ((31^(5/7))/Math.sqrt(2*Math.PI));}
             if (level === '3') {return ((27^(5/7))/Math.sqrt(2*Math.PI));}
@@ -284,7 +281,6 @@ define([
         addPoint(lon, lat, city, level, activityGroup) {
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
-
 
             var point = this.g.append("g")
                 .attr("class", "gpoint")
@@ -313,6 +309,20 @@ define([
 
             // draw arrow
             // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
+            var arrow = this.svg.append("marker")
+                .attr("id", "arrow")
+                .attr("refX", 3.5)      //defines position on the line
+                .attr("refY", 6)
+                .attr("markerWidth", 10)
+                .attr("markerHeight", 10)
+                .attr("orient", "auto")
+                .append("path")
+                .attr("d", "M 3 5.5 3.5 5.5" +      //left
+                    " 4.5 6 " +                       //up
+                    " 3.5 6.5  3 6.5 " +            //right
+                    "3.5 6")                        //down
+                .style("fill", "grey"); //somehow has to be dependent on the route
+
             var arrow1 = this.svg.append("marker")
                 .attr("id", "arrow1")
                 .attr("refX", 3.5)      //defines position on the line
@@ -407,7 +417,8 @@ define([
             var dx = txp - sxp,
                 dy = typ - syp;
 
-            // define the normal, let the line walk along the normal with an offset
+            // define the offset of each flow to be able to see individual flows with same source and target coordinates
+            // define the normal, let the line go along the normal with an offset
             var norm = Math.sqrt(dx * dx + dy * dy),
                 sxpo = sxp + offset *(dy/norm),
                 sypo = syp - offset *(dx/norm),
@@ -420,10 +431,12 @@ define([
                 typo = typ - (offset - totalStrokeWidth/2)*(dx/norm);
                 */
 
+            // tooltip
             var div = d3.select("body").append("div")
                 .attr("class", "tooltip")
                 .style("opacity", 0);
 
+            //adjust line length
             //source: http://jsfiddle.net/3SY8v/
             //distance-x-projected-offset
             var dxpo = sxpo - txpo,
@@ -432,7 +445,6 @@ define([
 
             var sourceReduction = - this.specifyNodeSize(sourceLevel) ,
                 targetReduction = 5 + this.specifyNodeSize(targetLevel);
-
 
             // ratio between full line length and shortened line
             var sourceRatio = sourceReduction / flowLength,
@@ -444,10 +456,12 @@ define([
                 txReductionValue = dxpo * targetRatio,
                 tyReductionValue = dypo * targetRatio;
 
+            // source and target coordinates + projection + offset + adjusted length
             var sxpoa = sxpo + sxReductionValue,
                 sypoa = sypo + syReductionValue,
                 txpoa = txpo + txReductionValue,
                 typoa = typo + tyReductionValue;
+
 
             var flows = this.g.append("line")
                               .attr("x1", sxpoa)
@@ -471,7 +485,30 @@ define([
                             .duration(500)
                             .style("opacity", 0)}
                 );
-
+    /*
+            var flowsTotal = this.g.append("line")
+                                    .attr("x1", sxpoa)
+                                    .attr("y1", sypoa)
+                                    .attr("x2", txpoa)
+                                    .attr("y2", typoa)
+                                    .attr("stroke-width", totalStrokeWidth)
+                                    .attr("stroke", 'grey')
+                                    .attr("stroke-opacity", 0.85)
+                                    .attr("marker-end", "url(#arrow)")
+                                    .on("mouseover", function(d){
+                                        d3.select(this).style("cursor", "pointer"),
+                                            div.transition()
+                                                .duration(200)
+                                                .style("opacity", .9);
+                                        div.html("Material: " + type + "<br/>" + "Fraction: " + value)
+                                            .style("left", (d3.event.pageX) + "px")
+                                            .style("top", (d3.event.pageY - 28) + "px")})
+                                    .on("mouseout", function(d) {
+                                        div.transition()
+                                            .duration(500)
+                                            .style("opacity", 0)}
+                                    );
+        */
 
         }
     }

@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="flowmap.css">
     <script src="lib/require.js"></script>
+    <script src="transformData.js"></script>
 </head>
 <body>
 
@@ -19,10 +20,58 @@
             'leaflet': 'node_modules/leaflet/leaflet'
         }
     });
-        
+
+    function get(file) {
+        return new Promise(function(resolve, reject) {
+            var req = new XMLHttpRequest()
+            req.open( 'GET', file )
+            req.onload = function() {
+                if ( req.status == 200 )
+                // Resolve the promise with the response text
+                    resolve(req.response)
+                else
+                // Otherwise reject with the status text
+                    reject( Error( req.statusText ) )
+            }
+
+            // Handle network errors
+            req.onerror = function() {
+                reject( Error( "Network Error" ) )
+            }
+
+            // Make the request
+            req.send()
+        } )
+    }
+
     require(['flowmap'], function(FlowMap){
         var flowMap = new FlowMap("container", { width: 1000 });
-        flowMap.renderCsv("data/countries.topo.json", "data/nodes.csv", "data/flows.csv", "data/material.json");
+        var actors, locations, materials, actor2actor,
+            promises = [];                                                      // promise to load data asynchronously
+        promises.push(
+            get('data/actors-filtered.json').then(function(response){
+                actors = JSON.parse(response);
+        }));
+        promises.push(
+            get('data/actors-filtered-locations.json').then(function(response){
+                locations = JSON.parse(response);
+            }));
+        promises.push(
+            get('data/materials.json').then(function(response){
+                materials = JSON.parse(response);
+            }));
+        promises.push(
+            get('data/actor2actor-products-of-agriculture-aggregated.json').then(function(response){
+                actor2actor = JSON.parse(response);
+            }));
+
+        Promise.all(promises).then(function(){
+            var transformed = transformData(actors, locations, materials, actor2actor);             //to load data asynchronously, make sure the data is ready
+
+            flowMap.renderTopo('data/countries.topo.json', transformed.nodes, transformed.flows, transformed.styles);
+        });
+
+     //   flowMap.renderCsv("data/countries.topo.json", "data/nodes.csv", "data/flows.csv", "data/material.json");
     })
     
 </script>

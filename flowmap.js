@@ -13,13 +13,11 @@ define([
 
             this.width = options.width || this.container.offsetWidth;
             this.height = options.height || this.width / 1.5;
-            console.log(d3);
-            console.log(topojson);
 
             this.projection = d3.geo.mercator()
                 .center([25, 43])
                 .translate([this.width / 2, this.height / 2])
-                .scale(950);
+                .scale(750);
 
             this.path = d3.geo.path().projection(this.projection);
 
@@ -33,69 +31,10 @@ define([
 
         }
 
-        render(nodes, flows, material){
+        render(nodesData, flowsData, styles){
 
             // remember scope of 'this' as context for functions with different scope
             var _this = this;
-
-    //nodes data
-            var nodesData = {};
-            nodes.forEach(function (node) {
-                nodesData[node.city] = {'city': node.city, 'lon': node.lon, 'lat': node.lat, 'level': node.level,
-                                        'level_name': node.level_name, 'activity-group': node.activityGroup};
-            });
-
-    //flows data
-            var flowsData = {};
-            var flowsValues = [];           //get all flow-values from flowsData to use for path stroke-width
-            flows.forEach(function (flow) {
-                flowsData[flow.id] = {'id': flow.id, 'source': flow.source, 'target': flow.target, 'value': flow.value, 'type': flow.type};
-                flowsValues.push(parseInt(flow.value));
-            });
-
-    //material data
-            var materialData = {};
-
-            material.forEach(function(d) {
-                materialData[d.id]={'id':d.id.toString(), 'parent':d.parent.toString(), 'name':d.name, 'level':d.level};
-            });
-
-/*
-        //count sum of each individual parent to geht highest
-            // to find out highest amount of flows with same source & target per  --> result: 9
-                var parents = [];
-                for (var key in materialData) {
-                    var name = materialData[key].name,
-                        id = materialData[key].id,
-                        parent = materialData[key].parent;
-
-                    parents.push(parent)
-                }
-                console.log(parents)
-                parents.sort();
-
-                var current = null;
-                var cnt = 0;
-                var countsComplete = [];
-
-                for (var i=0;i<parents.length;i++){
-                    if (parents[i] != current){
-                        if (cnt > 0){
-                            console.log(current + ' comes ' + cnt + ' times');
-                            countsComplete.push(cnt);
-                        }
-                        current = parents[i];
-                        cnt = 1;
-                    }
-                    else {cnt ++;}
-                }
-                if (cnt > 0){
-                    console.log(current + ' comes' + cnt + ' times');
-                    countsComplete.push(cnt)
-                }
-                countsComplete.sort();
-                console.log(countsComplete)
-*/
 
 
 //*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
@@ -103,22 +42,24 @@ define([
             var connections = [];
             var strokeWidthArrayPerConnection = {};
             var connectionSourceTarget = {};
+            this.styles = styles;
             for (var key in flowsData) {
                 var source = flowsData[key].source,
                     target = flowsData[key].target;
 
-                var connection = source+target;
+                var connection = source+'-'+target;
 
                 if (connections.includes(connection) === false){                           //wenn die connection noch nicht im array connections ist, dann push sie da rein
                     connections.push(connection)                                        // wir betrachten jede connection nur einmal
                     connectionSourceTarget [key] = {'connection':connection, 'source':source, 'target':target};
                     var strokeWidths = {};                                                           // get the strokeWidths for each flow that belongs to individual connections
                     var strokeArray = [];
+                    var maxValue = Math.max.apply(Math,Object.values(flowsData).map(function(flow){return flow.value}))
                     for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
-                        if (flowsData[key].source + flowsData[key].target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
-                            var maxValue = Math.max.apply(null, flowsValues),
-                                maxWidth = 3,
-                                width= flowsData[key].value;
+                        var flow = flowsData[key];
+                        if (flow.source+'-'+flow.target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
+                            var maxWidth = 10,
+                                width= flow.value;
                             var strokeWidth = width / maxValue * maxWidth;
 
                             strokeWidths[key] = strokeWidth;
@@ -167,41 +108,42 @@ define([
 
             for (var key in flowsData) {
                 //source
-                var source = flowsData[key].source,             //die source wird aus den flowsData je key gezogen
-                    sourceX = nodesData[source]['lon'],         //die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
-                    sourceY = nodesData[source]['lat'],
+                var flow = flowsData[key];
+                var sourceId = flow.source,             //die source wird aus den flowsData je key gezogen
+                    source = nodesData[sourceId],
+                    targetId = flow.target,
+                    target = nodesData[targetId];
+                if (!source || !target){
+                    console.log('Warning: missing actor for flow');
+                    continue;
+                }
+                var sourceX = source['lon'],         //die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
+                    sourceY = source['lat'],
                     sourceCoords = [sourceX, sourceY],
                     //target
-                    target = flowsData[key].target,
-                    targetX = nodesData[target]['lon'],
-                    targetY = nodesData[target]['lat'],
+                    targetX = target['lon'],
+                    targetY = target['lat'],
                     targetCoords = [targetX, targetY],
                     //flow für Krümmung
-                    flow = [source, target],
+                    //flow = [sourceId, targetId],
                     flowCoords = [sourceCoords, targetCoords];
-
-                //color
-                var type = flowsData[key].type,
-                    value = flowsData[key].value,
-                    sourceLevel = nodesData[source]['level'],
-                    targetLevel = nodesData[target]['level'];
 
                 strokeWidth = strokeWidthPerFlow[key][0]
                 offset = strokeWidthPerFlow[key][1]
-
                 // drawPath
-                this.drawPath(sourceX, sourceY, targetX, targetY, type, value, offset, strokeWidth, sourceLevel, targetLevel)
+
+                this.drawPath(sourceX, sourceY, targetX, targetY, flow.style, flow.label, offset, strokeWidth)
             } ////End for key in flowsData**********************************************************************************************************************
 
 /*****************************************************************************************/
 // addpoint for each node
-            nodes.forEach(function(node) {
-                _this.addPoint(node.lon, node.lat, node.city, node.level, node.activityGroup);
+            Object.values(nodesData).forEach(function(node) {
+                _this.addPoint(node.lon, node.lat, node.label, node.level, node.style);
             });
 
         }   //End render (nodes, flows)**********************************************************************************************************************
 
-        renderCsv(topoJson, nodesCsv, flowsCsv, materialJson){
+        renderTopo(topoJson, nodesData, flowsData, styles){
             var _this = this;
 
             function drawTopo(topojson) {
@@ -217,16 +159,13 @@ define([
             }
 
             // Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
-            function loaded(error, world, nodes, flows, material) {
+            function loaded(error, world) {
                 //world data
                 var countries = topojson.feature(world, world.objects.countries).features;
                 drawTopo(countries);
-                _this.render(nodes, flows, material);
+                _this.render(nodesData, flowsData, styles);
             }
             d3queue.queue().defer(d3.json, topoJson)
-                .defer(d3.csv, nodesCsv)
-                .defer(d3.csv, flowsCsv)
-                .defer(d3.json,materialJson)
                 .await(loaded);
         }
 
@@ -278,7 +217,8 @@ define([
         }
 
         //function to add points to the map
-        addPoint(lon, lat, city, level, activityGroup) {
+        addPoint(lon, lat, label, level, styleId) {
+console.log(this.styles[styleId].color)
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
 
@@ -288,14 +228,14 @@ define([
                 .attr("cx", x)
                 .attr("cy", y)
                 .attr("r", this.specifyNodeSize(level))
-                .style("fill",this.specifyNodeColor(activityGroup))
-                .style("fill-opacity", 0.8)
+                .style("fill",this.styles[styleId].color)
+                //.style("fill-opacity", 0.8)
                 .on("mouseover", function(d){
-                    return label.text(function(d){return city;}), d3.select(this).style("cursor", "pointer")})
+                    return label2.text(function(d){return label;}), d3.select(this).style("cursor", "pointer")})
                 .on("mouseout", function(d) {
-                    return label.text(function(d){return " ";})});
+                    return label2.text(function(d){return " ";})});
 
-            var label = this.g.append("g")
+            var label2 = this.g.append("g")
                 .append("text")
                 .attr("dx", x)
                 .attr("dy", y+2)
@@ -305,10 +245,10 @@ define([
         }
 
 
-        drawPath(sx, sy, tx, ty, type, value, offset, strokeWidth, sourceLevel, targetLevel) {
-
+        drawPath(sx, sy, tx, ty, styleId, label, offset, strokeWidth) {
             // draw arrow
             // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
+            /*
             var arrow = this.svg.append("marker")
                 .attr("id", "arrow")
                 .attr("refX", 3.5)      //defines position on the line
@@ -406,7 +346,7 @@ define([
                     " 3.5 6.5  3 6.5 " +            //right
                     "3.5 6")                        //down
                 .style("fill", "#893464"); //somehow has to be dependent on the route
-
+            */
 
             //add projection to sx,sy,tx,ty
             var sxp = this.projection([sx,sy])[0],
@@ -442,9 +382,9 @@ define([
             var dxpo = sxpo - txpo,
                 dypo = sypo - typo;
             var flowLength = Math.sqrt(dxpo * dxpo + dypo * dypo);
-
-            var sourceReduction = - this.specifyNodeSize(sourceLevel) ,
-                targetReduction = 5 + this.specifyNodeSize(targetLevel);
+    // TO DO: 5 is sourceLevel oder targetLevel --> nodes.level defines nodes size which is important for line length
+            var sourceReduction = - this.specifyNodeSize(5) ,
+                targetReduction = 5 + this.specifyNodeSize(5);
 
             // ratio between full line length and shortened line
             var sourceRatio = sourceReduction / flowLength,
@@ -469,15 +409,15 @@ define([
                               .attr("x2", txpoa)
                               .attr("y2", typoa)
                               .attr("stroke-width", strokeWidth)
-                              .attr("stroke", this.specifyLineColor (type))
-                .attr("stroke-opacity", 0.85)
-                .attr("marker-end", this.specifyArrowColor (type))
+                              .attr("stroke", this.styles[styleId].color)
+                .attr("stroke-opacity", 1)
+                //.attr("marker-end", this.styles[styleId].color)
                 .on("mouseover", function(d){
                      d3.select(this).style("cursor", "pointer"),
                          div.transition()
                              .duration(200)
                              .style("opacity", .9);
-                         div.html("Material: " + type + "<br/>" + "Fraction: " + value)
+                         div.html(label)
                              .style("left", (d3.event.pageX) + "px")
                              .style("top", (d3.event.pageY - 28) + "px")})
                 .on("mouseout", function(d) {

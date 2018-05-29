@@ -4,22 +4,32 @@
 <head>
     <link rel="stylesheet" type="text/css" href="flowmap.css">
     <script src="lib/require.js"></script>
-    <script src="transformData.js"></script>
+    <script>
+        require.config({
+            baseUrl: '.',
+            paths: {
+                'd3': 'node_modules/d3/d3',
+                'topojson': 'node_modules/topojson/dist/topojson',
+                'd3-queue': 'node_modules/d3-queue/build/d3-queue',
+                'd3-scale': 'node_modules/d3-scale/dist/d3-scale',
+                'd3-array': 'node_modules/d3-array/build/d3-array',
+                'd3-interpolate': 'node_modules/d3-interpolate/build/d3-interpolate',
+                'd3-collection': 'node_modules/d3-collection/build/d3-collection',
+                'd3-format': 'node_modules/d3-format/build/d3-format',
+                'd3-time': 'node_modules/d3-time/build/d3-time',
+                'd3-time-format': 'node_modules/d3-time-format/build/d3-time-format',
+                'd3-color': 'node_modules/d3-color/build/d3-color'
+
+            }
+        });
+    </script>
 </head>
 <body>
 
 <div id="container" style="width:100%; height:100%; overflow:hidden; background: #fff;"></div>
 
+
 <script>
-    require.config({
-        baseUrl: '.',
-        paths: {
-            'd3': 'node_modules/d3/d3',
-            'topojson': 'node_modules/topojson/dist/topojson',
-            'd3-queue': 'node_modules/d3-queue/build/d3-queue',
-            'leaflet': 'node_modules/leaflet/leaflet'
-        }
-    });
 
     function get(file) {
         return new Promise(function(resolve, reject) {
@@ -44,7 +54,7 @@
         } )
     }
 
-    require(['flowmap'], function(FlowMap){
+    require(['flowmap', 'transformData'], function(FlowMap, transformData){
         var flowMap = new FlowMap("container", { width: 1000 });
         var actors, locations, materials, actor2actor,
             promises = [];                                                      // promise to load data asynchronously

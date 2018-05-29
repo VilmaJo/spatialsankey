@@ -9,8 +9,8 @@
 div.tooltip {
     position: absolute;
     text-align: left;
-    width: 90px;
-    height: 20px;
+    width: auto;
+    height: auto;
     padding: 4px;
     font: 8px sans-serif;
     color: #fff;

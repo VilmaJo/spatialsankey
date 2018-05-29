@@ -1,5 +1,5 @@
 define([
-    'd3', 'topojson', 'd3-queue', 'leaflet'
+    'd3', 'topojson', 'd3-queue'
 ], function(d3, topojson, d3queue){
 
     class FlowMap {
@@ -58,7 +58,7 @@ define([
                     for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
                         var flow = flowsData[key];
                         if (flow.source+'-'+flow.target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
-                            var maxWidth = 10,
+                            var maxWidth = 20,
                                 width= flow.value;
                             var strokeWidth = width / maxValue * maxWidth;
 
@@ -170,24 +170,6 @@ define([
         }
 
 
-        specifyNodeColor(activityGroup) {
-            if (activityGroup === '1' || activityGroup === '2' || activityGroup === '3') {return '#2e7b50';}
-            if (activityGroup === '4' ) {return '#348984';}
-            if (activityGroup === '5' ) {return '#4682b4';}
-            if (activityGroup === '6' ) {return '#cc8400';}
-            return '#c95f64';
-        };
-
-
-        specifyLineColor(type) {
-            if (type === 'organic') {return '#2e7b50';}
-            if (type === 'plastic') {return '#4682b4';}
-            if (type === 'construction') {return '#cc8400';}
-            if (type === 'food') {return '#ebda09';}
-            if (type === 'msw') {return '#348984';}
-            if (type === 'hazardous') {return '#893464';}
-            return 'white';
-        };
 
         specifyArrowColor(type) {
             if (type === 'organic') {return "url(#arrow1)";}
@@ -201,20 +183,10 @@ define([
 
         specifyNodeSize(level){
             // adjust node-size by different area and not radius to have a proportional size effect
-            if (level === '1') {return ((35^(5/7))/Math.sqrt(2*Math.PI));}
-            if (level === '2') {return ((31^(5/7))/Math.sqrt(2*Math.PI));}
-            if (level === '3') {return ((27^(5/7))/Math.sqrt(2*Math.PI));}
-            if (level === '4') {return ((23^(5/7))/Math.sqrt(2*Math.PI));}
-            if (level === '5') {return ((19^(5/7))/Math.sqrt(2*Math.PI));}
-            /*
-            if (level === '1') {return 15;}
-            if (level === '2') {return 13;}
-            if (level === '3') {return 11;}
-            if (level === '4') {return 9;}
-            if (level === '5') {return 7;}
-            */
-            return 10;
-        }
+            // ADJUST highest and lowest and the in between depending on level
+            // formula to calculate the circle radius dependent on area: (area^(5/7)) / (Math.sqrt(2*Math.PI)
+            return (((35-((level-1)*4)^(5/7))/(Math.sqrt(2*Math.PI))));
+        };
 
         //function to add points to the map
         addPoint(lon, lat, label, level, styleId) {
@@ -229,26 +201,32 @@ console.log(this.styles[styleId].color)
                 .attr("cy", y)
                 .attr("r", this.specifyNodeSize(level))
                 .style("fill",this.styles[styleId].color)
-                //.style("fill-opacity", 0.8)
+                .style("fill-opacity", 0.5)
                 .on("mouseover", function(d){
-                    return label2.text(function(d){return label;}), d3.select(this).style("cursor", "pointer")})
+                    return FlowPopup.text(function(d){return label;}), d3.select(this).style("cursor", "pointer")})
                 .on("mouseout", function(d) {
-                    return label2.text(function(d){return " ";})});
+                    return FlowPopup.text(function(d){return " ";})});
 
-            var label2 = this.g.append("g")
+            var FlowPopup = this.g.append("g")
                 .append("text")
                 .attr("dx", x)
                 .attr("dy", y+2)
-                .style("fill", "white")
-                .style("font-size","6px")
-                .attr("text-anchor","middle");
+                .attr("text-anchor","middle")
+                .style("fill","white")
+                .attr("font-size","8px")
+                ;
         }
 
 
         drawPath(sx, sy, tx, ty, styleId, label, offset, strokeWidth) {
+            // tooltip
+            var div = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+
             // draw arrow
             // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
-            /*
+
             var arrow = this.svg.append("marker")
                 .attr("id", "arrow")
                 .attr("refX", 3.5)      //defines position on the line
@@ -261,8 +239,8 @@ console.log(this.styles[styleId].color)
                     " 4.5 6 " +                       //up
                     " 3.5 6.5  3 6.5 " +            //right
                     "3.5 6")                        //down
-                .style("fill", "grey"); //somehow has to be dependent on the route
-
+                .style("fill", "blue");                                                         //somehow has to be dependent on the route
+/*
             var arrow1 = this.svg.append("marker")
                 .attr("id", "arrow1")
                 .attr("refX", 3.5)      //defines position on the line
@@ -371,10 +349,7 @@ console.log(this.styles[styleId].color)
                 typo = typ - (offset - totalStrokeWidth/2)*(dx/norm);
                 */
 
-            // tooltip
-            var div = d3.select("body").append("div")
-                .attr("class", "tooltip")
-                .style("opacity", 0);
+
 
             //adjust line length
             //source: http://jsfiddle.net/3SY8v/
@@ -411,7 +386,7 @@ console.log(this.styles[styleId].color)
                               .attr("stroke-width", strokeWidth)
                               .attr("stroke", this.styles[styleId].color)
                 .attr("stroke-opacity", 1)
-                //.attr("marker-end", this.styles[styleId].color)
+                .attr("marker-end", "url(#arrow)")
                 .on("mouseover", function(d){
                      d3.select(this).style("cursor", "pointer"),
                          div.transition()
@@ -456,4 +431,43 @@ console.log(this.styles[styleId].color)
     return FlowMap;
 });
 
-// group elements: https://www.dashingd3js.com/svg-group-element-and-d3js
+/*  TO DO   TO DO   TO DO   TO DO   TO DO
+
+*   Linien
+    *   Bedingung Hin- und Rückflüsse, sonst mittige Platzierung der Flows
+    *   Farbskala: d3 rainbow scale
+
+*   Punkte
+    *   Größe nach Level (Spatial Scale Level: Individual Actor, Ward, Municipality, region, World)
+    *   Farbe nach Activity Group: wer gibt diese an? Welches Farbschema wird gewählt? --> Soll mit den Säulen im Diagramm übereinstimmen
+
+*   OpenLayers Hintergrundkarte
+
+*   Projektionszentrum:
+    *   je nach Living Lab ein Projektionszentrum angeben
+    *   zoom to location, die im Diagramm angeklickt sind
+
+
+
+
+Fehlende Variablen in den Daten:
+*   Actors:
+    *   actor group
+    *   actor level
+
+
+
+*   flows functions
+        function    sx, sy, tx, ty --> with projection, offset, length adjusted
+        function    offset
+        function    strokeWidth
+
+        function flow               (does this depend on offset or not if we have flows in both or one direction?)
+
+*   nodes functions
+        function    specifyNodeSize
+        function    specifyNodeColor (activityGroup)
+
+
+
+*/

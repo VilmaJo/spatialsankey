@@ -18,6 +18,45 @@
 				"area": 840,
 				"level": 6
 			}
+		},
+		{
+			"id": 24411,
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [4.005000886629736, 59.391188201389525]
+			},
+			"properties": {
+				"url": "http://localhost:8000/api/casestudies/2/keyflows/1/administrativelocations/24410/",
+				"address": "",
+				"postcode": "",
+				"country": "",
+				"city": "",
+				"name": "",
+				"actor": 26702,
+				"area": 840,
+				"level": 6
+			}
+		},
+		{
+			"id": 24411,
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [17.005000886629736, 59.391188201389525]
+			},
+			"properties": {
+				"url": "http://localhost:8000/api/casestudies/2/keyflows/1/administrativelocations/24410/",
+				"address": "",
+				"postcode": "",
+				"country": "",
+				"city": "",
+				"name": "",
+				"actor": 26703,
+				"area": 840,
+				"level": 6
+			}
 		}
+
 	]
 }

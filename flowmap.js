@@ -1,3 +1,9 @@
+/*
+Data Structure that is needed to use the class FlowMap:
+Flows:
+Nodes:
+ */
+
 define([
     'd3', 'topojson', 'd3-queue'
 ], function(d3, topojson, d3queue){
@@ -15,9 +21,9 @@ define([
             this.height = options.height || this.width / 1.5;
 
             this.projection = d3.geo.mercator()
-                .center([25, 43])
+                .center([25, 40])
                 .translate([this.width / 2, this.height / 2])
-                .scale(750);
+                .scale(600);
 
             this.path = d3.geo.path().projection(this.projection);
 
@@ -43,6 +49,7 @@ define([
             var strokeWidthArrayPerConnection = {};
             var connectionSourceTarget = {};
             this.styles = styles;
+
             for (var key in flowsData) {
                 var source = flowsData[key].source,
                     target = flowsData[key].target;
@@ -54,12 +61,12 @@ define([
                     connectionSourceTarget [key] = {'connection':connection, 'source':source, 'target':target};
                     var strokeWidths = {};                                                           // get the strokeWidths for each flow that belongs to individual connections
                     var strokeArray = [];
-                    var maxValue = Math.max.apply(Math,Object.values(flowsData).map(function(flow){return flow.value}))
+                    var maxValue = Math.max.apply(Math,Object.values(flowsData).map(function(flow){return flow.value})),
+                        maxWidth = 15;
                     for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
                         var flow = flowsData[key];
                         if (flow.source+'-'+flow.target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
-                            var maxWidth = 20,
-                                width= flow.value;
+                            var width= flow.value;
                             var strokeWidth = width / maxValue * maxWidth;
 
                             strokeWidths[key] = strokeWidth;
@@ -95,6 +102,7 @@ define([
             }
 
             //get the sum of all individual strokeWidths per same source & target
+            var totalStroke={};
             var totalStrokeWidths ={};
             for ( var key in strokeWidthArrayPerConnection) {
                 var eachArray = strokeWidthArrayPerConnection[key],
@@ -102,37 +110,64 @@ define([
                     for (var i in eachArray){
                         totalStrokeWidthPerArray += eachArray[i];
                     }
+
                     totalStrokeWidths[key] = totalStrokeWidthPerArray;
             }
 
-
             for (var key in flowsData) {
-                //source
+                // define flow, so that the loop doesn't have to start over and over again
                 var flow = flowsData[key];
-                var sourceId = flow.source,             //die source wird aus den flowsData je key gezogen
+                // define source and target by combining nodes and flows data --> flow has source and target that are connected to nodes by IDs
+                // multiple flows belong to each node, storing source and target coordinates for each flow wouldn't be efficient
+                var sourceId = flow.source,
                     source = nodesData[sourceId],
                     targetId = flow.target,
                     target = nodesData[targetId];
+                // insert a continue command to run through the data even if there is no source or target for some data
                 if (!source || !target){
                     console.log('Warning: missing actor for flow');
                     continue;
                 }
-                var sourceX = source['lon'],         //die source aus flowsData ist der key in nodesData und daraus werden koordinaten gezogen
-                    sourceY = source['lat'],
-                    sourceCoords = [sourceX, sourceY],
-                    //target
-                    targetX = target['lon'],
-                    targetY = target['lat'],
-                    targetCoords = [targetX, targetY],
-                    //flow für Krümmung
-                    //flow = [sourceId, targetId],
-                    flowCoords = [sourceCoords, targetCoords];
 
-                strokeWidth = strokeWidthPerFlow[key][0]
-                offset = strokeWidthPerFlow[key][1]
-                // drawPath
+                var sourceCoords = [source['lon'], source['lat']],
+                    targetCoords = [target['lon'], target['lat']];
 
-                this.drawPath(sourceX, sourceY, targetX, targetY, flow.style, flow.label, offset, strokeWidth)
+                //add projection to source and target coordinates
+                var sxp = this.projection(sourceCoords)[0],
+                    syp = this.projection(sourceCoords)[1],
+                    txp = this.projection(targetCoords)[0],
+                    typ = this.projection(targetCoords)[1];
+
+
+                // define further adjustments for the paths: width, offset ( to see each material fraction even if they have same coordinates)
+                     // drawPath
+                var strokeWidth = strokeWidthPerFlow[key][0],
+                    offset = strokeWidthPerFlow[key][1];
+                     // drawTotalPath
+                // get the connection (persists of source+target) from this flow data that we run the loop through and get the totalStrokeWidths for each connection
+                var connection = flow.source+'-'+flow.target,
+                    totalStroke = totalStrokeWidths[connection];
+/*
+                console.log(connection)
+                flow.source === connection[0] || connection[1] &&
+*/
+                var sourceLevel = source.level,
+                    targetLevel = target.level;
+
+                var con = [flow.source,flow.target];
+
+                /*
+                if (connection.includes(connection) === false){                           //wenn die connection noch nicht im array connections ist, dann push sie da rein
+                    connections.push(connection)
+                */
+                    // drawPath
+
+
+                this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel)
+               // this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel)
+
+
+
             } ////End for key in flowsData**********************************************************************************************************************
 
 /*****************************************************************************************/
@@ -143,6 +178,7 @@ define([
 
         }   //End render (nodes, flows)**********************************************************************************************************************
 
+        // inserting data and letting them load asynchronously
         renderTopo(topoJson, nodesData, flowsData, styles){
             var _this = this;
 
@@ -170,7 +206,6 @@ define([
         }
 
 
-
         specifyArrowColor(type) {
             if (type === 'organic') {return "url(#arrow1)";}
             if (type === 'plastic') {return "url(#arrow2)";}
@@ -190,7 +225,6 @@ define([
 
         //function to add points to the map
         addPoint(lon, lat, label, level, styleId) {
-console.log(this.styles[styleId].color)
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
 
@@ -213,12 +247,35 @@ console.log(this.styles[styleId].color)
                 .attr("dy", y+2)
                 .attr("text-anchor","middle")
                 .style("fill","white")
-                .attr("font-size","8px")
-                ;
+                .attr("font-size","8px");
+
         }
 
+        // To do: adjust material to material group
+        drawTotalPath(sxp, syp, txp, typ, labelTotal, totalStrokeWidth, sourceLevel, targetLevel){
 
-        drawPath(sx, sy, tx, ty, styleId, label, offset, strokeWidth) {
+            var dxp = txp - sxp,
+                dyp = typ - syp;
+            var flowLength = Math.sqrt(dxp * dxp + dyp * dyp);
+            var sourceReduction = 15 - this.specifyNodeSize(sourceLevel),
+                targetReduction = -25 + this.specifyNodeSize(targetLevel);
+
+            // ratio between full line length and shortened line
+            var sourceRatio = sourceReduction / flowLength,
+                targetRatio = targetReduction / flowLength;
+
+            // value by which line gets shorter
+            var sxReductionValue = dxp * sourceRatio,
+                syReductionValue = dyp * sourceRatio,
+                txReductionValue = dxp * targetRatio,
+                tyReductionValue = dyp * targetRatio;
+
+            // source and target coordinates + projection + offset + adjusted length
+            var sxpa = sxp + sxReductionValue,
+                sypa = syp + syReductionValue,
+                txpa = txp + txReductionValue,
+                typa = typ + tyReductionValue;
+
             // tooltip
             var div = d3.select("body").append("div")
                 .attr("class", "tooltip")
@@ -226,7 +283,128 @@ console.log(this.styles[styleId].color)
 
             // draw arrow
             // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
+            var arrow = this.svg.append("marker")
+                .attr("id", "arrow")
+                .attr("refX", 3.5)      //defines position on the line
+                .attr("refY", 6)
+                .attr("markerWidth", 10)
+                .attr("markerHeight", 10)
+                .attr("orient", "auto")
+                .append("path")
+                .attr("d", "M 3 5.5 3.5 5.5" +      //left
+                    " 4.5 6 " +                       //up
+                    " 3.5 6.5  3 6.5 " +            //right
+                    "3.5 6")                        //down
+                .style("fill", "grey")                                                        //somehow has to be dependent on the route
+                .style("fill-opacity", 0.9);
 
+            var mx = (txp + sxp)/2,
+                my = (typ + syp)/2;
+
+            var triangleData = [];
+            var tReduction = -15 + this.specifyNodeSize(targetLevel),
+                tRatio = tReduction / flowLength,
+                txRValue = dxp * tRatio,
+                tyRValue = dyp * tRatio,
+                ftx = txp + txRValue,
+                fty = typ + tyRValue,
+                txpl = txpa + (totalStrokeWidth/2)*(dyp/flowLength),
+                typl = typa - (totalStrokeWidth/2)*(dxp/flowLength),
+                txpr = txpa - (totalStrokeWidth/2)*(dyp/flowLength),
+                typr = typa + (totalStrokeWidth/2)*(dxp/flowLength);
+            //triangleData.push(ftx, fty, txpl, typl, txpr, typl)
+            triangleData.push({'tx': ftx,'ty': fty},{'tx': txpl,'ty': typl},{'tx': txpr,'ty': typr})
+
+            /*
+            var rightTarget = this.g.append("g")
+                .attr("class", "gpoint")
+                .append("circle")
+                .attr("cx", txpr)
+                .attr("cy", typr)
+                .attr("r", 1)
+                .style("fill","yellow")
+                .style("fill-opacity", 0.5);
+
+            var leftTarget = this.g.append("g")
+                .attr("class", "gpoint")
+                .append("circle")
+                .attr("cx", txpl)
+                .attr("cy", typl)
+                .attr("r", 1)
+                .style("fill","blue")
+                .style("fill-opacity", 0.5);
+
+            var frontTarget = this.g.append("g")
+                .attr("class", "gpoint")
+                .append("circle")
+                .attr("cx", ftx)
+                .attr("cy", fty)
+                .attr("r", 1)
+                .style("fill","green")
+                .style("fill-opacity", 0.5);
+
+            var middleTarget = this.g.append("g")
+                .attr("class", "gpoint")
+                .append("circle")
+                .attr("cx", txpa)
+                .attr("cy", typa)
+                .attr("r", 1)
+                .style("fill","black")
+                .style("fill-opacity", 0.5);
+            */
+
+           // data format https://stackoverflow.com/questions/13204562/proper-format-for-drawing-polygon-data-in-d3
+            console.log(triangleData)
+            var triangle = this.g.append("g")
+                .append("polygon")
+                .data(triangleData)
+                .attr("points", triangleData.map(function(d){
+                    var x=d.tx,
+                        y=d.ty;
+                        console.log(typeof(x))
+                        return [x,y].join(",");
+                        }).join(" ")
+                    )
+                .attr("fill", "none")
+                .attr("stroke-width", 0.5)
+                .attr("stroke", 'black')
+                .attr("stroke-dasharray", "1,2")
+                .attr("stroke-opacity", 0.5);
+
+
+            var flowsTotal = this.g.append("line")
+                .attr("x1", sxpa)
+                .attr("y1", sypa)
+                .attr("x2", txpa)
+                .attr("y2", typa)
+                .attr("stroke-width", totalStrokeWidth)
+                .attr("stroke", 'grey')
+                .attr("stroke-opacity", 0.5)
+                //.attr("marker-end", "url(#arrow)")
+                .on("mouseover", function(d){
+                    d3.select(this).style("cursor", "pointer"),
+                        div.transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                    div.html(labelTotal)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px")})
+                .on("mouseout", function(d) {
+                    div.transition()
+                        .duration(500)
+                        .style("opacity", 0)}
+                );
+        }
+
+        drawPath(sxp, syp, txp, typ, styleId, label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel) {
+            // tooltip
+            var div = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+
+            // draw arrow
+            // source: https://stackoverflow.com/questions/36579339/how-to-draw-line-with-arrow-using-d3-js
+            /*
             var arrow = this.svg.append("marker")
                 .attr("id", "arrow")
                 .attr("refX", 3.5)      //defines position on the line
@@ -240,6 +418,7 @@ console.log(this.styles[styleId].color)
                     " 3.5 6.5  3 6.5 " +            //right
                     "3.5 6")                        //down
                 .style("fill", "blue");                                                         //somehow has to be dependent on the route
+                */
 /*
             var arrow1 = this.svg.append("marker")
                 .attr("id", "arrow1")
@@ -326,28 +505,33 @@ console.log(this.styles[styleId].color)
                 .style("fill", "#893464"); //somehow has to be dependent on the route
             */
 
-            //add projection to sx,sy,tx,ty
-            var sxp = this.projection([sx,sy])[0],
-                syp = this.projection([sx,sy])[1],
-                txp = this.projection([tx,ty])[0],
-                typ = this.projection([tx,ty])[1];
-
             var dx = txp - sxp,
                 dy = typ - syp;
 
             // define the offset of each flow to be able to see individual flows with same source and target coordinates
             // define the normal, let the line go along the normal with an offset
             var norm = Math.sqrt(dx * dx + dy * dy),
-                sxpo = sxp + offset *(dy/norm),
-                sypo = syp - offset *(dx/norm),
-                txpo = txp + offset *(dy/norm),
-                typo = typ - offset *(dx/norm);
-                /* totalStrokeWidth of all strokes added up between two points
-                sxpo = sxp + (offset - totalStrokeWidth/2)*(dy/norm),
-                sypo = syp - (offset - totalStrokeWidth/2)*(dx/norm),
-                txpo = txp + (offset - totalStrokeWidth/2)*(dy/norm),
-                typo = typ - (offset - totalStrokeWidth/2)*(dx/norm);
-                */
+
+/*specify totalFlowsOffset(bothway){
+    if (bothway === true){
+            return sxpo = sxp + (offset)*(dy/norm),
+                    sypo = syp - (offset)*(dx/norm),
+                    txpo = txp + (offset)*(dy/norm),
+                    typo = typ - (offset)*(dx/norm);}
+
+      else { return  sxpo = sxp + (offset - (totalStroke/2))*(dy/norm),
+                sypo = syp - (offset - (totalStroke/2))*(dx/norm),
+                txpo = txp + (offset - (totalStroke/2))*(dy/norm),
+                typo = typ - (offset - (totalStroke/2))*(dx/norm);}
+                };
+*/
+
+                /* subtract half of the stroke width of the whole material flow (not only the fractions),
+                so that the flows are in the middle and don't have one sided offset */
+                sxpo = sxp + (offset - (totalStroke/2))*(dy/norm),
+                sypo = syp - (offset - (totalStroke/2))*(dx/norm),
+                txpo = txp + (offset - (totalStroke/2))*(dy/norm),
+                typo = typ - (offset - (totalStroke/2))*(dx/norm);
 
 
 
@@ -358,8 +542,8 @@ console.log(this.styles[styleId].color)
                 dypo = sypo - typo;
             var flowLength = Math.sqrt(dxpo * dxpo + dypo * dypo);
     // TO DO: 5 is sourceLevel oder targetLevel --> nodes.level defines nodes size which is important for line length
-            var sourceReduction = - this.specifyNodeSize(5) ,
-                targetReduction = 5 + this.specifyNodeSize(5);
+            var sourceReduction = 0 - this.specifyNodeSize(sourceLevel),
+                targetReduction = 15 + this.specifyNodeSize(targetLevel);
 
             // ratio between full line length and shortened line
             var sourceRatio = sourceReduction / flowLength,
@@ -377,7 +561,6 @@ console.log(this.styles[styleId].color)
                 txpoa = txpo + txReductionValue,
                 typoa = typo + tyReductionValue;
 
-
             var flows = this.g.append("line")
                               .attr("x1", sxpoa)
                               .attr("y1", sypoa)
@@ -386,7 +569,7 @@ console.log(this.styles[styleId].color)
                               .attr("stroke-width", strokeWidth)
                               .attr("stroke", this.styles[styleId].color)
                 .attr("stroke-opacity", 1)
-                .attr("marker-end", "url(#arrow)")
+                //.attr("marker-end", "url(#arrow)")
                 .on("mouseover", function(d){
                      d3.select(this).style("cursor", "pointer"),
                          div.transition()
@@ -400,32 +583,9 @@ console.log(this.styles[styleId].color)
                             .duration(500)
                             .style("opacity", 0)}
                 );
-    /*
-            var flowsTotal = this.g.append("line")
-                                    .attr("x1", sxpoa)
-                                    .attr("y1", sypoa)
-                                    .attr("x2", txpoa)
-                                    .attr("y2", typoa)
-                                    .attr("stroke-width", totalStrokeWidth)
-                                    .attr("stroke", 'grey')
-                                    .attr("stroke-opacity", 0.85)
-                                    .attr("marker-end", "url(#arrow)")
-                                    .on("mouseover", function(d){
-                                        d3.select(this).style("cursor", "pointer"),
-                                            div.transition()
-                                                .duration(200)
-                                                .style("opacity", .9);
-                                        div.html("Material: " + type + "<br/>" + "Fraction: " + value)
-                                            .style("left", (d3.event.pageX) + "px")
-                                            .style("top", (d3.event.pageY - 28) + "px")})
-                                    .on("mouseout", function(d) {
-                                        div.transition()
-                                            .duration(500)
-                                            .style("opacity", 0)}
-                                    );
-        */
 
         }
+
     }
 
     return FlowMap;
@@ -434,8 +594,7 @@ console.log(this.styles[styleId].color)
 /*  TO DO   TO DO   TO DO   TO DO   TO DO
 
 *   Linien
-    *   Bedingung Hin- und Rückflüsse, sonst mittige Platzierung der Flows
-    *   Farbskala: d3 rainbow scale
+    *   Bedingung Hin- und Rückflüsse
 
 *   Punkte
     *   Größe nach Level (Spatial Scale Level: Individual Actor, Ward, Municipality, region, World)
@@ -449,12 +608,10 @@ console.log(this.styles[styleId].color)
 
 
 
-
 Fehlende Variablen in den Daten:
 *   Actors:
     *   actor group
     *   actor level
-
 
 
 *   flows functions
@@ -468,6 +625,10 @@ Fehlende Variablen in den Daten:
         function    specifyNodeSize
         function    specifyNodeColor (activityGroup)
 
+strokeWidth max anpassen nach Level und damit Größe der Nodes
 
 
+UNKLAR: adjust line length: warum ist das bei fraction und nicht fraction nicht gleich???????
+
+flow mit kleinstem strokeWidth ist weiter verschoben als gesamtbreite
 */

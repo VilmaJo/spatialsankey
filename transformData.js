@@ -14,7 +14,7 @@ define([
         var uniqueActivityGroups = new Set();                           //to get array of unique values
         var actorsData = {};
         actors.forEach(function (actor) {
-            var coordinates = locationsData[actor.id] || [Math.random() * 15 + 4, Math.random() * 15 + 50];         // !!!!!!!!!! random coordinates
+            var coordinates = locationsData[actor.id] || [Math.random() * 13 + 4, Math.random() * 18 + 40];         // !!!!!!!!!! random coordinates
             actorsData[actor.id] = {
                 'name': actor.name,
                 'label': actor.name,
@@ -63,6 +63,7 @@ define([
         actor2actor.forEach(function (flow) {
             flow.composition.fractions.forEach(function (fraction) {
                 var amount = flow.amount * fraction.fraction,
+                    totalAmount = flow.amount,
                     material = materialsData[fraction.material],
                     complabel = (flow.waste) ? 'Waste' : 'Product',
                     origin = actorsData[flow.origin],
@@ -70,20 +71,21 @@ define([
                     destination = actorsData[flow.destination],
                     destinationName = (destination) ? destination.name : '',
                     flowlabel = originName + ' -> ' + destinationName,
-                    label = flowlabel + '<br>' + complabel + ': ' + flow.composition.name + '<br>Material: ' + material.name + '<br>Amount:' + amount + ' t/year';
+                    label = flowlabel + '<br>' + complabel + ': ' + flow.composition.name + '<br>Material: ' + material.name + '<br>Amount:' + amount + ' t/year',
+                    labelTotal = flowlabel + '<br>' + complabel + ': ' + flow.composition.name + '<br>Material: ' + material.name + '<br>Amount:' + totalAmount + ' t/year';
                 flowsData[i] = {
                     'id': flow.id,
                     'source': flow.origin,
                     'target': flow.destination,
                     'value': amount,
                     'label': label,
+                    'labelTotal': labelTotal,
                     'style': 'material' + fraction.material
                 };
                 uniqueMaterials.add(fraction.material);
                 i += 1;
             });
         });
-
         // defining colors for each individual material by using the d3 color scale rainbow
         /*      http://d3indepth.com/scales/
         var sequentialScale = d3.scaleSequential()

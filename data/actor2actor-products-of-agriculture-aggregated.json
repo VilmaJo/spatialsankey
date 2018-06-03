@@ -54,5 +54,33 @@
 	"year": 2016,
 	"publication": 12,
 	"waste": true
+}, {
+  "id": 135,
+  "amount": 347424.1789199997,
+  "composition": {
+    "id": 41106,
+    "name": "RES @Urbanisation lvl 1",
+    "nace": "V-0000",
+    "fractions": [{
+      "material": 418,
+      "fraction": 0.5000000000000002
+    }, {
+      "material": 321,
+      "fraction": 0.2014676703572998
+    }, {
+      "material": 320,
+      "fraction": 0.24668676067431056
+    }, {
+      "material": 497,
+      "fraction": 0.05184556896838982
+    }
+    ]
+  },
+  "origin": 26961,
+  "destination": 26703,
+  "description": null,
+  "year": 2016,
+  "publication": 12,
+  "waste": true
 }
 ]

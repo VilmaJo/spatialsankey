@@ -64,7 +64,7 @@ define([
                     var maxValue = Math.max.apply(Math, Object.values(flowsData).map(function (flow) {
                             return flow.value
                         })),
-                        maxWidth = 5;
+                        maxWidth = 10;
                     for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
                         var flow = flowsData[key];
                         if (flow.source + '-' + flow.target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
@@ -162,32 +162,25 @@ define([
                     offset = strokeWidthPerFlow[key][1];
                 // drawTotalPath
                 // get the connection (persists of source+target) from this flow data that we run the loop through and get the totalStrokeWidths for each connection
-                var connection = flow.source + '-' + flow.target,
+                var connection = sourceId + '-' + targetId,
                     totalStroke = totalStrokeWidths[connection];
-                /*
-                                console.log(connection)
-                                flow.source === connection[0] || connection[1] &&
-                */
+
                 var sourceLevel = source.level,
                     targetLevel = target.level;
 
-                var bothway =  bothways.forEach(function(b){
-                    return b;
-                });
-
                 // drawPath
+                this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
                 this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
-                //this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel)
 
-            } ////End for key in flowsData**********************************************************************************************************************
 
-            /*****************************************************************************************/
+            } /******************************   End for key in flowsData    ***********************************/
+
 // addpoint for each node
             Object.values(nodesData).forEach(function (node) {
                 _this.addPoint(node.lon, node.lat, node.label, node.level, node.style);
             });
 
-        }   //End render (nodes, flows)**********************************************************************************************************************
+        }   /*********************************    /End render (nodes, flows)  **********************************/
 
         // inserting data and letting them load asynchronously
         renderTopo(topoJson, nodesData, flowsData, styles) {
@@ -219,17 +212,6 @@ define([
                 .await(loaded);
         }
 
-        /*
-                specifyArrowColor(type) {
-                    if (type === 'organic') {return "url(#arrow1)";}
-                    if (type === 'plastic') {return "url(#arrow2)";}
-                    if (type === 'construction') {return "url(#arrow3)";}
-                    if (type === 'food') {return "url(#arrow4)";}
-                    if (type === 'msw') {return "url(#arrow5)";}
-                    if (type === 'hazardous') {return "url(#arrow6)";}
-                    return "url(#arrow1)";
-                };
-        */
 
         specifyNodeSize(level) {
             // adjust node-size by different area and not radius to have a proportional size effect
@@ -238,7 +220,7 @@ define([
             return (((35 - ((level - 1) * 4) ^ (5 / 7)) / (Math.sqrt(2 * Math.PI))));
         };
 
-        //function to add points to the map
+        //function to add nodes to the map
         addPoint(lon, lat, label, level, styleId) {
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
@@ -267,7 +249,7 @@ define([
                 .attr("dx", x)
                 .attr("dy", y + 2)
                 .attr("text-anchor", "middle")
-                .style("fill", "white")
+                .style("fill", "black")
                 .attr("font-size", "8px");
 
         }
@@ -298,27 +280,78 @@ define([
             return [dxp, dyp, sxpa, sypa, txpa, typa, flowLength];
         }
 
-        calcOffset(sxpa, sypa, txpa, typa, dx, dy, flowLength, offset, totalStroke, connection, bothways){
+        calcOffset(sxpa, sypa, txpa, typa, dxp, dyp, flowLength, offset, totalStroke, bothways, connection, ) {
 
-                if (bothways.includes(connection) === true) {                  //wenn die connection noch nicht im array connections ist, dann push sie da rein
-                    var sxpao = sxpa + (offset) * (dy / flowLength),
-                        sypao = sypa - (offset) * (dx / flowLength),
-                        txpao = txpa + (offset) * (dy / flowLength),
-                        typao = typa - (offset) * (dx / flowLength);
+                if (bothways.includes(connection) === true) {
+                    var sxpao = sxpa + (offset) * (dyp / flowLength),
+                        sypao = sypa - (offset) * (dxp / flowLength),
+                        txpao = txpa + (offset) * (dyp / flowLength),
+                        typao = typa - (offset) * (dxp / flowLength);
                     return [sxpao, sypao, txpao, typao];
                 }
                 else {
-                    var sxpao = sxpa + (offset - (totalStroke / 2)) * (dy / flowLength),
-                        sypao = sypa - (offset - (totalStroke / 2)) * (dx / flowLength),
-                        txpao = txpa + (offset - (totalStroke / 2)) * (dy / flowLength),
-                        typao = typa - (offset - (totalStroke / 2)) * (dx / flowLength);
+                    var sxpao = sxpa + (offset - (totalStroke / 2)) * (dyp / flowLength),
+                        sypao = sypa - (offset - (totalStroke / 2)) * (dxp / flowLength),
+                        txpao = txpa + (offset - (totalStroke / 2)) * (dyp / flowLength),
+                        typao = typa - (offset - (totalStroke / 2)) * (dxp / flowLength);
                     return [sxpao, sypao, txpao, typao];
                 }
-
         }
 
+
         // To do: adjust material to material group
-        drawTotalPath(sxp, syp, txp, typ, labelTotal, totalStrokeWidth, sourceLevel, targetLevel) {
+        drawTotalPath(sxp, syp, txp, typ, labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection) {
+            var pathLengthValues = this.adjustedPathLength(sxp, syp, txp, typ, sourceLevel, targetLevel);
+            var dxp = pathLengthValues[0],
+                dyp = pathLengthValues[1],
+                sxpa = pathLengthValues[2],
+                sypa = pathLengthValues[3],
+                txpa = pathLengthValues[4],
+                typa = pathLengthValues[5],
+                flowLength = pathLengthValues[6];
+
+            var offset = totalStroke/2;
+
+            var results = this.calcOffset(sxpa, sypa, txpa, typa, dxp, dyp, flowLength, offset, totalStroke, bothways, connection);
+            var sxpao = results[0],
+                sypao = results[1],
+                txpao = results[2],
+                typao = results[3];
+
+
+            // tooltip
+            var div = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+
+            var flowsTotal = this.g.append("line")
+                .attr("x1", sxpao)
+                .attr("y1", sypao)
+                .attr("x2", txpao)
+                .attr("y2", typao)
+                .attr("stroke-width", totalStroke)
+                .attr("stroke", 'grey')
+                .attr("stroke-opacity", 0)
+                .on("mouseover", function (d) {
+                    d3.select(this).style("cursor", "pointer"),
+                        div.transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                    div.html(labelTotal)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px")
+                })
+                .on("mouseout", function (d) {
+                        div.transition()
+                            .duration(500)
+                            .style("opacity", 0)
+                    }
+                );
+            this.drawArrowhead(txp, typ, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
+        }
+
+
+        drawPath(sxp, syp, txp, typ, styleId, label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection) {
 
             var pathLengthValues = this.adjustedPathLength(sxp, syp, txp, typ, sourceLevel, targetLevel);
             var dxp = pathLengthValues[0],
@@ -334,21 +367,57 @@ define([
                 .attr("class", "tooltip")
                 .style("opacity", 0);
 
+            // define the offset of each flow to be able to see individual flows with same source and target coordinates
+            // define the normal, let the line go along the normal with an offset: var norm = Math.sqrt(dxp * dxp + dyp * dyp),
+
+            var results = this.calcOffset(sxpa, sypa, txpa, typa, dxp, dyp, flowLength, offset, totalStroke, bothways, connection);
+            var sxpao = results[0],
+                sypao = results[1],
+                txpao = results[2],
+                typao = results[3];
+
+
+            // txpao typao per connection und davon ausgehend dann das arrow
+            //this.drawArrowhead(txp, typ, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
+            var flows = this.g.append("line")
+                              .attr("x1", sxpao)
+                              .attr("y1", sypao)
+                              .attr("x2", txpao)
+                              .attr("y2", typao)
+                              .attr("stroke-width", strokeWidth)
+                              .attr("stroke", this.styles[styleId].color)
+                .attr("stroke-opacity", 0.5)
+                .on("mouseover", function(d){
+                     d3.select(this).style("cursor", "pointer"),
+                         div.transition()
+                             .duration(200)
+                             .style("opacity", .9);
+                         div.html(label)
+                             .style("left", (d3.event.pageX) + "px")
+                             .style("top", (d3.event.pageY - 28) + "px")})
+                .on("mouseout", function(d) {
+                        div.transition()
+                            .duration(500)
+                            .style("opacity", 0)}
+                );
+
+        }
+
+        drawArrowhead(txp, typ, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp){
             var triangleData = [];
             var tReduction = -15 + this.specifyNodeSize(targetLevel),
                 tRatio = tReduction / flowLength,
                 txRValue = dxp * tRatio,
                 tyRValue = dyp * tRatio,
-                ftx = txp + txRValue,
-                fty = typ + tyRValue,
-                txpl = txpa + (totalStrokeWidth / 2) * (dyp / flowLength),
-                typl = typa - (totalStrokeWidth / 2) * (dxp / flowLength),
-                txpr = txpa - (totalStrokeWidth / 2) * (dyp / flowLength),
-                typr = typa + (totalStrokeWidth / 2) * (dxp / flowLength);
-            //triangleData.push(ftx, fty, txpl, typl, txpr, typl)
+                ftx = txpao - txRValue,
+                fty = typao - tyRValue,
+                txpl = txpao + (totalStroke / 2) * (dyp / flowLength),
+                typl = typao - (totalStroke / 2) * (dxp / flowLength),
+                txpr = txpao - (totalStroke / 2) * (dyp / flowLength),
+                typr = typao + (totalStroke / 2) * (dxp / flowLength);
             triangleData.push({'tx': ftx, 'ty': fty}, {'tx': txpl, 'ty': typl}, {'tx': txpr, 'ty': typr})
 
-            /*
+/*
             var rightTarget = this.g.append("g")
                 .attr("class", "gpoint")
                 .append("circle")
@@ -375,18 +444,8 @@ define([
                 .attr("r", 1)
                 .style("fill","green")
                 .style("fill-opacity", 0.5);
+*/
 
-            var middleTarget = this.g.append("g")
-                .attr("class", "gpoint")
-                .append("circle")
-                .attr("cx", txpa)
-                .attr("cy", typa)
-                .attr("r", 1)
-                .style("fill","black")
-                .style("fill-opacity", 0.5);
-            */
-
-            // data format https://stackoverflow.com/questions/13204562/proper-format-for-drawing-polygon-data-in-d3
             var triangle = this.g.append("g")
                 .append("polygon")
                 .data(triangleData)
@@ -399,88 +458,9 @@ define([
                 .attr("fill", "white")
                 .attr("fill-opacity", 0.2)
                 .attr("stroke-width", 0.5)
-                .attr("stroke", 'black')
-                .attr("stroke-dasharray", "1,2")
-                .attr("stroke-opacity", 0.5);
-
-            var flowsTotal = this.g.append("line")
-                .attr("x1", sxpa)
-                .attr("y1", sypa)
-                .attr("x2", txpa)
-                .attr("y2", typa)
-                .attr("stroke-width", totalStrokeWidth)
                 .attr("stroke", 'grey')
-                .attr("stroke-opacity", 0.5)
-                //.attr("marker-end", "url(#arrow)")
-                .on("mouseover", function (d) {
-                    d3.select(this).style("cursor", "pointer"),
-                        div.transition()
-                            .duration(200)
-                            .style("opacity", .9);
-                    div.html(labelTotal)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px")
-                })
-                .on("mouseout", function (d) {
-                        div.transition()
-                            .duration(500)
-                            .style("opacity", 0)
-                    }
-                );
-        }
-
-        drawPath(sxp, syp, txp, typ, styleId, label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection) {
-
-            var pathLengthValues = this.adjustedPathLength(sxp, syp, txp, typ, sourceLevel, targetLevel);
-            var dxp = pathLengthValues[0],
-                dyp = pathLengthValues[1],
-                sxpa = pathLengthValues[2],
-                sypa = pathLengthValues[3],
-                txpa = pathLengthValues[4],
-                typa = pathLengthValues[5],
-                flowLength = pathLengthValues[6];
-
-            // tooltip
-            var div = d3.select("body").append("div")
-                .attr("class", "tooltip")
-                .style("opacity", 0);
-
-
-            var dx = txp - sxp,
-                dy = typ - syp;
-
-            // define the offset of each flow to be able to see individual flows with same source and target coordinates
-            // define the normal, let the line go along the normal with an offset: var norm = Math.sqrt(dxp * dxp + dyp * dyp),
-
-            var results = this.calcOffset(sxpa, sypa, txpa, typa, dx, dy, flowLength, offset, totalStroke, connection, bothways);
-            var sxpao = results[0],
-                sypao = results[1],
-                txpao = results[2],
-                typao = results[3];
-
-            var flows = this.g.append("line")
-                              .attr("x1", sxpao)
-                              .attr("y1", sypao)
-                              .attr("x2", txpao)
-                              .attr("y2", typao)
-                              .attr("stroke-width", strokeWidth)
-                              .attr("stroke", this.styles[styleId].color)
-                .attr("stroke-opacity", 0.5)
-                //.attr("marker-end", "url(#arrow)")
-                .on("mouseover", function(d){
-                     d3.select(this).style("cursor", "pointer"),
-                         div.transition()
-                             .duration(200)
-                             .style("opacity", .9);
-                         div.html(label)
-                             .style("left", (d3.event.pageX) + "px")
-                             .style("top", (d3.event.pageY - 28) + "px")})
-                .on("mouseout", function(d) {
-                        div.transition()
-                            .duration(500)
-                            .style("opacity", 0)}
-                );
-
+                //.attr("stroke-dasharray", "1,2")
+                .attr("stroke-opacity", 0.5);
         }
 
     }
@@ -490,8 +470,7 @@ define([
 
 /*  TO DO   TO DO   TO DO   TO DO   TO DO
 
-*   Linien
-    *   Bedingung Hin- und Rückflüsse
+*   Linien: Idee: sxp, syp, txp, typ individual reingeben für drawTotalPath
 
 *   Punkte
     *   Größe nach Level (Spatial Scale Level: Individual Actor, Ward, Municipality, region, World)
@@ -523,9 +502,4 @@ Fehlende Variablen in den Daten:
         function    specifyNodeColor (activityGroup)
 
 strokeWidth max anpassen nach Level und damit Größe der Nodes
-
-
-UNKLAR: adjust line length: warum ist das bei fraction und nicht fraction nicht gleich???????
-
-flow mit kleinstem strokeWidth ist weiter verschoben als gesamtbreite
 */

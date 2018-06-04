@@ -1,0 +1,35 @@
+[
+  {
+    "id": 26702,
+    "activity": 134,
+    "activity_name": "V-0000 Consumption in households",
+    "activitygroup": 19,
+    "activitygroup_name": "Consumption in households",
+    "name": "Almere Haven",
+    "included": true,
+    "city": null,
+    "address": null
+  },
+  {
+    "id": 26703,
+    "activity": 134,
+    "activity_name": "V-0000 Consumption in households",
+    "activitygroup": 19,
+    "activitygroup_name": "Consumption in households",
+    "name": "Almere Haven",
+    "included": true,
+    "city": null,
+    "address": null
+  },
+  {
+    "id": 26961,
+    "activity": 135,
+    "activity_name": "V-0000 Consumption in households",
+    "activitygroup": 19,
+    "activitygroup_name": "Consumption in households",
+    "name": "Almere Haven",
+    "included": true,
+    "city": null,
+    "address": null
+  }
+]

@@ -12,11 +12,11 @@ div.tooltip {
     width: auto;
     height: auto;
     padding: 4px;
-    font: 8px sans-serif;
-    color: #fff;
-    background: #aad400;
+    font: 5px sans-serif;
+    color: #111111;
+    background: #fff;
     border: 0px;
-    border-radius: 8px;
+    border-radius: 0px;
     pointer-events: none;
 }
 

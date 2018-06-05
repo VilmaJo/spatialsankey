@@ -1,8 +1,24 @@
-/*
-Data Structure that is needed to use the class FlowMap:
-Flows:
-Nodes:
+/**
+ * Data Structure that is needed to use the class FlowMap:
+ * Nodes:
+ * @param {number} lon - Longitude (first part of coordinates)
+ * @param {number} lat - Latitude (second part of coordinates)
+ * @param {}
+ *
+ * Flows:
+ * @param {} source - flow origin needs id that is connected to coordinates of the Data for the nodes
+ * @param {} target - flow destination needs id that is connected to coordinates of the Data for the nodes
+ *
+ * examples from the web:
+ * @param {Object} employee - The employee who is responsible for the project.
+ * @param {string} employee.name - The name of the employee.
+ * @param {string} employee.department - The employee's department.
  */
+
+
+
+
+
 
 define([
     'd3', 'topojson', 'd3-queue'
@@ -527,6 +543,8 @@ define([
 });
 
 /*  TO DO   TO DO   TO DO   TO DO   TO DO
+
+*   check if 'new Set()' can be used for unique connections
 
 *   Zoom
 *   Bounding box: zoom to minx,miny und maxx, maxy

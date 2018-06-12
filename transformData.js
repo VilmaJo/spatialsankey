@@ -28,7 +28,9 @@ define([
 
         var blindSafeColor = d3.scale.linear()
         //.range(["#a50026","#d73027","#f46d43","#fdae61","#fee090","#ffffbf","#e0f3f8","#abd9e9","#74add1","#4575b4","#313695"])
-            .range(["#a50026", "#ffffbf", "#313695"])
+            .range(["#a50026",
+                "#ffffbf",
+                "#313695"])
             .domain([0, 1, uniqueActivityGroups.size-1])
             .interpolate(d3.interpolateHsl);
         var i = 0;

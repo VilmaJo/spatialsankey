@@ -186,7 +186,7 @@ define([
 
                 // drawPath
                 //this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
-                this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
+                //this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
 
 
             } /******************************   End for key in flowsData    ***********************************/
@@ -213,7 +213,9 @@ define([
                     .attr("id", function (d, i) {
                         return d.id;
                     })
-                    .style("fill", "lightgrey");
+                    .style("fill", "lightgrey")
+                    .style("stroke", 'grey')
+                    .style("stroke-width", 0.2);
             }
 
             // Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten

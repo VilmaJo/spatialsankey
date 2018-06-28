@@ -23,7 +23,7 @@
   },
   {
     "id": 26703,
-    "activity": 134,
+    "activity": 130,
     "activity_name": "E-3821 Treatment and disposal of non-hazardous waste",
     "activitygroup": 19,
     "activitygroup_name": "Water supply, sewerage, waste management and remediation",
@@ -31,5 +31,39 @@
     "included": true,
     "city": "AMSTERDAM",
     "address": "AUSTRALIEHAVENWEG 21"
+  },
+  {
+    "id": 26553,
+    "activity": 134,
+    "activity_name": "V-0000 Consumption in households",
+    "activitygroup": 19,
+    "activitygroup_name": "Consumption in households",
+    "name": "Almere Haven",
+    "included": true,
+    "city": null,
+    "address": null
+  },
+  {
+    "id": 26554,
+    "activity": 116,
+    "activity_name": "V-0000 Consumption in households",
+    "activitygroup": 19,
+    "activitygroup_name": "Consumption in households",
+    "name": "Almere Haven",
+    "included": true,
+    "city": null,
+    "address": null
+  },
+  {
+    "id": 26555,
+    "activity": 139,
+    "activity_name": "V-0000 Consumption in households",
+    "activitygroup": 19,
+    "activitygroup_name": "Consumption in households",
+    "name": "Almere Haven",
+    "included": true,
+    "city": null,
+    "address": null
   }
+
 ]

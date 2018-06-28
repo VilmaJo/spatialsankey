@@ -3,56 +3,72 @@ define([
 ], function(d3, d3scale) {
     function transformData(actors, locations, materials, actor2actor) {
         var locationsData = {};
+        var levelData = {};
         locations.features.forEach(function (location) {
             var actorId = location.properties.actor,
-                coordinates = location.geometry.coordinates;
+                coordinates = location.geometry.coordinates,
+                level = location.properties.level;
             locationsData[actorId] = coordinates;
+            levelData[actorId] = level;
         });
 
         var styles = {};
 
-        var uniqueActivityGroups = new Set();                           //to get array of unique values
+        var uniqueActivity = new Set();                           //to get array of unique values
+        var uniqueLevel = new Set();
         var actorsData = {};
         actors.forEach(function (actor) {
             var coordinates = locationsData[actor.id] || [Math.random() * 13 + 4, Math.random() * 18 + 40];         // !!!!!!!!!! random coordinates
+            var level = levelData[actor.id];
             actorsData[actor.id] = {
                 'name': actor.name,
                 'label': actor.name,
                 'lon': coordinates[0],
                 'lat': coordinates[1],
                 'style': 'group' + actor.activity,
-                'level': 5                                                                                  // !!!!!!!!! missing proper data
+                'level': 'level' + level
             };
-            uniqueActivityGroups = uniqueActivityGroups.add(actor.activity)
+
+            uniqueActivity = uniqueActivity.add(actor.activity)
+            uniqueLevel = uniqueLevel.add(level)
         });
 
-        var blindSafeColor = d3.scale.linear()
-        //.range(["#a50026","#d73027","#f46d43","#fdae61","#fee090","#ffffbf","#e0f3f8","#abd9e9","#74add1","#4575b4","#313695"])
-            .range(["#a50026",
-                "#ffffbf",
-                "#313695"])
-            .domain([0, 1, uniqueActivityGroups.size-1])
+        // sort the unique levels to assign proper radius
+        var levelArray = Array.from(uniqueLevel);
+        levelArray.sort(function(a, b){return b - a});
+        console.log(levelArray);
+
+        // define color range and assign color to nodes activity
+        var nodeColor = d3.scale.linear()
+            .range(["#1b9e77",
+                    "#d95f02",
+                    "#7570b3"])
+            .domain([0, 1, uniqueActivity.size-1])
             .interpolate(d3.interpolateHsl);
         var i = 0;
 
-        uniqueActivityGroups.forEach(function (groupId) {
-            var color = blindSafeColor(i);
-            var style = {'color': color};
-            styles['group' + groupId] = style;
+        uniqueActivity.forEach(function (groupId) {
+            var color = nodeColor(i);
+            styles['group' + groupId] = {'color': color};
             i += 1;
         });
 
-        /*
-        var colorStep = 255 / (uniqueActivityGroups.size - 1);
+
+        // define radius range and assign radius to nodes level
+        var nodeRadius = d3.scale.linear()
+            .range([10,25])
+            .domain([0,uniqueLevel.size-1])
+            .interpolate(d3.interpolateNumber);
         var i = 0;
-        uniqueActivityGroups.forEach(function (groupId) {
-            var color = i * colorStep;
-            var rgb = 'rgb(' + color + ',' + color + ',' + color + ')';
-            var style = {'color': rgb};
-            styles['group' + groupId] = style;
+
+        levelArray.forEach(function (level) {
+            var radius = nodeRadius(i);
+            styles['level' + level] = {'radius': radius};
             i += 1;
         });
-        */
+
+
+
 
         var materialsData = {};
         materials.forEach(function (material) {
@@ -121,6 +137,7 @@ define([
             i += 1;
         });
 
+        console.log(styles)
         return {flows: flowsData, nodes: actorsData, styles: styles};
     }
     return transformData;

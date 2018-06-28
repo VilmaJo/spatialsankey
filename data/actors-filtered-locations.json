@@ -5,18 +5,18 @@
 			"type": "Feature",
 			"geometry": {
 				"type": "Point",
-				"coordinates": [3.505000886629736, 45.391188201389525]
+				"coordinates": [4.853297, 52.372176]
 			},
 			"properties": {
 				"url": "http://localhost:8000/api/casestudies/2/keyflows/1/administrativelocations/24410/",
 				"address": "",
 				"postcode": "",
 				"country": "",
-				"city": "",
+				"city": "Amsterdam",
 				"name": "",
 				"actor": 26702,
 				"area": 840,
-				"level": 6
+				"level": 4
 			}
 		},
 		{
@@ -24,38 +24,96 @@
 			"type": "Feature",
 			"geometry": {
 				"type": "Point",
-				"coordinates": [13.005000886629736, 51.391188201389525]
+				"coordinates": [9.988490, 53.516411]
 			},
 			"properties": {
 				"url": "http://localhost:8000/api/casestudies/2/keyflows/1/administrativelocations/24410/",
 				"address": "",
 				"postcode": "",
 				"country": "",
-				"city": "",
+				"city": "Hamburg",
 				"name": "",
 				"actor": 26703,
 				"area": 840,
-				"level": 6
+				"level": 2
 			}
 		},
 		{
-			"id": 24410,
+			"id": 24412,
 			"type": "Feature",
 			"geometry": {
 				"type": "Point",
-				"coordinates": [4.505000886629736, 55.391188201389525]
+				"coordinates": [18.216241, 46.084315]
 			},
 			"properties": {
 				"url": "http://localhost:8000/api/casestudies/2/keyflows/1/administrativelocations/24410/",
 				"address": "",
 				"postcode": "",
 				"country": "",
-				"city": "",
+				"city": "Pecs",
 				"name": "",
 				"actor": 26552,
 				"area": 840,
 				"level": 6
 			}
+		},
+		{
+			"id": 24413,
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [19.470972, 51.757736]
+			},
+			"properties": {
+				"url": "http://localhost:8000/api/casestudies/2/keyflows/1/administrativelocations/24410/",
+				"address": "",
+				"postcode": "",
+				"country": "",
+				"city": "Lodz",
+				"name": "",
+				"actor": 26553,
+				"area": 840,
+				"level": 3
+			}
+		},
+		{
+			"id": 24414,
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [14.244540, 40.910758]
+			},
+			"properties": {
+				"url": "http://localhost:8000/api/casestudies/2/keyflows/1/administrativelocations/24410/",
+				"address": "",
+				"postcode": "",
+				"country": "",
+				"city": "Neapel",
+				"name": "",
+				"actor": 26554,
+				"area": 840,
+				"level": 6
+			}
+		},
+		{
+			"id": 24415,
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [4.353784, 50.844686]
+			},
+			"properties": {
+				"url": "http://localhost:8000/api/casestudies/2/keyflows/1/administrativelocations/24410/",
+				"address": "",
+				"postcode": "",
+				"country": "",
+				"city": "Bruesel",
+				"name": "",
+				"actor": 26555,
+				"area": 840,
+				"level": 1
+			}
 		}
+
 	]
 }

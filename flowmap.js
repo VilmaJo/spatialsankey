@@ -1,4 +1,4 @@
-/**
+/*
  * Data Structure that is needed to use the class FlowMap:
  * Nodes:
  * @param {number} lon - Longitude (first part of coordinates)
@@ -14,9 +14,6 @@
  * @param {string} employee.name - The name of the employee.
  * @param {string} employee.department - The employee's department.
  */
-
-
-
 
 
 
@@ -37,9 +34,9 @@ define([
             this.height = options.height || this.width / 1.5;
 
             this.projection = d3.geo.mercator()
-                .center([25, 40])
-                .translate([this.width / 2, this.height / 2])
-                .scale(600);
+                .center([4, 47])
+                .translate([this.width / 5, this.height / 2])
+                .scale(1400);
 
             this.path = d3.geo.path().projection(this.projection);
 
@@ -118,7 +115,7 @@ define([
                     }
                 }
             }
-
+            // get all connections between two nodes that have flows in both directions
             var bothways = [];
             for (var key in connectionSourceTarget) {
                 var source = connectionSourceTarget[key].source,
@@ -135,7 +132,6 @@ define([
 
 
             //get the sum of all individual strokeWidths per same source & target
-            var totalStroke = {};
             var totalStrokeWidths = {};
             for (var key in strokeWidthArrayPerConnection) {
                 var eachArray = strokeWidthArrayPerConnection[key],
@@ -170,7 +166,7 @@ define([
                     syp = this.projection(sourceCoords)[1],
                     txp = this.projection(targetCoords)[0],
                     typ = this.projection(targetCoords)[1];
-
+                console.log(sxp)
 
                 // define further adjustments for the paths: width, offset ( to see each material fraction even if they have same coordinates)
                 // drawPath
@@ -184,6 +180,8 @@ define([
                 var sourceLevel = source.level,
                     targetLevel = target.level;
 
+
+
                 // drawPath
                 //this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
                 //this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
@@ -191,10 +189,13 @@ define([
 
             } /******************************   End for key in flowsData    ***********************************/
 
-// addpoint for each node
+            // use addpoint for each node in nodesData
             Object.values(nodesData).forEach(function (node) {
-                _this.addPoint(node.lon, node.lat, node.label, node.level, node.style);
+                _this.addPoint(node.lon, node.lat, node.label,
+                               node.level, node.style);
             });
+
+
 
         }   /*********************************    /End render (nodes, flows)  **********************************/
 
@@ -238,37 +239,19 @@ define([
             return (((35 - ((level - 1) * 4) ^ (5 / 7)) / (Math.sqrt(2 * Math.PI))));
         };
 
+
         //function to add nodes to the map
         addPoint(lon, lat, label, level, styleId) {
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
 
             var point = this.g.append("g")
-                .attr("class", "gpoint")
+                .attr("class", "node")
                 .append("circle")
                 .attr("cx", x)
                 .attr("cy", y)
-                .attr("r", this.specifyNodeSize(level))
-                .style("fill", this.styles[styleId].color)
-                .style("fill-opacity", 0.5)
-                .on("mouseover", function (d) {
-                    return FlowPopup.text(function (d) {
-                        return label;
-                    }), d3.select(this).style("cursor", "pointer")
-                })
-                .on("mouseout", function (d) {
-                    return FlowPopup.text(function (d) {
-                        return " ";
-                    })
-                });
-
-            var FlowPopup = this.g.append("g")
-                .append("text")
-                .attr("dx", x)
-                .attr("dy", y + 2)
-                .attr("text-anchor", "middle")
-                .style("fill", "black")
-                .attr("font-size", "8px");
+                .attr("r", this.styles[level].radius)
+                .style("fill", this.styles[styleId].color);
 
         }
 
@@ -276,8 +259,8 @@ define([
             var dxp = txp - sxp,
                 dyp = typ - syp;
             var flowLength = Math.sqrt(dxp * dxp + dyp * dyp);
-            var sourceReduction = 15 - this.specifyNodeSize(sourceLevel),
-                targetReduction = -15 + this.specifyNodeSize(targetLevel);
+            var sourceReduction = this.specifyNodeSize(sourceLevel),
+                targetReduction = - this.specifyNodeSize(targetLevel);
 
             // ratio between full line length and shortened line
             var sourceRatio = sourceReduction / flowLength,
@@ -334,7 +317,7 @@ define([
                 txpao = totalOffset[2],
                 typao = totalOffset[3];
 
-            return [sxpao, sypao,txpao,typao];
+            return [sxpao,sypao,txpao,typao];
         }
 
         // To do: adjust material to material group
@@ -345,11 +328,16 @@ define([
             txpao = totalPoints[2],
             typao = totalPoints[3];
 
-            console.log('sxpao: ' + sxpao)
+        var adjustedPathLength = this.adjustedPathLength(sxp, syp, txp, typ, sourceLevel, targetLevel);
+        var dxp = adjustedPathLength[0],
+            dyp = adjustedPathLength[1],
+            flowLength = adjustedPathLength[6];
+
             // tooltip
             var div = d3.select("body").append("div")
                 .attr("class", "tooltip")
                 .style("opacity", 0);
+
 
             //this.drawArrowhead(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
 
@@ -414,13 +402,9 @@ define([
                 txpaot = totalPoints[2],
                 typaot = totalPoints[3];
 
-            console.log('sxpaot: ' + sxpaot)
 
 
-            this.drawArrowhead(sxpaot, sypaot, txpaot, typaot, targetLevel, totalStroke, flowLength, dxp, dyp);
-
-            console.log('sxpaot: ' + sxpaot)
-
+            //this.drawArrowhead(sxpaot, sypaot, txpaot, typaot, targetLevel, totalStroke, flowLength, dxp, dyp);
             // txpao typao per connection und davon ausgehend dann das arrow
             //this.drawArrowhead(txp, typ, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
             var flows = this.g.append("line")
@@ -468,7 +452,7 @@ define([
             //console.log(triangleData)
 /*
                                     var rightTargetB = this.g.append("g")
-                                        .attr("class", "gpoint")
+                                        .attr("class", "node")
                                         .append("circle")
                                         .attr("cx", txprb)
                                         .attr("cy", typrb)
@@ -477,7 +461,7 @@ define([
                                         .style("fill-opacity", 0.5);
 
                                     var leftTargetB = this.g.append("g")
-                                        .attr("class", "gpoint")
+                                        .attr("class", "node")
                                         .append("circle")
                                         .attr("cx", txplb)
                                         .attr("cy", typlb)
@@ -486,7 +470,7 @@ define([
                                         .style("fill-opacity", 0.5);
 
                                     var rightTarget = this.g.append("g")
-                                        .attr("class", "gpoint")
+                                        .attr("class", "node")
                                         .append("circle")
                                         .attr("cx", txpr)
                                         .attr("cy", typr)
@@ -495,7 +479,7 @@ define([
                                         .style("fill-opacity", 0.5);
 
                                     var leftTarget = this.g.append("g")
-                                        .attr("class", "gpoint")
+                                        .attr("class", "node")
                                         .append("circle")
                                         .attr("cx", txpl)
                                         .attr("cy", typl)
@@ -504,7 +488,7 @@ define([
                                         .style("fill-opacity", 0.5);
 
                                     var frontTarget = this.g.append("g")
-                                        .attr("class", "gpoint")
+                                        .attr("class", "node")
                                         .append("circle")
                                         .attr("cx", ftx)
                                         .attr("cy", fty)
@@ -522,7 +506,6 @@ define([
                             y = d.ty;
                         return [x, y].join(",");
                     }).join(" ")
-
                 );
 
             /*

@@ -1,3 +1,72 @@
+//function to add nodes to the map
+        addPoint(lon, lat, label, level, styleId) {
+            var x = this.projection([lon, lat])[0],
+                y = this.projection([lon, lat])[1];
+
+            var point = this.g.append("g")
+                .attr("class", "node")
+                .append("circle")
+                .attr("cx", x)
+                .attr("cy", y)
+                .attr("r", this.specifyNodeSize(level))
+                .style("fill", this.styles[styleId].color)
+                .style("fill-opacity", 0.5)
+                .on("mouseover", function (d) {
+                    return FlowPopup.text(function (d) {
+                        return label;
+                    }), d3.select(this).style("cursor", "pointer")
+                })
+                .on("mouseout", function (d) {
+                    return FlowPopup.text(function (d) {
+                        return " ";
+                    })
+                });
+
+            var FlowPopup = this.g.append("g")
+                .append("text")
+                .attr("dx", x)
+                .attr("dy", y + 2)
+                .attr("text-anchor", "middle")
+                .style("fill", "black")
+                .attr("font-size", "8px");
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function pieChart(pointSizeSum,pointValueSource,pointValueTarget) {
     radius=pointSizeSum;
 
@@ -44,3 +113,6 @@ function pieChart(pointSizeSum,pointValueSource,pointValueTarget) {
             else {pointSize = 4;}
             console.log(pointSize)
         */
+
+
+

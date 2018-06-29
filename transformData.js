@@ -40,9 +40,12 @@ define([
 
         // define color range and assign color to nodes activity
         var nodeColor = d3.scale.linear()
-            .range(["#1b9e77",
-                    "#d95f02",
-                    "#7570b3"])
+            /*.range(["#a6cee3",
+                    "#1f78b4",
+                    "#b2df8a"])*/
+            .range (["#1b9e77",
+            "#d95f02",
+            "#7570b3"])
             .domain([0, 1, uniqueActivity.size-1])
             .interpolate(d3.interpolateHsl);
         var i = 0;
@@ -96,6 +99,7 @@ define([
                     'source': flow.origin,
                     'target': flow.destination,
                     'value': amount,
+                    'valueTotal':totalAmount,
                     'label': label,
                     'labelTotal': labelTotal,
                     'style': 'material' + fraction.material
@@ -114,30 +118,23 @@ define([
         sequentialScale(50);  // returns 'rgb(175, 240, 91)'
         sequentialScale(100); // returns 'rgb(110, 64, 170)'
         */
-        //range defines the colors to get a rainbow,
-        //domain defines the start, step, end
+
+        //define color range and assign colors to unique materials
         var materialColor = d3.scale.linear()
-            .range(["green", "purple", "yellow"])
+            .range(["#1b9e77",
+                    "#d95f02",
+                    "#7570b3"])
             .domain([0, 1, uniqueMaterials.size-1])
             .interpolate(d3.interpolateHsl);
-
-        // check if thats true: http://colorbrewer2.org/#type=diverging&scheme=RdYlBu&n=11
-        var blindSafeColor = d3.scale.linear()
-            //.range(["#a50026","#d73027","#f46d43","#fdae61","#fee090","#ffffbf","#e0f3f8","#abd9e9","#74add1","#4575b4","#313695"])
-            .range(["#a50026", "#ffffbf", "#313695"])
-            .domain([0, 1, uniqueMaterials.size-1])
-            .interpolate(d3.interpolateHsl);
-
         var i = 0;
 
         uniqueMaterials.forEach(function (materialId) {
             var color = materialColor(i);
-            var style = {'color':color}
-                styles['material' + materialId] = style;
+                styles['material' + materialId] = {'color':color};
             i += 1;
         });
 
-        console.log(styles)
+
         return {flows: flowsData, nodes: actorsData, styles: styles};
     }
     return transformData;

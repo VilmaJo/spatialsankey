@@ -1,6 +1,6 @@
 [{
 		"id": 372,
-		"amount": 647424.1789199997,
+		"amount": 1547424.1789199997,
 		"composition": {
 			"id": 41105,
 			"name": "RES @Urbanisation lvl 1",
@@ -26,7 +26,35 @@
 		"year": 2016,
 		"publication": 12,
 		"waste": true
-	}, {
+	},{
+	"id": 377,
+	"amount": 1547424.1789199997,
+	"composition": {
+		"id": 41105,
+		"name": "RES @Urbanisation lvl 1",
+		"nace": "V-0000",
+		"fractions": [{
+			"material": 320,
+			"fraction": 0.5000000000000002
+		}, {
+			"material": 418,
+			"fraction": 0.2014676703572998
+		}, {
+			"material": 321,
+			"fraction": 0.24668676067431056
+		}, {
+			"material": 497,
+			"fraction": 0.05184556896838982
+		}
+		]
+	},
+	"origin": 26552,
+	"destination": 26702,
+	"description": null,
+	"year": 2016,
+	"publication": 12,
+	"waste": true
+}, {
 		"id": 373,
 		"amount": 462639.27061199996,
 		"composition": {
@@ -85,7 +113,7 @@
 },
 	{
 		"id": 375,
-		"amount": 647424.1789199997,
+		"amount": 847424.1789199997,
 		"composition": {
 			"id": 41105,
 			"name": "RES @Urbanisation lvl 1",

@@ -18,40 +18,58 @@
 
 
 define([
-    'd3', 'topojson', 'd3-queue'
-], function(d3, topojson, d3queue){
+    'd3', 'topojson', 'd3-queue', 'leaflet'
+], function(d3, topojson, d3queue, L){
 
     class FlowMap {
 
-        constructor(container, options) {
+        constructor(map, options) {
             var options = options || {};
-            this.container = document.getElementById(container);
+            this.map = map;
+            var _this = this;
 
             // ToDo: include this projection somehow (d3 geoMercator is used)
             //this.projection = options.projection || 'EPSG:3857';
 
             this.width = options.width || this.container.offsetWidth;
+            this.bbox = options.bbox;
             this.height = options.height || this.width / 1.5;
+            console.log(this.bbox )
+            this.projection = function(coords) {
+                var point = map.latLngToLayerPoint(new L.LatLng(coords[1], coords[0]));
+                return [point.x, point.y];
+            }
 
-            this.projection = d3.geo.mercator()
-                .center([4, 47])
-                .translate([this.width / 5, this.height / 2])
-                .scale(1400);
+            function projectPoint(x, y) {
+                var coords = _this.projection([x, y]);
+                this.stream.point(point.x, point.y);
+            }
 
-            this.path = d3.geo.path().projection(this.projection);
+            var transform = d3.geo.transform({point: projectPoint});
+            this.path = d3.geo.path().projection(transform);
 
-            this.svg = d3.select(this.container)
-                .append("svg")
-                .attr("width", this.width)
-                .attr("height", this.height)
-                .append("g");
 
-            this.g = this.svg.append("g");
 
+            this.svg = d3.select(map.getPanes().overlayPane).append("svg"),
+            this.g = this.svg.append("g").attr("class", "leaflet-zoom-hide");
+        }
+
+        reset(){
+            var topLeft = this.projection(this.bbox[0]),
+                bottomRight = this.projection(this.bbox[1]);
+            topLeft = [topLeft[0] - 50, topLeft[1] - 50];
+            bottomRight = [bottomRight[0] + 50, bottomRight[1] + 50];
+            console.log(topLeft)
+            console.log(bottomRight)
+            this.svg.attr("width", bottomRight[0] - topLeft[0])
+                    .attr("height", bottomRight[1] - topLeft[1])
+                .style("left", topLeft[0] + "px")
+                .style("top", topLeft[1] + "px");
+            this.g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
         }
 
         render(nodesData, flowsData, styles) {
-
+            this.g.selectAll("*").remove();
             // remember scope of 'this' as context for functions with different scope
             var _this = this;
 
@@ -203,6 +221,7 @@ define([
         renderTopo(topoJson, nodesData, flowsData, styles) {
             var _this = this;
 
+            /*
             function drawTopo(topojson) {
                 var country = _this.g.selectAll(".country").data(topojson);
                 _this.g.selectAll(".country")
@@ -218,7 +237,7 @@ define([
                     .style("stroke", 'grey')
                     .style("stroke-width", 0.2);
             }
-
+*/
             // Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
             function loaded(error, world) {
                 //world data
@@ -237,7 +256,8 @@ define([
                 y = this.projection([lon, lat])[1];
 
             // tooltip
-            var div = d3.select("body").append("div")
+            var tooltip = d3.select("body")
+                .append("div")
                 .attr("class", "tooltip")
                 .style("opacity", 0);
 
@@ -248,17 +268,18 @@ define([
                 .attr("cy", y)
                 .attr("r", this.styles[level].radius)
                 .style("fill", this.styles[styleId].color)
+                .style("fill-opacity", 0.85)
                 .on("mouseover", function (d) {
                     d3.select(this).style("cursor", "pointer"),
-                        div.transition()
+                        tooltip.transition()
                             .duration(200)
-                            .style("opacity", .9);
-                    div.html(nodeLabel)
+                            .style("opacity", 0.9);
+                    tooltip.html(nodeLabel)
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px")
                 })
                 .on("mouseout", function (d) {
-                        div.transition()
+                    tooltip.transition()
                             .duration(500)
                             .style("opacity", 0)
                     }
@@ -380,9 +401,10 @@ define([
             var uid = this.uuidv4();
 
             // tooltip
-            var div = d3.select("body").append("div")
-                .attr("class", "tooltip")
-                .style("opacity", 0);
+            var tooltip = d3.select("body")
+                            .append("div")
+                            .attr("class", "tooltip")
+                            .style("opacity", 0);
 
             this.drawArrowhead(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp, uid);
 
@@ -398,15 +420,15 @@ define([
                 .attr("stroke-opacity", 0.5)
                 .on("mouseover", function (d) {
                     d3.select(this).style("cursor", "pointer"),
-                        div.transition()
+                        tooltip.transition()
                             .duration(200)
-                            .style("opacity", .9);
-                    div.html(labelTotal)
+                            .style("opacity", 0.9);
+                    tooltip.html(labelTotal)
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px")
                 })
                 .on("mouseout", function (d) {
-                        div.transition()
+                    tooltip.transition()
                             .duration(500)
                             .style("opacity", 0)
                     }

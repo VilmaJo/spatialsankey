@@ -17,15 +17,21 @@ define([
         var uniqueActivity = new Set();                           //to get array of unique values
         var uniqueLevel = new Set();
         var actorsData = {};
+            topLeft = [10000, 0],
+            bottomRight = [0, 10000];
         actors.forEach(function (actor) {
             var coordinates = locationsData[actor.id] || [Math.random() * 13 + 4, Math.random() * 18 + 40];         // !!!!!!!!!! random coordinates
+            var lon = coordinates[0],
+                lat = coordinates[1];
+            topLeft = [Math.min(topLeft[0], lon), Math.max(topLeft[1], lat)];
+            bottomRight = [Math.max(bottomRight[0], lon), Math.min(bottomRight[1], lat)];
             var level = levelData[actor.id],
                 label = 'Name: ' + actor.name + '<br>Level: ' + level + '<br>Activity: ' + actor.activity;
             actorsData[actor.id] = {
                 'name': actor.name,
                 'label': label,
-                'lon': coordinates[0],
-                'lat': coordinates[1],
+                'lon': lon,
+                'lat': lat,
                 'style': 'group' + actor.activity,
                 'level': 'level' + level
             };
@@ -136,16 +142,7 @@ define([
         });
 
 
-        return {flows: flowsData, nodes: actorsData, styles: styles};
+        return {flows: flowsData, nodes: actorsData, styles: styles, bbox: [topLeft, bottomRight]};
     }
     return transformData;
 })
-
-/*
-*   colors:
-    *   color blind safe
-    *   yellow first as you can see it the best
-    *   rainbow inverse to have the best position
-    *   maybe get define different / multiple possibilities to chose from
-
-*/

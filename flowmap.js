@@ -183,8 +183,8 @@ define([
 
 
                 // drawPath
-                this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
-                //this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
+                //this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
+                this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
 
 
             } /******************************   End for key in flowsData    ***********************************/
@@ -192,7 +192,7 @@ define([
             // use addpoint for each node in nodesData
             Object.values(nodesData).forEach(function (node) {
                 _this.addPoint(node.lon, node.lat, node.label,
-                    node.level, node.style);
+                    node.level, node.style, node.label);
             });
 
 
@@ -232,9 +232,14 @@ define([
         }
 
         //function to add nodes to the map
-        addPoint(lon, lat, label, level, styleId) {
+        addPoint(lon, lat, label, level, styleId, nodeLabel) {
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
+
+            // tooltip
+            var div = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
 
             var point = this.g.append("g")
                 .attr("class", "node")
@@ -242,7 +247,22 @@ define([
                 .attr("cx", x)
                 .attr("cy", y)
                 .attr("r", this.styles[level].radius)
-                .style("fill", this.styles[styleId].color);
+                .style("fill", this.styles[styleId].color)
+                .on("mouseover", function (d) {
+                    d3.select(this).style("cursor", "pointer"),
+                        div.transition()
+                            .duration(200)
+                            .style("opacity", .9);
+                    div.html(nodeLabel)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px")
+                })
+                .on("mouseout", function (d) {
+                        div.transition()
+                            .duration(500)
+                            .style("opacity", 0)
+                    }
+                );
 
         }
 
@@ -318,6 +338,28 @@ define([
             });
         }
 
+        defineTriangleData(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp){
+            var triangleData = [];
+            var tReduction = - this.styles[targetLevel].radius,
+                tRatio = tReduction / flowLength,
+                txRValue = dxp * tRatio,
+                tyRValue = dyp * tRatio,
+                sxpl = sxpao + (totalStroke / 2) * (dyp / flowLength),                                                      // source left
+                sypl = sypao - (totalStroke / 2) * (dxp / flowLength),
+                txplb = (txpao + (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/15),                       // target left
+                typlb = (typao - (totalStroke / 2) * (dxp / flowLength))+ tyRValue*(totalStroke/15),
+                sxpr = sxpao - (totalStroke / 2) * (dyp / flowLength),                                                      // source right
+                sypr = sypao + (totalStroke / 2) * (dxp / flowLength),
+                txprb = (txpao - (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/15),                       // target right
+                typrb = (typao + (totalStroke / 2) * (dxp / flowLength))+ tyRValue*(totalStroke/15);
+            triangleData.push({'tx': sxpl, 'ty': sypl}, {'tx': txplb, 'ty': typlb},
+                {'tx': txpao, 'ty': typao},
+                {'tx': txprb, 'ty': typrb}, {'tx': sxpr, 'ty': sypr});
+
+            return triangleData;
+        }
+
+
         // To do: adjust material to material group
         drawTotalPath(sxp, syp, txp, typ, labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection) {
 
@@ -326,31 +368,31 @@ define([
                 sypao = totalPoints[1],
                 txpao = totalPoints[2],
                 typao = totalPoints[3];
-            var uid = this.uuidv4();
+
             var adjustedPathLength = this.adjustedPathLength(sxp, syp, txp, typ, sourceLevel, targetLevel);
             var dxp = adjustedPathLength[0],
                 dyp = adjustedPathLength[1],
                 flowLength = adjustedPathLength[6];
+
+            var triangleData = this.defineTriangleData(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
+
+            //unique id for each clip path is necessary
+            var uid = this.uuidv4();
 
             // tooltip
             var div = d3.select("body").append("div")
                 .attr("class", "tooltip")
                 .style("opacity", 0);
 
-
             this.drawArrowhead(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp, uid);
 
-            var triangleData = this.defineTriangleData(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
 
-            //a unique id for each clip path is necessary
             var flowsTotal = this.g.append("line")
                 .attr("x1", sxpao)
                 .attr("y1", sypao)
                 .attr("x2", txpao)
                 .attr("y2", typao)
-                //.attr("clip-path", "url(#clip)")
                 .attr("clip-path", "url(#clip" + uid +")")
-                //.attr("clip-path", triangleData.forEach(function(d) { return "url(#clip)"}))
                 .attr("stroke-width", totalStroke)
                 .attr("stroke", 'steelblue')
                 .attr("stroke-opacity", 0.5)
@@ -369,7 +411,6 @@ define([
                             .style("opacity", 0)
                     }
                 );
-
         }
 
 
@@ -384,6 +425,11 @@ define([
                 txpa = pathLengthValues[4],
                 typa = pathLengthValues[5],
                 flowLength = pathLengthValues[6];
+
+
+
+            //unique id for each clip path is necessary
+            var uid = this.uuidv4();
 
             // tooltip
             var div = d3.select("body").append("div")
@@ -405,8 +451,9 @@ define([
                 txpaot = totalPoints[2],
                 typaot = totalPoints[3];
 
+            var triangleData = this.defineTriangleData(sxpaot, sypaot, txpaot, typaot, targetLevel, totalStroke, flowLength, dxp, dyp);
 
-
+            this.drawArrowhead(sxpaot, sypaot, txpaot, typaot, targetLevel, totalStroke, flowLength, dxp, dyp, uid);
             //this.drawArrowhead(sxpaot, sypaot, txpaot, typaot, targetLevel, totalStroke, flowLength, dxp, dyp);
             // txpao typao per connection und davon ausgehend dann das arrow
             //this.drawArrowhead(txp, typ, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
@@ -417,8 +464,8 @@ define([
                 .attr("y2", typao)
                 .attr("stroke-width", strokeWidth)
                 .attr("stroke", this.styles[styleId].color)
-                .attr("stroke-opacity", 0.5)
-                .attr("clip-path", "url(#clip)")
+                //.attr("stroke-opacity", 0.5)
+                .attr("clip-path", "url(#clip" + uid +")")
                 .on("mouseover", function(d){
                     d3.select(this).style("cursor", "pointer"),
                         div.transition()
@@ -435,26 +482,7 @@ define([
 
         }
 
-        defineTriangleData(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp){
-        var triangleData = [];
-        var tReduction = - this.styles[targetLevel].radius,
-        tRatio = tReduction / flowLength,
-        txRValue = dxp * tRatio,
-        tyRValue = dyp * tRatio,
-        sxpl = sxpao + (totalStroke / 2) * (dyp / flowLength),                                      // source left
-        sypl = sypao - (totalStroke / 2) * (dxp / flowLength),
-        txplb = (txpao + (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/15),                       // target left
-        typlb = (typao - (totalStroke / 2) * (dxp / flowLength))+ tyRValue*(totalStroke/15),
-        sxpr = sxpao - (totalStroke / 2) * (dyp / flowLength),                                      // source right
-        sypr = sypao + (totalStroke / 2) * (dxp / flowLength),
-        txprb = (txpao - (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/15),                       // target right
-        typrb = (typao + (totalStroke / 2) * (dxp / flowLength))+ tyRValue*(totalStroke/15);
-        triangleData.push({'tx': sxpl, 'ty': sypl}, {'tx': txplb, 'ty': typlb},
-                          {'tx': txpao, 'ty': typao},
-                          {'tx': txprb, 'ty': typrb}, {'tx': sxpr, 'ty': sypr});
 
-        return triangleData;
-    }
 
         drawArrowhead(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp, id){
            var triangleData = this.defineTriangleData(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);

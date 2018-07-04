@@ -16,7 +16,7 @@ define([
 
         var uniqueActivity = new Set();                           //to get array of unique values
         var uniqueLevel = new Set();
-        var actorsData = {};
+        var actorsData = {},
             topLeft = [10000, 0],
             bottomRight = [0, 10000];
         actors.forEach(function (actor) {

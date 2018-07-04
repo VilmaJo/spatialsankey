@@ -52,15 +52,15 @@ define([
 
             this.svg = d3.select(map.getPanes().overlayPane).append("svg"),
             this.g = this.svg.append("g").attr("class", "leaflet-zoom-hide");
+
         }
 
         reset(){
+            // define viewbox: boundingbox + / - 50
             var topLeft = this.projection(this.bbox[0]),
                 bottomRight = this.projection(this.bbox[1]);
             topLeft = [topLeft[0] - 50, topLeft[1] - 50];
             bottomRight = [bottomRight[0] + 50, bottomRight[1] + 50];
-            console.log(topLeft)
-            console.log(bottomRight)
             this.svg.attr("width", bottomRight[0] - topLeft[0])
                     .attr("height", bottomRight[1] - topLeft[1])
                 .style("left", topLeft[0] + "px")
@@ -250,6 +250,7 @@ define([
                 .await(loaded);
         }
 
+
         //function to add nodes to the map
         addPoint(lon, lat, label, level, styleId, nodeLabel) {
             var x = this.projection([lon, lat])[0],
@@ -259,7 +260,8 @@ define([
             var tooltip = d3.select("body")
                 .append("div")
                 .attr("class", "tooltip")
-                .style("opacity", 0);
+                .style("opacity", 0.9)
+                .style("z-index", 500);
 
             var point = this.g.append("g")
                 .attr("class", "node")
@@ -404,7 +406,8 @@ define([
             var tooltip = d3.select("body")
                             .append("div")
                             .attr("class", "tooltip")
-                            .style("opacity", 0);
+                            .style("opacity", 0.9)
+                            .style("z-index", 500);
 
             this.drawArrowhead(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp, uid);
 
@@ -454,9 +457,10 @@ define([
             var uid = this.uuidv4();
 
             // tooltip
-            var div = d3.select("body").append("div")
+            var tooltip = d3.select("body").append("div")
                 .attr("class", "tooltip")
-                .style("opacity", 0);
+                .style("opacity", 0.9)
+                .style("z-index", 500);
 
             // define the offset of each flow to be able to see individual flows with same source and target coordinates
             // define the normal, let the line go along the normal with an offset: var norm = Math.sqrt(dxp * dxp + dyp * dyp),
@@ -490,14 +494,14 @@ define([
                 .attr("clip-path", "url(#clip" + uid +")")
                 .on("mouseover", function(d){
                     d3.select(this).style("cursor", "pointer"),
-                        div.transition()
+                        tooltip.transition()
                             .duration(200)
                             .style("opacity", .9);
-                    div.html(label)
+                    tooltip.html(label)
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px")})
                 .on("mouseout", function(d) {
-                    div.transition()
+                    tooltip.transition()
                         .duration(500)
                         .style("opacity", 0)}
                 );

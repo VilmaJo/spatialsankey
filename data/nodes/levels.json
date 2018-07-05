@@ -1,0 +1,34 @@
+[
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/5/",
+        "id": 5,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Wijk",
+        "level": 10,
+        "area_set": "http://localhost:8000/api/casestudies/2/levels/5/areas/"
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/6/",
+        "id": 6,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Gemeente",
+        "level": 8,
+        "area_set": "http://localhost:8000/api/casestudies/2/levels/6/areas/"
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/7/",
+        "id": 7,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Metropoolregio",
+        "level": 6,
+        "area_set": "http://localhost:8000/api/casestudies/2/levels/7/areas/"
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/",
+        "id": 8,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Provincie",
+        "level": 4,
+        "area_set": "http://localhost:8000/api/casestudies/2/levels/8/areas/"
+    }
+]

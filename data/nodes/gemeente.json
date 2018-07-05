@@ -1,0 +1,170 @@
+[
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/808/",
+        "id": 808,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Groningen",
+        "code": "1",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                6.888731059783302,
+                53.152226
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/809/",
+        "id": 809,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Limburg",
+        "code": "12",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.867773480443729,
+                51.265149
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/810/",
+        "id": 810,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Noord-Brabant",
+        "code": "11",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.036303236506718,
+                51.5301535
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/811/",
+        "id": 811,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Zeeland",
+        "code": "10",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                3.886873563089721,
+                51.304365
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/812/",
+        "id": 812,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Zuid-Holland",
+        "code": "9",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.471633025218663,
+                51.995465
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/813/",
+        "id": 813,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Noord-Holland",
+        "code": "8",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.821000335303425,
+                52.5838465
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/814/",
+        "id": 814,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Utrecht",
+        "code": "7",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.153260483418386,
+                52.1191155
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/815/",
+        "id": 815,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Gelderland",
+        "code": "6",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                6.083070518077506,
+                52.1296825
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/816/",
+        "id": 816,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Flevoland",
+        "code": "5",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.540180087720728,
+                52.4449195
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/817/",
+        "id": 817,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Overijssel",
+        "code": "4",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                6.381475429014628,
+                52.4883915
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/818/",
+        "id": 818,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Drenthe",
+        "code": "3",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                6.690124301422319,
+                52.909518
+            ]
+        }
+    },
+    {
+        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/819/",
+        "id": 819,
+        "casestudy": "http://localhost:8000/api/casestudies/2/",
+        "name": "Friesland",
+        "code": "2",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.831169421844048,
+                53.108476
+            ]
+        }
+    }
+]

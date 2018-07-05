@@ -1,0 +1,7454 @@
+[
+    {
+        "id": null,
+        "amount": 2451510.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 974,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1751811.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 973,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1772315.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 972,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2680898.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 971,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1776159.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 970,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3014087.9999999995,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7220000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 969,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 985474.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 968,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1445532.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 967,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3289611.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 966,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2980769.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 965,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2242625.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 964,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1794100.0000000002,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753099999999996
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7989999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.09346899999999998
+                }
+            ]
+        },
+        "origin": 962,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3779144.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 911,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1372487.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 940,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2338738.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 939,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2816737.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 952,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3917546.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204599999999997
+                }
+            ]
+        },
+        "origin": 947,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 822722.9999999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 943,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1004696.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 961,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 337035.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 960,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2472014.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 959,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2109349.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 958,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1394272.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1009,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 902176.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7219999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 957,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 476717.99999999994,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000004
+                }
+            ]
+        },
+        "origin": 956,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 431866.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 955,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2861590.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 954,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2243907.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403049999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 953,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 777871.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1084695
+                }
+            ]
+        },
+        "origin": 938,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3408790.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 937,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2805204.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 936,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3633053.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846949999999998
+                }
+            ]
+        },
+        "origin": 935,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 433147.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846949999999998
+                }
+            ]
+        },
+        "origin": 933,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 41008.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 950,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 566423.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 948,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 627935.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 945,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1599312.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 942,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2420754.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 932,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 4423738.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 931,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3961117.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 930,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 611276.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1084695
+                }
+            ]
+        },
+        "origin": 929,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2461762.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 1008,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 216574.00000000003,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753099999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7989999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.09346899999999998
+                }
+            ]
+        },
+        "origin": 928,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 4077733.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 897,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 4063637.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204599999999997
+                }
+            ]
+        },
+        "origin": 886,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1507043.9999999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7220000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 881,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3711224.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7220000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 869,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2384872.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1007,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 4969657.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999994
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1006,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2045274.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 927,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3106356.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7220000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 926,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2004266.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 925,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3579230.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 924,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2472014.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 923,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1881241.9999999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7220000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 1005,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3252446.9999999995,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 922,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1960695.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 921,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2032459.0000000002,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204599999999997
+                }
+            ]
+        },
+        "origin": 1004,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3234506.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1003,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 110209.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753099999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.799
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.093469
+                }
+            ]
+        },
+        "origin": 920,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 49978.99999999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10064490000000004
+                }
+            ]
+        },
+        "origin": 1002,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 6128133.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 919,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 25630.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1006449
+                }
+            ]
+        },
+        "origin": 1001,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 262708.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1000,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 6968797.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7219999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204599999999997
+                }
+            ]
+        },
+        "origin": 918,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 771462.9999999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000004
+                }
+            ]
+        },
+        "origin": 917,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2788544.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 999,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3378034.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 998,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 638187.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 997,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 4685164.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 910,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2175987.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 996,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2958984.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 916,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 378043.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 915,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 719.9999992799999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 914,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 310.00000000000006,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03244999999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.9169999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.05054999999999999
+                }
+            ]
+        },
+        "origin": 913,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1199484.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 995,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1226484.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753099999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.799
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.09346900000000001
+                }
+            ]
+        },
+        "origin": 883,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 833.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245000000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.917
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.050550000000000005
+                }
+            ]
+        },
+        "origin": 883,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 771498.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 882,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 524.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808000000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.06619200000000001
+                }
+            ]
+        },
+        "origin": 882,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 836496.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10064490000000001
+                }
+            ]
+        },
+        "origin": 874,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 568.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.078128
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.12187200000000001
+                }
+            ]
+        },
+        "origin": 874,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 410711.99999999994,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 873,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 278.999999721,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 873,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1626223.9999999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7220000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 994,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 953304.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1006449
+                }
+            ]
+        },
+        "origin": 868,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 647.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07812800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.12187200000000001
+                }
+            ]
+        },
+        "origin": 868,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2249826.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 867,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 87.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.074308
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8099999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.11569200000000002
+                }
+            ]
+        },
+        "origin": 867,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2241695.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204599999999997
+                }
+            ]
+        },
+        "origin": 880,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 87.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.074308
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8099999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.11569200000000002
+                }
+            ]
+        },
+        "origin": 880,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1742250.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753099999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.799
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.093469
+                }
+            ]
+        },
+        "origin": 879,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 68.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.917
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.05055
+                }
+            ]
+        },
+        "origin": 879,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1765118.0000000002,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753100000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7989999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.093469
+                }
+            ]
+        },
+        "origin": 878,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 28957.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 877,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 5559744.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 876,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 132194.99999999997,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8380000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000003
+                }
+            ]
+        },
+        "origin": 872,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 809536.9999999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.090788
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8380000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 871,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 201440.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000004
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 870,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1812041.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999994
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 993,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 172483.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.090788
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 866,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 191368.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 865,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 26439.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.090788
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 864,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 36511.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.090788
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 862,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3559732.9999999995,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7220000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 861,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3329190.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7219999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 860,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2129588.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 859,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1930305.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 858,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1448379.9999999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 857,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 437640.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 856,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2052740.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 855,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1406700.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 854,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1783123.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1084695
+                }
+            ]
+        },
+        "origin": 1209,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2309333.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 1208,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2374458.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 1197,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3403433.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7219999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1196,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2330173.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1169,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1322038.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1207,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1310315.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1206,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1398885.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403049999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1084695
+                }
+            ]
+        },
+        "origin": 1205,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 153695.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 1204,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2552900.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1203,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1723208.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1202,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2116563.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1201,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2111353.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 1200,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1670270.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10064490000000001
+                }
+            ]
+        },
+        "origin": 1199,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 467.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.078128
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.121872
+                }
+            ]
+        },
+        "origin": 1199,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 14003100.999999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 1198,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 7203.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808000000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.06619200000000001
+                }
+            ]
+        },
+        "origin": 1198,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 5966050.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 1195,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3069.0000000000005,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.04180799999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8919999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.06619199999999999
+                }
+            ]
+        },
+        "origin": 1195,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1448367.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.107531
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.799
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.09346899999999998
+                }
+            ]
+        },
+        "origin": 1194,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 745.0000000000001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.9169999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.05055
+                }
+            ]
+        },
+        "origin": 1194,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 187839.99999999997,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.090788
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8380000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 1193,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 96.999999903,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1193,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2328446.9999999995,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000002
+                }
+            ]
+        },
+        "origin": 1192,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1198.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.04180799999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.06619199999999999
+                }
+            ]
+        },
+        "origin": 1192,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3697128.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403049999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1084695
+                }
+            ]
+        },
+        "origin": 977,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 130713.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1084695
+                }
+            ]
+        },
+        "origin": 976,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 4882515.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 906,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1507043.9999999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7220000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 975,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1242.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.917
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.050550000000000005
+                }
+            ]
+        },
+        "origin": 1168,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 6059.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808000000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8919999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1167,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3136.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1165,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 582.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07812800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.12187200000000001
+                }
+            ]
+        },
+        "origin": 1164,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 96.999999903,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1161,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2184253.9999999995,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000004
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10064490000000002
+                }
+            ]
+        },
+        "origin": 1028,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1095.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.078128
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.12187200000000002
+                }
+            ]
+        },
+        "origin": 1028,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1662225.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1166551
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1006449
+                }
+            ]
+        },
+        "origin": 1027,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 833.0000000000001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07812799999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.12187199999999998
+                }
+            ]
+        },
+        "origin": 1027,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1777232.9999999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1006449
+                }
+            ]
+        },
+        "origin": 1026,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 891.0000000000001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07812799999999998
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7999999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.12187199999999998
+                }
+            ]
+        },
+        "origin": 1026,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1096964.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1011,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1014948.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 1010,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1659543.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7219999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 891,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1922250.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 992,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1995296.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 991,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 475437.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 990,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 577957.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 989,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3806055.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 988,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3178120.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7220000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 987,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2120883.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 986,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1334042.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 985,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2803922.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 984,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2369493.9999999995,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000006
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7220000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 983,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2414346.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 982,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3219127.9999999995,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595400000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.13204600000000002
+                }
+            ]
+        },
+        "origin": 981,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2659113.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.14595399999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 980,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 4735143.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.145954
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.722
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.132046
+                }
+            ]
+        },
+        "origin": 979,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 311405.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1006449
+                }
+            ]
+        },
+        "origin": 978,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 148746.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 1191,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 76.99999992299999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336004
+                }
+            ]
+        },
+        "origin": 1191,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 763754.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 1190,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 392.999999607,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 1190,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 140165.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 1163,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 71.99999992800001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007479999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 1163,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 298446.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 1189,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 153.99999984599998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336004
+                }
+            ]
+        },
+        "origin": 1189,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 662683.0000000001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753099999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7989999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.093469
+                }
+            ]
+        },
+        "origin": 1188,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 341.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.917
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.05055
+                }
+            ]
+        },
+        "origin": 1188,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 183072.00000000003,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753099999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7989999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.093469
+                }
+            ]
+        },
+        "origin": 1187,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 94.00000000000001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03244999999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.9169999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.050550000000000005
+                }
+            ]
+        },
+        "origin": 1187,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 346121.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 1186,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 177.999999822,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015335996
+                }
+            ]
+        },
+        "origin": 1186,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 202142.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078799999999998
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 1185,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 103.99999989599999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 1185,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 863871.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1166551
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1006449
+                }
+            ]
+        },
+        "origin": 1184,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 444.00000000000006,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07812799999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.121872
+                }
+            ]
+        },
+        "origin": 1184,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 10489.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.090788
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 1183,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 4.999999995,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1183,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 4459011.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 1173,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2909.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808000000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1173,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 545305.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10064489999999998
+                }
+            ]
+        },
+        "origin": 1172,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 356.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.078128
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.121872
+                }
+            ]
+        },
+        "origin": 1172,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 216561.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753100000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.799
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.09346900000000001
+                }
+            ]
+        },
+        "origin": 1171,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 141.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03244999999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.9169999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.050550000000000005
+                }
+            ]
+        },
+        "origin": 1171,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2303517.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.107531
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.799
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.093469
+                }
+            ]
+        },
+        "origin": 1136,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 735.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.917
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.050550000000000005
+                }
+            ]
+        },
+        "origin": 1136,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 327190.99999999994,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8380000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 1135,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 103.99999989599999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 1135,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1687200.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753099999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.799
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.093469
+                }
+            ]
+        },
+        "origin": 1133,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 727.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245000000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.917
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.05055000000000001
+                }
+            ]
+        },
+        "origin": 1133,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3471849.0000000005,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.107531
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7989999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.09346899999999998
+                }
+            ]
+        },
+        "origin": 1132,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 233.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07430800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.81
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.11569200000000002
+                }
+            ]
+        },
+        "origin": 1114,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 726.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808000000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1131,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 386.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07430800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.81
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.11569200000000002
+                }
+            ]
+        },
+        "origin": 1130,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 490.00000000000006,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07430799999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8099999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.11569199999999999
+                }
+            ]
+        },
+        "origin": 1129,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 774.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1128,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 687.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808000000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.06619200000000001
+                }
+            ]
+        },
+        "origin": 1127,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1001.0000000000001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.04180799999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8919999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1126,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1279.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.917
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.050550000000000005
+                }
+            ]
+        },
+        "origin": 1125,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 221536.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753099999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7989999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.09346900000000001
+                }
+            ]
+        },
+        "origin": 1110,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 805476.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1340305
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 1124,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1768675.9999999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000001
+                }
+            ]
+        },
+        "origin": 1123,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1736168.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846949999999998
+                }
+            ]
+        },
+        "origin": 1122,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 48159.99999999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10064490000000004
+                }
+            ]
+        },
+        "origin": 1121,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 22876.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.090788
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 1120,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1414700.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.10753100000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.799
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.093469
+                }
+            ]
+        },
+        "origin": 1119,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 61404.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1166551
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10064490000000002
+                }
+            ]
+        },
+        "origin": 1118,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 842799.9999999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665510000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1006449
+                }
+            ]
+        },
+        "origin": 1117,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 74648.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 1116,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 26488.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 1115,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1995646.9999999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403050000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10846950000000002
+                }
+            ]
+        },
+        "origin": 1093,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 530.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.04180799999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1093,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2169755.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.13403049999999997
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7575
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.1084695
+                }
+            ]
+        },
+        "origin": 1092,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 577.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.04180799999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8919999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1092,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 257204.99999999997,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 1081,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 67.999999932,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 1081,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 5276.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.11665509999999998
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10064489999999998
+                }
+            ]
+        },
+        "origin": 1091,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.078128
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.12187200000000001
+                }
+            ]
+        },
+        "origin": 1091,
+        "destination": 1190,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2128195.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.1166551
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7827
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.10064490000000001
+                }
+            ]
+        },
+        "origin": 912,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 818.0000000000001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07812799999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.121872
+                }
+            ]
+        },
+        "origin": 912,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 66033.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078799999999998
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 905,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 24.999999974999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863996
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 905,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 397277.99999999994,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000004
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8380000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 909,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 152.99999984700003,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863998
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007479999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015335993
+                }
+            ]
+        },
+        "origin": 909,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 672233.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 907,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 257.999999742,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863998
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 907,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 391865.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.838
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.07121200000000001
+                }
+            ]
+        },
+        "origin": 903,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 150.999999849,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007479999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 903,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 88764.99999999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09078800000000002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8380000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.071212
+                }
+            ]
+        },
+        "origin": 901,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 33.999999966,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 901,
+        "destination": 1128,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 392.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03244999999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.917
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.05055
+                }
+            ]
+        },
+        "origin": 1070,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 666.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.9169999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.05055
+                }
+            ]
+        },
+        "origin": 1061,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 5.9999999939999995,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1060,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 101.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245000000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.917
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.05055
+                }
+            ]
+        },
+        "origin": 1069,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 20.999999979,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1068,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2.9999999969999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1067,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 345.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245000000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.917
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.05055
+                }
+            ]
+        },
+        "origin": 1066,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 689.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.04180800000000001
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8919999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.06619200000000001
+                }
+            ]
+        },
+        "origin": 1065,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 593.0000000000001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.9169999999999999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.05054999999999999
+                }
+            ]
+        },
+        "origin": 1064,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 500.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1063,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 38.999999961,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1062,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 74.99999992500001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007479999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1059,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 373.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.078128
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.121872
+                }
+            ]
+        },
+        "origin": 1058,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 65.999999934,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 1057,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 300.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07812799999999999
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.121872
+                }
+            ]
+        },
+        "origin": 1056,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 0.9999999989999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336004
+                }
+            ]
+        },
+        "origin": 1055,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 33.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.078128
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.121872
+                }
+            ]
+        },
+        "origin": 1033,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 941.0000000000001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1054,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 534.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808000000000005
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.06619200000000001
+                }
+            ]
+        },
+        "origin": 1053,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 476.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.078128
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.121872
+                }
+            ]
+        },
+        "origin": 1052,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2.9999999969999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1049,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 3.0000000000000004,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.07812799999999998
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.8
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.12187199999999998
+                }
+            ]
+        },
+        "origin": 1048,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 10.999999988999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864003
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336004
+                }
+            ]
+        },
+        "origin": 1044,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 129.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1042,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 19.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.03245
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.9170000000000001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.050550000000000005
+                }
+            ]
+        },
+        "origin": 1041,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 127.0,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.041808
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.892
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.066192
+                }
+            ]
+        },
+        "origin": 1040,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 9.99999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1039,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 1.9999999979999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336004
+                }
+            ]
+        },
+        "origin": 1032,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 7.999999991999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336004
+                }
+            ]
+        },
+        "origin": 1031,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2.9999999969999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1030,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 6.999999992999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1029,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 9.99999999,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864002
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007480001
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1038,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 2.9999999969999998,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909864
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.748000000748
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336002
+                }
+            ]
+        },
+        "origin": 1037,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    },
+    {
+        "id": null,
+        "amount": 86.99999991300001,
+        "composition": {
+            "id": null,
+            "name": "custom",
+            "nace": "custom",
+            "fractions": [
+                {
+                    "material": 552,
+                    "fraction": 0.09863999909863998
+                },
+                {
+                    "material": 853,
+                    "fraction": 0.7480000007479999
+                },
+                {
+                    "material": 320,
+                    "fraction": 0.15336000015336
+                }
+            ]
+        },
+        "origin": 1050,
+        "destination": 1002,
+        "origin_level": "5",
+        "destination_level": "5"
+    }
+]

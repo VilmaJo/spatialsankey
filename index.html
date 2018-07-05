@@ -3,6 +3,7 @@
 <title>VILMA | FlowMap</title>
 <head>
     <link rel="stylesheet" type="text/css" href="flowmap.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/leaflet/dist/leaflet.css">
     <script src="lib/require.js"></script>
     <script>
         require.config({
@@ -18,15 +19,15 @@
                 'd3-format': 'node_modules/d3-format/build/d3-format',
                 'd3-time': 'node_modules/d3-time/build/d3-time',
                 'd3-time-format': 'node_modules/d3-time-format/build/d3-time-format',
-                'd3-color': 'node_modules/d3-color/build/d3-color'
-
+                'd3-color': 'node_modules/d3-color/build/d3-color',
+                'leaflet': 'node_modules/leaflet/dist/leaflet'
             }
         });
     </script>
 </head>
 <body>
 
-<div id="container" style="width:100%; height:100%; overflow:hidden; background: #fff;"></div>
+<div id="container" style="width:100%; height:100%; overflow:hidden; background: #fff; min-height: 800px;"></div>
 
 
 <script>
@@ -54,14 +55,17 @@
         } )
     }
 
-    require(['flowmap', 'transformData'], function(FlowMap, transformData){
-        var flowMap = new FlowMap("container", { width: 1000 });
+    require(['flowmap', 'transformData', 'leaflet'], function(FlowMap, transformData, L){
+        var map = new L.Map("container", {center: [50.5, 10.5], zoom: 5})
+            .addLayer(new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"));
+            //.addLayer(new L.TileLayer(" https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png"));
+            //.addLayer(new L.TileLayer(" https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png"));
         var actors, locations, materials, actor2actor,
             promises = [];                                                      // promise to load data asynchronously
         promises.push(
             get('data/actors-filtered.json').then(function(response){
                 actors = JSON.parse(response);
-        }));
+            }));
         promises.push(
             get('data/actors-filtered-locations.json').then(function(response){
                 locations = JSON.parse(response);
@@ -77,13 +81,17 @@
 
         Promise.all(promises).then(function(){
             var transformed = transformData(actors, locations, materials, actor2actor);             //to load data asynchronously, make sure the data is ready
-
-            flowMap.renderTopo('data/countries.topo.json', transformed.nodes, transformed.flows, transformed.styles);
+            var flowMap = new FlowMap(map, { width: 1000, bbox: transformed.bbox });
+            function reset(){
+                flowMap.reset();
+                flowMap.render(transformed.nodes, transformed.flows, transformed.styles);
+            }
+            map.on("zoomend", reset);
+            reset();
         });
 
-     //   flowMap.renderCsv("data/countries.topo.json", "data/nodes.csv", "data/flows.csv", "data/material.json");
     })
-    
+
 </script>
 
 </body>

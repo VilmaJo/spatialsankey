@@ -47,9 +47,10 @@ define([
 
         // define color range and assign color to nodes activity
         var nodeColor = d3.scale.linear()
-            .range(["#a6cee3",
+            /*.range(["#a6cee3",
                     "#1f78b4",
-                    "#b2df8a"])
+                    "#b2df8a"])*/
+            .range(["#1f78b4","#b2df8a","#33a02c"])
         /*.range (["#1b9e77",
         "#d95f02",
         "#7570b3"])*/
@@ -115,16 +116,6 @@ define([
             i += 1;
         });
     });
-    // defining colors for each individual material by using the d3 color scale rainbow
-    /*      http://d3indepth.com/scales/
-    var sequentialScale = d3.scaleSequential()
-        .domain([0, 100])
-        .interpolator(d3.interpolateRainbow);
-
-    sequentialScale(0);   // returns 'rgb(110, 64, 170)'
-    sequentialScale(50);  // returns 'rgb(175, 240, 91)'
-    sequentialScale(100); // returns 'rgb(110, 64, 170)'
-    */
 
         //define color range and assign colors to unique materials
         var materialColor = d3.scale.linear()

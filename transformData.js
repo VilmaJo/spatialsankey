@@ -2,59 +2,75 @@ define([
     'd3', 'd3-scale', 'd3-interpolate'
 ], function(d3, d3scale) {
     function transformData(actors, locations, materials, actor2actor) {
-        var locationsData = {};
-        var levelData = {};
-        locations.features.forEach(function (location) {
-            var actorId = location.properties.actor,
-                coordinates = location.geometry.coordinates,
-                level = location.properties.level;
-            locationsData[actorId] = coordinates;
-            levelData[actorId] = level;
-        });
 
         var styles = {};
 
+        var locationsData = {},
+            topLeft = [10000, 0],
+            bottomRight = [0, 10000];
+        locations.forEach(function (location) {
+            var actorId = location.id,
+                coordinates = location.point_on_surface.coordinates;
+            var lon = coordinates[0],
+                lat = coordinates[1]
+            topLeft = [Math.min(topLeft[0], lon), Math.max(topLeft[1], lat)];
+            bottomRight = [Math.max(bottomRight[0], lon), Math.min(bottomRight[1], lat)];
+            var level = location.level;
+            var label = 'Name: ' + location.name +'<br>Level: ' + level;
+
+            locationsData[location.id]= {
+                'name': location.name,
+                'lon': lon,
+                'lat': lat,
+                'level': level,
+                'style': 'level' + level,
+                'label': label
+            }
+        });
+
+/*
         var uniqueActivity = new Set();                           //to get array of unique values
-        var uniqueLevel = new Set();
         var actorsData = {},
             topLeft = [10000, 0],
             bottomRight = [0, 10000];
         actors.forEach(function (actor) {
-            var coordinates = locationsData[actor.id] || [Math.random() * 13 + 4, Math.random() * 18 + 40];         // !!!!!!!!!! random coordinates
+            var actorId = actor.id;
+            var coordinates = locationsData[actorId] || [Math.random() * 13 + 4, Math.random() * 18 + 40];         // !!!!!!!!!! random coordinates
+            var level = levelData[actor.id];
+            console.log(actorId)
+            console.log(level)
             var lon = coordinates[0],
                 lat = coordinates[1];
             topLeft = [Math.min(topLeft[0], lon), Math.max(topLeft[1], lat)];
             bottomRight = [Math.max(bottomRight[0], lon), Math.min(bottomRight[1], lat)];
-            var level = levelData[actor.id],
-                label = 'Name: ' + actor.name + '<br>Level: ' + level + '<br>Activity: ' + actor.activity;
+            var label = 'Name: ' + actor.name + '<br>Level: ' + level + '<br>Activity: ' + actor.activity;
+            console.log(label)
             actorsData[actor.id] = {
                 'name': actor.name,
                 'label': label,
                 'lon': lon,
                 'lat': lat,
                 'style': 'group' + actor.activity,
-                'level': 'level' + level
+                'level': level
             };
 
             uniqueActivity = uniqueActivity.add(actor.activity)
-            uniqueLevel = uniqueLevel.add(level)
         });
-
-        // sort the unique levels to assign proper radius
-        var levelArray = Array.from(uniqueLevel);
-        levelArray.sort(function(a, b){return b - a});
-        console.log(levelArray);
-
+console.log(actorsData)
+*/
+/*
         // define color range and assign color to nodes activity
         var nodeColor = d3.scale.linear()
             /*.range(["#a6cee3",
                     "#1f78b4",
                     "#b2df8a"])*/
-            .range(["#1f78b4","#b2df8a","#33a02c"])
+ /*           .range(["#1f78b4",
+                "#b2df8a",
+                "#33a02c"])
         /*.range (["#1b9e77",
         "#d95f02",
         "#7570b3"])*/
-        .domain([0, 1, uniqueActivity.size-1])
+/*        .domain([0, 1, uniqueActivity.size-1])
         .interpolate(d3.interpolateHsl);
     var i = 0;
 
@@ -64,20 +80,22 @@ define([
         i += 1;
     });
 
+*/
+    function defineRadius(level){
+        var level = level;
+        if (level === 10) {return 14}
+        if (level === 8) {return 18}
+        if (level === 6) {return 22}
+        if (level === 4) {return 26}
+        else {return 10}
+        };
 
-    // define radius range and assign radius to nodes level
-    var nodeRadius = d3.scale.linear()
-        .range([10,25])
-        .domain([0,uniqueLevel.size-1])
-        .interpolate(d3.interpolateNumber);
-    var i = 0;
 
-    levelArray.forEach(function (level) {
-        var radius = nodeRadius(i);
+    for (var key in locationsData){
+        var level = locationsData[key].level;
+        var radius = defineRadius(level);
         styles['level' + level] = {'radius': radius};
-        i += 1;
-    });
-
+    };
 
 
 
@@ -85,6 +103,8 @@ define([
     materials.forEach(function (material) {
         materialsData[material.id] = {'name': material.name, 'level': material.level}
     });
+
+    console.log(actor2actor)
 
     var uniqueMaterials = new Set();
     var flowsData = {};
@@ -95,9 +115,9 @@ define([
                 totalAmount = flow.amount,
                 material = materialsData[fraction.material],
                 complabel = (flow.waste) ? 'Waste' : 'Product',
-                origin = actorsData[flow.origin],
+                origin = locationsData[flow.origin],
                 originName = (origin) ? origin.name : '',
-                destination = actorsData[flow.destination],
+                destination = locationsData[flow.destination],
                 destinationName = (destination) ? destination.name : '',
                 flowlabel = originName + '&#10132; '  + destinationName,
                 label = flowlabel + '<br>' + complabel + ': ' + flow.composition.name + '<br>Material: ' + material.name + '<br>Amount:' + amount + ' t/year',
@@ -133,7 +153,7 @@ define([
         });
 
 
-        return {flows: flowsData, nodes: actorsData, styles: styles, bbox: [topLeft, bottomRight]};
+        return {flows: flowsData, nodes: locationsData, styles: styles, bbox: [topLeft, bottomRight]};
     }
     return transformData;
 })

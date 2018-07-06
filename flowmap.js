@@ -52,13 +52,13 @@ define([
 
 
             this.svg = d3.select(map.getPanes().overlayPane).append("svg"),
-            this.g = this.svg.append("g").attr("class", "leaflet-zoom-hide");
+                this.g = this.svg.append("g").attr("class", "leaflet-zoom-hide");
 
             // get zoom level after each zoom activity
-                map.on("zoomend", function(){
-                    var zoomLev = map.getZoom();
-                    console.log(zoomLev);
-                });
+            map.on("zoomend", function(){
+                var zoomLev = map.getZoom();
+                console.log(zoomLev);
+            });
 
 
         }
@@ -71,19 +71,21 @@ define([
             topLeft = [topLeft[0] - 250, topLeft[1] - 250];
             bottomRight = [bottomRight[0] + 250, bottomRight[1] + 250];
             this.svg.attr("width", bottomRight[0] - topLeft[0])
-                    .attr("height", bottomRight[1] - topLeft[1])
+                .attr("height", bottomRight[1] - topLeft[1])
                 .style("left", topLeft[0] + "px")
                 .style("top", topLeft[1] + "px");
             this.g.attr("transform", "translate(" + -topLeft[0] + "," + -topLeft[1] + ")");
         }
 
         render(nodesData, flowsData, styles) {
+            console.log(styles)
             this.g.selectAll("*").remove();
             // remember scope of 'this' as context for functions with different scope
             var _this = this;
 
 
 //*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
+            console.log(nodesData)
             var strokeWidthPerFlow = {};
             var connections = [];
             var strokeWidthArrayPerConnection = {};
@@ -327,7 +329,7 @@ define([
                         .style("top", (d3.event.pageY - 28) + "px")
                 })
                 .on("mouseout", function (d) {
-                    tooltip.transition()
+                        tooltip.transition()
                             .duration(500)
                             .style("opacity", 0)
                     }
@@ -456,10 +458,10 @@ define([
 
             // tooltip
             var tooltip = d3.select("body")
-                            .append("div")
-                            .attr("class", "tooltip")
-                            .style("opacity", 0.9)
-                            .style("z-index", 500);
+                .append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0.9)
+                .style("z-index", 500);
 
             this.drawArrowhead(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp, uid);
 
@@ -479,12 +481,12 @@ define([
                         tooltip.transition()
                             .duration(200)
                             .style("opacity", 0.9);
-                        tooltip.html(labelTotal)
-                            .style("left", (d3.event.pageX) + "px")
-                            .style("top", (d3.event.pageY - 28) + "px")
+                    tooltip.html(labelTotal)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px")
                 })
                 .on("mouseout", function (d) {
-                    tooltip.transition()
+                        tooltip.transition()
                             .duration(500)
                             .style("opacity", 0)
                     }
@@ -562,7 +564,7 @@ define([
 
 
         drawArrowhead(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp, id){
-           var triangleData = this.defineTriangleData(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
+            var triangleData = this.defineTriangleData(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
             /*
                                                 var rightTargetB = this.g.append("g")
                                                     .attr("class", "node")
@@ -572,7 +574,6 @@ define([
                                                     .attr("r", 1)
                                                     .style("fill","red")
                                                     .style("fill-opacity", 0.5);
-
                                                 var leftTargetB = this.g.append("g")
                                                     .attr("class", "node")
                                                     .append("circle")
@@ -581,7 +582,6 @@ define([
                                                     .attr("r", 1)
                                                     .style("fill","purple")
                                                     .style("fill-opacity", 0.5);
-
                                                 var rightTarget = this.g.append("g")
                                                     .attr("class", "node")
                                                     .append("circle")
@@ -590,7 +590,6 @@ define([
                                                     .attr("r", 1)
                                                     .style("fill","yellow")
                                                     .style("fill-opacity", 0.5);
-
                                                 var leftTarget = this.g.append("g")
                                                     .attr("class", "node")
                                                     .append("circle")
@@ -599,7 +598,6 @@ define([
                                                     .attr("r", 1)
                                                     .style("fill","blue")
                                                     .style("fill-opacity", 0.5);
-
                                                 var frontTarget = this.g.append("g")
                                                     .attr("class", "node")
                                                     .append("circle")
@@ -614,13 +612,13 @@ define([
                 //.attr("id", triangleData.map(function(d) {return "clip" + d.index}))
                 //.attr("id", triangleData.forEach(function(d) { return "clip"}))
                 .append("polygon")
-                    .data(triangleData)
-                    .attr("points", triangleData.map(function (d) {
-                            var x = d.tx,
-                                y = d.ty;
-                            return [x, y].join(",");
-                        }).join(" ")
-                    );
+                .data(triangleData)
+                .attr("points", triangleData.map(function (d) {
+                        var x = d.tx,
+                            y = d.ty;
+                        return [x, y].join(",");
+                    }).join(" ")
+                );
         }
 
     }
@@ -629,42 +627,28 @@ define([
 });
 
 /*  TO DO   TO DO   TO DO   TO DO   TO DO
-
 *   check if 'new Set()' can be used for unique connections
-
 *   Zoom
 *   Bounding box: zoom to minx,miny und maxx, maxy
-
 *   Linien: Idee: sxp, syp, txp, typ individual reingeben für drawTotalPath
-
 *   Punkte
     *   Größe nach Level (Spatial Scale Level: Individual Actor, Ward, Municipality, region, World)
     *   Farbe nach Activity Group: wer gibt diese an? Welches Farbschema wird gewählt? --> Soll mit den Säulen im Diagramm übereinstimmen
-
 *   OpenLayers Hintergrundkarte
-
 *   Projektionszentrum:
     *   je nach Living Lab ein Projektionszentrum angeben
     *   zoom to location, die im Diagramm angeklickt sind
-
-
-
 Fehlende Variablen in den Daten:
 *   Actors:
     *   actor group
     *   actor level
-
-
 *   flows functions
         function    sx, sy, tx, ty --> with projection, offset, length adjusted
         function    offset
         function    strokeWidth
-
         function flow               (does this depend on offset or not if we have flows in both or one direction?)
-
 *   nodes functions
         function    specifyNodeSize
         function    specifyNodeColor (activityGroup)
-
 strokeWidth max anpassen nach Level und damit Größe der Nodes
 */

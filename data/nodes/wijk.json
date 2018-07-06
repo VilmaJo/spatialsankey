@@ -4,6 +4,7 @@
         "id": 987,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Nieuwe Pijp",
+		"level": 10,
         "code": "WK036325",
         "point_on_surface": {
             "type": "Point",
@@ -18,6 +19,7 @@
         "id": 1161,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Almere Hout",
+		"level": 10,
         "code": "WK003405",
         "point_on_surface": {
             "type": "Point",
@@ -32,6 +34,7 @@
         "id": 988,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oude Pijp",
+		"level": 10,
         "code": "WK036324",
         "point_on_surface": {
             "type": "Point",
@@ -46,6 +49,7 @@
         "id": 1003,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oostelijke Eilanden/",
+		"level": 10,
         "code": "WK036309",
         "point_on_surface": {
             "type": "Point",
@@ -60,6 +64,7 @@
         "id": 986,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zuid Pijp",
+		"level": 10,
         "code": "WK036326",
         "point_on_surface": {
             "type": "Point",
@@ -74,6 +79,7 @@
         "id": 1012,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Amsterdamse Bos",
+		"level": 10,
         "code": "WK036214",
         "point_on_surface": {
             "type": "Point",
@@ -88,6 +94,7 @@
         "id": 1010,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Burgwallen-Nieuwe Zi",
+		"level": 10,
         "code": "WK036301",
         "point_on_surface": {
             "type": "Point",
@@ -102,6 +109,7 @@
         "id": 891,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Grachtengordel-West",
+		"level": 10,
         "code": "WK036302",
         "point_on_surface": {
             "type": "Point",
@@ -116,6 +124,7 @@
         "id": 1009,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Grachtengordel-Zuid",
+		"level": 10,
         "code": "WK036303",
         "point_on_surface": {
             "type": "Point",
@@ -130,6 +139,7 @@
         "id": 1013,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Buitengebied Zuid",
+		"level": 10,
         "code": "WK036213",
         "point_on_surface": {
             "type": "Point",
@@ -144,6 +154,7 @@
         "id": 980,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Indische Buurt Oost",
+		"level": 10,
         "code": "WK036332",
         "point_on_surface": {
             "type": "Point",
@@ -158,6 +169,7 @@
         "id": 1014,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Westwijk Zuid",
+		"level": 10,
         "code": "WK036212",
         "point_on_surface": {
             "type": "Point",
@@ -172,6 +184,7 @@
         "id": 1008,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Nieuwmarkt/Lastage",
+		"level": 10,
         "code": "WK036304",
         "point_on_surface": {
             "type": "Point",
@@ -186,6 +199,7 @@
         "id": 1015,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bovenkerk - Westwijk Noord",
+		"level": 10,
         "code": "WK036211",
         "point_on_surface": {
             "type": "Point",
@@ -200,6 +214,7 @@
         "id": 1016,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Waardhuizen, Middenhoven",
+		"level": 10,
         "code": "WK036210",
         "point_on_surface": {
             "type": "Point",
@@ -214,6 +229,7 @@
         "id": 970,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Westindische Buurt",
+		"level": 10,
         "code": "WK036343",
         "point_on_surface": {
             "type": "Point",
@@ -228,6 +244,7 @@
         "id": 1017,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Groenelaan",
+		"level": 10,
         "code": "WK036209",
         "point_on_surface": {
             "type": "Point",
@@ -242,6 +259,7 @@
         "id": 1018,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Keizer Karelpark",
+		"level": 10,
         "code": "WK036208",
         "point_on_surface": {
             "type": "Point",
@@ -256,6 +274,7 @@
         "id": 1019,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Buitengebied Noord",
+		"level": 10,
         "code": "WK036207",
         "point_on_surface": {
             "type": "Point",
@@ -270,6 +289,7 @@
         "id": 1007,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Haarlemmerbuurt",
+		"level": 10,
         "code": "WK036305",
         "point_on_surface": {
             "type": "Point",
@@ -284,6 +304,7 @@
         "id": 1020,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bankras, Kostverloren",
+		"level": 10,
         "code": "WK036206",
         "point_on_surface": {
             "type": "Point",
@@ -298,6 +319,7 @@
         "id": 1021,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Uilenstede, Kronenburg",
+		"level": 10,
         "code": "WK036205",
         "point_on_surface": {
             "type": "Point",
@@ -312,6 +334,7 @@
         "id": 1022,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Stadshart",
+		"level": 10,
         "code": "WK036204",
         "point_on_surface": {
             "type": "Point",
@@ -326,6 +349,7 @@
         "id": 1023,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Elsrijk",
+		"level": 10,
         "code": "WK036203",
         "point_on_surface": {
             "type": "Point",
@@ -340,6 +364,7 @@
         "id": 937,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Waterlandpleinbuurt",
+		"level": 10,
         "code": "WK036368",
         "point_on_surface": {
             "type": "Point",
@@ -354,6 +379,7 @@
         "id": 1024,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Patrimonium",
+		"level": 10,
         "code": "WK036202",
         "point_on_surface": {
             "type": "Point",
@@ -368,6 +394,7 @@
         "id": 1047,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Warande Zuid",
+		"level": 10,
         "code": "WK099554",
         "point_on_surface": {
             "type": "Point",
@@ -382,6 +409,7 @@
         "id": 1025,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Randwijck",
+		"level": 10,
         "code": "WK036201",
         "point_on_surface": {
             "type": "Point",
@@ -396,6 +424,7 @@
         "id": 1046,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Warande Midden",
+		"level": 10,
         "code": "WK099556",
         "point_on_surface": {
             "type": "Point",
@@ -410,6 +439,7 @@
         "id": 1134,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Laren",
+		"level": 10,
         "code": "WK041703",
         "point_on_surface": {
             "type": "Point",
@@ -424,6 +454,7 @@
         "id": 887,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Blaricum",
+		"level": 10,
         "code": "WK037601",
         "point_on_surface": {
             "type": "Point",
@@ -438,6 +469,7 @@
         "id": 889,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Broekpolder",
+		"level": 10,
         "code": "WK037510",
         "point_on_surface": {
             "type": "Point",
@@ -452,6 +484,7 @@
         "id": 1005,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "De Weteringschans",
+		"level": 10,
         "code": "WK036307",
         "point_on_surface": {
             "type": "Point",
@@ -466,6 +499,7 @@
         "id": 1004,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Weesperbuurt/Plantag",
+		"level": 10,
         "code": "WK036308",
         "point_on_surface": {
             "type": "Point",
@@ -480,6 +514,7 @@
         "id": 981,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Indische Buurt West",
+		"level": 10,
         "code": "WK036331",
         "point_on_surface": {
             "type": "Point",
@@ -494,6 +529,7 @@
         "id": 1167,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Almere Stad",
+		"level": 10,
         "code": "WK003402",
         "point_on_surface": {
             "type": "Point",
@@ -508,6 +544,7 @@
         "id": 1006,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Jordaan",
+		"level": 10,
         "code": "WK036306",
         "point_on_surface": {
             "type": "Point",
@@ -522,6 +559,7 @@
         "id": 1168,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Almere Haven",
+		"level": 10,
         "code": "WK003401",
         "point_on_surface": {
             "type": "Point",
@@ -536,6 +574,7 @@
         "id": 1165,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Almere Buiten",
+		"level": 10,
         "code": "WK003403",
         "point_on_surface": {
             "type": "Point",
@@ -550,6 +589,7 @@
         "id": 1164,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Almere Poort",
+		"level": 10,
         "code": "WK003404",
         "point_on_surface": {
             "type": "Point",
@@ -564,6 +604,7 @@
         "id": 1027,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Kudelstraat en Kalsl",
+		"level": 10,
         "code": "WK035801",
         "point_on_surface": {
             "type": "Point",
@@ -578,6 +619,7 @@
         "id": 1160,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Almere Pampus",
+		"level": 10,
         "code": "WK003406",
         "point_on_surface": {
             "type": "Point",
@@ -592,6 +634,7 @@
         "id": 1028,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Aalsmeer",
+		"level": 10,
         "code": "WK035800",
         "point_on_surface": {
             "type": "Point",
@@ -606,6 +649,7 @@
         "id": 1026,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oosteinde",
+		"level": 10,
         "code": "WK035802",
         "point_on_surface": {
             "type": "Point",
@@ -620,6 +664,7 @@
         "id": 1011,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Burgwallen-Oude Zijd",
+		"level": 10,
         "code": "WK036300",
         "point_on_surface": {
             "type": "Point",
@@ -634,6 +679,7 @@
         "id": 1002,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Westelijk Havengebie",
+		"level": 10,
         "code": "WK036310",
         "point_on_surface": {
             "type": "Point",
@@ -648,6 +694,7 @@
         "id": 1001,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bedrijventerrein Slo",
+		"level": 10,
         "code": "WK036311",
         "point_on_surface": {
             "type": "Point",
@@ -662,6 +709,7 @@
         "id": 1000,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Houthavens",
+		"level": 10,
         "code": "WK036312",
         "point_on_surface": {
             "type": "Point",
@@ -676,6 +724,7 @@
         "id": 989,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zuidas",
+		"level": 10,
         "code": "WK036323",
         "point_on_surface": {
             "type": "Point",
@@ -690,6 +739,7 @@
         "id": 999,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Spaarndammer- en Zee",
+		"level": 10,
         "code": "WK036313",
         "point_on_surface": {
             "type": "Point",
@@ -704,6 +754,7 @@
         "id": 998,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Staatsliedenbuurt",
+		"level": 10,
         "code": "WK036314",
         "point_on_surface": {
             "type": "Point",
@@ -718,6 +769,7 @@
         "id": 997,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Centrale Markt",
+		"level": 10,
         "code": "WK036315",
         "point_on_surface": {
             "type": "Point",
@@ -732,6 +784,7 @@
         "id": 996,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Frederik Hendrikbuur",
+		"level": 10,
         "code": "WK036316",
         "point_on_surface": {
             "type": "Point",
@@ -746,6 +799,7 @@
         "id": 995,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Da Costabuurt",
+		"level": 10,
         "code": "WK036317",
         "point_on_surface": {
             "type": "Point",
@@ -760,6 +814,7 @@
         "id": 994,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Kinkerbuurt",
+		"level": 10,
         "code": "WK036318",
         "point_on_surface": {
             "type": "Point",
@@ -774,6 +829,7 @@
         "id": 993,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Van Lennepbuurt",
+		"level": 10,
         "code": "WK036319",
         "point_on_surface": {
             "type": "Point",
@@ -788,6 +844,7 @@
         "id": 992,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Helmersbuurt",
+		"level": 10,
         "code": "WK036320",
         "point_on_surface": {
             "type": "Point",
@@ -802,6 +859,7 @@
         "id": 991,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Overtoomse Sluis",
+		"level": 10,
         "code": "WK036321",
         "point_on_surface": {
             "type": "Point",
@@ -816,6 +874,7 @@
         "id": 990,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Vondelbuurt",
+		"level": 10,
         "code": "WK036322",
         "point_on_surface": {
             "type": "Point",
@@ -830,6 +889,7 @@
         "id": 985,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Weesperzijde",
+		"level": 10,
         "code": "WK036327",
         "point_on_surface": {
             "type": "Point",
@@ -844,6 +904,7 @@
         "id": 984,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oosterparkbuurt",
+		"level": 10,
         "code": "WK036328",
         "point_on_surface": {
             "type": "Point",
@@ -858,6 +919,7 @@
         "id": 983,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Dapperbuurt",
+		"level": 10,
         "code": "WK036329",
         "point_on_surface": {
             "type": "Point",
@@ -872,6 +934,7 @@
         "id": 982,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Transvaalbuurt",
+		"level": 10,
         "code": "WK036330",
         "point_on_surface": {
             "type": "Point",
@@ -886,6 +949,7 @@
         "id": 979,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oostelijk Havengebie",
+		"level": 10,
         "code": "WK036333",
         "point_on_surface": {
             "type": "Point",
@@ -900,6 +964,7 @@
         "id": 906,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Landlust",
+		"level": 10,
         "code": "WK036337",
         "point_on_surface": {
             "type": "Point",
@@ -914,6 +979,7 @@
         "id": 975,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Erasmuspark",
+		"level": 10,
         "code": "WK036338",
         "point_on_surface": {
             "type": "Point",
@@ -928,6 +994,7 @@
         "id": 976,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Sloterdijk",
+		"level": 10,
         "code": "WK036336",
         "point_on_surface": {
             "type": "Point",
@@ -942,6 +1009,7 @@
         "id": 974,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "De Kolenkit",
+		"level": 10,
         "code": "WK036339",
         "point_on_surface": {
             "type": "Point",
@@ -956,6 +1024,7 @@
         "id": 973,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Geuzenbuurt",
+		"level": 10,
         "code": "WK036340",
         "point_on_surface": {
             "type": "Point",
@@ -970,6 +1039,7 @@
         "id": 972,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Van Galenbuurt",
+		"level": 10,
         "code": "WK036341",
         "point_on_surface": {
             "type": "Point",
@@ -984,6 +1054,7 @@
         "id": 971,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Hoofdweg e.o.",
+		"level": 10,
         "code": "WK036342",
         "point_on_surface": {
             "type": "Point",
@@ -998,6 +1069,7 @@
         "id": 978,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zeeburgereiland/Nieu",
+		"level": 10,
         "code": "WK036334",
         "point_on_surface": {
             "type": "Point",
@@ -1012,6 +1084,7 @@
         "id": 977,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "IJburg West",
+		"level": 10,
         "code": "WK036335",
         "point_on_surface": {
             "type": "Point",
@@ -1026,6 +1099,7 @@
         "id": 969,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Hoofddorppleinbuurt",
+		"level": 10,
         "code": "WK036344",
         "point_on_surface": {
             "type": "Point",
@@ -1040,6 +1114,7 @@
         "id": 968,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Schinkelbuurt",
+		"level": 10,
         "code": "WK036345",
         "point_on_surface": {
             "type": "Point",
@@ -1054,6 +1129,7 @@
         "id": 967,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Willemspark",
+		"level": 10,
         "code": "WK036346",
         "point_on_surface": {
             "type": "Point",
@@ -1068,6 +1144,7 @@
         "id": 966,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Museumkwartier",
+		"level": 10,
         "code": "WK036347",
         "point_on_surface": {
             "type": "Point",
@@ -1082,6 +1159,7 @@
         "id": 965,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Stadionbuurt",
+		"level": 10,
         "code": "WK036348",
         "point_on_surface": {
             "type": "Point",
@@ -1096,6 +1174,7 @@
         "id": 964,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Apollobuurt",
+		"level": 10,
         "code": "WK036349",
         "point_on_surface": {
             "type": "Point",
@@ -1110,6 +1189,7 @@
         "id": 963,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "IJburg Oost",
+		"level": 10,
         "code": "WK036350",
         "point_on_surface": {
             "type": "Point",
@@ -1124,6 +1204,7 @@
         "id": 962,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "IJburg Zuid",
+		"level": 10,
         "code": "WK036351",
         "point_on_surface": {
             "type": "Point",
@@ -1138,6 +1219,7 @@
         "id": 911,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Scheldebuurt",
+		"level": 10,
         "code": "WK036352",
         "point_on_surface": {
             "type": "Point",
@@ -1152,6 +1234,7 @@
         "id": 940,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "IJselbuurt",
+		"level": 10,
         "code": "WK036353",
         "point_on_surface": {
             "type": "Point",
@@ -1166,6 +1249,7 @@
         "id": 939,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Rijnbuurt",
+		"level": 10,
         "code": "WK036354",
         "point_on_surface": {
             "type": "Point",
@@ -1180,6 +1264,7 @@
         "id": 952,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Frankendael",
+		"level": 10,
         "code": "WK036355",
         "point_on_surface": {
             "type": "Point",
@@ -1194,6 +1279,7 @@
         "id": 947,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Middenmeer",
+		"level": 10,
         "code": "WK036356",
         "point_on_surface": {
             "type": "Point",
@@ -1208,6 +1294,7 @@
         "id": 943,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Betondorp",
+		"level": 10,
         "code": "WK036357",
         "point_on_surface": {
             "type": "Point",
@@ -1222,6 +1309,7 @@
         "id": 957,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Tuindorp Nieuwendam",
+		"level": 10,
         "code": "WK036362",
         "point_on_surface": {
             "type": "Point",
@@ -1236,6 +1324,7 @@
         "id": 956,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Tuindorp Buiksloot",
+		"level": 10,
         "code": "WK036363",
         "point_on_surface": {
             "type": "Point",
@@ -1250,6 +1339,7 @@
         "id": 961,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Omval/Overamstel",
+		"level": 10,
         "code": "WK036358",
         "point_on_surface": {
             "type": "Point",
@@ -1264,6 +1354,7 @@
         "id": 960,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Prinses Irenebuurt e",
+		"level": 10,
         "code": "WK036359",
         "point_on_surface": {
             "type": "Point",
@@ -1278,6 +1369,7 @@
         "id": 927,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Slotervaart Noord",
+		"level": 10,
         "code": "WK036385",
         "point_on_surface": {
             "type": "Point",
@@ -1292,6 +1384,7 @@
         "id": 959,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Volewijck",
+		"level": 10,
         "code": "WK036360",
         "point_on_surface": {
             "type": "Point",
@@ -1306,6 +1399,7 @@
         "id": 958,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "IJplein/Vogelbuurt",
+		"level": 10,
         "code": "WK036361",
         "point_on_surface": {
             "type": "Point",
@@ -1320,6 +1414,7 @@
         "id": 955,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Nieuwendammerdijk/Bu",
+		"level": 10,
         "code": "WK036364",
         "point_on_surface": {
             "type": "Point",
@@ -1334,6 +1429,7 @@
         "id": 954,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Tuindorp Oostzaan",
+		"level": 10,
         "code": "WK036365",
         "point_on_surface": {
             "type": "Point",
@@ -1348,6 +1444,7 @@
         "id": 933,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Noordelijke IJ-oever",
+		"level": 10,
         "code": "WK036371",
         "point_on_surface": {
             "type": "Point",
@@ -1362,6 +1459,7 @@
         "id": 953,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oostzanerwerf",
+		"level": 10,
         "code": "WK036366",
         "point_on_surface": {
             "type": "Point",
@@ -1376,6 +1474,7 @@
         "id": 938,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Kadoelen",
+		"level": 10,
         "code": "WK036367",
         "point_on_surface": {
             "type": "Point",
@@ -1390,6 +1489,7 @@
         "id": 936,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Buikslotermeer",
+		"level": 10,
         "code": "WK036369",
         "point_on_surface": {
             "type": "Point",
@@ -1404,6 +1504,7 @@
         "id": 935,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Banne Buiksloot",
+		"level": 10,
         "code": "WK036370",
         "point_on_surface": {
             "type": "Point",
@@ -1418,6 +1519,7 @@
         "id": 950,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Noordelijke IJ-oever",
+		"level": 10,
         "code": "WK036372",
         "point_on_surface": {
             "type": "Point",
@@ -1432,6 +1534,7 @@
         "id": 931,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Slotermeer-Zuidwest",
+		"level": 10,
         "code": "WK036377",
         "point_on_surface": {
             "type": "Point",
@@ -1446,6 +1549,7 @@
         "id": 930,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Geuzenveld",
+		"level": 10,
         "code": "WK036378",
         "point_on_surface": {
             "type": "Point",
@@ -1460,6 +1564,7 @@
         "id": 928,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Lutkemeer/Ookmeer",
+		"level": 10,
         "code": "WK036380",
         "point_on_surface": {
             "type": "Point",
@@ -1474,6 +1579,7 @@
         "id": 897,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Osdorp-Oost",
+		"level": 10,
         "code": "WK036381",
         "point_on_surface": {
             "type": "Point",
@@ -1488,6 +1594,7 @@
         "id": 886,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Osdorp-Midden",
+		"level": 10,
         "code": "WK036382",
         "point_on_surface": {
             "type": "Point",
@@ -1502,6 +1609,7 @@
         "id": 881,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "De Punt",
+		"level": 10,
         "code": "WK036383",
         "point_on_surface": {
             "type": "Point",
@@ -1516,6 +1624,7 @@
         "id": 869,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Middelveldsche Akerp",
+		"level": 10,
         "code": "WK036384",
         "point_on_surface": {
             "type": "Point",
@@ -1530,6 +1639,7 @@
         "id": 929,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Eendracht",
+		"level": 10,
         "code": "WK036379",
         "point_on_surface": {
             "type": "Point",
@@ -1544,6 +1654,7 @@
         "id": 915,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Driemond",
+		"level": 10,
         "code": "WK036398",
         "point_on_surface": {
             "type": "Point",
@@ -1558,6 +1669,7 @@
         "id": 948,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Waterland",
+		"level": 10,
         "code": "WK036373",
         "point_on_surface": {
             "type": "Point",
@@ -1572,6 +1684,7 @@
         "id": 945,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Elzenhagen",
+		"level": 10,
         "code": "WK036374",
         "point_on_surface": {
             "type": "Point",
@@ -1586,6 +1699,7 @@
         "id": 942,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Chassebuurt",
+		"level": 10,
         "code": "WK036375",
         "point_on_surface": {
             "type": "Point",
@@ -1600,6 +1714,7 @@
         "id": 932,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Slotermeer-Noordoost",
+		"level": 10,
         "code": "WK036376",
         "point_on_surface": {
             "type": "Point",
@@ -1614,6 +1729,7 @@
         "id": 926,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Overtoomse Veld",
+		"level": 10,
         "code": "WK036386",
         "point_on_surface": {
             "type": "Point",
@@ -1628,6 +1744,7 @@
         "id": 925,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Westlandgracht",
+		"level": 10,
         "code": "WK036387",
         "point_on_surface": {
             "type": "Point",
@@ -1642,6 +1759,7 @@
         "id": 924,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Sloter-/Riekerpolder",
+		"level": 10,
         "code": "WK036388",
         "point_on_surface": {
             "type": "Point",
@@ -1656,6 +1774,7 @@
         "id": 923,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Slotervaart Zuid",
+		"level": 10,
         "code": "WK036389",
         "point_on_surface": {
             "type": "Point",
@@ -1670,6 +1789,7 @@
         "id": 922,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Buitenveldert-West",
+		"level": 10,
         "code": "WK036390",
         "point_on_surface": {
             "type": "Point",
@@ -1684,6 +1804,7 @@
         "id": 921,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Buitenveldert-Oost",
+		"level": 10,
         "code": "WK036391",
         "point_on_surface": {
             "type": "Point",
@@ -1698,6 +1819,7 @@
         "id": 920,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Amstel III/Bullewijk",
+		"level": 10,
         "code": "WK036392",
         "point_on_surface": {
             "type": "Point",
@@ -1712,6 +1834,7 @@
         "id": 919,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bijlmer Centrum (D,F",
+		"level": 10,
         "code": "WK036393",
         "point_on_surface": {
             "type": "Point",
@@ -1726,6 +1849,7 @@
         "id": 918,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bijlmer Oost (E,G,K)",
+		"level": 10,
         "code": "WK036394",
         "point_on_surface": {
             "type": "Point",
@@ -1740,6 +1864,7 @@
         "id": 917,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Nellestein",
+		"level": 10,
         "code": "WK036395",
         "point_on_surface": {
             "type": "Point",
@@ -1754,6 +1879,7 @@
         "id": 910,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Holendrecht/Reigersb",
+		"level": 10,
         "code": "WK036396",
         "point_on_surface": {
             "type": "Point",
@@ -1768,6 +1894,7 @@
         "id": 916,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Gein",
+		"level": 10,
         "code": "WK036397",
         "point_on_surface": {
             "type": "Point",
@@ -1782,6 +1909,7 @@
         "id": 900,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Kuenenkwartier",
+		"level": 10,
         "code": "WK037503",
         "point_on_surface": {
             "type": "Point",
@@ -1796,6 +1924,7 @@
         "id": 899,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Warande",
+		"level": 10,
         "code": "WK037504",
         "point_on_surface": {
             "type": "Point",
@@ -1810,6 +1939,7 @@
         "id": 1204,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Spaarndam",
+		"level": 10,
         "code": "WK039217",
         "point_on_surface": {
             "type": "Point",
@@ -1824,6 +1954,7 @@
         "id": 914,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Beemster",
+		"level": 10,
         "code": "WK037000",
         "point_on_surface": {
             "type": "Point",
@@ -1838,6 +1969,7 @@
         "id": 913,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zuidoostbeemster",
+		"level": 10,
         "code": "WK037001",
         "point_on_surface": {
             "type": "Point",
@@ -1852,6 +1984,7 @@
         "id": 908,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Centrum",
+		"level": 10,
         "code": "WK037500",
         "point_on_surface": {
             "type": "Point",
@@ -1866,6 +1999,7 @@
         "id": 904,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Vondelkwartier",
+		"level": 10,
         "code": "WK037501",
         "point_on_surface": {
             "type": "Point",
@@ -1880,6 +2014,7 @@
         "id": 902,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oranjebuurt",
+		"level": 10,
         "code": "WK037502",
         "point_on_surface": {
             "type": "Point",
@@ -1894,6 +2029,7 @@
         "id": 898,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Noordwestelijk tuinb",
+		"level": 10,
         "code": "WK037505",
         "point_on_surface": {
             "type": "Point",
@@ -1908,6 +2044,7 @@
         "id": 863,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oosterwijk en Zwaans",
+		"level": 10,
         "code": "WK037506",
         "point_on_surface": {
             "type": "Point",
@@ -1922,6 +2059,7 @@
         "id": 895,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Meerestein",
+		"level": 10,
         "code": "WK037507",
         "point_on_surface": {
             "type": "Point",
@@ -1936,6 +2074,7 @@
         "id": 893,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Wijk aan Zee",
+		"level": 10,
         "code": "WK037508",
         "point_on_surface": {
             "type": "Point",
@@ -1950,6 +2089,7 @@
         "id": 885,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "De Pijp en Wijkerbro",
+		"level": 10,
         "code": "WK037509",
         "point_on_surface": {
             "type": "Point",
@@ -1964,6 +2104,7 @@
         "id": 883,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bloemendaal",
+		"level": 10,
         "code": "WK037700",
         "point_on_surface": {
             "type": "Point",
@@ -1978,6 +2119,7 @@
         "id": 873,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Vogelenzang",
+		"level": 10,
         "code": "WK037703",
         "point_on_surface": {
             "type": "Point",
@@ -1992,6 +2134,7 @@
         "id": 882,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Overveen",
+		"level": 10,
         "code": "WK037701",
         "point_on_surface": {
             "type": "Point",
@@ -2006,6 +2149,7 @@
         "id": 874,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Aerdenhout",
+		"level": 10,
         "code": "WK037702",
         "point_on_surface": {
             "type": "Point",
@@ -2020,6 +2164,7 @@
         "id": 877,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Purmer",
+		"level": 10,
         "code": "WK038501",
         "point_on_surface": {
             "type": "Point",
@@ -2034,6 +2179,7 @@
         "id": 868,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bennebroek",
+		"level": 10,
         "code": "WK037704",
         "point_on_surface": {
             "type": "Point",
@@ -2048,6 +2194,7 @@
         "id": 859,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zijlwegkwartier",
+		"level": 10,
         "code": "WK039203",
         "point_on_surface": {
             "type": "Point",
@@ -2062,6 +2209,7 @@
         "id": 867,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Diemen-Zuid",
+		"level": 10,
         "code": "WK038400",
         "point_on_surface": {
             "type": "Point",
@@ -2076,6 +2224,7 @@
         "id": 872,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Beets",
+		"level": 10,
         "code": "WK038503",
         "point_on_surface": {
             "type": "Point",
@@ -2090,6 +2239,7 @@
         "id": 880,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Diemen-Centrum",
+		"level": 10,
         "code": "WK038401",
         "point_on_surface": {
             "type": "Point",
@@ -2104,6 +2254,7 @@
         "id": 879,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Diemen-Noord",
+		"level": 10,
         "code": "WK038402",
         "point_on_surface": {
             "type": "Point",
@@ -2118,6 +2269,7 @@
         "id": 858,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Houtvaartkwartier",
+		"level": 10,
         "code": "WK039204",
         "point_on_surface": {
             "type": "Point",
@@ -2132,6 +2284,7 @@
         "id": 878,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Edam",
+		"level": 10,
         "code": "WK038500",
         "point_on_surface": {
             "type": "Point",
@@ -2146,6 +2299,7 @@
         "id": 1202,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Boerhaavewijk",
+		"level": 10,
         "code": "WK039219",
         "point_on_surface": {
             "type": "Point",
@@ -2160,6 +2314,7 @@
         "id": 876,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Volendam",
+		"level": 10,
         "code": "WK038502",
         "point_on_surface": {
             "type": "Point",
@@ -2174,6 +2329,7 @@
         "id": 871,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oosthuizen",
+		"level": 10,
         "code": "WK038504",
         "point_on_surface": {
             "type": "Point",
@@ -2188,6 +2344,7 @@
         "id": 870,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Warder",
+		"level": 10,
         "code": "WK038505",
         "point_on_surface": {
             "type": "Point",
@@ -2202,6 +2359,7 @@
         "id": 866,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Middelie",
+		"level": 10,
         "code": "WK038506",
         "point_on_surface": {
             "type": "Point",
@@ -2216,6 +2374,7 @@
         "id": 1209,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Parkwijk",
+		"level": 10,
         "code": "WK039209",
         "point_on_surface": {
             "type": "Point",
@@ -2230,6 +2389,7 @@
         "id": 865,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Kwadijk",
+		"level": 10,
         "code": "WK038507",
         "point_on_surface": {
             "type": "Point",
@@ -2244,6 +2404,7 @@
         "id": 857,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Duinwijk",
+		"level": 10,
         "code": "WK039205",
         "point_on_surface": {
             "type": "Point",
@@ -2258,6 +2419,7 @@
         "id": 1171,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Heemstede west van d",
+		"level": 10,
         "code": "WK039702",
         "point_on_surface": {
             "type": "Point",
@@ -2272,6 +2434,7 @@
         "id": 864,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Schardam",
+		"level": 10,
         "code": "WK038508",
         "point_on_surface": {
             "type": "Point",
@@ -2286,6 +2449,7 @@
         "id": 862,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Hobrede",
+		"level": 10,
         "code": "WK038509",
         "point_on_surface": {
             "type": "Point",
@@ -2300,6 +2464,7 @@
         "id": 861,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oude Stad",
+		"level": 10,
         "code": "WK039201",
         "point_on_surface": {
             "type": "Point",
@@ -2314,6 +2479,7 @@
         "id": 860,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Haarlemmerhoutkwarti",
+		"level": 10,
         "code": "WK039202",
         "point_on_surface": {
             "type": "Point",
@@ -2328,6 +2494,7 @@
         "id": 856,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Waarder- en Veerpold",
+		"level": 10,
         "code": "WK039206",
         "point_on_surface": {
             "type": "Point",
@@ -2342,6 +2509,7 @@
         "id": 854,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Slachthuiswijk",
+		"level": 10,
         "code": "WK039208",
         "point_on_surface": {
             "type": "Point",
@@ -2356,6 +2524,7 @@
         "id": 1208,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Transvaalwijk",
+		"level": 10,
         "code": "WK039210",
         "point_on_surface": {
             "type": "Point",
@@ -2370,6 +2539,7 @@
         "id": 1197,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Indischewijk",
+		"level": 10,
         "code": "WK039211",
         "point_on_surface": {
             "type": "Point",
@@ -2384,6 +2554,7 @@
         "id": 1138,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bovenmaten",
+		"level": 10,
         "code": "WK040611",
         "point_on_surface": {
             "type": "Point",
@@ -2398,6 +2569,7 @@
         "id": 1196,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Ter Kleefkwartier",
+		"level": 10,
         "code": "WK039212",
         "point_on_surface": {
             "type": "Point",
@@ -2412,6 +2584,7 @@
         "id": 1169,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Te Zaanenkwartier",
+		"level": 10,
         "code": "WK039213",
         "point_on_surface": {
             "type": "Point",
@@ -2426,6 +2599,7 @@
         "id": 1207,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Vogelenwijk",
+		"level": 10,
         "code": "WK039214",
         "point_on_surface": {
             "type": "Point",
@@ -2440,6 +2614,7 @@
         "id": 1206,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Delftwijk",
+		"level": 10,
         "code": "WK039215",
         "point_on_surface": {
             "type": "Point",
@@ -2454,6 +2629,7 @@
         "id": 1205,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Vondelkwartier",
+		"level": 10,
         "code": "WK039216",
         "point_on_surface": {
             "type": "Point",
@@ -2468,6 +2644,7 @@
         "id": 1203,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Europawijk",
+		"level": 10,
         "code": "WK039218",
         "point_on_surface": {
             "type": "Point",
@@ -2482,6 +2659,7 @@
         "id": 1201,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Molenwijk",
+		"level": 10,
         "code": "WK039220",
         "point_on_surface": {
             "type": "Point",
@@ -2496,6 +2674,7 @@
         "id": 1200,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Meerwijk",
+		"level": 10,
         "code": "WK039221",
         "point_on_surface": {
             "type": "Point",
@@ -2510,6 +2689,7 @@
         "id": 1199,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Haarlemmerliede en S",
+		"level": 10,
         "code": "WK039300",
         "point_on_surface": {
             "type": "Point",
@@ -2524,6 +2704,7 @@
         "id": 1140,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Huizermaat Noord",
+		"level": 10,
         "code": "WK040609",
         "point_on_surface": {
             "type": "Point",
@@ -2538,6 +2719,7 @@
         "id": 1198,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Hoofddorp",
+		"level": 10,
         "code": "WK039401",
         "point_on_surface": {
             "type": "Point",
@@ -2552,6 +2734,7 @@
         "id": 1195,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Nieuw-Vennep",
+		"level": 10,
         "code": "WK039402",
         "point_on_surface": {
             "type": "Point",
@@ -2566,6 +2749,7 @@
         "id": 1194,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zwanenburg",
+		"level": 10,
         "code": "WK039403",
         "point_on_surface": {
             "type": "Point",
@@ -2580,6 +2764,7 @@
         "id": 1190,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Rijsenhout",
+		"level": 10,
         "code": "WK039407",
         "point_on_surface": {
             "type": "Point",
@@ -2594,6 +2779,7 @@
         "id": 1193,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Lijnden / Boesinghel",
+		"level": 10,
         "code": "WK039404",
         "point_on_surface": {
             "type": "Point",
@@ -2608,6 +2794,7 @@
         "id": 1192,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Badhoevedorp",
+		"level": 10,
         "code": "WK039405",
         "point_on_surface": {
             "type": "Point",
@@ -2622,6 +2809,7 @@
         "id": 1187,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Beinsdorp",
+		"level": 10,
         "code": "WK039411",
         "point_on_surface": {
             "type": "Point",
@@ -2636,6 +2824,7 @@
         "id": 1191,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Aalsmeerderbrug/ Oud",
+		"level": 10,
         "code": "WK039406",
         "point_on_surface": {
             "type": "Point",
@@ -2650,6 +2839,7 @@
         "id": 1139,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bijvanck",
+		"level": 10,
         "code": "WK040610",
         "point_on_surface": {
             "type": "Point",
@@ -2664,6 +2854,7 @@
         "id": 1163,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Burgerveen / Leimuid",
+		"level": 10,
         "code": "WK039408",
         "point_on_surface": {
             "type": "Point",
@@ -2678,6 +2869,7 @@
         "id": 1189,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Abbenes / Buitenkaag",
+		"level": 10,
         "code": "WK039409",
         "point_on_surface": {
             "type": "Point",
@@ -2692,6 +2884,7 @@
         "id": 1188,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Lisserbroek",
+		"level": 10,
         "code": "WK039410",
         "point_on_surface": {
             "type": "Point",
@@ -2706,6 +2899,7 @@
         "id": 1186,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zwaanshoek",
+		"level": 10,
         "code": "WK039412",
         "point_on_surface": {
             "type": "Point",
@@ -2720,6 +2914,7 @@
         "id": 1185,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Cruquius",
+		"level": 10,
         "code": "WK039413",
         "point_on_surface": {
             "type": "Point",
@@ -2734,6 +2929,7 @@
         "id": 1184,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Vijfhuizen",
+		"level": 10,
         "code": "WK039415",
         "point_on_surface": {
             "type": "Point",
@@ -2748,6 +2944,7 @@
         "id": 1180,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Hofland, Oosterwijk",
+		"level": 10,
         "code": "WK039603",
         "point_on_surface": {
             "type": "Point",
@@ -2762,6 +2959,7 @@
         "id": 1183,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Schiphol",
+		"level": 10,
         "code": "WK039416",
         "point_on_surface": {
             "type": "Point",
@@ -2776,6 +2974,7 @@
         "id": 1182,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Heemskerk-Dorp",
+		"level": 10,
         "code": "WK039601",
         "point_on_surface": {
             "type": "Point",
@@ -2790,6 +2989,7 @@
         "id": 1146,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Staatslieden en Comp",
+		"level": 10,
         "code": "WK040604",
         "point_on_surface": {
             "type": "Point",
@@ -2804,6 +3004,7 @@
         "id": 1181,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Commandeurs en Marqu",
+		"level": 10,
         "code": "WK039602",
         "point_on_surface": {
             "type": "Point",
@@ -2818,6 +3019,7 @@
         "id": 1179,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Heemskerkerduin en N",
+		"level": 10,
         "code": "WK039604",
         "point_on_surface": {
             "type": "Point",
@@ -2832,6 +3034,7 @@
         "id": 1178,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Poelenburg en Ooster",
+		"level": 10,
         "code": "WK039605",
         "point_on_surface": {
             "type": "Point",
@@ -2846,6 +3049,7 @@
         "id": 1177,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Noordbroek en De Tro",
+		"level": 10,
         "code": "WK039606",
         "point_on_surface": {
             "type": "Point",
@@ -2860,6 +3064,7 @@
         "id": 1158,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Kerkbeek",
+		"level": 10,
         "code": "WK039607",
         "point_on_surface": {
             "type": "Point",
@@ -2874,6 +3079,7 @@
         "id": 1106,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Assumburg",
+		"level": 10,
         "code": "WK039608",
         "point_on_surface": {
             "type": "Point",
@@ -2888,6 +3094,7 @@
         "id": 1172,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Heemstede-Zuid",
+		"level": 10,
         "code": "WK039701",
         "point_on_surface": {
             "type": "Point",
@@ -2902,6 +3109,7 @@
         "id": 1176,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Hoogdorp en Waterakk",
+		"level": 10,
         "code": "WK039609",
         "point_on_surface": {
             "type": "Point",
@@ -2916,6 +3124,7 @@
         "id": 1175,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Broekpolder",
+		"level": 10,
         "code": "WK039610",
         "point_on_surface": {
             "type": "Point",
@@ -2930,6 +3139,7 @@
         "id": 1174,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oostelijk Heemskerk",
+		"level": 10,
         "code": "WK039611",
         "point_on_surface": {
             "type": "Point",
@@ -2944,6 +3154,7 @@
         "id": 1142,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Stad en Lande",
+		"level": 10,
         "code": "WK040607",
         "point_on_surface": {
             "type": "Point",
@@ -2958,6 +3169,7 @@
         "id": 1173,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Heemstede-Centrum",
+		"level": 10,
         "code": "WK039700",
         "point_on_surface": {
             "type": "Point",
@@ -2972,6 +3184,7 @@
         "id": 1159,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Centrum",
+		"level": 10,
         "code": "WK040201",
         "point_on_surface": {
             "type": "Point",
@@ -2986,6 +3199,7 @@
         "id": 1152,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Noordoost",
+		"level": 10,
         "code": "WK040207",
         "point_on_surface": {
             "type": "Point",
@@ -3000,6 +3214,7 @@
         "id": 1157,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Noordwest",
+		"level": 10,
         "code": "WK040202",
         "point_on_surface": {
             "type": "Point",
@@ -3014,6 +3229,7 @@
         "id": 1156,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zuidwest",
+		"level": 10,
         "code": "WK040203",
         "point_on_surface": {
             "type": "Point",
@@ -3028,6 +3244,7 @@
         "id": 1129,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Gors",
+		"level": 10,
         "code": "WK043904",
         "point_on_surface": {
             "type": "Point",
@@ -3042,6 +3259,7 @@
         "id": 1155,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zuid",
+		"level": 10,
         "code": "WK040204",
         "point_on_surface": {
             "type": "Point",
@@ -3056,6 +3274,7 @@
         "id": 1151,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Hilversumse Meent",
+		"level": 10,
         "code": "WK040208",
         "point_on_surface": {
             "type": "Point",
@@ -3070,6 +3289,7 @@
         "id": 1154,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zuidoost",
+		"level": 10,
         "code": "WK040205",
         "point_on_surface": {
             "type": "Point",
@@ -3084,6 +3304,7 @@
         "id": 1153,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oost",
+		"level": 10,
         "code": "WK040206",
         "point_on_surface": {
             "type": "Point",
@@ -3098,6 +3319,7 @@
         "id": 1147,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Erica en Tafelberg",
+		"level": 10,
         "code": "WK040603",
         "point_on_surface": {
             "type": "Point",
@@ -3112,6 +3334,7 @@
         "id": 1148,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Buitenwijken",
+		"level": 10,
         "code": "WK040602",
         "point_on_surface": {
             "type": "Point",
@@ -3126,6 +3349,7 @@
         "id": 1150,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Landelijk gebied",
+		"level": 10,
         "code": "WK040209",
         "point_on_surface": {
             "type": "Point",
@@ -3140,6 +3364,7 @@
         "id": 1144,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oude Dorp",
+		"level": 10,
         "code": "WK040600",
         "point_on_surface": {
             "type": "Point",
@@ -3154,6 +3379,7 @@
         "id": 1149,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Westereng",
+		"level": 10,
         "code": "WK040601",
         "point_on_surface": {
             "type": "Point",
@@ -3168,6 +3394,7 @@
         "id": 1145,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Havengebied",
+		"level": 10,
         "code": "WK040605",
         "point_on_surface": {
             "type": "Point",
@@ -3182,6 +3409,7 @@
         "id": 1143,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zenderwijk en Bovenw",
+		"level": 10,
         "code": "WK040606",
         "point_on_surface": {
             "type": "Point",
@@ -3196,6 +3424,7 @@
         "id": 1141,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Huizermaat West en Z",
+		"level": 10,
         "code": "WK040608",
         "point_on_surface": {
             "type": "Point",
@@ -3210,6 +3439,7 @@
         "id": 1137,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Hogemaat",
+		"level": 10,
         "code": "WK040612",
         "point_on_surface": {
             "type": "Point",
@@ -3224,6 +3454,7 @@
         "id": 1136,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Landsmeer",
+		"level": 10,
         "code": "WK041500",
         "point_on_surface": {
             "type": "Point",
@@ -3238,6 +3469,7 @@
         "id": 1120,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Veilinggebied",
+		"level": 10,
         "code": "WK045155",
         "point_on_surface": {
             "type": "Point",
@@ -3252,6 +3484,7 @@
         "id": 1135,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Ilpendam",
+		"level": 10,
         "code": "WK041501",
         "point_on_surface": {
             "type": "Point",
@@ -3266,6 +3499,7 @@
         "id": 1133,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oostzaan",
+		"level": 10,
         "code": "WK043100",
         "point_on_surface": {
             "type": "Point",
@@ -3280,6 +3514,7 @@
         "id": 1128,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Purmer-Noord",
+		"level": 10,
         "code": "WK043905",
         "point_on_surface": {
             "type": "Point",
@@ -3294,6 +3529,7 @@
         "id": 1127,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Purmer-Zuid",
+		"level": 10,
         "code": "WK043906",
         "point_on_surface": {
             "type": "Point",
@@ -3308,6 +3544,7 @@
         "id": 1110,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Dorpscentrum",
+		"level": 10,
         "code": "WK045115",
         "point_on_surface": {
             "type": "Point",
@@ -3322,6 +3559,7 @@
         "id": 1132,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Ouder-Amstel",
+		"level": 10,
         "code": "WK043700",
         "point_on_surface": {
             "type": "Point",
@@ -3336,6 +3574,7 @@
         "id": 1114,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Centrum",
+		"level": 10,
         "code": "WK043901",
         "point_on_surface": {
             "type": "Point",
@@ -3350,6 +3589,7 @@
         "id": 1131,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Overwhere",
+		"level": 10,
         "code": "WK043902",
         "point_on_surface": {
             "type": "Point",
@@ -3364,6 +3604,7 @@
         "id": 1130,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Wheermolen",
+		"level": 10,
         "code": "WK043903",
         "point_on_surface": {
             "type": "Point",
@@ -3378,6 +3619,7 @@
         "id": 1126,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Weidevenne",
+		"level": 10,
         "code": "WK043907",
         "point_on_surface": {
             "type": "Point",
@@ -3392,6 +3634,7 @@
         "id": 1119,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Meerwijk",
+		"level": 10,
         "code": "WK045165",
         "point_on_surface": {
             "type": "Point",
@@ -3406,6 +3649,7 @@
         "id": 1050,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Warande Noord",
+		"level": 10,
         "code": "WK099551",
         "point_on_surface": {
             "type": "Point",
@@ -3420,6 +3664,7 @@
         "id": 1125,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Uitgeest",
+		"level": 10,
         "code": "WK045000",
         "point_on_surface": {
             "type": "Point",
@@ -3434,6 +3679,7 @@
         "id": 1124,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Thamerdal",
+		"level": 10,
         "code": "WK045125",
         "point_on_surface": {
             "type": "Point",
@@ -3448,6 +3694,7 @@
         "id": 1123,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zijdelwaard",
+		"level": 10,
         "code": "WK045135",
         "point_on_surface": {
             "type": "Point",
@@ -3462,6 +3709,7 @@
         "id": 1122,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Legmeer",
+		"level": 10,
         "code": "WK045145",
         "point_on_surface": {
             "type": "Point",
@@ -3476,6 +3724,7 @@
         "id": 1121,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Langs de Vuurlinie",
+		"level": 10,
         "code": "WK045150",
         "point_on_surface": {
             "type": "Point",
@@ -3490,6 +3739,7 @@
         "id": 1118,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bedrijventerrein",
+		"level": 10,
         "code": "WK045175",
         "point_on_surface": {
             "type": "Point",
@@ -3504,6 +3754,7 @@
         "id": 1117,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Meerwijk",
+		"level": 10,
         "code": "WK045185",
         "point_on_surface": {
             "type": "Point",
@@ -3518,6 +3769,7 @@
         "id": 1116,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Glastuinbouwgebied",
+		"level": 10,
         "code": "WK045190",
         "point_on_surface": {
             "type": "Point",
@@ -3532,6 +3784,7 @@
         "id": 1115,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Veenweidegebied",
+		"level": 10,
         "code": "WK045195",
         "point_on_surface": {
             "type": "Point",
@@ -3546,6 +3799,7 @@
         "id": 1105,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Velsen-Zuid en Drieh",
+		"level": 10,
         "code": "WK045300",
         "point_on_surface": {
             "type": "Point",
@@ -3560,6 +3814,7 @@
         "id": 1113,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "IJmuiden-Noord",
+		"level": 10,
         "code": "WK045301",
         "point_on_surface": {
             "type": "Point",
@@ -3574,6 +3829,7 @@
         "id": 1081,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bentveld",
+		"level": 10,
         "code": "WK047303",
         "point_on_surface": {
             "type": "Point",
@@ -3588,6 +3844,7 @@
         "id": 1112,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "IJmuiden-Zuid",
+		"level": 10,
         "code": "WK045302",
         "point_on_surface": {
             "type": "Point",
@@ -3602,6 +3859,7 @@
         "id": 1101,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Binnenstad",
+		"level": 10,
         "code": "WK045700",
         "point_on_surface": {
             "type": "Point",
@@ -3616,6 +3874,7 @@
         "id": 1109,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zee- en Duinwijk",
+		"level": 10,
         "code": "WK045304",
         "point_on_surface": {
             "type": "Point",
@@ -3630,6 +3889,7 @@
         "id": 1111,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "IJmuiden-West",
+		"level": 10,
         "code": "WK045303",
         "point_on_surface": {
             "type": "Point",
@@ -3644,6 +3904,7 @@
         "id": 1108,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Velsen-Noord",
+		"level": 10,
         "code": "WK045305",
         "point_on_surface": {
             "type": "Point",
@@ -3658,6 +3919,7 @@
         "id": 1090,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zaandam Zuid",
+		"level": 10,
         "code": "WK047911",
         "point_on_surface": {
             "type": "Point",
@@ -3672,6 +3934,7 @@
         "id": 1102,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Spaarndammerpolder",
+		"level": 10,
         "code": "WK045309",
         "point_on_surface": {
             "type": "Point",
@@ -3685,7 +3948,8 @@
         "url": "http://localhost:8000/api/casestudies/2/levels/5/areas/1107/",
         "id": 1107,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Santpoort-Noord",
+        "name": "Santpoort-Noord", 
+		"level": 10,
         "code": "WK045306",
         "point_on_surface": {
             "type": "Point",
@@ -3700,6 +3964,7 @@
         "id": 1104,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Santpoort-Zuid",
+		"level": 10,
         "code": "WK045307",
         "point_on_surface": {
             "type": "Point",
@@ -3714,6 +3979,7 @@
         "id": 1103,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Velserbroek",
+		"level": 10,
         "code": "WK045308",
         "point_on_surface": {
             "type": "Point",
@@ -3728,6 +3994,7 @@
         "id": 1100,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zuid",
+		"level": 10,
         "code": "WK045701",
         "point_on_surface": {
             "type": "Point",
@@ -3742,6 +4009,7 @@
         "id": 1099,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Noord",
+		"level": 10,
         "code": "WK045702",
         "point_on_surface": {
             "type": "Point",
@@ -3756,6 +4024,7 @@
         "id": 1098,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Hogewey",
+		"level": 10,
         "code": "WK045703",
         "point_on_surface": {
             "type": "Point",
@@ -3770,6 +4039,7 @@
         "id": 1097,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Aetsveld",
+		"level": 10,
         "code": "WK045704",
         "point_on_surface": {
             "type": "Point",
@@ -3784,6 +4054,7 @@
         "id": 1089,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Poelenburg",
+		"level": 10,
         "code": "WK047912",
         "point_on_surface": {
             "type": "Point",
@@ -3798,6 +4069,7 @@
         "id": 1096,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Aetsveldsepolder",
+		"level": 10,
         "code": "WK045707",
         "point_on_surface": {
             "type": "Point",
@@ -3812,6 +4084,7 @@
         "id": 1084,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oude Haven",
+		"level": 10,
         "code": "WK047921",
         "point_on_surface": {
             "type": "Point",
@@ -3826,6 +4099,7 @@
         "id": 1095,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oostelijke Vechtoeve",
+		"level": 10,
         "code": "WK045708",
         "point_on_surface": {
             "type": "Point",
@@ -3840,6 +4114,7 @@
         "id": 1094,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bloemendalerpolder",
+		"level": 10,
         "code": "WK045709",
         "point_on_surface": {
             "type": "Point",
@@ -3854,6 +4129,7 @@
         "id": 1093,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zandvoort Noord",
+		"level": 10,
         "code": "WK047301",
         "point_on_surface": {
             "type": "Point",
@@ -3868,6 +4144,7 @@
         "id": 1092,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zandvoort Zuid",
+		"level": 10,
         "code": "WK047302",
         "point_on_surface": {
             "type": "Point",
@@ -3882,6 +4159,7 @@
         "id": 1085,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zaandam Noord",
+		"level": 10,
         "code": "WK047916",
         "point_on_surface": {
             "type": "Point",
@@ -3896,6 +4174,7 @@
         "id": 1091,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Buitengebied",
+		"level": 10,
         "code": "WK047304",
         "point_on_surface": {
             "type": "Point",
@@ -3910,6 +4189,7 @@
         "id": 1088,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Pelders- en Hoornsev",
+		"level": 10,
         "code": "WK047913",
         "point_on_surface": {
             "type": "Point",
@@ -3924,6 +4204,7 @@
         "id": 1087,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Rosmolenwijk",
+		"level": 10,
         "code": "WK047914",
         "point_on_surface": {
             "type": "Point",
@@ -3938,6 +4219,7 @@
         "id": 1086,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Kogerveldwijk",
+		"level": 10,
         "code": "WK047915",
         "point_on_surface": {
             "type": "Point",
@@ -3952,6 +4234,7 @@
         "id": 1083,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zaandam West",
+		"level": 10,
         "code": "WK047922",
         "point_on_surface": {
             "type": "Point",
@@ -3966,6 +4249,7 @@
         "id": 1082,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Nieuw West",
+		"level": 10,
         "code": "WK047923",
         "point_on_surface": {
             "type": "Point",
@@ -3980,6 +4264,7 @@
         "id": 1080,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oud Koog a/d Zaan",
+		"level": 10,
         "code": "WK047931",
         "point_on_surface": {
             "type": "Point",
@@ -3994,6 +4279,7 @@
         "id": 1079,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Westerkoog",
+		"level": 10,
         "code": "WK047932",
         "point_on_surface": {
             "type": "Point",
@@ -4008,6 +4294,7 @@
         "id": 1078,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oud Zaandijk",
+		"level": 10,
         "code": "WK047941",
         "point_on_surface": {
             "type": "Point",
@@ -4022,6 +4309,7 @@
         "id": 1077,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Rooswijk",
+		"level": 10,
         "code": "WK047942",
         "point_on_surface": {
             "type": "Point",
@@ -4036,6 +4324,7 @@
         "id": 1076,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Wormerveer",
+		"level": 10,
         "code": "WK047951",
         "point_on_surface": {
             "type": "Point",
@@ -4050,6 +4339,7 @@
         "id": 1075,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Krommenie Oost",
+		"level": 10,
         "code": "WK047961",
         "point_on_surface": {
             "type": "Point",
@@ -4064,6 +4354,7 @@
         "id": 1074,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Krommenie West",
+		"level": 10,
         "code": "WK047962",
         "point_on_surface": {
             "type": "Point",
@@ -4078,6 +4369,7 @@
         "id": 1049,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Warande West",
+		"level": 10,
         "code": "WK099552",
         "point_on_surface": {
             "type": "Point",
@@ -4092,6 +4384,7 @@
         "id": 1073,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Assendelft-Zuid",
+		"level": 10,
         "code": "WK047971",
         "point_on_surface": {
             "type": "Point",
@@ -4106,6 +4399,7 @@
         "id": 1072,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Assendelft-Noord",
+		"level": 10,
         "code": "WK047972",
         "point_on_surface": {
             "type": "Point",
@@ -4120,6 +4414,7 @@
         "id": 1071,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Westzaan",
+		"level": 10,
         "code": "WK047981",
         "point_on_surface": {
             "type": "Point",
@@ -4134,6 +4429,7 @@
         "id": 1048,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Warande Oost",
+		"level": 10,
         "code": "WK099553",
         "point_on_surface": {
             "type": "Point",
@@ -4148,6 +4444,7 @@
         "id": 912,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Monnickendam",
+		"level": 10,
         "code": "WK085200",
         "point_on_surface": {
             "type": "Point",
@@ -4162,6 +4459,7 @@
         "id": 905,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Katwoude",
+		"level": 10,
         "code": "WK085201",
         "point_on_surface": {
             "type": "Point",
@@ -4176,6 +4474,7 @@
         "id": 909,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Marken",
+		"level": 10,
         "code": "WK085202",
         "point_on_surface": {
             "type": "Point",
@@ -4190,6 +4489,7 @@
         "id": 1170,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Wormer",
+		"level": 10,
         "code": "WK088000",
         "point_on_surface": {
             "type": "Point",
@@ -4204,6 +4504,7 @@
         "id": 1166,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Wijdewormer",
+		"level": 10,
         "code": "WK088001",
         "point_on_surface": {
             "type": "Point",
@@ -4218,6 +4519,7 @@
         "id": 907,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Broek in Waterland",
+		"level": 10,
         "code": "WK085203",
         "point_on_surface": {
             "type": "Point",
@@ -4232,6 +4534,7 @@
         "id": 903,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Ilpendam",
+		"level": 10,
         "code": "WK085204",
         "point_on_surface": {
             "type": "Point",
@@ -4246,6 +4549,7 @@
         "id": 901,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Watergang",
+		"level": 10,
         "code": "WK085205",
         "point_on_surface": {
             "type": "Point",
@@ -4260,6 +4564,7 @@
         "id": 1057,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Villapark Hollandse",
+		"level": 10,
         "code": "WK099532",
         "point_on_surface": {
             "type": "Point",
@@ -4274,6 +4579,7 @@
         "id": 1162,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Jisp",
+		"level": 10,
         "code": "WK088002",
         "point_on_surface": {
             "type": "Point",
@@ -4288,6 +4594,7 @@
         "id": 1070,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zuiderzeewijk",
+		"level": 10,
         "code": "WK099511",
         "point_on_surface": {
             "type": "Point",
@@ -4302,6 +4609,7 @@
         "id": 1061,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Atolwijk",
+		"level": 10,
         "code": "WK099512",
         "point_on_surface": {
             "type": "Point",
@@ -4316,6 +4624,7 @@
         "id": 1060,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "BD Bedrijven Lelysta",
+		"level": 10,
         "code": "WK099513",
         "point_on_surface": {
             "type": "Point",
@@ -4330,6 +4639,7 @@
         "id": 1069,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Centrumzone Wijk1",
+		"level": 10,
         "code": "WK099516",
         "point_on_surface": {
             "type": "Point",
@@ -4344,6 +4654,7 @@
         "id": 1068,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Overijsselse Hout, G",
+		"level": 10,
         "code": "WK099517",
         "point_on_surface": {
             "type": "Point",
@@ -4358,6 +4669,7 @@
         "id": 1067,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Industrieterrein Oos",
+		"level": 10,
         "code": "WK099518",
         "point_on_surface": {
             "type": "Point",
@@ -4372,6 +4684,7 @@
         "id": 1066,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Schepenwijk Noord",
+		"level": 10,
         "code": "WK099521",
         "point_on_surface": {
             "type": "Point",
@@ -4386,6 +4699,7 @@
         "id": 1065,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Schepenwijk Oost",
+		"level": 10,
         "code": "WK099522",
         "point_on_surface": {
             "type": "Point",
@@ -4400,6 +4714,7 @@
         "id": 1064,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Schepenwijk West",
+		"level": 10,
         "code": "WK099523",
         "point_on_surface": {
             "type": "Point",
@@ -4414,6 +4729,7 @@
         "id": 1063,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Schepenwijk Zuid",
+		"level": 10,
         "code": "WK099524",
         "point_on_surface": {
             "type": "Point",
@@ -4428,6 +4744,7 @@
         "id": 1062,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Houtribhoogte",
+		"level": 10,
         "code": "WK099525",
         "point_on_surface": {
             "type": "Point",
@@ -4442,6 +4759,7 @@
         "id": 1059,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zuigerplaspark",
+		"level": 10,
         "code": "WK099527",
         "point_on_surface": {
             "type": "Point",
@@ -4456,6 +4774,7 @@
         "id": 1058,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Landstrekenwijk",
+		"level": 10,
         "code": "WK099531",
         "point_on_surface": {
             "type": "Point",
@@ -4470,6 +4789,7 @@
         "id": 1051,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Flevobos",
+		"level": 10,
         "code": "WK099547",
         "point_on_surface": {
             "type": "Point",
@@ -4484,6 +4804,7 @@
         "id": 1056,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Lelystad-Haven",
+		"level": 10,
         "code": "WK099535",
         "point_on_surface": {
             "type": "Point",
@@ -4498,6 +4819,7 @@
         "id": 1055,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Uilenweg",
+		"level": 10,
         "code": "WK099537",
         "point_on_surface": {
             "type": "Point",
@@ -4512,6 +4834,7 @@
         "id": 1033,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Industrieterrein Noo",
+		"level": 10,
         "code": "WK099538",
         "point_on_surface": {
             "type": "Point",
@@ -4526,6 +4849,7 @@
         "id": 1054,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Boswijk",
+		"level": 10,
         "code": "WK099541",
         "point_on_surface": {
             "type": "Point",
@@ -4540,6 +4864,7 @@
         "id": 1053,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Waterwijk",
+		"level": 10,
         "code": "WK099542",
         "point_on_surface": {
             "type": "Point",
@@ -4554,6 +4879,7 @@
         "id": 1052,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Landerijen",
+		"level": 10,
         "code": "WK099543",
         "point_on_surface": {
             "type": "Point",
@@ -4568,6 +4894,7 @@
         "id": 1045,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Hollandse Hout",
+		"level": 10,
         "code": "WK099557",
         "point_on_surface": {
             "type": "Point",
@@ -4582,6 +4909,7 @@
         "id": 1044,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Industrieterrein Fle",
+		"level": 10,
         "code": "WK099558",
         "point_on_surface": {
             "type": "Point",
@@ -4596,6 +4924,7 @@
         "id": 1043,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Kofschip",
+		"level": 10,
         "code": "WK099561",
         "point_on_surface": {
             "type": "Point",
@@ -4610,6 +4939,7 @@
         "id": 1042,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Stadscentrum Noord",
+		"level": 10,
         "code": "WK099562",
         "point_on_surface": {
             "type": "Point",
@@ -4624,6 +4954,7 @@
         "id": 1041,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Stadscentrum Zuid",
+		"level": 10,
         "code": "WK099563",
         "point_on_surface": {
             "type": "Point",
@@ -4638,6 +4969,7 @@
         "id": 1040,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Stadscentrum, Het Ra",
+		"level": 10,
         "code": "WK099566",
         "point_on_surface": {
             "type": "Point",
@@ -4652,6 +4984,7 @@
         "id": 1039,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Visvijverbos",
+		"level": 10,
         "code": "WK099571",
         "point_on_surface": {
             "type": "Point",
@@ -4666,6 +4999,7 @@
         "id": 1032,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Runderweg",
+		"level": 10,
         "code": "WK099572",
         "point_on_surface": {
             "type": "Point",
@@ -4680,6 +5014,7 @@
         "id": 1031,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Zeeasterweg",
+		"level": 10,
         "code": "WK099573",
         "point_on_surface": {
             "type": "Point",
@@ -4694,6 +5029,7 @@
         "id": 1030,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Vlotgrasweg",
+		"level": 10,
         "code": "WK099574",
         "point_on_surface": {
             "type": "Point",
@@ -4708,6 +5044,7 @@
         "id": 1029,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Eendenweg",
+		"level": 10,
         "code": "WK099575",
         "point_on_surface": {
             "type": "Point",
@@ -4722,6 +5059,7 @@
         "id": 1038,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Vogelweg",
+		"level": 10,
         "code": "WK099576",
         "point_on_surface": {
             "type": "Point",
@@ -4736,6 +5074,7 @@
         "id": 1037,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Pijlstaartweg",
+		"level": 10,
         "code": "WK099577",
         "point_on_surface": {
             "type": "Point",
@@ -4750,6 +5089,7 @@
         "id": 1036,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bedrijvenpark Larser",
+		"level": 10,
         "code": "WK099578",
         "point_on_surface": {
             "type": "Point",
@@ -4764,6 +5104,7 @@
         "id": 1035,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Oostvaardersplassen",
+		"level": 10,
         "code": "WK099579",
         "point_on_surface": {
             "type": "Point",
@@ -4778,6 +5119,7 @@
         "id": 896,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Kortenhoef",
+		"level": 10,
         "code": "WK169601",
         "point_on_surface": {
             "type": "Point",
@@ -4792,6 +5134,7 @@
         "id": 894,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Ankeveen",
+		"level": 10,
         "code": "WK169602",
         "point_on_surface": {
             "type": "Point",
@@ -4806,6 +5149,7 @@
         "id": 1034,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Markermeer",
+		"level": 10,
         "code": "WK099590",
         "point_on_surface": {
             "type": "Point",
@@ -4820,6 +5164,7 @@
         "id": 875,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "'s-Graveland",
+		"level": 10,
         "code": "WK169600",
         "point_on_surface": {
             "type": "Point",
@@ -4834,6 +5179,7 @@
         "id": 888,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Breukeleveen",
+		"level": 10,
         "code": "WK169605",
         "point_on_surface": {
             "type": "Point",
@@ -4848,6 +5194,7 @@
         "id": 949,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Eng",
+		"level": 10,
         "code": "WK194202",
         "point_on_surface": {
             "type": "Point",
@@ -4862,6 +5209,7 @@
         "id": 892,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Loosdrecht",
+		"level": 10,
         "code": "WK169603",
         "point_on_surface": {
             "type": "Point",
@@ -4876,6 +5224,7 @@
         "id": 890,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Nieuw-Loosdrecht",
+		"level": 10,
         "code": "WK169604",
         "point_on_surface": {
             "type": "Point",
@@ -4890,6 +5239,7 @@
         "id": 884,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Nederhorst den Berg",
+		"level": 10,
         "code": "WK169606",
         "point_on_surface": {
             "type": "Point",
@@ -4904,6 +5254,7 @@
         "id": 934,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Bussum Centrum",
+		"level": 10,
         "code": "WK194200",
         "point_on_surface": {
             "type": "Point",
@@ -4918,6 +5269,7 @@
         "id": 951,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Brediuskwartier",
+		"level": 10,
         "code": "WK194201",
         "point_on_surface": {
             "type": "Point",
@@ -4932,6 +5284,7 @@
         "id": 946,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Spiegel",
+		"level": 10,
         "code": "WK194203",
         "point_on_surface": {
             "type": "Point",
@@ -4946,6 +5299,7 @@
         "id": 855,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Amsterdamsewijk",
+		"level": 10,
         "code": "WK039207",
         "point_on_surface": {
             "type": "Point",
@@ -4960,6 +5314,7 @@
         "id": 944,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Muiden",
+		"level": 10,
         "code": "WK194204",
         "point_on_surface": {
             "type": "Point",
@@ -4974,6 +5329,7 @@
         "id": 941,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Naarden",
+		"level": 10,
         "code": "WK194205",
         "point_on_surface": {
             "type": "Point",

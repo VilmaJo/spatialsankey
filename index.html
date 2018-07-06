@@ -60,18 +60,18 @@
             .addLayer(new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"));
             //.addLayer(new L.TileLayer(" https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png"));
             //.addLayer(new L.TileLayer(" https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png"));
-        var actors, locations, materials, actor2actor,
+        var actors, locations, materials, actor2actor
             promises = [];                                                      // promise to load data asynchronously
         promises.push(
             get('data/actors-filtered.json').then(function(response){
                 actors = JSON.parse(response);
             }));
         promises.push(
-            get('data/actors-filtered-locations.json').then(function(response){
+            //get('data/actors-filtered-locations.json').then(function(response){
             //get('data/nodes/gemeente.json').then(function(response){
             //get('data/nodes/metropoolregio.json').then(function(response){
             //get('data/nodes/provincie.json').then(function(response){
-            ///get('data/nodes/wijk.json').then(function(response){
+            get('data/nodes/wijk.json').then(function(response){
                 locations = JSON.parse(response);
             }));
         promises.push(
@@ -79,16 +79,14 @@
                 materials = JSON.parse(response);
             }));
         promises.push(
-            get('data/actor2actor-products-of-agriculture-aggregated.json').then(function(response){
+            //get('data/actor2actor-products-of-agriculture-aggregated.json').then(function(response){
                 //get('data/flows/gemeente-to-actors.json').then(function(response){
                 // get('data/flows/gemeente-to-gemeente.json').then(function(response){
                 // get('data/flows/metropoolregio-to-actors.json').then(function(response){
-                // get('data/flows/provincie-to-actors.json').then(function(response){
-                // get('data/flows/wijk-to-wijk.json').then(function(response){
-
+                //get('data/flows/provincie-to-actors.json').then(function(response){
+                get('data/flows/wijk-to-wijk.json').then(function(response){
                 actor2actor = JSON.parse(response);
             }));
-
         Promise.all(promises).then(function(){
             var transformed = transformData(actors, locations, materials, actor2actor);             //to load data asynchronously, make sure the data is ready
             var flowMap = new FlowMap(map, { width: 1000, bbox: transformed.bbox });

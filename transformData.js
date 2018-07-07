@@ -94,7 +94,7 @@ console.log(actorsData)
     for (var key in locationsData){
         var level = locationsData[key].level;
         var radius = defineRadius(level);
-        styles['level' + level] = {'radius': radius};
+        styles[level] = {'radius': radius};
     };
 
 
@@ -104,7 +104,6 @@ console.log(actorsData)
         materialsData[material.id] = {'name': material.name, 'level': material.level}
     });
 
-    console.log(actor2actor)
 
     var uniqueMaterials = new Set();
     var flowsData = {};
@@ -130,7 +129,7 @@ console.log(actorsData)
                 'valueTotal':totalAmount,
                 'label': label,
                 'labelTotal': labelTotal,
-                'style': 'material' + fraction.material
+                'style': fraction.material
             };
             uniqueMaterials.add(fraction.material);
             i += 1;
@@ -148,9 +147,10 @@ console.log(actorsData)
 
         uniqueMaterials.forEach(function (materialId) {
             var color = materialColor(i);
-                styles['material' + materialId] = {'color':color};
+                styles[materialId] = {'color':color};
             i += 1;
         });
+
 
 
         return {flows: flowsData, nodes: locationsData, styles: styles, bbox: [topLeft, bottomRight]};

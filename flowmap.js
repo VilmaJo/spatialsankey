@@ -78,7 +78,6 @@ define([
         }
 
         render(nodesData, flowsData, styles) {
-            console.log(styles)
             this.g.selectAll("*").remove();
             // remember scope of 'this' as context for functions with different scope
             var _this = this;
@@ -211,7 +210,7 @@ define([
 
 
                 // drawPath
-                this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
+                //this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
                 this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
 
 
@@ -299,6 +298,9 @@ define([
 
         //function to add nodes to the map
         addPoint(lon, lat, label, level, styleId, nodeLabel) {
+
+            // anlegen eines arrays mit den source && target coordinates, wenn x & y im array, dann nutze diese
+
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
 
@@ -317,7 +319,7 @@ define([
                 .attr("cx", x)
                 .attr("cy", y)
                 .attr("r", radius)
-                .style("fill", this.styles[styleId].color)
+                .style("fill", "red")
                 .style("fill-opacity", 0.85)
                 .on("mouseover", function (d) {
                     d3.select(this).style("cursor", "pointer"),
@@ -495,7 +497,7 @@ define([
 
 
 
-        drawPath(sxp, syp, txp, typ, styleId, label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection) {
+        drawPath(sxp, syp, txp, typ, materialId, label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection) {
 
 
             var pathLengthValues = this.adjustedPathLength(sxp, syp, txp, typ, sourceLevel, targetLevel);
@@ -542,7 +544,7 @@ define([
                 .attr("x2", txpao)
                 .attr("y2", typao)
                 .attr("stroke-width", strokeWidth)
-                .attr("stroke", this.styles[styleId].color)
+                .attr("stroke", this.styles[materialId].color)
                 .attr("stroke-opacity", 0.85)
                 .attr("clip-path", "url(#clip" + uid +")")
                 .on("mouseover", function(d){

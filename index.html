@@ -81,10 +81,10 @@
         promises.push(
             //get('data/actor2actor-products-of-agriculture-aggregated.json').then(function(response){
                 //get('data/flows/gemeente-to-actors.json').then(function(response){
-                // get('data/flows/gemeente-to-gemeente.json').then(function(response){
+                //get('data/flows/gemeente-to-gemeente.json').then(function(response){
                 // get('data/flows/metropoolregio-to-actors.json').then(function(response){
                 //get('data/flows/provincie-to-actors.json').then(function(response){
-                get('data/flows/wijk-to-wijk.json').then(function(response){
+               get('data/flows/wijk-to-wijk.json').then(function(response){
                 actor2actor = JSON.parse(response);
             }));
         Promise.all(promises).then(function(){

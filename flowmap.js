@@ -216,11 +216,11 @@ define([
 
 
                 // drawPath
-                this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
+                //this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
                 //this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
 
-                this.addSPoint(source.lon,source.lat,source.label,source.level,source.style,source.label)
-                this.addTPoint(target.lon,target.lat,target.label,target.level,target.style,target.label)
+               // this.addSPoint(source.lon,source.lat,source.label,source.level,source.style,source.label)
+               // this.addTPoint(target.lon,target.lat,target.label,target.level,target.style,target.label)
 
             } /******************************   End for key in flowsData    ***********************************/
 

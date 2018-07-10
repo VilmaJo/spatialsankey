@@ -1,10 +1,12 @@
 define([
     'd3', 'd3-scale', 'd3-interpolate'
 ], function(d3, d3scale) {
-    function transformData(actors, locations, materials, actor2actor) {
+    function transformData(actors, locations, locations2, materials, actor2actor) {
 
         var styles = {};
 
+        console.log(locations)
+        console.log(locations2)
         var locationsData = {},
             topLeft = [10000, 0],
             bottomRight = [0, 10000];
@@ -12,7 +14,7 @@ define([
             var actorId = location.id,
                 coordinates = location.point_on_surface.coordinates;
             var lon = coordinates[0],
-                lat = coordinates[1]
+                lat = coordinates[1];
             topLeft = [Math.min(topLeft[0], lon), Math.max(topLeft[1], lat)];
             bottomRight = [Math.max(bottomRight[0], lon), Math.min(bottomRight[1], lat)];
             var level = location.level;
@@ -27,6 +29,32 @@ define([
                 'label': label
             }
         });
+        console.log(locationsData)
+
+        var locations2Data = {}
+        locations2.features.forEach(function (location2) {
+           //console.log(location2)
+            var actorId = location2.id,
+                geometry = location2.geometry;
+            if (geometry === null){return location2.geometry.coordinates === [ Math.random() * 13 + 4, Math.random() * 18 + 40 ];}
+            var coordinates = location2.geometry.coordinates;
+            console.log(coordinates)
+            var lon = coordinates[0],
+                lat = coordinates[1];
+            //console.log(lat)
+            var level =location2.properties.level;
+            var label = 'Name: ' + location2.properties.url +'<br>Level: ' + level;
+            locations2Data[actorId]= {
+                'name': location2.properties.url,
+                'lon': lon,
+                'lat': lat,
+                'level': level,
+                'style': 'level' + level,
+                'label': label
+            }
+        });
+        console.log(locations2Data)
+
 
         /*
                 var uniqueActivity = new Set();                           //to get array of unique values
@@ -87,7 +115,6 @@ define([
             if (level === 8) {return 12}
             if (level === 6) {return 16}
             if (level === 4) {return 20}
-            if (level === 'undefined') {return 12}
             else {return 4}
         };
 
@@ -153,7 +180,6 @@ define([
             styles[materialId] = {'color':color};
             i += 1;
         });
-
 
 
         return {flows: flowsData, nodes: locationsData, styles: styles, bbox: [topLeft, bottomRight]};

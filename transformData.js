@@ -2,82 +2,101 @@ define([
     'd3', 'd3-scale', 'd3-interpolate'
 ], function(d3, d3scale) {
     function transformData(actors, locations, materials, actor2actor) {
-        var locationsData = {};
-        var levelData = {};
-        locations.features.forEach(function (location) {
-            var actorId = location.properties.actor,
-                coordinates = location.geometry.coordinates,
-                level = location.properties.level;
-            locationsData[actorId] = coordinates;
-            levelData[actorId] = level;
-        });
 
         var styles = {};
 
-        var uniqueActivity = new Set();                           //to get array of unique values
-        var uniqueLevel = new Set();
-        var actorsData = {},
+        var locationsData = {},
             topLeft = [10000, 0],
             bottomRight = [0, 10000];
-        actors.forEach(function (actor) {
-            var coordinates = locationsData[actor.id] || [Math.random() * 13 + 4, Math.random() * 18 + 40];         // !!!!!!!!!! random coordinates
+        locations.forEach(function (location) {
+            var actorId = location.id,
+                coordinates = location.point_on_surface.coordinates;
             var lon = coordinates[0],
-                lat = coordinates[1];
+                lat = coordinates[1]
             topLeft = [Math.min(topLeft[0], lon), Math.max(topLeft[1], lat)];
             bottomRight = [Math.max(bottomRight[0], lon), Math.min(bottomRight[1], lat)];
-            var level = levelData[actor.id],
-                label = 'Name: ' + actor.name + '<br>Level: ' + level + '<br>Activity: ' + actor.activity;
-            actorsData[actor.id] = {
-                'name': actor.name,
-                'label': label,
+            var level = location.level;
+            var label = 'Name: ' + location.name +'<br>Level: ' + level;
+
+            locationsData[location.id]= {
+                'name': location.name,
                 'lon': lon,
                 'lat': lat,
-                'style': 'group' + actor.activity,
-                'level': 'level' + level
-            };
-
-            uniqueActivity = uniqueActivity.add(actor.activity)
-            uniqueLevel = uniqueLevel.add(level)
+                'level': level,
+                'style': 'level' + level,
+                'label': label
+            }
         });
 
-        // sort the unique levels to assign proper radius
-        var levelArray = Array.from(uniqueLevel);
-        levelArray.sort(function(a, b){return b - a});
-        console.log(levelArray);
+        /*
+                var uniqueActivity = new Set();                           //to get array of unique values
+                var actorsData = {},
+                    topLeft = [10000, 0],
+                    bottomRight = [0, 10000];
+                actors.forEach(function (actor) {
+                    var actorId = actor.id;
+                    var coordinates = locationsData[actorId] || [Math.random() * 13 + 4, Math.random() * 18 + 40];         // !!!!!!!!!! random coordinates
+                    var level = levelData[actor.id];
+                    console.log(actorId)
+                    console.log(level)
+                    var lon = coordinates[0],
+                        lat = coordinates[1];
+                    topLeft = [Math.min(topLeft[0], lon), Math.max(topLeft[1], lat)];
+                    bottomRight = [Math.max(bottomRight[0], lon), Math.min(bottomRight[1], lat)];
+                    var label = 'Name: ' + actor.name + '<br>Level: ' + level + '<br>Activity: ' + actor.activity;
+                    console.log(label)
+                    actorsData[actor.id] = {
+                        'name': actor.name,
+                        'label': label,
+                        'lon': lon,
+                        'lat': lat,
+                        'style': 'group' + actor.activity,
+                        'level': level
+                    };
 
-        // define color range and assign color to nodes activity
-        var nodeColor = d3.scale.linear()
-            //blasse farben
-            //.range(["#77AADD","#BBCC33", "#FFAABB"])
-            //blasse Farben
-            //.range(["#BBCCEE", "#CCDDAA", "#FFCCCC"])
-            // hellblau-grün, problematisch weil hellblau wie Kartenhintergrund
-            //.range(["#a6cee3", "#1f78b4", "#b2df8a"])
-            // türkis, orange, lila
-            .range (["#1b9e77", "#d95f02", "#7570b3"])
-            .domain([0, 1, uniqueActivity.size-1])
-            .interpolate(d3.interpolateHsl);
-        var i = 0;
+                    uniqueActivity = uniqueActivity.add(actor.activity)
+                });
+        console.log(actorsData)
+        */
+        /*
+                // define color range and assign color to nodes activity
+                var nodeColor = d3.scale.linear()
+                    /*.range(["#a6cee3",
+                            "#1f78b4",
+                            "#b2df8a"])*/
+        /*           .range(["#1f78b4",
+                       "#b2df8a",
+                       "#33a02c"])
+               /*.range (["#1b9e77",
+               "#d95f02",
+               "#7570b3"])*/
+        /*        .domain([0, 1, uniqueActivity.size-1])
+                .interpolate(d3.interpolateHsl);
+            var i = 0;
 
-        uniqueActivity.forEach(function (groupId) {
-            var color = nodeColor(i);
-            styles['group' + groupId] = {'color': color};
-            i += 1;
-        });
+            uniqueActivity.forEach(function (groupId) {
+                var color = nodeColor(i);
+                styles['group' + groupId] = {'color': color};
+                i += 1;
+            });
+
+        */
+        function defineRadius(level){
+            var level = level;
+            if (level === 10) {return 8}
+            if (level === 8) {return 12}
+            if (level === 6) {return 16}
+            if (level === 4) {return 20}
+            if (level === 'undefined') {return 12}
+            else {return 4}
+        };
 
 
-        // define radius range and assign radius to nodes level
-        var nodeRadius = d3.scale.linear()
-            .range([10,25])
-            .domain([0,uniqueLevel.size-1])
-            .interpolate(d3.interpolateNumber);
-        var i = 0;
-
-        levelArray.forEach(function (level) {
-            var radius = nodeRadius(i);
-            styles['level' + level] = {'radius': radius};
-            i += 1;
-        });
+        for (var key in locationsData){
+            var level = locationsData[key].level;
+            var radius = defineRadius(level);
+            styles[level] = {'radius': radius};
+        };
 
 
 
@@ -85,6 +104,7 @@ define([
         materials.forEach(function (material) {
             materialsData[material.id] = {'name': material.name, 'level': material.level}
         });
+
 
         var uniqueMaterials = new Set();
         var flowsData = {};
@@ -95,9 +115,9 @@ define([
                     totalAmount = flow.amount,
                     material = materialsData[fraction.material],
                     complabel = (flow.waste) ? 'Waste' : 'Product',
-                    origin = actorsData[flow.origin],
+                    origin = locationsData[flow.origin],
                     originName = (origin) ? origin.name : '',
-                    destination = actorsData[flow.destination],
+                    destination = locationsData[flow.destination],
                     destinationName = (destination) ? destination.name : '',
                     flowlabel = originName + '&#10132; '  + destinationName,
                     label = flowlabel + '<br>' + complabel + ': ' + flow.composition.name + '<br>Material: ' + material.name + '<br>Amount:' + amount + ' t/year',
@@ -110,56 +130,33 @@ define([
                     'valueTotal':totalAmount,
                     'label': label,
                     'labelTotal': labelTotal,
-                    'style': 'material' + fraction.material
+                    'style': fraction.material
                 };
                 uniqueMaterials.add(fraction.material);
                 i += 1;
             });
         });
-        // defining colors for each individual material by using the d3 color scale rainbow
-        /*      http://d3indepth.com/scales/
-        var sequentialScale = d3.scaleSequential()
-            .domain([0, 100])
-            .interpolator(d3.interpolateRainbow);
-        sequentialScale(0);   // returns 'rgb(110, 64, 170)'
-        sequentialScale(50);  // returns 'rgb(175, 240, 91)'
-        sequentialScale(100); // returns 'rgb(110, 64, 170)'
-        */
 
         //define color range and assign colors to unique materials
         var materialColor = d3.scale.linear()
-            /* colorbrewer
-            .range(["#1b9e77",
-                "#d95f02",
-                "#7570b3"])*/
-            /*.range(["#4477AA",
-            "#66CCEE",
-            "#228833",
-            "#CCBB44",
-            "#EE6677",
-            "#AA3377"])*/
+            // colorbrewer
+            //.range(["#1b9e77", "#d95f02", "#7570b3"])
             .range(["#4477AA",
                 "#228833",
                 "#AA3377"])
-        /*.range(["#0077BB",
-            "#228833",
-            "#EE3377"])
-        /*.range(["#0077BB",
-            "#009988",
-            "#EE3377"])*/
-            //.range([knallige komplimentärkontraste, orange, ])
             .domain([0, 1, uniqueMaterials.size-1])
             .interpolate(d3.interpolateHsl);
         var i = 0;
 
         uniqueMaterials.forEach(function (materialId) {
             var color = materialColor(i);
-            styles['material' + materialId] = {'color':color};
+            styles[materialId] = {'color':color};
             i += 1;
         });
 
 
-        return {flows: flowsData, nodes: actorsData, styles: styles, bbox: [topLeft, bottomRight]};
+
+        return {flows: flowsData, nodes: locationsData, styles: styles, bbox: [topLeft, bottomRight]};
     }
     return transformData;
 })

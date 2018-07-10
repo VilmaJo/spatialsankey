@@ -102,7 +102,8 @@ define([
                     var maxValue = Math.max.apply(Math, Object.values(flowsData).map(function (flow) {
                             return flow.valueTotal
                         })),
-                        maxWidth = 15;
+                        maxWidth = 5,
+                        minWidth = 0.5;
                     console.log(maxValue)
                     for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
                         var flow = flowsData[key];
@@ -110,7 +111,7 @@ define([
                             var width = flow.value;
                             // insert the zoom here, because thats where the actual width
                             var width = this.defineStrokeZoom(width);
-                            var strokeWidth = width / maxValue * maxWidth;
+                            var strokeWidth = minWidth + (width / maxValue * maxWidth);
 
                             strokeWidths[key] = strokeWidth;
                             strokeArray.push(strokeWidth)
@@ -185,6 +186,12 @@ define([
                     console.log('Warning: missing actor for flow');
                     continue;
                 }
+                console.log(flow.source)
+                console.log(nodesData)
+                console.log(source)
+                console.log(source['label'])
+                //if (nodesData.includes(flow.source) === true){}
+
 
                 var sourceCoords = [source['lon'], source['lat']],
                     targetCoords = [target['lon'], target['lat']];
@@ -209,17 +216,20 @@ define([
 
 
                 // drawPath
-                //this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
-                this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
+                this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
+                //this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
 
+                this.addSPoint(source.lon,source.lat,source.label,source.level,source.style,source.label)
+                this.addTPoint(target.lon,target.lat,target.label,target.level,target.style,target.label)
 
             } /******************************   End for key in flowsData    ***********************************/
 
             // use addpoint for each node in nodesData
-            Object.values(nodesData).forEach(function (node) {
+            /*Object.values(nodesData).forEach(function (node) {
+
                 _this.addPoint(node.lon, node.lat, node.label,
                     node.level, node.style, node.label);
-            });
+            });*/
 
 
 
@@ -228,24 +238,8 @@ define([
         // inserting data and letting them load asynchronously
         renderTopo(topoJson, nodesData, flowsData, styles) {
             var _this = this;
-console.log(flowsData)
-            /*
-            function drawTopo(topojson) {
-                var country = _this.g.selectAll(".country").data(topojson);
-                _this.g.selectAll(".country")
-                    .data(topojson)
-                    .enter()
-                    .append("path")
-                    .attr("class", "country")
-                    .attr("d", _this.path)
-                    .attr("id", function (d, i) {
-                        return d.id;
-                    })
-                    .style("fill", "lightgrey")
-                    .style("stroke", 'grey')
-                    .style("stroke-width", 0.2);
-            }
-*/
+            console.log(flowsData)
+
             // Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
             function loaded(error, world) {
                 //world data
@@ -257,6 +251,7 @@ console.log(flowsData)
             d3queue.queue().defer(d3.json, topoJson)
                 .await(loaded);
         }
+
 
         defineRadiusZoom(level){
             var zoomLevel = this.map.getZoom();
@@ -295,12 +290,12 @@ console.log(flowsData)
             }
         }
 
-        //function to add nodes to the map
-        addPoint(lon, lat, label, level, styleId, nodeLabel) {
+        //function to add source nodes to the map
+        addSPoint(lon, lat, label, level, styleId, nodeLabel) {
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
 
-            var radius = this.defineRadiusZoom(level);
+            var radius = this.defineRadiusZoom(level)/2;
 
             // tooltip
             var tooltip = d3.select("body")
@@ -315,11 +310,57 @@ console.log(flowsData)
                 .attr("cx", x)
                 .attr("cy", y)
                 .attr("r", radius)
-                .style("fill", "grey")
+                .style("fill", "#1f78b4")
                 .style("fill-opacity", 0.9)
-                .style("stroke", this.styles[styleId].color)
-                .style("stroke-width", radius/5)
-                .style("stroke-opacity", 0.9)
+                //.style("stroke", 'red')
+                //.style("stroke", this.styles[styleId].color)
+                //.style("stroke-width", radius/5)
+                //.style("stroke-opacity", 0.9)
+                .on("mouseover", function (d) {
+                    d3.select(this).style("cursor", "pointer"),
+                        tooltip.transition()
+                            .duration(200)
+                            .style("opacity", 0.9);
+                    tooltip.html(nodeLabel)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px")
+                })
+                .on("mouseout", function (d) {
+                        tooltip.transition()
+                            .duration(500)
+                            .style("opacity", 0)
+                    }
+                );
+
+        }
+
+        //function to add target nodes to the map
+        addTPoint(lon, lat, label, level, styleId, nodeLabel) {
+            var x = this.projection([lon, lat])[0],
+                y = this.projection([lon, lat])[1];
+
+            var radius = this.defineRadiusZoom(level)/2;
+
+            // tooltip
+            var tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0.9)
+                .style("z-index", 500);
+
+            var point = this.g.append("g")
+                .attr("class", "node")
+                .append("circle")
+                .attr("cx", x)
+                .attr("cy", y)
+                .attr("r", radius)
+                //.style("fill", "#b2df8a")
+                .style("fill", "#a3cc00")
+                .style("fill-opacity", 0.9)
+                //.style("stroke", 'green')
+                //.style("stroke", this.styles[styleId].color)
+                //.style("stroke-width", radius/5)
+                //.style("stroke-opacity", 0.9)
                 .on("mouseover", function (d) {
                     d3.select(this).style("cursor", "pointer"),
                         tooltip.transition()
@@ -421,12 +462,12 @@ console.log(flowsData)
                 tyRValue = dyp * tRatio,
                 sxpl = sxpao + (totalStroke / 2) * (dyp / flowLength),                                                      // source left
                 sypl = sypao - (totalStroke / 2) * (dxp / flowLength),
-                txplb = (txpao + (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/15),                       // target left
-                typlb = (typao - (totalStroke / 2) * (dxp / flowLength))+ tyRValue*(totalStroke/15),
+                txplb = (txpao + (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/5),                       // target left
+                typlb = (typao - (totalStroke / 2) * (dxp / flowLength))+ tyRValue*(totalStroke/5),
                 sxpr = sxpao - (totalStroke / 2) * (dyp / flowLength),                                                      // source right
                 sypr = sypao + (totalStroke / 2) * (dxp / flowLength),
-                txprb = (txpao - (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/15),                       // target right
-                typrb = (typao + (totalStroke / 2) * (dxp / flowLength))+ tyRValue*(totalStroke/15);
+                txprb = (txpao - (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/5),                       // target right
+                typrb = (typao + (totalStroke / 2) * (dxp / flowLength))+ tyRValue*(totalStroke/5);
             triangleData.push({'tx': sxpl, 'ty': sypl}, {'tx': txplb, 'ty': typlb},
                 {'tx': txpao, 'ty': typao},
                 {'tx': txprb, 'ty': typrb}, {'tx': sxpr, 'ty': sypr});
@@ -478,24 +519,29 @@ console.log(flowsData)
                 .attr("stroke", "grey")
                 //.attr("stroke", "#a3cc00")
                 .attr("stroke-opacity", 0.5)
+                .on("click", function(){
+                    flowsTotal.attr("stroke", "blue")
+                })
                 .on("mouseover", function () {
                     d3.select(this).node().parentNode.appendChild(this);
                     d3.select(this).style("cursor", "pointer"),
                         tooltip.transition()
                             .duration(200)
                             .style("opacity", 0.8);
-                        tooltip.html(labelTotal)
-                            .style("left", (d3.event.pageX) + "px")
-                            .style("top", (d3.event.pageY - 28) + "px")
-                        //flowsTotal.attr("stroke-opacity",0.9)
+                    tooltip.html(labelTotal)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px")
+                    flowsTotal.attr("stroke-opacity",0.7)
+                        .attr("stroke", "#a3cc00")
                 })
                 .on("mouseout", function (d) {
-                        tooltip.transition()
-                            .duration(500)
-                            .style("opacity", 0)
-                        flowsTotal.attr("stroke-opacity",0.5)
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0)
+                    flowsTotal.attr("stroke-opacity",0.5)
+                        .attr("stroke", "grey")
                 })
-                ;
+            ;
         }
 
         drawPath(sxp, syp, txp, typ, styleId, label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection) {
@@ -549,27 +595,27 @@ console.log(flowsData)
                 .attr("stroke-opacity", 1)
                 .attr("clip-path", "url(#clip" + uid +")")
                 .on("mouseover", function(){
-                           d3.select(this).node().parentNode.appendChild(this);
-                           /*
-                           flows.forEach(function(flow){
-                           if (flow.x1  &&& flow.x1 &&& flow.y1 &&& flow.y2 in
-                               d3.select(this).node().parentNode.appendChild(this);
-                       }*/
-                        d3.select(this).style("cursor", "pointer"),
-                            tooltip.transition()
-                                .duration(200)
-                                .style("opacity", 0.9);
-                        tooltip.html(label)
-                            .style("left", (d3.event.pageX) + "px")
-                            .style("top", (d3.event.pageY - 28) + "px")
-                        flows.attr("stroke-opacity", 0.9)
+                    d3.select(this).node().parentNode.appendChild(this);
+                    /*
+                    flows.forEach(function(flow){
+                    if (flow.x1  &&& flow.x1 &&& flow.y1 &&& flow.y2 in
+                        d3.select(this).node().parentNode.appendChild(this);
+                }*/
+                    d3.select(this).style("cursor", "pointer"),
+                        tooltip.transition()
+                            .duration(200)
+                            .style("opacity", 0.9);
+                    tooltip.html(label)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px")
+                    flows.attr("stroke-opacity", 0.9)
                 })
                 .on("mouseout", function(d) {
-                    tooltip.transition()
-                        .duration(500)
-                        .style("opacity", 0)
-                    flows.attr("stroke-opacity", 1)
-                }
+                        tooltip.transition()
+                            .duration(500)
+                            .style("opacity", 0)
+                        flows.attr("stroke-opacity", 1)
+                    }
                 );
         }
 
@@ -577,48 +623,7 @@ console.log(flowsData)
 
         drawArrowhead(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp, id){
             var triangleData = this.defineTriangleData(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
-            /*
-                                                var rightTargetB = this.g.append("g")
-                                                    .attr("class", "node")
-                                                    .append("circle")
-                                                    .attr("cx", txprb)
-                                                    .attr("cy", typrb)
-                                                    .attr("r", 1)
-                                                    .style("fill","red")
-                                                    .style("fill-opacity", 0.5);
-                                                var leftTargetB = this.g.append("g")
-                                                    .attr("class", "node")
-                                                    .append("circle")
-                                                    .attr("cx", txplb)
-                                                    .attr("cy", typlb)
-                                                    .attr("r", 1)
-                                                    .style("fill","purple")
-                                                    .style("fill-opacity", 0.5);
-                                                var rightTarget = this.g.append("g")
-                                                    .attr("class", "node")
-                                                    .append("circle")
-                                                    .attr("cx", txpr)
-                                                    .attr("cy", typr)
-                                                    .attr("r", 1)
-                                                    .style("fill","yellow")
-                                                    .style("fill-opacity", 0.5);
-                                                var leftTarget = this.g.append("g")
-                                                    .attr("class", "node")
-                                                    .append("circle")
-                                                    .attr("cx", txpl)
-                                                    .attr("cy", typl)
-                                                    .attr("r", 1)
-                                                    .style("fill","blue")
-                                                    .style("fill-opacity", 0.5);
-                                                var frontTarget = this.g.append("g")
-                                                    .attr("class", "node")
-                                                    .append("circle")
-                                                    .attr("cx", ftx)
-                                                    .attr("cy", fty)
-                                                    .attr("r", 1)
-                                                    .style("fill","green")
-                                                    .style("fill-opacity", 0.5);
-                                    */
+
             var clip = this.g.append("clipPath")
                 .attr("id", "clip"+id)
                 //.attr("id", triangleData.map(function(d) {return "clip" + d.index}))

@@ -1,181 +1,496 @@
 [
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/808/",
-        "id": 808,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Groningen",
-		"level_id": 6,
-        "code": "1",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/827/",
+        "id": 827,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Aalsmeer",
+        "level": 8,
+        "code": "GM0358",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                6.888731059783302,
-                53.152226
+                4.760175282024459,
+                52.2619385
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/809/",
-        "id": 809,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Limburg",
-		"level_id": 6,
-        "code": "12",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/828/",
+        "id": 828,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Gooise Meren",
+        "level": 8,
+        "code": "GM1942",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                5.867773480443729,
-                51.265149
+                5.147227927095177,
+                52.2988925
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/810/",
-        "id": 810,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Noord-Brabant",
-		"level_id": 6,
-        "code": "11",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/829/",
+        "id": 829,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Lelystad",
+        "level": 8,
+        "code": "GM0995",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                5.036303236506718,
-                51.5301535
+                5.519438222922993,
+                52.538738
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/811/",
-        "id": 811,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Zeeland",
-		"level_id": 6,
-        "code": "10",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/830/",
+        "id": 830,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Landsmeer",
+        "level": 8,
+        "code": "GM0415",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                3.886873563089721,
-                51.304365
+                4.921287705825109,
+                52.451535
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/812/",
-        "id": 812,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Zuid-Holland",
-		"level_id": 6,
-        "code": "9",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/821/",
+        "id": 821,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Beverwijk",
+        "level": 8,
+        "code": "GM0375",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                4.471633025218663,
-                51.995465
+                4.673148738238019,
+                52.478646
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/813/",
-        "id": 813,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Noord-Holland",
-		"level_id": 6,
-        "code": "8",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/848/",
+        "id": 848,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Haarlem",
+        "level": 8,
+        "code": "GM0392",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                4.821000335303425,
-                52.5838465
+                4.643619427736016,
+                52.3837375
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/814/",
-        "id": 814,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Utrecht",
-		"level_id": 6,
-        "code": "7",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/849/",
+        "id": 849,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Diemen",
+        "level": 8,
+        "code": "GM0384",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                5.153260483418386,
-                52.1191155
+                4.983395423900303,
+                52.3345725
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/815/",
-        "id": 815,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Gelderland",
-		"level_id": 6,
-        "code": "6",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/822/",
+        "id": 822,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Beemster",
+        "level": 8,
+        "code": "GM0370",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                6.083070518077506,
-                52.1296825
+                4.920086209209832,
+                52.562659
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/816/",
-        "id": 816,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Flevoland",
-		"level_id": 6,
-        "code": "5",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/823/",
+        "id": 823,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Amsterdam",
+        "level": 8,
+        "code": "GM0363",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                5.540180087720728,
-                52.4449195
+                4.863487552184002,
+                52.3746965
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/817/",
-        "id": 817,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Overijssel",
-		"level_id": 6,
-        "code": "4",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/826/",
+        "id": 826,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Amstelveen",
+        "level": 8,
+        "code": "GM0362",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                6.381475429014628,
-                52.4883915
+                4.852730542851084,
+                52.286281
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/818/",
-        "id": 818,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Drenthe",
-		"level_id": 6,
-        "code": "3",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/824/",
+        "id": 824,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Wijdemeren",
+        "level": 8,
+        "code": "GM1696",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                6.690124301422319,
-                52.909518
+                5.090403967173067,
+                52.2257525
             ]
         }
     },
     {
-        "url": "http://localhost:8000/api/casestudies/2/levels/8/areas/819/",
-        "id": 819,
-        "casestudy": "http://localhost:8000/api/casestudies/2/",
-        "name": "Friesland",
-		"level_id": 6,
-        "code": "2",
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/825/",
+        "id": 825,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Uithoorn",
+        "level": 8,
+        "code": "GM0451",
         "point_on_surface": {
             "type": "Point",
             "coordinates": [
-                5.831169421844048,
-                53.108476
+                4.796673630417013,
+                52.2334115
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/831/",
+        "id": 831,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Zaanstad",
+        "level": 8,
+        "code": "GM0479",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.77410033669986,
+                52.4694015
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/832/",
+        "id": 832,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Zandvoort",
+        "level": 8,
+        "code": "GM0473",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.542201359230734,
+                52.3563505
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/833/",
+        "id": 833,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Weesp",
+        "level": 8,
+        "code": "GM0457",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.058514101781013,
+                52.3053375
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/834/",
+        "id": 834,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Velsen",
+        "level": 8,
+        "code": "GM0453",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.622691883109438,
+                52.449652
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/835/",
+        "id": 835,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Uitgeest",
+        "level": 8,
+        "code": "GM0450",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.737120642257464,
+                52.5222925
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/836/",
+        "id": 836,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Purmerend",
+        "level": 8,
+        "code": "GM0439",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.964330053324656,
+                52.4995805
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/837/",
+        "id": 837,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Ouder-Amstel",
+        "level": 8,
+        "code": "GM0437",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.916465111707003,
+                52.294615
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/838/",
+        "id": 838,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Oostzaan",
+        "level": 8,
+        "code": "GM0431",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.869092538488227,
+                52.4515355
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/839/",
+        "id": 839,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Laren",
+        "level": 8,
+        "code": "GM0417",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.21562455094275,
+                52.2442495
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/840/",
+        "id": 840,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Huizen",
+        "level": 8,
+        "code": "GM0406",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.230600245607248,
+                52.2922525
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/841/",
+        "id": 841,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Hilversum",
+        "level": 8,
+        "code": "GM0402",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.173635160947456,
+                52.23117
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/842/",
+        "id": 842,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Wormerland",
+        "level": 8,
+        "code": "GM0880",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.859889804172283,
+                52.506004
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/843/",
+        "id": 843,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Almere",
+        "level": 8,
+        "code": "GM0034",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.220179456797876,
+                52.370809
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/844/",
+        "id": 844,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Heemstede",
+        "level": 8,
+        "code": "GM0397",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.618302692761807,
+                52.343308
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/845/",
+        "id": 845,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Heemskerk",
+        "level": 8,
+        "code": "GM0396",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.643250542135078,
+                52.508987
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/846/",
+        "id": 846,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Haarlemmermeer",
+        "level": 8,
+        "code": "GM0394",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.698829676489374,
+                52.300458
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/847/",
+        "id": 847,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Haarlemmerliede en Spaarnwoude",
+        "level": 8,
+        "code": "GM0393",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.700971150462887,
+                52.405319
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/850/",
+        "id": 850,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Edam-Volendam",
+        "level": 8,
+        "code": "GM0385",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.013907144395361,
+                52.548006
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/851/",
+        "id": 851,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Bloemendaal",
+        "level": 8,
+        "code": "GM0377",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.591300257674717,
+                52.3731305
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/852/",
+        "id": 852,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Waterland",
+        "level": 8,
+        "code": "GM0852",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                4.998846573111564,
+                52.454965
+            ]
+        }
+    },
+    {
+        "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/levels/6/areas/853/",
+        "id": 853,
+        "casestudy": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/",
+        "name": "Blaricum",
+        "level": 8,
+        "code": "GM0376",
+        "point_on_surface": {
+            "type": "Point",
+            "coordinates": [
+                5.24791721730958,
+                52.279968
             ]
         }
     }

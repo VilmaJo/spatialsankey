@@ -6,9 +6,14 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/actor2actor-products-of-agriculture-aggregated.json" afterPath="$PROJECT_DIR$/data/actor2actor-products-of-agriculture-aggregated.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/actors-filtered-locations.json" afterPath="$PROJECT_DIR$/data/actors-filtered-locations.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/actors-filtered.json" afterPath="$PROJECT_DIR$/data/actors-filtered.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/flows/gemeente-to-actors.json" afterPath="$PROJECT_DIR$/data/flows/gemeente-to-actors.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/flows/gemeente-to-gemeente.json" afterPath="$PROJECT_DIR$/data/flows/gemeente-to-gemeente.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/flows/metropoolregio-to-actors.json" afterPath="$PROJECT_DIR$/data/flows/metropoolregio-to-actors.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/flows/provincie-to-actors.json" afterPath="$PROJECT_DIR$/data/flows/provincie-to-actors.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/flows/wijk-to-wijk.json" afterPath="$PROJECT_DIR$/data/flows/wijk-to-wijk.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/nodes/gemeente.json" afterPath="$PROJECT_DIR$/data/nodes/gemeente.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flowmap.js" afterPath="$PROJECT_DIR$/flowmap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/material_parent.html" afterPath="$PROJECT_DIR$/material_parent.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transformData.js" afterPath="$PROJECT_DIR$/transformData.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -26,8 +31,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="71" column="25" lean-forward="false" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="25" />
+            <state relative-caret-position="362">
+              <caret line="78" column="49" lean-forward="true" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
@@ -35,63 +40,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="actors-filtered.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/actors-filtered.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="flowmap.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flowmap.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="558" column="40" lean-forward="false" selection-start-line="558" selection-start-column="40" selection-end-line="558" selection-end-column="40" />
-              <folding>
-                <element signature="e#26485#29487#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="actors.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data/actors.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="7262" column="24" lean-forward="true" selection-start-line="7262" selection-start-column="24" selection-end-line="7262" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="actors-filtered-locations.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/actors-filtered-locations.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="23" column="30" lean-forward="true" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="actor2actor-products-of-agriculture-aggregated.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/actor2actor-products-of-agriculture-aggregated.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2664">
-              <caret line="21" column="35" lean-forward="true" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="transformData.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/transformData.js">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="136" column="15" lean-forward="true" selection-start-line="136" selection-start-column="15" selection-end-line="136" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gemeente.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/nodes/gemeente.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="548">
+              <caret line="489" column="28" lean-forward="true" selection-start-line="489" selection-start-column="28" selection-end-line="489" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gemeente-to-gemeente.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/flows/gemeente-to-gemeente.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="53" column="31" lean-forward="false" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="flowmap.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flowmap.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="522" column="53" lean-forward="true" selection-start-line="522" selection-start-column="53" selection-end-line="522" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wijk.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/nodes/wijk.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="4821" column="20" lean-forward="true" selection-start-line="4821" selection-start-column="8" selection-end-line="4821" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wijk-to-wijk.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/flows/wijk-to-wijk.json">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="261">
-              <caret line="34" column="49" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="49" />
+              <caret line="3432" column="37" lean-forward="true" selection-start-line="3432" selection-start-column="37" selection-end-line="3432" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -101,29 +104,14 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>map</find>
-      <find>defineStrok</find>
-      <find>326</find>
-      <find>activit</find>
-      <find>acti</find>
-      <find>dra</find>
-      <find>drawT</find>
-      <find>372</find>
-      <find>26702</find>
-      <find>addP</find>
-      <find>max</find>
-      <find>total</find>
       <find>pare</find>
-      <find>drawP</find>
       <find>flows</find>
       <find>parent</find>
       <find>drawTot</find>
       <find>reset</find>
-      <find>var flows</find>
       <find>activity</find>
       <find>827</find>
       <find>823</find>
-      <find>823,</find>
       <find>823,</find>
       <find>813,</find>
       <find>847,</find>
@@ -131,6 +119,21 @@
       <find>836,</find>
       <find>837,</find>
       <find>1190,</find>
+      <find>823,</find>
+      <find>var flows</find>
+      <find>this.styles</find>
+      <find>drawP</find>
+      <find>drawT</find>
+      <find>ware</find>
+      <find>1049</find>
+      <find>1055</find>
+      <find>uilen</find>
+      <find>addP</find>
+      <find>addS</find>
+      <find>maxW</find>
+      <find>drawAr</find>
+      <find>14003100</find>
+      <find>maxVa</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -144,15 +147,16 @@
         <option value="$PROJECT_DIR$/Zwischenablage" />
         <option value="$PROJECT_DIR$/data/actors-filtered-locations.json" />
         <option value="$PROJECT_DIR$/data/materials.json" />
-        <option value="$PROJECT_DIR$/data/nodes/wijk.json" />
-        <option value="$PROJECT_DIR$/data/flows/wijk-to-wijk.json" />
         <option value="$USER_HOME$/Desktop/spatialsankey_natuarlEarth_exampleData/flowmap.js" />
         <option value="$USER_HOME$/Desktop/spatialsankey_natuarlEarth_exampleData/index.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/material_parent.html" />
-        <option value="$PROJECT_DIR$/transformData.js" />
         <option value="$PROJECT_DIR$/data/actors-filtered.json" />
         <option value="$PROJECT_DIR$/data/actor2actor-products-of-agriculture-aggregated.json" />
+        <option value="$PROJECT_DIR$/data/nodes/wijk.json" />
+        <option value="$PROJECT_DIR$/data/flows/wijk-to-wijk.json" />
+        <option value="$PROJECT_DIR$/transformData.js" />
+        <option value="$PROJECT_DIR$/data/nodes/gemeente.json" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/flowmap.js" />
       </list>
     </option>
@@ -200,6 +204,18 @@
               <item name="spatialsankey" type="b2602c69:ProjectViewProjectNode" />
               <item name="spatialsankey" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spatialsankey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spatialsankey" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="flows" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spatialsankey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spatialsankey" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="nodes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -254,12 +270,12 @@
       <workItem from="1530861743724" duration="11182000" />
       <workItem from="1530878218783" duration="15581000" />
       <workItem from="1530944506156" duration="21158000" />
-      <workItem from="1530987835706" duration="41176000" />
+      <workItem from="1530987835706" duration="50991000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="192240000" />
+    <option name="totallyTimeSpent" value="202055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -391,9 +407,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="179" column="18" lean-forward="false" selection-start-line="179" selection-start-column="18" selection-end-line="179" selection-end-column="18" />
-          <folding>
-            <element signature="e#26485#29487#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -499,38 +513,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/flows/wijk-to-wijk.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nodes/wijk.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4128" column="14" lean-forward="false" selection-start-line="4128" selection-start-column="14" selection-end-line="4128" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/administrative_locations.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
           <caret line="7295" column="36" lean-forward="false" selection-start-line="7295" selection-start-column="33" selection-end-line="7295" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/flows/gemeente-to-gemeente.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1617">
-          <caret line="77" column="22" lean-forward="true" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/nodes/gemeente.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -596,16 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flowmap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="558" column="40" lean-forward="false" selection-start-line="558" selection-start-column="40" selection-end-line="558" selection-end-column="40" />
-          <folding>
-            <element signature="e#26485#29487#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/actor2actor-products-of-agriculture-aggregated.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2664">
@@ -622,21 +598,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/transformData.js">
+    <entry file="file://$PROJECT_DIR$/data/actors.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="34" column="49" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="49" />
+        <state relative-caret-position="217">
+          <caret line="7249" column="23" lean-forward="true" selection-start-line="7249" selection-start-column="23" selection-end-line="7249" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="71" column="25" lean-forward="false" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -648,10 +614,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/actors.json">
+    <entry file="file://$PROJECT_DIR$/data/flows/gemeente-to-gemeente.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="7262" column="24" lean-forward="true" selection-start-line="7262" selection-start-column="24" selection-end-line="7262" selection-end-column="24" />
+        <state relative-caret-position="303">
+          <caret line="53" column="31" lean-forward="false" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/nodes/wijk.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="4821" column="20" lean-forward="true" selection-start-line="4821" selection-start-column="8" selection-end-line="4821" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/nodes/gemeente.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="489" column="28" lean-forward="true" selection-start-line="489" selection-start-column="28" selection-end-line="489" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/flows/wijk-to-wijk.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="3432" column="37" lean-forward="true" selection-start-line="3432" selection-start-column="37" selection-end-line="3432" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transformData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="136" column="15" lean-forward="true" selection-start-line="136" selection-start-column="15" selection-end-line="136" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="78" column="49" lean-forward="true" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flowmap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="522" column="53" lean-forward="true" selection-start-line="522" selection-start-column="53" selection-end-line="522" selection-end-column="53" />
           <folding />
         </state>
       </provider>

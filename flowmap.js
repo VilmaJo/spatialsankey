@@ -27,7 +27,6 @@ define([
             var options = options || {};
             this.map = map;
             var _this = this;
-            var map = this.map;
 
             // ToDo: include this projection somehow (d3 geoMercator is used)
             //this.projection = options.projection || 'EPSG:3857';
@@ -84,7 +83,6 @@ define([
 
 
 //*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
-            console.log(nodesData)
             var strokeWidthPerFlow = {};
             var connections = [];
             var strokeWidthArrayPerConnection = {};
@@ -102,9 +100,10 @@ define([
                     var strokeWidths = {};                                                           // get the strokeWidths for each flow that belongs to individual connections
                     var strokeArray = [];
                     var maxValue = Math.max.apply(Math, Object.values(flowsData).map(function (flow) {
-                            return flow.value
+                            return flow.valueTotal
                         })),
-                        maxWidth = 10;
+                        maxWidth = 15;
+                    console.log(maxValue)
                     for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
                         var flow = flowsData[key];
                         if (flow.source + '-' + flow.target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
@@ -229,7 +228,7 @@ define([
         // inserting data and letting them load asynchronously
         renderTopo(topoJson, nodesData, flowsData, styles) {
             var _this = this;
-
+console.log(flowsData)
             /*
             function drawTopo(topojson) {
                 var country = _this.g.selectAll(".country").data(topojson);
@@ -286,21 +285,18 @@ define([
                 return stroke * (zoomLevel/5);
             }
             if (zoomLevel < 10){
-                return stroke * (zoomLevel/4);
-            }
-            if (zoomLevel < 15){
                 return stroke * (zoomLevel/2);
             }
-            else {
+            if (zoomLevel < 15){
                 return stroke * (zoomLevel);
+            }
+            else {
+                return stroke * (zoomLevel*2);
             }
         }
 
         //function to add nodes to the map
         addPoint(lon, lat, label, level, styleId, nodeLabel) {
-
-            // anlegen eines arrays mit den source && target coordinates, wenn x & y im array, dann nutze diese
-
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
 
@@ -319,8 +315,11 @@ define([
                 .attr("cx", x)
                 .attr("cy", y)
                 .attr("r", radius)
-                .style("fill", "red")
-                .style("fill-opacity", 0.85)
+                .style("fill", "grey")
+                .style("fill-opacity", 0.9)
+                .style("stroke", this.styles[styleId].color)
+                .style("stroke-width", radius/5)
+                .style("stroke-opacity", 0.9)
                 .on("mouseover", function (d) {
                     d3.select(this).style("cursor", "pointer"),
                         tooltip.transition()
@@ -467,37 +466,39 @@ define([
 
             this.drawArrowhead(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp, uid);
 
-
-
             var flowsTotal = this.g.append("line")
                 .attr("x1", sxpao)
                 .attr("y1", sypao)
                 .attr("x2", txpao)
                 .attr("y2", typao)
+                .attr("id", "#line")
                 .attr("clip-path", "url(#clip" + uid +")")
                 .attr("stroke-width", totalStroke)
-                .attr("stroke", 'steelblue')
-                .attr("stroke-opacity", 0.85)
+                //.attr("stroke", 'steelblue')
+                .attr("stroke", "grey")
+                //.attr("stroke", "#a3cc00")
+                .attr("stroke-opacity", 0.5)
                 .on("mouseover", function () {
+                    d3.select(this).node().parentNode.appendChild(this);
                     d3.select(this).style("cursor", "pointer"),
                         tooltip.transition()
                             .duration(200)
-                            .style("opacity", 0.9);
-                    tooltip.html(labelTotal)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px")
+                            .style("opacity", 0.8);
+                        tooltip.html(labelTotal)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px")
+                        //flowsTotal.attr("stroke-opacity",0.9)
                 })
                 .on("mouseout", function (d) {
                         tooltip.transition()
                             .duration(500)
                             .style("opacity", 0)
-                    }
-                );
+                        flowsTotal.attr("stroke-opacity",0.5)
+                })
+                ;
         }
 
-
-
-        drawPath(sxp, syp, txp, typ, materialId, label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection) {
+        drawPath(sxp, syp, txp, typ, styleId, label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection) {
 
 
             var pathLengthValues = this.adjustedPathLength(sxp, syp, txp, typ, sourceLevel, targetLevel);
@@ -544,23 +545,32 @@ define([
                 .attr("x2", txpao)
                 .attr("y2", typao)
                 .attr("stroke-width", strokeWidth)
-                .attr("stroke", this.styles[materialId].color)
-                .attr("stroke-opacity", 0.85)
+                .attr("stroke", this.styles[styleId].color)
+                .attr("stroke-opacity", 1)
                 .attr("clip-path", "url(#clip" + uid +")")
-                .on("mouseover", function(d){
-                    d3.select(this).style("cursor", "pointer"),
-                        tooltip.transition()
-                            .duration(200)
-                            .style("opacity", 0.9);
-                    tooltip.html(label)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px")})
+                .on("mouseover", function(){
+                           d3.select(this).node().parentNode.appendChild(this);
+                           /*
+                           flows.forEach(function(flow){
+                           if (flow.x1  &&& flow.x1 &&& flow.y1 &&& flow.y2 in
+                               d3.select(this).node().parentNode.appendChild(this);
+                       }*/
+                        d3.select(this).style("cursor", "pointer"),
+                            tooltip.transition()
+                                .duration(200)
+                                .style("opacity", 0.9);
+                        tooltip.html(label)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px")
+                        flows.attr("stroke-opacity", 0.9)
+                })
                 .on("mouseout", function(d) {
                     tooltip.transition()
                         .duration(500)
-                        .style("opacity", 0)}
+                        .style("opacity", 0)
+                    flows.attr("stroke-opacity", 1)
+                }
                 );
-
         }
 
 

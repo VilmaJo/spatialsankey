@@ -9,20 +9,31 @@
 <script>
 
     //define data
-    materialData = {};
+    var materialData = {};
         d3.json("data/material.json", function(data){
+            var materialData = {};
+            var uniqueLevel = new Set();
             data.forEach(function(d){
-                materialData[d.id]={'id':d.id, 'name':d.name, 'level':d.level, 'parent':d.parent};
+                //materialData[d.id]={'id':d.id, 'name':d.name, 'level':d.level, 'parent':d.parent};
+                var id = d.id;
+                var parent = d.parent;
+                console.log(parent)
+                uniqueLevel = uniqueLevel.add(parent)
             });
+
+            console.log(uniqueLevel)
+            /*
             console.log(data[10]);
             console.log(data[10].name)
+            console.log(this.materialData)
+            var name = materialData['name'];
+            console.log(name)*/
         });
-    console.log(materialData);
 
     // get name to parent
-    for (key in materialData){
+    /*for (key in materialData){
         console.log(key)
-    }
+    }*/
 
 </script>
 </body>

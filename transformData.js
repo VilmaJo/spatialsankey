@@ -36,15 +36,16 @@ define([
            //console.log(location2)
             var actorId = location2.id,
                 geometry = location2.geometry;
-            if (geometry === null){return location2.geometry.coordinates === [ Math.random() * 13 + 4, Math.random() * 18 + 40 ];}
             var coordinates = location2.geometry.coordinates;
-            console.log(coordinates)
+            if (geometry === null){return coordinates === [ Math.random() * 13 + 4, Math.random() * 18 + 40 ];}
+            //var coordinates =[ Math.random() * 13 + 4, Math.random() * 18 + 40 ];
+            //console.log(coordinates)
             var lon = coordinates[0],
                 lat = coordinates[1];
             //console.log(lat)
             var level =location2.properties.level;
             var label = 'Name: ' + location2.properties.url +'<br>Level: ' + level;
-            locations2Data[actorId]= {
+            locationsData[actorId]= {
                 'name': location2.properties.url,
                 'lon': lon,
                 'lat': lat,
@@ -53,7 +54,7 @@ define([
                 'label': label
             }
         });
-        console.log(locations2Data)
+        console.log(locationsData)
 
 
         /*

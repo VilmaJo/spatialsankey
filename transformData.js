@@ -1,25 +1,34 @@
 define([
     'd3', 'd3-scale', 'd3-interpolate'
 ], function(d3, d3scale) {
-    function transformData(actors, locations, locations2, materials, actor2actor) {
+    function transformData(actors, locations, locations2, materials, actor2actor, levels) {
 
         var styles = {};
 
-        console.log(locations)
-        console.log(locations2)
-        var locationsData = {},
-            topLeft = [10000, 0],
-            bottomRight = [0, 10000];
+        var levelsData ={};
+        levels.forEach(function(level) {
+            var name = level.name;
+            levelsData[level.level] = name;
+        });
+
+        actorsName = {};
+        actorsActivity = {};
+        actors.forEach(function(actor) {
+           var name = actor.name,
+               activity = actor.activitygroup_name;
+            actorsName[actor.id] = name
+            actorsActivity[actor.id] = activity
+        });
+
+        var locationsData = {};
         locations.forEach(function (location) {
             var actorId = location.id,
                 coordinates = location.point_on_surface.coordinates;
             var lon = coordinates[0],
                 lat = coordinates[1];
-            topLeft = [Math.min(topLeft[0], lon), Math.max(topLeft[1], lat)];
-            bottomRight = [Math.max(bottomRight[0], lon), Math.min(bottomRight[1], lat)];
-            var level = location.level;
-            var label = 'Name: ' + location.name +'<br>Level: ' + level;
-
+            var level = location.level,
+                levelName = levelsData[location.level];
+            var label = '<b>Name: </b>' + location.name +'<br><b>Administrative Level: </b>' + levelName;
             locationsData[location.id]= {
                 'name': location.name,
                 'lon': lon,
@@ -29,24 +38,22 @@ define([
                 'label': label
             }
         });
-        console.log(locationsData)
 
-        var locations2Data = {}
+        var locations2Data = {};
         locations2.features.forEach(function (location2) {
            //console.log(location2)
-            var actorId = location2.id,
+            var actorId = location2.properties.actor,
                 geometry = location2.geometry;
             var coordinates = location2.geometry.coordinates;
-            if (geometry === null){return coordinates === [ Math.random() * 13 + 4, Math.random() * 18 + 40 ];}
-            //var coordinates =[ Math.random() * 13 + 4, Math.random() * 18 + 40 ];
-            //console.log(coordinates)
             var lon = coordinates[0],
                 lat = coordinates[1];
-            //console.log(lat)
-            var level =location2.properties.level;
-            var label = 'Name: ' + location2.properties.url +'<br>Level: ' + level;
+            var level = location2.properties.level,
+                levelName = 'Actor',
+                name = actorsName[location2.properties.actor],
+                activity = actorsActivity[location2.properties.actor];
+            var label = '<b>Name: </b>' + name +'<br><b>Administrative Level: </b>' + levelName + '<b><br>Activity: </b>' + activity;
             locationsData[actorId]= {
-                'name': location2.properties.url,
+                'name': name,
                 'lon': lon,
                 'lat': lat,
                 'level': level,
@@ -54,7 +61,18 @@ define([
                 'label': label
             }
         });
-        console.log(locationsData)
+
+        //console.log(Object.keys(locationsData).length)
+
+        // define boundingbox
+        var topLeft = [10000, 0],
+            bottomRight = [0, 10000];
+        Object.values(locationsData).forEach(function (location){
+            var lon = location.lon,
+                lat = location.lat;
+            topLeft = [Math.min(topLeft[0], lon), Math.max(topLeft[1], lat)];
+            bottomRight = [Math.max(bottomRight[0], lon), Math.min(bottomRight[1], lat)];
+        });
 
 
         /*
@@ -110,13 +128,14 @@ define([
             });
 
         */
+
         function defineRadius(level){
             var level = level;
-            if (level === 10) {return 8}
+            if (level === 10) {return 9}
             if (level === 8) {return 12}
-            if (level === 6) {return 16}
-            if (level === 4) {return 20}
-            else {return 4}
+            if (level === 6) {return 15}
+            if (level === 4) {return 18}
+            else {return 6}
         };
 
 
@@ -125,7 +144,6 @@ define([
             var radius = defineRadius(level);
             styles[level] = {'radius': radius};
         };
-
 
 
         var materialsData = {};
@@ -142,14 +160,14 @@ define([
                 var amount = flow.amount * fraction.fraction,
                     totalAmount = flow.amount,
                     material = materialsData[fraction.material],
-                    complabel = (flow.waste) ? 'Waste' : 'Product',
+                    complabel = (flow.waste) ? '<b>Waste</b>b>' : '<b>Product</b>',
                     origin = locationsData[flow.origin],
                     originName = (origin) ? origin.name : '',
                     destination = locationsData[flow.destination],
                     destinationName = (destination) ? destination.name : '',
                     flowlabel = originName + '&#10132; '  + destinationName,
-                    label = flowlabel + '<br>' + complabel + ': ' + flow.composition.name + '<br>Material: ' + material.name + '<br>Amount:' + amount + ' t/year',
-                    labelTotal = flowlabel + '<br>' + complabel + ': ' + flow.composition.name + '<br>Material: ' + material.name + '<br>Amount:' + totalAmount + ' t/year';
+                    label = flowlabel + '<br>' +complabel + ': ' + flow.composition.name + '<b><br>Material: </b>' + material.name + '<b><br>Amount: </b>' + amount + ' t/year',
+                    labelTotal = flowlabel + '<br>' + complabel + ': ' + flow.composition.name + '<b><br>Amount: </b>' + totalAmount + ' t/year';
                 flowsData[i] = {
                     'id': flow.id,
                     'source': flow.origin,
@@ -165,13 +183,19 @@ define([
             });
         });
 
+
+        //console.log(Object.keys(flowsData).length)
+
         //define color range and assign colors to unique materials
         var materialColor = d3.scale.linear()
             // colorbrewer
             //.range(["#1b9e77", "#d95f02", "#7570b3"])
+            // Pauls Tol's Notes https://personal.sron.nl/~pault/#sec:qualitative       BRIGHT
             .range(["#4477AA",
                 "#228833",
                 "#AA3377"])
+            // Pauls Tol's Notes https://personal.sron.nl/~pault/#sec:qualitative       Vibrant
+            //.range(["#0077BB", "#009988", "#EE3377"])
             .domain([0, 1, uniqueMaterials.size-1])
             .interpolate(d3.interpolateHsl);
         var i = 0;

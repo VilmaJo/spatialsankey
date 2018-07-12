@@ -354,22 +354,6 @@
             }
         },
         {
-            "id": 24644,
-            "type": "Feature",
-            "geometry": null,
-            "properties": {
-                "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/keyflows/1/administrativelocations/24644/",
-                "address": null,
-                "postcode": null,
-                "country": "netherlands",
-                "city": null,
-                "name": null,
-                "actor": 26662,
-                "area": null,
-                "level": null
-            }
-        },
-        {
             "id": 24645,
             "type": "Feature",
             "geometry": {
@@ -2790,22 +2774,6 @@
             }
         },
         {
-            "id": 24584,
-            "type": "Feature",
-            "geometry": null,
-            "properties": {
-                "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/keyflows/1/administrativelocations/24584/",
-                "address": null,
-                "postcode": null,
-                "country": "netherlands",
-                "city": null,
-                "name": null,
-                "actor": 26774,
-                "area": null,
-                "level": null
-            }
-        },
-        {
             "id": 24585,
             "type": "Feature",
             "geometry": {
@@ -4847,22 +4815,6 @@
                 "city": null,
                 "name": null,
                 "actor": 26867,
-                "area": null,
-                "level": null
-            }
-        },
-        {
-            "id": 24728,
-            "type": "Feature",
-            "geometry": null,
-            "properties": {
-                "url": "http://gdse.h2020repair.bk.tudelft.nl/api/casestudies/2/keyflows/1/administrativelocations/24728/",
-                "address": null,
-                "postcode": null,
-                "country": "netherlands",
-                "city": null,
-                "name": null,
-                "actor": 26868,
                 "area": null,
                 "level": null
             }

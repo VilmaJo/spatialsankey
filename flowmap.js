@@ -104,7 +104,6 @@ define([
                         })),
                         maxWidth = 5,
                         minWidth = 0.5;
-                    console.log(maxValue)
                     for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
                         var flow = flowsData[key];
                         if (flow.source + '-' + flow.target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
@@ -186,12 +185,6 @@ define([
                     console.log('Warning: missing actor for flow');
                     continue;
                 }
-                console.log(flow.source)
-                console.log(nodesData)
-                console.log(source)
-                console.log(source['label'])
-                //if (nodesData.includes(flow.source) === true){}
-
 
                 var sourceCoords = [source['lon'], source['lat']],
                     targetCoords = [target['lon'], target['lat']];
@@ -217,10 +210,10 @@ define([
 
                 // drawPath
                 //this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection)
-                //this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
+                this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
 
-               // this.addSPoint(source.lon,source.lat,source.label,source.level,source.style,source.label)
-               // this.addTPoint(target.lon,target.lat,target.label,target.level,target.style,target.label)
+                this.addSPoint(source.lon,source.lat,source.label,source.level,source.style,source.label)
+                this.addTPoint(target.lon,target.lat,target.label,target.level,target.style,target.label)
 
             } /******************************   End for key in flowsData    ***********************************/
 
@@ -238,7 +231,6 @@ define([
         // inserting data and letting them load asynchronously
         renderTopo(topoJson, nodesData, flowsData, styles) {
             var _this = this;
-            console.log(flowsData)
 
             // Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
             function loaded(error, world) {
@@ -256,15 +248,27 @@ define([
         defineRadiusZoom(level){
             var zoomLevel = this.map.getZoom();
             var radius = this.styles[level].radius;
-            if (zoomLevel <3) {
-                return radius * (zoomLevel/10)
-            }
-            if (zoomLevel < 5){
+
+
+            if (zoomLevel < 10){
                 return radius * (zoomLevel/8);
             }
             else {
-                return radius * (zoomLevel/5);
+                return radius * zoomLevel/4;}
+            /*
+            if (zoomLevel <5) {
+                return radius * (zoomLevel/15)
             }
+            if (zoomLevel < 8){
+                return radius * (zoomLevel/12)
+            }
+            if (zoomLevel < 10){
+                return radius * (zoomLevel/8);
+            }
+
+            else {
+                return radius * (zoomLevel/3);
+            }*/
         }
 
         defineStrokeZoom(stroke){
@@ -273,6 +277,7 @@ define([
             var zoomMax = this.map.getMaxZoom();
 
             var stroke = stroke;
+           /*
             if (zoomLevel < 6) {
                 return stroke * (zoomLevel/6)
             }
@@ -287,6 +292,12 @@ define([
             }
             else {
                 return stroke * (zoomLevel*2);
+            }*/
+            if (zoomLevel > 10) {
+                return stroke * (zoomLevel*2)
+            }
+            else {
+                return stroke * (zoomLevel);
             }
         }
 
@@ -312,9 +323,9 @@ define([
                 .attr("r", radius)
                 .style("fill", "#1f78b4")
                 .style("fill-opacity", 0.9)
-                //.style("stroke", 'red')
+                .style("stroke", 'lightgrey')
                 //.style("stroke", this.styles[styleId].color)
-                //.style("stroke-width", radius/5)
+                .style("stroke-width", 0.4)
                 //.style("stroke-opacity", 0.9)
                 .on("mouseover", function (d) {
                     d3.select(this).style("cursor", "pointer"),
@@ -357,9 +368,9 @@ define([
                 //.style("fill", "#b2df8a")
                 .style("fill", "#a3cc00")
                 .style("fill-opacity", 0.9)
-                //.style("stroke", 'green')
+                .style("stroke", 'lightgrey')
                 //.style("stroke", this.styles[styleId].color)
-                //.style("stroke-width", radius/5)
+                .style("stroke-width", 0.4)
                 //.style("stroke-opacity", 0.9)
                 .on("mouseover", function (d) {
                     d3.select(this).style("cursor", "pointer"),

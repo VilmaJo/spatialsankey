@@ -131,10 +131,10 @@ define([
 
         function defineRadius(level){
             var level = level;
-            if (level === 10) {return 9}
-            if (level === 8) {return 12}
-            if (level === 6) {return 15}
-            if (level === 4) {return 18}
+            if (level === 10) {return 11}
+            if (level === 8) {return 16}
+            if (level === 6) {return 21}
+            if (level === 4) {return 26}
             else {return 6}
         };
 

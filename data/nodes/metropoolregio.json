@@ -4,7 +4,7 @@
         "id": 820,
         "casestudy": "http://localhost:8000/api/casestudies/2/",
         "name": "Amsterdam Metropoolregio",
-		"level_id": 7,
+		"level": 6,
         "code": "Amsterdam Metro",
         "point_on_surface": {
             "type": "Point",

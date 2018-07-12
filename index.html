@@ -56,7 +56,8 @@
     }
 
     require(['flowmap', 'transformData', 'leaflet'], function(FlowMap, transformData, L){
-        var map = new L.Map("container", {center: [52.38, 5.15], zoom: 10})
+       // var map = new L.Map("container", {center: [52.38, 5.15], zoom: 10})
+        var map = new L.Map("container", {center: [52.41, 4.95], zoom: 11})
             .addLayer(new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"));
             //.addLayer(new L.TileLayer(" https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png"));
             //.addLayer(new L.TileLayer(" https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png"));
@@ -69,8 +70,8 @@
         promises.push(
             //get('data/nodes/administrative_locations.json').then(function(response){
             //get('data/nodes/gemeente.json').then(function(response){
-            //get('data/nodes/metropoolregio.json').then(function(response){
-            get('data/nodes/provincie.json').then(function(response){
+            get('data/nodes/metropoolregio.json').then(function(response){
+            //get('data/nodes/provincie.json').then(function(response){
             //get('data/nodes/wijk.json').then(function(response){
                 locations = JSON.parse(response);
             }));
@@ -90,8 +91,8 @@
             //get('data/actor2actor-products-of-agriculture-aggregated.json').then(function(response){
                 //get('data/flows/gemeente-to-actors.json').then(function(response){
                 //get('data/flows/gemeente-to-gemeente.json').then(function(response){
-                 //get('data/flows/metropoolregio-to-actors.json').then(function(response){
-                get('data/flows/provincie-to-actors.json').then(function(response){
+                 get('data/flows/metropoolregio-to-actors.json').then(function(response){
+                //get('data/flows/provincie-to-actors.json').then(function(response){
                 //get('data/flows/wijk-to-wijk.json').then(function(response){
                 actor2actor = JSON.parse(response);
             }));

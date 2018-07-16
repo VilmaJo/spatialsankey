@@ -62,7 +62,7 @@ define([
             }
         });
 
-        //console.log(Object.keys(locationsData).length)
+       // console.log(Object.keys(locationsData).length)
 
         // define boundingbox
         var topLeft = [10000, 0],
@@ -184,7 +184,7 @@ define([
         });
 
 
-        //console.log(Object.keys(flowsData).length)
+        console.log(Object.keys(flowsData).length)
 
         //define color range and assign colors to unique materials
         var materialColor = d3.scale.linear()

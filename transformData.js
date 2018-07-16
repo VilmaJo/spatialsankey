@@ -191,11 +191,9 @@ define([
             // colorbrewer
             //.range(["#1b9e77", "#d95f02", "#7570b3"])
             // Pauls Tol's Notes https://personal.sron.nl/~pault/#sec:qualitative       BRIGHT
-            .range(["#4477AA",
-                "#228833",
-                "#AA3377"])
+            .range(["#4477AA", "#228833", "#AA3377"])
             // Pauls Tol's Notes https://personal.sron.nl/~pault/#sec:qualitative       Vibrant
-            //.range(["#0077BB", "#009988", "#EE3377"])
+            .range(["#0077BB", "#009988", "#EE3377"])
             .domain([0, 1, uniqueMaterials.size-1])
             .interpolate(d3.interpolateHsl);
         var i = 0;

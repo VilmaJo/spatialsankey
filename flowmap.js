@@ -13,6 +13,19 @@
  * @param {Object} employee - The employee who is responsible for the project.
  * @param {string} employee.name - The name of the employee.
  * @param {string} employee.department - The employee's department.
+ *
+ *
+ *
+ *
+ *
+ * *   flows functions
+        function    sx, sy, tx, ty --> with projection, offset, length adjusted
+        function    offset
+        function    strokeWidth
+        function flow               (does this depend on offset or not if we have flows in both or one direction?)
+*   nodes functions
+        function    specifyNodeSize
+        function    specifyNodeColor (activityGroup)
  */
 
 
@@ -178,6 +191,8 @@ console.log(connectionSourceTarget)
 
 
             /*  ------------------------------------------   define data to use for drawPath and drawTotalPath   --------------------------------------------------------   */
+            var STcoordinates = [];
+            var nodesDataFlow = {};
             for (var key in flowsData) {
                 // define flow, so that the loop doesn't have to start over and over again
                 var flow = flowsData[key];
@@ -193,12 +208,12 @@ console.log(connectionSourceTarget)
                     continue;
                 }
 
-                var STcoordinates = [];
                 var sourceCoords = [source['lon'], source['lat']],
                     targetCoords = [target['lon'], target['lat']];
-                STcoordinates.push(sourceCoords);
+                STcoordinates.push(sourceCoords, targetCoords);
                 var nodeLon = STcoordinates[0],
                     nodeLat = STcoordinates[1];
+                console.log(STcoordinates)
 
 
                 //add projection to source and target coordinates
@@ -221,40 +236,49 @@ console.log(connectionSourceTarget)
 
                 var Bthis = this;
 
+                nodesDataFlow[sourceId] = {
+                    'lon': source['lon'] ,
+                    'lat': source['lat'] ,
+                    'level': sourceLevel ,
+                    //'style': source['style'] ,
+                     'style': 2,
+                    'label': source.label
+                };
+                nodesDataFlow[targetId] = {
+                    'lon': target['lon'],
+                    'lat': target['lat'],
+                    'level': targetLevel,
+                    //'style': target['style'],
+                     'style': 3,
+                    'label': target.label
+                };
+
                 // drawPath
                 this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection,Bthis, flowsData, nodesData, strokeWidthPerFlow, totalStrokeWidths)
-               // this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth,
-                 //totalStroke, sourceLevel, targetLevel, bothways, connection)
-
-               this.addSPoint(source.lon || target.lon,source.lat || target.lat,source.label|| target.label,source.level||target.level,source.style||target.style,source.label||target.label)
-                //this.addSPoint(source.lon,source.lat,source.label,source.level,source.style,source.label)
-                //this.addTPoint(target.lon,target.lat,target.label,target.level,target.style,target.label)
-                //this.addPoint(nodeLon, nodeLat)
+               // this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
 
             } /******************************   End for key in flowsData    ***********************************/
 
+
             // use addpoint for each node in nodesData
-            Object.values(nodesData).forEach(function (node) {
-                _this.addPoint(node.lon, node.lat, node.label,
+            Object.values(nodesDataFlow).forEach(function (node) {
+                _this.addPoint(node.lon, node.lat,
                     node.level, node.style, node.label);
             });
 
         }   /*********************************    /End render (nodes, flows)  **********************************/
+
+
+
 
         // inserting data and letting them load asynchronously
         renderTopo(topoJson, nodesData, flowsData, styles) {
             var _this = this;
 
             // Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
-            function loaded(error, world) {
-                //world data
-                var countries = topojson.feature(world, world.objects.countries).features;
-                drawTopo(countries);
+            function loaded(error) {
                 _this.render(nodesData, flowsData, styles);
             }
-
-            d3queue.queue().defer(d3.json, topoJson)
-                .await(loaded);
         }
 
 
@@ -314,39 +338,9 @@ console.log(connectionSourceTarget)
             }
         }
 
-        //function to add nodes to the map
-        addPoint(lon, lat) {
-            var x = this.projection([lon, lat])[0],
-                y = this.projection([lon, lat])[1];
-
-
-            var point = this.g.append("g")
-                .attr("class", "node")
-                .append("circle")
-                .attr("cx", x)
-                .attr("cy", y)
-                .attr("r", 2)
-                .style("fill","red")
-                /*.on("mouseover", function (d) {
-                    d3.select(this).style("cursor", "pointer"),
-                        div.transition()
-                            .duration(200)
-                            .style("opacity", .9);
-                    div.html(nodeLabel)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px")
-                })
-                .on("mouseout", function (d) {
-                        div.transition()
-                            .duration(500)
-                            .style("opacity", 0)
-                    }
-                );*/
-
-        }
 
         //function to add source nodes to the map
-        addSPoint(lon, lat, label, level, styleId, nodeLabel) {
+        addPoint(lon, lat, level, styleId, nodeLabel) {
             var x = this.projection([lon, lat])[0],
                 y = this.projection([lon, lat])[1];
 
@@ -365,7 +359,7 @@ console.log(connectionSourceTarget)
                 .attr("cx", x)
                 .attr("cy", y)
                 .attr("r", radius)
-                .style("fill", "#4477AA")
+                .style("fill", this.styles[styleId].nodeColor)
                 //.style("fill", "#1f78b4")
                 .style("fill-opacity", 1)
                 .style("stroke", 'lightgrey')
@@ -390,50 +384,6 @@ console.log(connectionSourceTarget)
 
         }
 
-        //function to add target nodes to the map
-        addTPoint(lon, lat, label, level, styleId, nodeLabel) {
-            var x = this.projection([lon, lat])[0],
-                y = this.projection([lon, lat])[1];
-
-            var radius = this.defineRadiusZoom(level)/2;
-
-            // tooltip
-            var tooltip = d3.select("body")
-                .append("div")
-                .attr("class", "tooltip")
-                .style("opacity", 0.9)
-                .style("z-index", 500);
-
-            var point = this.g.append("g")
-                .attr("class", "node")
-                .append("circle")
-                .attr("cx", x)
-                .attr("cy", y)
-                .attr("r", radius)
-                .style("fill", "#AA3377")
-                //.style("fill", "#a3cc00")
-                .style("fill-opacity", 1)
-                .style("stroke", 'lightgrey')
-                //.style("stroke", this.styles[styleId].color)
-                .style("stroke-width", 0.4)
-                //.style("stroke-opacity", 0.9)
-                .on("mouseover", function (d) {
-                    d3.select(this).style("cursor", "pointer"),
-                        tooltip.transition()
-                            .duration(200)
-                            .style("opacity", 0.9);
-                    tooltip.html(nodeLabel)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px")
-                })
-                .on("mouseout", function (d) {
-                        tooltip.transition()
-                            .duration(500)
-                            .style("opacity", 0)
-                    }
-                );
-
-        }
 
         adjustedPathLength(sxp, syp, txp, typ, sourceLevel, targetLevel) {
             var dxp = txp - sxp,
@@ -602,9 +552,9 @@ console.log(connectionSourceTarget)
                             Bthis.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
                         }
                     }
-                    flowsTotal.attr("stroke-opacity",0)
+                    flowsTotal.remove();
+                    tooltip.remove();
                 })
-
                 .on("mouseover", function () {
                     d3.select(this).node().parentNode.appendChild(this);
                     d3.select(this).style("cursor", "pointer"),
@@ -622,6 +572,7 @@ console.log(connectionSourceTarget)
                     tooltip.transition()
                         .duration(500)
                         .style("opacity", 0)
+                    tooltip.remove();
                     flowsTotal.attr("stroke-opacity",0.2)
                         .attr("stroke", "grey")
                 })
@@ -676,6 +627,10 @@ console.log(connectionSourceTarget)
                 .attr("stroke", this.styles[styleId].color)
                 .attr("stroke-opacity", 0.8)
                 .attr("clip-path", "url(#clip" + uid +")")
+                /*.on("click", function(){
+                    //d3.select(this).remove();
+                   flows.remove();
+                })*/
                 .on("mouseover", function(){
                     d3.select(this).node().parentNode.appendChild(this);
                     d3.select(this).style("cursor", "pointer"),
@@ -721,28 +676,12 @@ console.log(connectionSourceTarget)
 });
 
 /*  TO DO   TO DO   TO DO   TO DO   TO DO
-*   check if 'new Set()' can be used for unique connections
 *   Zoom
-*   Bounding box: zoom to minx,miny und maxx, maxy
-*   Linien: Idee: sxp, syp, txp, typ individual reingeben für drawTotalPath
-*   Punkte
-    *   Größe nach Level (Spatial Scale Level: Individual Actor, Ward, Municipality, region, World)
-    *   Farbe nach Activity Group: wer gibt diese an? Welches Farbschema wird gewählt? --> Soll mit den Säulen im Diagramm übereinstimmen
-*   OpenLayers Hintergrundkarte
-*   Projektionszentrum:
-    *   je nach Living Lab ein Projektionszentrum angeben
-    *   zoom to location, die im Diagramm angeklickt sind
+
+
 Fehlende Variablen in den Daten:
 *   Actors:
     *   actor group
     *   actor level
-*   flows functions
-        function    sx, sy, tx, ty --> with projection, offset, length adjusted
-        function    offset
-        function    strokeWidth
-        function flow               (does this depend on offset or not if we have flows in both or one direction?)
-*   nodes functions
-        function    specifyNodeSize
-        function    specifyNodeColor (activityGroup)
-strokeWidth max anpassen nach Level und damit Größe der Nodes
+
 */

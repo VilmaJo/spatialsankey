@@ -13,33 +13,43 @@ define([
 
         actorsName = {};
         actorsActivity = {};
+        actorsActivityId = {};
         actors.forEach(function(actor) {
            var name = actor.name,
-               activity = actor.activitygroup_name;
+               activity = actor.activitygroup_name,
+               activityId = actor.activitygroup;
             actorsName[actor.id] = name
             actorsActivity[actor.id] = activity
+            actorsActivity[actor.id] = activityId
         });
 
+        var uniqueActivity = new Set();
+        var ActivityArray = [];
         var locationsData = {};
+        i=0;
         locations.forEach(function (location) {
             var actorId = location.id,
                 coordinates = location.point_on_surface.coordinates;
             var lon = coordinates[0],
                 lat = coordinates[1];
             var level = location.level,
-                levelName = levelsData[location.level];
+                levelName = levelsData[location.level],
+                activityId = 2;
             var label = '<b>Name: </b>' + location.name +'<br><b>Administrative Level: </b>' + levelName;
             locationsData[location.id]= {
                 'name': location.name,
                 'lon': lon,
                 'lat': lat,
                 'level': level,
-                'style': 'level' + level,
+                'style': activityId,
                 'label': label
             }
+            ActivityArray.push(activityId)
+            uniqueActivity = uniqueActivity.add(activityId)
+            i += 1;
+
         });
 
-        var locations2Data = {};
         locations2.features.forEach(function (location2) {
            //console.log(location2)
             var actorId = location2.properties.actor,
@@ -50,19 +60,28 @@ define([
             var level = location2.properties.level,
                 levelName = 'Actor',
                 name = actorsName[location2.properties.actor],
-                activity = actorsActivity[location2.properties.actor];
+                activity = actorsActivity[location2.properties.actor],
+                activityId = 3;
+            ActivityArray.push(activityId)
             var label = '<b>Name: </b>' + name +'<br><b>Administrative Level: </b>' + levelName + '<b><br>Activity: </b>' + activity;
             locationsData[actorId]= {
                 'name': name,
                 'lon': lon,
                 'lat': lat,
                 'level': level,
-                'style': 'level' + level,
+                'style': activityId,
                 'label': label
             }
+            uniqueActivity = uniqueActivity.add(activityId)
+            i += 1;
+
         });
 
-       // console.log(Object.keys(locationsData).length)
+        console.log(uniqueActivity)
+
+
+
+            // console.log(Object.keys(locationsData).length)
 
         // define boundingbox
         var topLeft = [10000, 0],
@@ -105,30 +124,23 @@ define([
                 });
         console.log(actorsData)
         */
-        /*
-                // define color range and assign color to nodes activity
-                var nodeColor = d3.scale.linear()
-                    /*.range(["#a6cee3",
-                            "#1f78b4",
-                            "#b2df8a"])*/
-        /*           .range(["#1f78b4",
-                       "#b2df8a",
-                       "#33a02c"])
-               /*.range (["#1b9e77",
-               "#d95f02",
-               "#7570b3"])*/
-        /*        .domain([0, 1, uniqueActivity.size-1])
-                .interpolate(d3.interpolateHsl);
+
+        // define color range and assign color to nodes activity
+        var nodeColor = d3.scale.linear()
+        .range (["#1b9e77", "#d95f02", "#7570b3"])
+           // .range (["#4477AA", "#228833", "#AA3377"])
+            .domain([0, 1, uniqueActivity.size-1])
+            .interpolate(d3.interpolateHsl);
             var i = 0;
 
-            uniqueActivity.forEach(function (groupId) {
+            uniqueActivity.forEach(function (activity) {
                 var color = nodeColor(i);
-                styles['group' + groupId] = {'color': color};
+                styles[activity] = {'nodeColor': color};
                 i += 1;
             });
 
-        */
 
+        // define node radius
         function defineRadius(level){
             var level = level;
             if (level === 10) {return 11}
@@ -137,7 +149,6 @@ define([
             if (level === 4) {return 26}
             else {return 6}
         };
-
 
         for (var key in locationsData){
             var level = locationsData[key].level;
@@ -182,9 +193,10 @@ define([
                 i += 1;
             });
         });
+        console.log(uniqueMaterials)
 
 
-        console.log(Object.keys(flowsData).length)
+        //console.log(Object.keys(flowsData).length)
 
         //define color range and assign colors to unique materials
         var materialColor = d3.scale.linear()
@@ -193,7 +205,7 @@ define([
             // Pauls Tol's Notes https://personal.sron.nl/~pault/#sec:qualitative       BRIGHT
             .range(["#4477AA", "#228833", "#AA3377"])
             // Pauls Tol's Notes https://personal.sron.nl/~pault/#sec:qualitative       Vibrant
-            .range(["#0077BB", "#009988", "#EE3377"])
+            //.range(["#0077BB", "#009988", "#EE3377"])
             .domain([0, 1, uniqueMaterials.size-1])
             .interpolate(d3.interpolateHsl);
         var i = 0;
@@ -205,6 +217,7 @@ define([
         });
 
 
+        console.log(styles)
         return {flows: flowsData, nodes: locationsData, styles: styles, bbox: [topLeft, bottomRight]};
     }
     return transformData;

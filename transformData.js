@@ -140,7 +140,7 @@ define([
             });
 
 
-        // define node radius
+        // define fixed node radius dependend on spatial level
         function defineRadius(level){
             var level = level;
             if (level === 10) {return 11}

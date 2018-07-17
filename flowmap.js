@@ -44,9 +44,9 @@ define([
             // ToDo: include this projection somehow (d3 geoMercator is used)
             //this.projection = options.projection || 'EPSG:3857';
 
-            this.width = options.width || this.container.offsetWidth;
+            //this.width = options.width || this.container.offsetWidth;
             this.bbox = options.bbox;
-            this.height = options.height || this.width / 1.5;
+            //this.height = options.height || this.width / 1.5;
             console.log(this.bbox )
             this.projection = function(coords) {
                 var point = map.latLngToLayerPoint(new L.LatLng(coords[1], coords[0]));
@@ -174,7 +174,7 @@ define([
                     }
                 }
             }
-console.log(connectionSourceTarget)
+
 
             //get the sum of all individual strokeWidths per same source & target
             var totalStrokeWidths = {};
@@ -187,11 +187,10 @@ console.log(connectionSourceTarget)
 
                 totalStrokeWidths[key] = totalStrokeWidthPerArray;
             }
-            console.log(flowsData)
+
 
 
             /*  ------------------------------------------   define data to use for drawPath and drawTotalPath   --------------------------------------------------------   */
-            var STcoordinates = [];
             var nodesDataFlow = {};
             for (var key in flowsData) {
                 // define flow, so that the loop doesn't have to start over and over again
@@ -210,11 +209,6 @@ console.log(connectionSourceTarget)
 
                 var sourceCoords = [source['lon'], source['lat']],
                     targetCoords = [target['lon'], target['lat']];
-                STcoordinates.push(sourceCoords, targetCoords);
-                var nodeLon = STcoordinates[0],
-                    nodeLat = STcoordinates[1];
-                console.log(STcoordinates)
-
 
                 //add projection to source and target coordinates
                 var sxp = this.projection(sourceCoords)[0],
@@ -288,30 +282,17 @@ console.log(connectionSourceTarget)
 
 
             if (zoomLevel < 10){
-                return radius * (zoomLevel/8);
+                return radius * (zoomLevel/15);
+            }
+            if (zoomLevel < 14){
+                return radius * (zoomLevel/5);
             }
             else {
-                return radius * zoomLevel/4;}
-            /*
-            if (zoomLevel <5) {
-                return radius * (zoomLevel/15)
-            }
-            if (zoomLevel < 8){
-                return radius * (zoomLevel/12)
-            }
-            if (zoomLevel < 10){
-                return radius * (zoomLevel/8);
-            }
-
-            else {
-                return radius * (zoomLevel/3);
-            }*/
+                return radius * zoomLevel/3;}
         }
 
         defineStrokeZoom(stroke){
             var zoomLevel = this.map.getZoom();
-            var zoomMin = this.map.getMinZoom();
-            var zoomMax = this.map.getMaxZoom();
 
             var stroke = stroke;
            /*
@@ -330,11 +311,17 @@ console.log(connectionSourceTarget)
             else {
                 return stroke * (zoomLevel*2);
             }*/
-            if (zoomLevel > 10) {
+            if (zoomLevel < 10) {
+                return stroke * (zoomLevel/2)
+            }
+            if (zoomLevel < 14) {
                 return stroke * (zoomLevel*2)
             }
+            if (zoomLevel < 17) {
+                return stroke * (zoomLevel*4)
+            }
             else {
-                return stroke * (zoomLevel);
+                return stroke * (zoomLevel*6);
             }
         }
 
@@ -522,7 +509,7 @@ console.log(connectionSourceTarget)
                 .attr("stroke-width", totalStroke)
                 .attr("stroke", "grey")
                 //.attr("stroke", "#a3cc00")
-                .attr("stroke-opacity", 0.2)
+                .attr("stroke-opacity", 0.3)
                 .on("click", function(){
                     for (var key in flowsData) {
                         var flow = flowsData[key];
@@ -552,8 +539,7 @@ console.log(connectionSourceTarget)
                             Bthis.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
                         }
                     }
-                    flowsTotal.remove();
-                    tooltip.remove();
+
                 })
                 .on("mouseover", function () {
                     d3.select(this).node().parentNode.appendChild(this);
@@ -564,16 +550,15 @@ console.log(connectionSourceTarget)
                     tooltip.html(labelTotal)
                         .style("left", (d3.event.pageX) + "px")
                         .style("top", (d3.event.pageY - 28) + "px")
-                    flowsTotal.attr("stroke-opacity",0.7)
-                        .attr("stroke", "white")
+                    flowsTotal.attr("stroke-opacity",0.4)
+                        .attr("stroke", "black")
                         //.attr("stroke", "#a3cc00")
                 })
                 .on("mouseout", function () {
                     tooltip.transition()
                         .duration(500)
                         .style("opacity", 0)
-                    tooltip.remove();
-                    flowsTotal.attr("stroke-opacity",0.2)
+                    flowsTotal.attr("stroke-opacity",0.3)
                         .attr("stroke", "grey")
                 })
             ;
@@ -619,6 +604,7 @@ console.log(connectionSourceTarget)
             this.drawArrowhead(sxpaot, sypaot, txpaot, typaot, targetLevel, totalStroke, flowLength, dxp, dyp, uid);
 
             var flows = this.g.append("line")
+                .attr("class", "fraction")
                 .attr("x1", sxpao)
                 .attr("y1", sypao)
                 .attr("x2", txpao)
@@ -627,10 +613,10 @@ console.log(connectionSourceTarget)
                 .attr("stroke", this.styles[styleId].color)
                 .attr("stroke-opacity", 0.8)
                 .attr("clip-path", "url(#clip" + uid +")")
-                /*.on("click", function(){
-                    //d3.select(this).remove();
-                   flows.remove();
-                })*/
+                .on("click", function(){
+                    d3.selectAll("line.fraction").remove();
+                    tooltip.remove()
+                })
                 .on("mouseover", function(){
                     d3.select(this).node().parentNode.appendChild(this);
                     d3.select(this).style("cursor", "pointer"),
@@ -677,11 +663,7 @@ console.log(connectionSourceTarget)
 
 /*  TO DO   TO DO   TO DO   TO DO   TO DO
 *   Zoom
-
-
-Fehlende Variablen in den Daten:
-*   Actors:
-    *   actor group
-    *   actor level
+        radius
+        strokeWidth
 
 */

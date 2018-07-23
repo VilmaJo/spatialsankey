@@ -1,33 +1,32 @@
 /*
- * Data Structure that is needed to use the class FlowMap:
- * Nodes:
- * @param {number} lon - Longitude (first part of coordinates)
- * @param {number} lat - Latitude (second part of coordinates)
- * @param {}
- *
- * Flows:
- * @param {} source - flow origin needs id that is connected to coordinates of the Data for the nodes
- * @param {} target - flow destination needs id that is connected to coordinates of the Data for the nodes
- *
- * examples from the web:
- * @param {Object} employee - The employee who is responsible for the project.
- * @param {string} employee.name - The name of the employee.
- * @param {string} employee.department - The employee's department.
- *
- *
- *
- *
- *
- * *   flows functions
-        function    sx, sy, tx, ty --> with projection, offset, length adjusted
-        function    offset
-        function    strokeWidth
-        function flow               (does this depend on offset or not if we have flows in both or one direction?)
-*   nodes functions
-        function    specifyNodeSize
-        function    specifyNodeColor (activityGroup)
- */
-
+*  Data Input that is needed to use the class FlowMap:
+* Nodes:
+* @param {object} nodesData
+* @param {string} nodesData.name - Label for the tooltips
+* @param {number} nodesData.lon - Longitude (first part of coordinates)
+* @param {number} nodesData.lat - Latitude (second part of coordinates)
+* @param {string} nodesData.label - Label for the tooltips
+* @param {number} nodesData.style - Style ID for the color
+* @param {number} nodesData.level - Level to use for the radius
+*
+* Flows:
+* @param {object} flowsData
+* @param {string} flowsData.id - ID for each flow
+* @param {number} flowsData.source - flow origin needs id that is connected to coordinates of the Data for the nodes
+* @param {number} flowsData.target - flow destination needs id that is connected to coordinates of the Data for the nodes
+* @param {number} flowsData.value - value for the widths (for seperated flows)
+* @param {number} flowsData.valueTotal -   total value for the widths
+* @param {string} flowsData.label - Label for the tooltips (for seperated flows)
+* @param {string} flowsData.labelTotal - Label for the tooltips
+* @param {number} flowsData.style - Style ID for the color
+*
+* Styles:
+* @param{object} styles
+* @param{hex} styles.nodeColor - color for the nodes
+* @param{number} styles.radius - radius for the node
+* @param{hex} styles.color - color for the flows
+*
+*/
 
 
 define([
@@ -41,13 +40,10 @@ define([
             this.map = map;
             var _this = this;
 
-            // ToDo: include this projection somehow (d3 geoMercator is used)
-            //this.projection = options.projection || 'EPSG:3857';
 
-            //this.width = options.width || this.container.offsetWidth;
+            this.width = options.width || this.container.offsetWidth;
             this.bbox = options.bbox;
-            //this.height = options.height || this.width / 1.5;
-            console.log(this.bbox )
+            this.height = options.height || this.width / 1.5;
             this.projection = function(coords) {
                 var point = map.latLngToLayerPoint(new L.LatLng(coords[1], coords[0]));
                 return [point.x, point.y];
@@ -61,8 +57,6 @@ define([
             var transform = d3.geo.transform({point: projectPoint});
             this.path = d3.geo.path().projection(transform);
 
-
-
             this.svg = d3.select(map.getPanes().overlayPane).append("svg"),
                 this.g = this.svg.append("g").attr("class", "leaflet-zoom-hide");
 
@@ -71,13 +65,10 @@ define([
                 var zoomLev = map.getZoom();
                 console.log(zoomLev);
             });
-
-
         }
 
 
         reset(){
-            // define viewbox: boundingbox + / - 50
             var topLeft = this.projection(this.bbox[0]),
                 bottomRight = this.projection(this.bbox[1]);
             topLeft = [topLeft[0] - 250, topLeft[1] - 250];
@@ -95,7 +86,7 @@ define([
             var _this = this;
 
 
-//*************************Define data from flowsData: source_x, source_y, source_coord,target_x,target_y,target_coord*******************************
+            //Define data from flowsData dependending on unique connections
             var strokeWidthPerFlow = {};
             var connections = [];
             var strokeWidthArrayPerConnection = {};
@@ -107,10 +98,12 @@ define([
                     target = flowsData[key].target;
 
                 var connection = source + '-' + target;
-                if (connections.includes(connection) === false) {                           //wenn die connection noch nicht im array connections ist, dann push sie da rein
-                    connections.push(connection)                                        // wir betrachten jede connection nur einmal
+                //if connection not in Array connections: push
+                if (connections.includes(connection) === false) {
+                    connections.push(connection)
                     connectionSourceTarget [key] = {'connection': connection, 'source': source, 'target': target};
-                    var strokeWidths = {};                                                           // get the strokeWidths for each flow that belongs to individual connections
+                    // get the strokeWidths for each flow that belongs to individual connections
+                    var strokeWidths = {};
                     var strokeArray = [];
                     var maxValue = Math.max.apply(Math, Object.values(flowsData).map(function (flow) {
                             return flow.valueTotal
@@ -120,10 +113,10 @@ define([
                     })),
                         maxWidth = 5,
                         minWidth = 0.5;
-                    //console.log(maxValue, minValue)
-                    for (var key in flowsData) {                                                    //welcher flow gehört zur jeweiligen connection (z.B. welcher flow geht von HAM nach LOD?)
+
+                    for (var key in flowsData) {
                         var flow = flowsData[key];
-                        if (flow.source + '-' + flow.target === connection) {           // berechne strokeWidth für die individuellen connections mehrmals eine connection die in connections individuell drin ist
+                        if (flow.source + '-' + flow.target === connection) {
                             var width = flow.value;
                             // insert the zoom here, because thats where the actual width
                             var width = this.defineStrokeZoom(width);
@@ -138,12 +131,11 @@ define([
                     var strokeWidthsArray = Object.keys(strokeWidths).map(function (key) {
                         return [key, strokeWidths[key]];
                     });
-                    ///https://stackoverflow.com/questions/25500316/sort-a-dictionary-by-value-in-javascript
                     strokeWidthsArray.sort(function (first, second) {
                         return second[1] - first[1];
                     });
 
-                    //[[flow_id, strokewidth],[flow_id, strokewidth],[flow_id, strokewidth]] nach grösse
+                    // define stroke widths for each connection sorted in an array
                     for (var i = 0; i < strokeWidthsArray.length; i++) {
                         var key = strokeWidthsArray[i][0];
                         var strokeWidth = strokeWidthsArray[i][1];
@@ -176,7 +168,7 @@ define([
             }
 
 
-            //get the sum of all individual strokeWidths per same source & target
+            // get the sum of all individual strokeWidths per same source & target
             var totalStrokeWidths = {};
             for (var key in strokeWidthArrayPerConnection) {
                 var eachArray = strokeWidthArrayPerConnection[key],
@@ -190,7 +182,7 @@ define([
 
 
 
-            /*  ------------------------------------------   define data to use for drawPath and drawTotalPath   --------------------------------------------------------   */
+            // define data to use for drawPath and drawTotalPath as well as nodes data depending on flows
             var nodesDataFlow = {};
             for (var key in flowsData) {
                 // define flow, so that the loop doesn't have to start over and over again
@@ -206,7 +198,6 @@ define([
                     console.log('Warning: missing actor for flow');
                     continue;
                 }
-
                 var sourceCoords = [source['lon'], source['lat']],
                     targetCoords = [target['lon'], target['lat']];
 
@@ -217,11 +208,9 @@ define([
                     typ = this.projection(targetCoords)[1];
 
                 // define further adjustments for the paths: width, offset ( to see each material fraction even if they have same coordinates)
-                // drawPath
                 var strokeWidth = strokeWidthPerFlow[key][0],
                     offset = strokeWidthPerFlow[key][1];
-                // drawTotalPath
-                // get the connection (persists of source+target) from this flow data that we run the loop through and get the totalStrokeWidths for each connection
+                // get the connection (persists of source+target) from this flow data; get the totalStrokeWidths for each connection
                 var connection = sourceId + '-' + targetId,
                     totalStroke = totalStrokeWidths[connection];
 
@@ -235,6 +224,7 @@ define([
                     'lat': source['lat'] ,
                     'level': sourceLevel ,
                     //'style': source['style'] ,
+                    // no style attribute added to actual REPAiR data
                      'style': 2,
                     'label': source.label
                 };
@@ -243,43 +233,39 @@ define([
                     'lat': target['lat'],
                     'level': targetLevel,
                     //'style': target['style'],
+                    // no style attribute added to actual REPAiR data
                      'style': 3,
                     'label': target.label
                 };
 
-                // drawPath
+                // drawTotalPath, if drawPath is chosen, every path is shown divided by materials which is not intended
                 this.drawTotalPath(sxp, syp, txp, typ, flow.labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection,Bthis, flowsData, nodesData, strokeWidthPerFlow, totalStrokeWidths)
                // this.drawPath(sxp, syp, txp, typ, flow.style, flow.label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection)
 
-            } /******************************   End for key in flowsData    ***********************************/
+            }
 
 
-            // use addpoint for each node in nodesData
+            // use addpoint for each node in nodesDataFlow
             Object.values(nodesDataFlow).forEach(function (node) {
                 _this.addPoint(node.lon, node.lat,
                     node.level, node.style, node.label);
             });
 
-        }   /*********************************    /End render (nodes, flows)  **********************************/
+        }
 
 
-
-
-        // inserting data and letting them load asynchronously
-        renderTopo(topoJson, nodesData, flowsData, styles) {
+        // load data asynchronously, define to execute it sumultaneously
+        renderTopo(nodesData, flowsData, styles) {
             var _this = this;
-
-            // Alle Daten werden über die queue Funktion parallel reingeladen, hier auf die Reihenfolge achten
             function loaded(error) {
                 _this.render(nodesData, flowsData, styles);
             }
         }
 
-
+        // make adjustments if using other datasets
         defineRadiusZoom(level){
             var zoomLevel = this.map.getZoom();
             var radius = this.styles[level].radius;
-
 
             if (zoomLevel < 10){
                 return radius * (zoomLevel/15);
@@ -291,26 +277,12 @@ define([
                 return radius * zoomLevel/3;}
         }
 
+        // make adjustments if using other datasets
         defineStrokeZoom(stroke){
             var zoomLevel = this.map.getZoom();
 
             var stroke = stroke;
-           /*
-            if (zoomLevel < 6) {
-                return stroke * (zoomLevel/6)
-            }
-            if (zoomLevel < 8){
-                return stroke * (zoomLevel/5);
-            }
-            if (zoomLevel < 10){
-                return stroke * (zoomLevel/2);
-            }
-            if (zoomLevel < 15){
-                return stroke * (zoomLevel);
-            }
-            else {
-                return stroke * (zoomLevel*2);
-            }*/
+
             if (zoomLevel < 10) {
                 return stroke * (zoomLevel/2)
             }
@@ -347,20 +319,17 @@ define([
                 .attr("cy", y)
                 .attr("r", radius)
                 .style("fill", this.styles[styleId].nodeColor)
-                //.style("fill", "#1f78b4")
                 .style("fill-opacity", 1)
                 .style("stroke", 'lightgrey')
-                //.style("stroke", this.styles[styleId].color)
                 .style("stroke-width", 0.4)
-                //.style("stroke-opacity", 0.9)
                 .on("mouseover", function (d) {
                     d3.select(this).style("cursor", "pointer"),
                         tooltip.transition()
                             .duration(200)
                             .style("opacity", 0.9);
-                    tooltip.html(nodeLabel)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px")
+                        tooltip.html(nodeLabel)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px")
                 })
                 .on("mouseout", function (d) {
                         tooltip.transition()
@@ -371,7 +340,7 @@ define([
 
         }
 
-
+        // function to define line length adjustment
         adjustedPathLength(sxp, syp, txp, typ, sourceLevel, targetLevel) {
             var dxp = txp - sxp,
                 dyp = typ - syp;
@@ -401,7 +370,7 @@ define([
             return [dxp, dyp, sxpa, sypa, txpa, typa, flowLength];
         }
 
-
+        // function to calculate total offset for each flow by connection
         totalOffset(sxpa, sypa, txpa, typa, dxp, dyp, flowLength, offset, totalStroke, bothways, connection){
             if (bothways.includes(connection) === true) {
                 var sxpao = sxpa + (offset) * (dyp / flowLength),
@@ -453,13 +422,13 @@ define([
                 tRatio = tReduction / flowLength,
                 txRValue = dxp * tRatio,
                 tyRValue = dyp * tRatio,
-                sxpl = sxpao + (totalStroke / 2) * (dyp / flowLength),                                                      // source left
+                sxpl = sxpao + (totalStroke / 2) * (dyp / flowLength),
                 sypl = sypao - (totalStroke / 2) * (dxp / flowLength),
-                txplb = (txpao + (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/5),                       // target left
+                txplb = (txpao + (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/5),
                 typlb = (typao - (totalStroke / 2) * (dxp / flowLength))+ tyRValue*(totalStroke/5),
-                sxpr = sxpao - (totalStroke / 2) * (dyp / flowLength),                                                      // source right
+                sxpr = sxpao - (totalStroke / 2) * (dyp / flowLength),
                 sypr = sypao + (totalStroke / 2) * (dxp / flowLength),
-                txprb = (txpao - (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/5),                       // target right
+                txprb = (txpao - (totalStroke / 2) * (dyp / flowLength))+ txRValue*(totalStroke/5),
                 typrb = (typao + (totalStroke / 2) * (dxp / flowLength))+ tyRValue*(totalStroke/5);
             triangleData.push({'tx': sxpl, 'ty': sypl}, {'tx': txplb, 'ty': typlb},
                 {'tx': txpao, 'ty': typao},
@@ -469,8 +438,7 @@ define([
         }
 
 
-
-        // To do: adjust material to material group
+        // function to draw actual paths for the directed quantity flows
         drawTotalPath(sxp, syp, txp, typ, labelTotal, totalStroke, sourceLevel, targetLevel, bothways, connection,
                       Bthis, flowsData, nodesData, strokeWidthPerFlow, totalStrokeWidths) {
 
@@ -508,7 +476,6 @@ define([
                 .attr("clip-path", "url(#clip" + uid +")")
                 .attr("stroke-width", totalStroke)
                 .attr("stroke", "grey")
-                //.attr("stroke", "#a3cc00")
                 .attr("stroke-opacity", 0.3)
                 .on("click", function(){
                     for (var key in flowsData) {
@@ -547,24 +514,23 @@ define([
                         tooltip.transition()
                             .duration(200)
                             .style("opacity", 0.8);
-                    tooltip.html(labelTotal)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px")
-                    flowsTotal.attr("stroke-opacity",0.4)
-                        .attr("stroke", "black")
-                        //.attr("stroke", "#a3cc00")
+                        tooltip.html(labelTotal)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px")
+                        flowsTotal.attr("stroke-opacity",0.4)
+                            .attr("stroke", "black")
                 })
                 .on("mouseout", function () {
-                    tooltip.transition()
-                        .duration(500)
-                        .style("opacity", 0)
-                    flowsTotal.attr("stroke-opacity",0.3)
-                        .attr("stroke", "grey")
+                        tooltip.transition()
+                            .duration(500)
+                            .style("opacity", 0)
+                        flowsTotal.attr("stroke-opacity",0.3)
+                            .attr("stroke", "grey")
                 })
             ;
         }
 
-
+        // function to draw path divided by materials
         drawPath(sxp, syp, txp, typ, styleId, label, offset, strokeWidth, totalStroke, sourceLevel, targetLevel, bothways, connection) {
 
             var pathLengthValues = this.adjustedPathLength(sxp, syp, txp, typ, sourceLevel, targetLevel);
@@ -576,7 +542,6 @@ define([
                 typa = pathLengthValues[5],
                 flowLength = pathLengthValues[6];
 
-
             //unique id for each clip path is necessary
             var uid = this.uuidv4();
 
@@ -585,7 +550,6 @@ define([
                 .attr("class", "tooltip")
                 .style("opacity", 0.9)
                 .style("z-index", 500);
-
 
             var totalOffset = this.totalOffset(sxpa, sypa, txpa, typa, dxp, dyp, flowLength, offset, totalStroke, bothways, connection);
             var sxpao = totalOffset[0],
@@ -614,8 +578,8 @@ define([
                 .attr("stroke-opacity", 0.8)
                 .attr("clip-path", "url(#clip" + uid +")")
                 .on("click", function(){
-                    d3.selectAll("line.fraction").remove();
-                    tooltip.remove()
+                        d3.selectAll("line.fraction").remove();
+                        tooltip.remove()
                 })
                 .on("mouseover", function(){
                     d3.select(this).node().parentNode.appendChild(this);
@@ -623,10 +587,10 @@ define([
                         tooltip.transition()
                             .duration(200)
                             .style("opacity", 0.9);
-                    tooltip.html(label)
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 28) + "px")
-                    flows.attr("stroke-opacity", 1)
+                        tooltip.html(label)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px")
+                        flows.attr("stroke-opacity", 1)
                 })
                 .on("mouseout", function(d) {
                         tooltip.transition()
@@ -637,15 +601,12 @@ define([
                 );
         }
 
-
-
+        // clip path-function to use on draw path to get arrowheads
         drawArrowhead(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp, id){
             var triangleData = this.defineTriangleData(sxpao, sypao, txpao, typao, targetLevel, totalStroke, flowLength, dxp, dyp);
 
             var clip = this.g.append("clipPath")
                 .attr("id", "clip"+id)
-                //.attr("id", triangleData.map(function(d) {return "clip" + d.index}))
-                //.attr("id", triangleData.forEach(function(d) { return "clip"}))
                 .append("polygon")
                 .data(triangleData)
                 .attr("points", triangleData.map(function (d) {
@@ -660,10 +621,3 @@ define([
 
     return FlowMap;
 });
-
-/*  TO DO   TO DO   TO DO   TO DO   TO DO
-*   Zoom
-        radius
-        strokeWidth
-
-*/

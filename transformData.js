@@ -3,14 +3,17 @@ define([
 ], function(d3, d3scale) {
     function transformData(actors, locations, locations2, materials, actor2actor, levels) {
 
+        // defining object that will store the style information: node color & radius, flow color
         var styles = {};
 
+        // Data for administrative levels
         var levelsData ={};
         levels.forEach(function(level) {
             var name = level.name;
             levelsData[level.level] = name;
         });
 
+        // further actor data information that is later on inserted into acotors data with coordinates
         actorsName = {};
         actorsActivity = {};
         actorsActivityId = {};
@@ -23,8 +26,10 @@ define([
             actorsActivity[actor.id] = activityId
         });
 
+
         var uniqueActivity = new Set();
         var ActivityArray = [];
+        // object with actors locations and further information
         var locationsData = {};
         i=0;
         locations.forEach(function (location) {
@@ -50,8 +55,8 @@ define([
 
         });
 
+        // locations from dataset of individual actors; dataset has a slightly different data structure
         locations2.features.forEach(function (location2) {
-           //console.log(location2)
             var actorId = location2.properties.actor,
                 geometry = location2.geometry;
             var coordinates = location2.geometry.coordinates;
@@ -77,12 +82,6 @@ define([
 
         });
 
-        console.log(uniqueActivity)
-
-
-
-            // console.log(Object.keys(locationsData).length)
-
         // define boundingbox
         var topLeft = [10000, 0],
             bottomRight = [0, 10000];
@@ -94,53 +93,20 @@ define([
         });
 
 
-        /*
-                var uniqueActivity = new Set();                           //to get array of unique values
-                var actorsData = {},
-                    topLeft = [10000, 0],
-                    bottomRight = [0, 10000];
-                actors.forEach(function (actor) {
-                    var actorId = actor.id;
-                    var coordinates = locationsData[actorId] || [Math.random() * 13 + 4, Math.random() * 18 + 40];         // !!!!!!!!!! random coordinates
-                    var level = levelData[actor.id];
-                    console.log(actorId)
-                    console.log(level)
-                    var lon = coordinates[0],
-                        lat = coordinates[1];
-                    topLeft = [Math.min(topLeft[0], lon), Math.max(topLeft[1], lat)];
-                    bottomRight = [Math.max(bottomRight[0], lon), Math.min(bottomRight[1], lat)];
-                    var label = 'Name: ' + actor.name + '<br>Level: ' + level + '<br>Activity: ' + actor.activity;
-                    console.log(label)
-                    actorsData[actor.id] = {
-                        'name': actor.name,
-                        'label': label,
-                        'lon': lon,
-                        'lat': lat,
-                        'style': 'group' + actor.activity,
-                        'level': level
-                    };
-
-                    uniqueActivity = uniqueActivity.add(actor.activity)
-                });
-        console.log(actorsData)
-        */
-
-        // define color range and assign color to nodes activity
+        // define color for the nodes by activity and store it in styles
         var nodeColor = d3.scale.linear()
-        .range (["#1b9e77", "#d95f02", "#7570b3"])
-           // .range (["#4477AA", "#228833", "#AA3377"])
-            .domain([0, 1, uniqueActivity.size-1])
+            .range (["#0077BB", "#33BBEE","#009988","#EE7733","#CC3311","#EE3377"])
+            .domain([0, 1/5*(uniqueActivity.size-1), 2/5*(uniqueActivity.size-1), 3/5*(uniqueActivity.size-1), 4/5*(uniqueActivity.size-1), (uniqueActivity.size-1)])
             .interpolate(d3.interpolateHsl);
-            var i = 0;
+        var i = 0;
 
-            uniqueActivity.forEach(function (activity) {
-                var color = nodeColor(i);
-                styles[activity] = {'nodeColor': color};
-                i += 1;
-            });
+        uniqueActivity.forEach(function (activity) {
+            var color = nodeColor(i);
+            styles[activity] = {'nodeColor': color};
+            i += 1;});
 
 
-        // define fixed node radius dependend on spatial level
+        // define fixed node radius depending on spatial level
         function defineRadius(level){
             var level = level;
             if (level === 10) {return 11}
@@ -157,12 +123,14 @@ define([
         };
 
 
+        // materials data
         var materialsData = {};
         materials.forEach(function (material) {
             materialsData[material.id] = {'name': material.name, 'level': material.level}
         });
 
 
+        // data for flows
         var uniqueMaterials = new Set();
         var flowsData = {};
         i = 0;
@@ -193,21 +161,13 @@ define([
                 i += 1;
             });
         });
-        console.log(uniqueMaterials)
 
-
-        //console.log(Object.keys(flowsData).length)
-
-        //define color range and assign colors to unique materials
+        //define colors for individual materials and store in styles
         var materialColor = d3.scale.linear()
-            // colorbrewer
-            //.range(["#1b9e77", "#d95f02", "#7570b3"])
-            // Pauls Tol's Notes https://personal.sron.nl/~pault/#sec:qualitative       BRIGHT
-            .range(["#4477AA", "#228833", "#AA3377"])
-            // Pauls Tol's Notes https://personal.sron.nl/~pault/#sec:qualitative       Vibrant
-            //.range(["#0077BB", "#009988", "#EE3377"])
-            .domain([0, 1, uniqueMaterials.size-1])
+            .range (["#4477AA", "#66CCEE","#228833","#CCBB44","#EE6677","#AA3377"])
+            .domain([0, 1/5*(uniqueMaterials.size-1), 2/5*(uniqueMaterials.size-1), 3/5*(uniqueMaterials.size-1), 4/5*(uniqueMaterials.size-1), (uniqueMaterials.size-1)])
             .interpolate(d3.interpolateHsl);
+
         var i = 0;
 
         uniqueMaterials.forEach(function (materialId) {
@@ -217,7 +177,6 @@ define([
         });
 
 
-        console.log(styles)
         return {flows: flowsData, nodes: locationsData, styles: styles, bbox: [topLeft, bottomRight]};
     }
     return transformData;

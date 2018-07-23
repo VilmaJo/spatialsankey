@@ -56,15 +56,14 @@
     }
 
     require(['flowmap', 'transformData', 'leaflet'], function(FlowMap, transformData, L){
-       //var map = new L.Map("container", {center: [52.38, 5.15], zoom: 10})
-        //var map = new L.Map("container", {center: [52.41, 5.4], zoomSnap: 0.25, zoom: 10, minZoom: 5,
             var map = new L.Map("container", {center: [52.41, 4.95], zoomSnap: 0.25, zoom: 10.5, minZoom: 5,
             maxZoom: 18})
             .addLayer(new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"));
             //.addLayer(new L.TileLayer(" https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}{r}.png"));
             //.addLayer(new L.TileLayer(" https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png"));
         var actors, locations, locations2, materials, actor2actor, levels
-            promises = [];                                                      // promise to load data asynchronously
+        // promise to load data asynchronously, chose datasets of different administrative level
+            promises = [];
         promises.push(
             get('data/actors.json').then(function(response){
                 actors = JSON.parse(response);
@@ -85,11 +84,11 @@
                 materials = JSON.parse(response);
             }));
         promises.push(
-            //get('data/actor2actor-products-of-agriculture-aggregated.json').then(function(response){
-              // get('data/flows/gemeente-to-actors.json').then(function(response){
-               //get('data/flows/gemeente-to-gemeente.json').then(function(response){
-            //get('data/flows/metropoolregio-to-actors.json').then(function(response){
-               //get('data/flows/provincie-to-actors.json').then(function(response){
+                // get('data/actor2actor-products-of-agriculture-aggregated.json').then(function(response){
+               // get('data/flows/gemeente-to-actors.json').then(function(response){
+               // get('data/flows/gemeente-to-gemeente.json').then(function(response){
+                // get('data/flows/metropoolregio-to-actors.json').then(function(response){
+               // get('data/flows/provincie-to-actors.json').then(function(response){
                 get('data/flows/wijk-to-wijk.json').then(function(response){
                 actor2actor = JSON.parse(response);
             }));
